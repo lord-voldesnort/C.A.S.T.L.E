@@ -1,6 +1,6 @@
 # 🛡️ C.A.S.T.L.E. — Cybersecurity Toolbox Platform
 
-Welcome to **C.A.S.T.L.E.** (also known as **Armor / Protection Hub**), a modern, high-tech, browser-based **Cybersecurity Toolkit** designed for real-world utility and deep educational exploration. 
+Welcome to **C.A.S.T.L.E.**, a modern, high-tech, browser-based **Cybersecurity Toolkit** designed for real-world utility and deep educational exploration. 
 
 Inspired by the intuitive user interface model of **iLovePDF** and designed with a premium, low-light Command Center aesthetic, C.A.S.T.L.E. provides a grid of focused security modules. All cryptographic and analytical tasks are executed **locally and client-side** inside the user's browser, ensuring absolute data privacy.
 
