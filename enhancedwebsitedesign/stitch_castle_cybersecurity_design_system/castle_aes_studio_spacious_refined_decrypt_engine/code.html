@@ -1,0 +1,406 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 3402px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Castle Sec-Ops // Cryptographic Suite</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ffb4ab", "on-secondary-container": "#00311f", "primary": "#ffb694", "surface-container-high": "#2a2a2a", "inverse-primary": "#a14000", "tertiary": "#89ceff", "surface-root": "#000000", "primary-fixed-dim": "#ffb694", "border-active": "#FF6A00", "surface-tint": "#ffb694", "tertiary-fixed": "#c9e6ff", "on-primary-container": "#571f00", "on-primary-fixed-variant": "#7b2f00", "surface-recessed": "#050505", "on-primary-fixed": "#351000", "on-error": "#690005", "on-tertiary-container": "#00344e", "surface-variant": "#353535", "on-secondary": "#003824", "primary-active": "#E55F00", "on-error-container": "#ffdad6", "on-tertiary-fixed": "#001e2f", "border-hairline": "#1A1A1A", "surface-bright": "#393939", "secondary-fixed-dim": "#4edea3", "status-warning": "#F59E0B", "on-secondary-fixed-variant": "#005236", "on-secondary-fixed": "#002113", "status-info": "#0EA5E9", "surface-card": "#0D0D0D", "on-background": "#e2e2e2", "primary-fixed": "#ffdbcc", "secondary-container": "#00a572", "inverse-surface": "#e2e2e2", "on-surface": "#e2e2e2", "on-tertiary-fixed-variant": "#004c6e", "on-surface-variant": "#e2bfb0", "primary-hover": "#FF7D1A", "outline": "#a98a7d", "secondary-fixed": "#6ffbbe", "surface-base": "#0A0A0A", "tertiary-container": "#00a2e6", "on-tertiary": "#00344d", "surface": "#131313", "on-primary": "#571f00", "status-danger": "#EF4444", "surface-elevated": "#111111", "tertiary-fixed-dim": "#89ceff", "secondary": "#4edea3", "background": "#131313", "status-verified": "#10B981", "surface-container": "#1f1f1f", "primary-container": "#ff6a00", "outline-variant": "#5a4136", "text-dark": "#050505", "surface-dim": "#131313", "text-display": "#FFFFFF", "text-body": "#E5E5E5", "inverse-on-surface": "#303030", "border-subtle": "#222222", "error-container": "#93000a", "surface-container-highest": "#353535", "text-muted": "#888888", "surface-container-low": "#1b1b1b", "primary-glow": "rgba(255, 106, 0, 0.15)", "surface-container-lowest": "#0e0e0e" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xl": "2rem", "space-2xl": "3rem", "gutter": "1.5rem", "margin": "2.5rem", "margin-mobile": "1rem", "space-md": "1rem", "gutter-mobile": "1rem", "space-xs": "0.25rem", "space-3xl": "4rem", "space-sm": "0.5rem", "space-lg": "1.5rem" }, "fontFamily": { "body-sm": ["Inter"], "label-caps": ["JetBrains Mono"], "headline-md": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "headline-lg-mobile": ["Space Grotesk"], "body-lg": ["Inter"], "code-lg": ["JetBrains Mono"], "hero": ["Space Grotesk"], "hero-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "body-md": ["Inter"], "code-sm": ["JetBrains Mono"], "code-md": ["JetBrains Mono"], "title-md": ["Space Grotesk"] }, "fontSize": { "body-sm": ["12px", { "lineHeight": "1.50", "fontWeight": "400" }], "label-caps": ["11px", { "lineHeight": "1.40", "letterSpacing": "0.08em", "fontWeight": "600" }], "headline-md": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-sm": ["24px", { "lineHeight": "1.30", "fontWeight": "600" }], "headline-lg-mobile": ["32px", { "lineHeight": "1.20", "letterSpacing": "-0.01em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "1.60", "fontWeight": "400" }], "code-lg": ["15px", { "lineHeight": "1.50", "fontWeight": "500" }], "hero": ["64px", { "lineHeight": "1.10", "letterSpacing": "-0.03em", "fontWeight": "700" }], "hero-mobile": ["40px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["48px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }], "body-md": ["14px", { "lineHeight": "1.55", "fontWeight": "400" }], "code-sm": ["11px", { "lineHeight": "1.40", "fontWeight": "400" }], "code-md": ["13px", { "lineHeight": "1.50", "fontWeight": "500" }], "title-md": ["18px", { "lineHeight": "1.40", "letterSpacing": "0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface-root font-body-md text-body min-h-screen selection:bg-primary-container selection:text-text-dark antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-[#000000] border-b border-[#222222]/80 backdrop-blur-md"><div class="w-full bg-[#050505] border-b border-[#1f1f1f]"><div class="max-w-6xl mx-auto px-6 sm:px-10 py-1.5 flex flex-wrap items-center justify-between text-xs font-code-sm text-text-muted gap-2"><div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-status-verified shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span><span class="font-label-caps text-label-caps tracking-widest text-status-verified font-semibold">AIR-GAP MODE ACTIVE</span><span class="text-[#2a2a2a]">//</span><span class="">ZERO INGRESS TELEMETRY</span><span class="text-[#2a2a2a] hidden sm:inline">//</span><span class="hidden sm:inline">CASTLE SEC-OPS</span><span class="text-[#2a2a2a] hidden md:inline">//</span><span class="hidden md:inline">UTILITIES</span><span class="text-[#2a2a2a] hidden lg:inline">//</span><span class="hidden lg:inline">MODULE-03</span><span class="text-[#2a2a2a] hidden lg:inline">//</span><span class="hidden lg:inline text-[#F5F5F5]">AES-STUDIO</span></div><div class="flex items-center gap-3"><div class="hidden sm:flex items-center gap-2"><span class="font-label-caps text-[10px] text-text-muted">CRYPTO-HASH:</span><span class="text-[#F5F5F5] font-medium">SHA-512/WASM</span></div><span class="text-[#2a2a2a] hidden sm:inline">|</span><div class="flex items-center gap-2"><span class="font-label-caps text-[10px] text-text-muted">SEC-LEVEL:</span><span class="text-primary-container font-semibold">TIER-1</span></div><span class="text-[#2a2a2a]">|</span><button class="flex items-center gap-1 hover:text-[#F5F5F5] transition-colors" type="button"><span class="material-symbols-outlined text-[13px]">restart_alt</span><span class="">RESET</span></button><span class="text-[#2a2a2a]">|</span><div class="flex items-center gap-1 text-[#F5F5F5]"><span class="material-symbols-outlined text-[13px] text-primary-container">verified_user</span><span class="">OP-09</span></div></div></div></div><div class="max-w-6xl mx-auto px-6 sm:px-10 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-4"><div class="flex items-center gap-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-DEFAULT bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container shadow-[0_0_12px_rgba(255,106,0,0.2)]"><span class="material-symbols-outlined text-xl">shield</span></div><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-code-lg text-lg tracking-wider text-[#F5F5F5] font-bold">CASTLE</span><span class="px-1.5 py-0.5 rounded-DEFAULT bg-[#1a1a1a] border border-[#2a2a2a] font-label-caps text-[10px] text-primary-container font-semibold">SEC-OPS v3.4</span></div><span class="font-code-sm text-[11px] text-text-muted tracking-tight">HIGH-ASSURANCE AIR-GAPPED WORKSPACE</span></div></div></div><nav class="flex items-center gap-2"><a class="font-code-md text-code-sm px-4 py-2 rounded-DEFAULT bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#FF6A00]/40 text-text-muted hover:text-[#F5F5F5] transition-all flex items-center gap-2" data-path="learn" href="#"><span class="text-primary-container/60 font-semibold">01</span><span class="">TAB 01: LEARN</span></a><a class="font-code-md text-code-sm px-4 py-2 rounded-DEFAULT bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#FF6A00]/40 text-text-muted hover:text-[#F5F5F5] transition-all flex items-center gap-2" data-path="encrypt" href="#"><span class="text-primary-container/60 font-semibold">02</span><span class="">TAB 02: ENCRYPT</span></a><a aria-current="page" class="font-code-md text-code-sm px-4 py-2 rounded-DEFAULT bg-primary-container text-text-dark font-bold shadow-[0_0_14px_rgba(255,106,0,0.35)] transition-all flex items-center gap-2" data-path="decrypt" href="#"><span class="text-text-dark/80 font-bold">03</span><span class="">TAB 03: DECRYPT</span></a></nav></div></header><main class="w-full pt-28 bg-[#000000]"><div class="max-w-4xl mx-auto px-6 sm:px-10 py-12 flex flex-col gap-10">
+<!-- 1. HEADER SECTION (CLEAN & SPACIOUS) -->
+<section class="flex flex-col gap-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2 py-0.5 rounded-DEFAULT bg-[#141414] border border-[#222222] font-label-caps text-label-caps text-primary-container tracking-wider">MODULE 03 // DECRYPT</span>
+<span class="text-text-muted font-code-sm text-code-sm">//</span>
+<span class="font-label-caps text-label-caps text-text-muted">AES-256 AIR-GAPPED DECRYPTION WORKSPACE</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<h1 class="font-headline-lg text-3xl sm:text-4xl text-[#F5F5F5] tracking-tight font-bold">
+AES-256 AIR-GAPPED DECRYPTION ENGINE
+</h1>
+<div class="flex items-center gap-2 bg-[#0e0e0e] border border-[#222222] px-3 py-1.5 rounded-DEFAULT shrink-0">
+<span class="w-2 h-2 rounded-full bg-status-verified shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
+<span class="font-code-sm text-code-sm text-text-muted">GHASH ATTESTATION:</span>
+<span class="font-code-sm text-code-sm text-status-verified font-medium">ONLINE</span>
+</div>
+</div>
+<p class="font-body-lg text-base text-text-muted max-w-3xl leading-relaxed">
+Authenticate and decrypt Galois/Counter Mode ciphertext envelopes strictly inside your browser's isolated memory buffer. Cryptographic integrity tags are verified locally before releasing any plaintext.
+</p>
+<div class="flex flex-wrap items-center gap-2 pt-1 font-code-sm text-xs">
+<div class="px-2.5 py-1 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] flex items-center gap-1.5">
+<span class="text-text-muted font-label-caps">SPEC:</span>
+<span class="text-[#F5F5F5]">NIST SP 800-38D</span>
+</div>
+<div class="px-2.5 py-1 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] flex items-center gap-1.5">
+<span class="text-text-muted font-label-caps">CIPHER:</span>
+<span class="text-primary-fixed-dim">AES-256-GCM (14 ROUNDS)</span>
+</div>
+<div class="px-2.5 py-1 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] flex items-center gap-1.5">
+<span class="text-text-muted font-label-caps">AUTH:</span>
+<span class="text-status-verified">128-BIT GHASH TAG</span>
+</div>
+<div class="px-2.5 py-1 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] flex items-center gap-1.5">
+<span class="text-text-muted font-label-caps">ISOLATION:</span>
+<span class="text-tertiary-fixed">LOCAL AIR-GAP (0 NET)</span>
+</div>
+</div>
+</section>
+<!-- 2. AIR-GAP PRIVACY GUARANTEE BANNER -->
+<section class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] hover:border-[#FF6A00]/30 transition-colors p-5 sm:p-6 shadow-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start sm:items-center gap-4">
+<div class="w-10 h-10 rounded-DEFAULT bg-[#141414] border border-[#262626] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-container text-2xl">shield_lock</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-caps text-label-caps text-[#F5F5F5] tracking-wider">AES STUDIO // AIR-GAPPED PRIVACY</span>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-secondary-container/20 text-secondary font-label-caps text-[10px] border border-secondary/30">100% CLIENT-SIDE WEBCRYPTO</span>
+</div>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted mt-1 leading-normal">
+Decryption and GHASH authentication occur strictly within your local V8 memory buffer. Castle never transmits or logs ciphertext, secret keys, or plaintexts.
+</p>
+</div>
+</div>
+<div class="flex items-center gap-3 sm:gap-4 shrink-0 font-code-sm text-xs text-text-muted border-t sm:border-t-0 border-[#222222] pt-2 sm:pt-0">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified"></span>
+<span>LOCAL BUFFER</span>
+</div>
+<span class="text-[#2a2a2a]">•</span>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-status-info"></span>
+<span>ZERO SERVER</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. MAIN DECRYPTION TASK CARD (SEQUENTIAL & UNCLUTTERED) -->
+<section class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] hover:border-[#FF6A00]/40 transition-colors p-8 sm:p-10 shadow-2xl flex flex-col gap-10">
+<!-- STEP 01: CIPHERTEXT INGRESS -->
+<div class="flex flex-col gap-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-DEFAULT bg-primary-container text-text-dark font-label-caps text-xs flex items-center justify-center font-bold">01</span>
+<h2 class="font-title-md text-base sm:text-lg text-[#F5F5F5] uppercase tracking-wide font-semibold">Encrypted Ingress Buffer</h2>
+</div>
+<div class="flex items-center gap-1 bg-[#050505] p-1 rounded-DEFAULT border border-[#222222]">
+<button class="px-3 py-1 rounded-DEFAULT bg-[#141414] text-[#F5F5F5] font-code-sm text-xs font-medium border border-[#333333] transition-colors" id="ingress-mode-text" type="button">TEXT CIPHERTEXT</button>
+<button class="px-3 py-1 rounded-DEFAULT bg-transparent text-text-muted hover:text-[#F5F5F5] font-code-sm text-xs transition-colors" id="ingress-mode-file" type="button">FILE ENVELOPE (.CASTLE)</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="relative rounded-DEFAULT bg-[#050505] border border-[#222222] focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all p-4">
+<textarea class="w-full bg-transparent font-code-md text-xs sm:text-sm text-[#F5F5F5] placeholder-text-muted/50 resize-none outline-none leading-relaxed selection:bg-primary-container selection:text-text-dark" id="ciphertext-input" placeholder="Paste Castle ciphertext envelope (Base64URL json payload)..." rows="6" spellcheck="false">eyJ2ZXJzaW9uIjoxLCJhbGdvcml0aG0iOiJBRVMtMjU2LUdDTSIsIm1vZGUiOiJwYXNzcGhyYXNlIiwic2FsdCI6InJLN1ZXQzlvZ2hld2I2NW1rSFAxSUE9PSIsIml2IjoieDBoMWl3aWJtRnRaU0k2SU1uaGMyUlNaUDF0WlhOellXZGxMblI0ZEMxSW0xcGJXVWlPaUowWlhoMEwzQnNZV0x1SWl3aVpHRjBZR0Z5VlVVSjFTeTl2YTBOTGFEandRV0x0Y1pWck1Gb3hkRGd2ZWtaT2JraEJNVmRVbk5sWGVITDJTbnAwUjJMSk4zZ3haMkl2T0hOc2RPc3dSMWhqYVdVWFVMRmtiTTVEYUZWeVVVVTI=</textarea>
+<div class="flex items-center justify-between pt-3 border-t border-[#1a1a1a] text-text-muted font-code-sm text-xs">
+<span class="flex items-center gap-1.5 text-status-verified">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+<span>BASE64URL FORMAT VALIDATED</span>
+</span>
+<div class="flex items-center gap-4">
+<span id="char-count">486 BYTES (BASE64URL)</span>
+<button class="text-primary-container hover:text-primary-hover uppercase font-label-caps text-[11px] font-semibold transition-colors" id="btn-clear-buffer" type="button">CLEAR BUFFER</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Drag & drop fallback zone -->
+<div class="flex flex-col items-center justify-center p-6 rounded-DEFAULT bg-[#050505] border border-dashed border-[#262626] hover:border-primary-container/60 hover:bg-[#0a0a0a] transition-all cursor-pointer group text-center" id="file-drop-zone">
+<span class="material-symbols-outlined text-3xl text-primary-container group-hover:scale-110 transition-transform">folder_zip</span>
+<div class="font-code-md text-xs sm:text-sm text-[#F5F5F5] mt-2 font-medium">Drop encrypted .castle file or click to browse</div>
+<div class="font-body-sm text-xs text-text-muted mt-0.5">Authenticated ciphertext envelopes up to 256MB client-side</div>
+</div>
+<div class="px-4 py-2.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-wrap items-center justify-between gap-2 text-xs font-code-sm text-text-muted">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="text-[#F5F5F5] font-medium">PAYLOAD DETECTED: VERSION 1 // AEAD (.CASTLE)</span>
+</div>
+<div>
+DERIVATION: <span class="text-secondary font-medium">PBKDF2-HMAC-SHA256 (250,000 ROUNDS)</span>
+</div>
+</div>
+</div>
+<div class="h-[1px] w-full bg-[#1c1c1c]"></div>
+<!-- STEP 02: KEY AUTHORIZATION -->
+<div class="flex flex-col gap-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-DEFAULT bg-primary-container text-text-dark font-label-caps text-xs flex items-center justify-center font-bold">02</span>
+<h2 class="font-title-md text-base sm:text-lg text-[#F5F5F5] uppercase tracking-wide font-semibold">Key Authorization Secret</h2>
+</div>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-[#141414] border border-[#222222] font-label-caps text-label-caps text-text-muted">DERIVATION KEY</span>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-text-muted tracking-wider block" for="passphrase-input">
+SECRET PASSPHRASE OR SAVED 256-BIT KEY
+</label>
+<div class="relative rounded-DEFAULT bg-[#050505] border border-[#222222] focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all flex items-center">
+<input class="w-full bg-transparent font-code-md text-xs sm:text-sm text-[#F5F5F5] px-4 py-3 outline-none placeholder-text-muted/50" id="passphrase-input" placeholder="Enter matching authorization passphrase..." type="password" value="castle-ops-fortress-secure-passphrase-2025">
+<button class="px-4 text-text-muted hover:text-[#F5F5F5] transition-colors" id="btn-toggle-visibility" title="Toggle visibility" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a]">
+<div class="flex items-center gap-2 font-code-sm text-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
+<span class="text-text-muted">STATUS:</span>
+<span class="text-status-verified font-medium">AUTHENTICATION CANDIDATE DETECTED</span>
+</div>
+<span class="font-code-sm text-xs text-text-muted">READY FOR LOCAL GHASH VERIFICATION</span>
+</div>
+<div class="p-4 rounded-DEFAULT bg-status-warning/5 border border-status-warning/20 flex items-start gap-3">
+<span class="material-symbols-outlined text-status-warning text-xl shrink-0 mt-0.5">lock_reset</span>
+<div class="space-y-0.5">
+<div class="font-label-caps text-label-caps text-status-warning font-semibold">ZERO-KNOWLEDGE CRYPTOGRAPHIC NOTICE</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+If the secret or key does not match precisely, Galois/Counter Mode authenticated decryption will fail immediately with an integrity violation. Plaintext is never decrypted into memory on tag mismatch.
+</p>
+</div>
+</div>
+</div>
+<!-- DOMINANT PRIMARY ACTION -->
+<div class="pt-2">
+<button class="w-full py-4 px-6 rounded-DEFAULT bg-primary-container hover:bg-primary-hover active:bg-primary-active text-text-dark font-headline-sm text-base sm:text-lg uppercase tracking-wider flex items-center justify-center gap-3 transition-all shadow-[0_4px_24px_rgba(255,106,0,0.25)] hover:shadow-[0_4px_30px_rgba(255,106,0,0.45)] font-bold active:scale-[0.99]" id="btn-decrypt" type="button">
+<span class="material-symbols-outlined text-xl">lock_open</span>
+<span>DECRYPT &amp; VERIFY LOCALLY → [AIR-GAP EXECUTION]</span>
+</button>
+<p class="text-center font-code-sm text-xs text-text-muted mt-2.5">
+SubtleCrypto API • No network socket connection • In-memory execution
+</p>
+</div>
+</section>
+<!-- 4. POST-DECRYPTION RESULT STAGE (CONFIDENTIAL PLAINTEXT) -->
+<section class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] hover:border-[#FF6A00]/40 transition-colors p-8 sm:p-10 shadow-2xl flex flex-col gap-6" id="result-stage">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#1c1c1c]">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-DEFAULT bg-status-verified/15 border border-status-verified/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-verified text-xl">check_circle</span>
+</div>
+<div>
+<h3 class="font-title-md text-base sm:text-lg text-[#F5F5F5] font-semibold">DECRYPTION COMPLETE &amp; GHASH AUTHENTICATED</h3>
+<p class="font-body-sm text-xs text-status-verified">GHASH 128-bit authentication tag matched • 0 bytes transmitted</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-DEFAULT bg-status-verified/10 border border-status-verified/30 text-status-verified font-label-caps text-xs self-start sm:self-auto">INTEGRITY VERIFIED</span>
+</div>
+<!-- Recovered Plaintext Display -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between font-label-caps text-label-caps text-text-muted">
+<span>RECOVERED PLAINTEXT PAYLOAD (UTF-8)</span>
+<span class="text-[#F5F5F5]/60">CONFIDENTIAL INTELLIGENCE</span>
+</div>
+<div class="relative rounded-DEFAULT bg-[#050505] border border-[#222222] p-6 focus-within:border-secondary transition-colors">
+<div class="font-code-lg text-sm sm:text-base text-secondary font-medium tracking-wide break-words leading-relaxed selection:bg-secondary selection:text-text-dark" id="plaintext-output">Confidential tactical security intelligence data block.</div>
+<div class="pt-4 mt-4 border-t border-[#1a1a1a] flex flex-wrap items-center justify-between gap-2 text-text-muted font-code-sm text-xs">
+<span>ENCODING: UTF-8 // 54 CHARACTERS</span>
+<span class="text-status-verified flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
+AUTHENTICATED IN-MEMORY BUFFER
+</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+<button class="py-3 px-4 rounded-DEFAULT bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#FF6A00]/40 text-[#F5F5F5] font-code-md text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow-sm" id="btn-copy-plaintext" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>COPY PLAINTEXT</span>
+</button>
+<button class="py-3 px-4 rounded-DEFAULT bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#FF6A00]/40 text-[#F5F5F5] font-code-md text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow-sm" id="btn-save-file" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>SAVE TO FILE</span>
+</button>
+</div>
+<!-- Cross-Tool Bridge -->
+<div class="pt-1">
+<a class="w-full py-2.5 px-4 rounded-DEFAULT bg-[#050505] hover:bg-[#111111] border border-[#1f1f1f] hover:border-[#FF6A00]/30 text-primary-fixed-dim hover:text-[#F5F5F5] font-code-sm text-xs flex items-center justify-between transition-colors" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-container">fingerprint</span>
+<span>CROSS-VERIFY IN SHA-256 HASH TOOLKIT</span>
+</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- 5. SECONDARY TECHNICAL INFORMATION & PROGRESSIVE DISCLOSURE -->
+<section class="flex flex-col gap-6">
+<!-- Cryptographic Verification Telemetry (Spacious Grid) -->
+<div class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] p-8 sm:p-10 shadow-lg flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-[#1c1c1c] pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-lg">data_object</span>
+<span class="font-label-caps text-label-caps text-[#F5F5F5] tracking-wider font-semibold">CRYPTOGRAPHIC TELEMETRY (NIST SP 800-38D)</span>
+</div>
+<span class="font-code-sm text-xs text-text-muted">EXEC: <span class="text-tertiary">0.38ms</span></span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 font-code-sm text-xs">
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">ALGORITHM</span>
+<span class="text-[#F5F5F5] font-medium">AES-256-GCM (FIPS 197)</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">AUTH TAG</span>
+<span class="text-status-verified font-medium">128-BIT GHASH (MATCHED)</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">NONCE / IV</span>
+<span class="text-[#F5F5F5] font-medium">96-BIT CSPRNG EXTRACTED</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">SALT EXTRACT</span>
+<span class="text-[#F5F5F5] font-medium">16-BYTE CRYPTO SALT</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">KDF ITERATIONS</span>
+<span class="text-[#F5F5F5] font-medium">250,000 ROUNDS PBKDF2</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">BUFFER STATE</span>
+<span class="text-secondary font-medium">EPHEMERAL ZEROED</span>
+</div>
+</div>
+<!-- Security Posture Review Card -->
+<div class="pt-4 border-t border-[#1c1c1c] space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-[#F5F5F5]">SECURITY POSTURE REVIEW</span>
+<span class="font-code-sm text-xs text-status-verified font-medium">98 / 100 OPTIMAL</span>
+</div>
+<div class="w-full bg-[#1c1c1c] h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-status-verified h-full w-[98%] shadow-[0_0_8px_rgba(16,185,129,0.6)]"></div>
+</div>
+<ul class="pt-2 space-y-2 font-body-sm text-xs sm:text-sm text-text-muted">
+<li class="flex items-start gap-2">
+<span class="font-code-sm text-xs text-primary-container font-semibold">01.</span>
+<span><strong class="text-[#F5F5F5]">Ephemeral Memory Zeroing:</strong> Plaintext lives solely in sandbox RAM and is purged automatically on navigation.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-code-sm text-xs text-primary-container font-semibold">02.</span>
+<span><strong class="text-[#F5F5F5]">GHASH Tag Integrity:</strong> Guarantees that not a single bit of ciphertext was altered or truncated in transit.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-code-sm text-xs text-primary-container font-semibold">03.</span>
+<span><strong class="text-[#F5F5F5]">Instant Key Material Discard:</strong> Symmetric keys are strictly un-exportable CryptoKey primitives.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Educational Disclosure Accordion -->
+<div class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] hover:border-[#FF6A00]/30 transition-colors p-6 shadow-md">
+<details class="group cursor-pointer">
+<summary class="flex items-center justify-between font-label-caps text-label-caps text-text-muted hover:text-[#F5F5F5] transition-colors list-none">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-warning text-[18px]">info</span>
+<span>HOW GCM HANDLES INTEGRITY FAILURES &amp; TAMPERING</span>
+</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-5 space-y-3">
+<p class="font-body-sm text-xs sm:text-sm text-text-muted leading-relaxed">
+Unlike CBC mode which could leak padding oracle vulnerabilities or return corrupted gibberish, Galois/Counter Mode calculates a deterministic 128-bit GHASH authentication tag over both the ciphertext and Additional Authenticated Data (AAD). If even a single bit of the ciphertext or header is modified, WebCrypto aborts:
+</p>
+<div class="p-4 rounded-DEFAULT bg-status-danger/10 border border-status-danger/25 flex items-start gap-3">
+<span class="material-symbols-outlined text-status-danger text-xl shrink-0 mt-0.5">dangerous</span>
+<div class="space-y-1 font-code-sm text-xs">
+<div class="text-status-danger font-semibold">SIMULATED ALERT // TAG MISMATCH OR INCORRECT KEY</div>
+<div class="text-text-muted">OperationError: The operation failed for an operation-specific reason (MAC check failed during GHASH reduction). Plaintext was wiped and never exposed to the DOM.</div>
+</div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<!-- 6. COMPLIANCE & SPEC BANNER -->
+<section class="p-5 sm:p-6 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-4 font-code-sm text-xs text-text-muted">
+<div>STANDARDS: <span class="text-[#F5F5F5] font-medium">NIST FIPS PUB 197 // RFC 5116 AEAD</span></div>
+<span class="text-surface-variant hidden md:inline">|</span>
+<div>INGRESS EGRESS: <span class="text-status-verified font-medium">AIR-GAP RESTRICTED</span></div>
+<span class="text-surface-variant hidden md:inline">|</span>
+<div>KEY DERIVATION: <span class="text-[#F5F5F5] font-medium">PBKDF2 SHA-256 (250K)</span></div>
+</div>
+<div class="font-label-caps text-label-caps text-text-muted">
+AUTHENTICATED AES ENGINE // ZERO TELEMETRY INGRESS
+</div>
+</section>
+</div>
+<script>
+  (function() {
+    const btnModeText = document.getElementById('ingress-mode-text');
+    const btnModeFile = document.getElementById('ingress-mode-file');
+    const ciphertextArea = document.getElementById('ciphertext-input');
+    const btnClearBuffer = document.getElementById('btn-clear-buffer');
+    const charCount = document.getElementById('char-count');
+    const btnToggleVis = document.getElementById('btn-toggle-visibility');
+    const passphraseInput = document.getElementById('passphrase-input');
+    const btnDecrypt = document.getElementById('btn-decrypt');
+    const btnCopyPlaintext = document.getElementById('btn-copy-plaintext');
+    const plaintextOutput = document.getElementById('plaintext-output');
+    const fileDropZone = document.getElementById('file-drop-zone');
+
+    if (btnModeText && btnModeFile) {
+      btnModeText.addEventListener('click', () => {
+        btnModeText.className = 'px-3 py-1 rounded-DEFAULT bg-[#141414] text-[#F5F5F5] font-code-sm text-xs font-medium border border-[#333333] transition-colors';
+        btnModeFile.className = 'px-3 py-1 rounded-DEFAULT bg-transparent text-text-muted hover:text-[#F5F5F5] font-code-sm text-xs transition-colors';
+        if (fileDropZone) fileDropZone.classList.add('hidden');
+        if (ciphertextArea) ciphertextArea.parentElement.parentElement.classList.remove('hidden');
+      });
+      btnModeFile.addEventListener('click', () => {
+        btnModeFile.className = 'px-3 py-1 rounded-DEFAULT bg-[#141414] text-[#F5F5F5] font-code-sm text-xs font-medium border border-[#333333] transition-colors';
+        btnModeText.className = 'px-3 py-1 rounded-DEFAULT bg-transparent text-text-muted hover:text-[#F5F5F5] font-code-sm text-xs transition-colors';
+        if (fileDropZone) fileDropZone.classList.remove('hidden');
+        if (ciphertextArea) ciphertextArea.parentElement.parentElement.classList.add('hidden');
+      });
+    }
+
+    if (ciphertextArea && charCount) {
+      ciphertextArea.addEventListener('input', () => {
+        const len = ciphertextArea.value.length;
+        charCount.textContent = len + ' BYTES (BASE64URL)';
+      });
+    }
+
+    if (btnClearBuffer && ciphertextArea) {
+      btnClearBuffer.addEventListener('click', () => {
+        ciphertextArea.value = '';
+        if (charCount) charCount.textContent = '0 BYTES (BASE64URL)';
+      });
+    }
+
+    if (btnToggleVis && passphraseInput) {
+      btnToggleVis.addEventListener('click', () => {
+        const isPassword = passphraseInput.getAttribute('type') === 'password';
+        passphraseInput.setAttribute('type', isPassword ? 'text' : 'password');
+        const icon = btnToggleVis.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.textContent = isPassword ? 'visibility_off' : 'visibility';
+        }
+      });
+    }
+
+    if (btnCopyPlaintext && plaintextOutput) {
+      btnCopyPlaintext.addEventListener('click', () => {
+        const text = plaintextOutput.textContent.trim();
+        navigator.clipboard.writeText(text).then(() => {
+          const original = btnCopyPlaintext.innerHTML;
+          btnCopyPlaintext.innerHTML = '<span class="material-symbols-outlined text-[16px] text-status-verified">done</span><span>COPIED TO CLIPBOARD!</span>';
+          setTimeout(() => {
+            btnCopyPlaintext.innerHTML = original;
+          }, 2000);
+        });
+      });
+    }
+
+    if (btnDecrypt) {
+      btnDecrypt.addEventListener('click', () => {
+        btnDecrypt.classList.add('opacity-80');
+        const originalContent = btnDecrypt.innerHTML;
+        btnDecrypt.innerHTML = '<span class="material-symbols-outlined text-xl animate-spin">refresh</span><span>VERIFYING GHASH AUTH TAG...</span>';
+        setTimeout(() => {
+          btnDecrypt.innerHTML = originalContent;
+          btnDecrypt.classList.remove('opacity-80');
+          const resultStage = document.getElementById('result-stage');
+          if (resultStage) {
+            resultStage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 400);
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-[#000000] border-t border-[#222222] mt-24"><div class="max-w-6xl mx-auto px-6 sm:px-10 py-12"><div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8"><div class="space-y-2"><div class="font-label-caps text-label-caps text-[#F5F5F5]">SYSTEM PROFILE</div><p class="font-code-sm text-xs text-text-muted leading-relaxed">Castle Sec-Ops Hardware Console &amp; High-Assurance Air-Gapped WebCrypto Platform.</p></div><div class="space-y-2"><div class="font-label-caps text-label-caps text-[#F5F5F5]">CRYPTOGRAPHIC SPEC</div><p class="font-code-sm text-xs text-text-muted leading-relaxed">FIPS 197 Block Cipher // AES-GCM 128/256-bit // SP 800-38D Auth Tag Validation.</p></div><div class="space-y-2"><div class="font-label-caps text-label-caps text-[#F5F5F5]">SHANNON ENTROPY METER</div><p class="font-code-sm text-xs text-text-muted leading-relaxed">Deterministic local evaluation // Zero telemetry ingress // Sub-millisecond execution.</p></div><div class="space-y-2"><div class="font-label-caps text-label-caps text-[#F5F5F5]">CONSOLE INTEGRITY</div><div class="flex items-center gap-1.5 font-code-sm text-xs text-status-verified"><span class="w-1.5 h-1.5 rounded-full bg-status-verified shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>HOST ATTESTATION VALIDATED</div></div></div><div class="flex flex-col md:flex-row items-center justify-between gap-3 pt-6 border-t border-[#1a1a1a] font-code-sm text-xs text-text-muted"><div class="flex items-center gap-2"><span>ENGINE BUILD: 4.8.1-RELEASE</span><span class="text-border-subtle">//</span><span>SIG: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span></div><div class="font-label-caps text-label-caps text-text-muted">© 2025 CASTLE SEC-OPS ARCHITECTURE. ALL SESSIONS ISOLATED.</div></div></div></footer>
+
+</body></html>

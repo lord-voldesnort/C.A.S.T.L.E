@@ -1,0 +1,687 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 7542px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface":"#131313","surface-variant":"#353535","surface-container":"#1f1f1f","surface-container-high":"#2a2a2a","surface-container-low":"#1b1b1b","surface-container-lowest":"#0e0e0e","surface-base":"#0A0A0A","surface-card":"#0D0D0D","surface-recessed":"#050505","surface-elevated":"#111111","surface-root":"#000000","primary":"#ffb694","primary-container":"#ff6a00","primary-hover":"#FF7D1A","secondary":"#4edea3","tertiary":"#89ceff","border-hairline":"#1A1A1A","border-subtle":"#262626","border-active":"#FF6A00","text-display":"#FFFFFF","text-body":"#E5E5E5","text-muted":"#888888","status-verified":"#10B981","status-warning":"#F59E0B","status-danger":"#EF4444"},"fontFamily":{"headline-lg":["Space Grotesk"],"headline-sm":["Space Grotesk"],"title-md":["Space Grotesk"],"body-lg":["Inter"],"body-md":["Inter"],"body-sm":["Inter"],"label-caps":["JetBrains Mono"],"code-lg":["JetBrains Mono"],"code-md":["JetBrains Mono"],"code-sm":["JetBrains Mono"]}}}};</script></head><body class="bg-surface-root font-body-md text-text-body min-h-screen selection:bg-primary-container selection:text-surface-root"><header class="fixed top-0 w-full z-50 bg-surface-root/95 backdrop-blur-md border-b border-border-hairline flex flex-col">
+  <!-- Telemetry Top Bar -->
+  <div class="w-full bg-surface-base border-b border-border-hairline py-1.5 px-6 lg:px-10 text-text-muted font-code-sm text-[11px]">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <span class="flex items-center gap-1.5 text-status-verified font-medium shrink-0">
+          <span class="w-1.5 h-1.5 rounded-full bg-status-verified animate-pulse"></span>
+          AIR-GAP MODE ACTIVE
+        </span>
+        <span class="text-border-subtle">//</span>
+        <span class="truncate uppercase hidden sm:inline">ZERO INGRESS TELEMETRY // CASTLE SEC-OPS // UTILITIES // MODULE-03 // AES-STUDIO</span>
+        <span class="truncate uppercase sm:hidden">CASTLE SEC-OPS // AES-STUDIO</span>
+      </div>
+      <div class="flex items-center gap-4 shrink-0 font-code-sm text-[11px]">
+        <span class="hidden md:inline text-text-muted">CRYPTO-HASH: <strong class="text-primary font-mono">SHA-512/WASM</strong></span>
+        <span class="hidden md:inline text-border-subtle">|</span>
+        <span class="px-2 py-0.5 bg-primary/10 border border-primary-container text-primary font-bold text-[10px] uppercase tracking-wider">SEC-LEVEL: TIER-1</span>
+        <span class="text-border-subtle">|</span>
+        <button class="hover:text-text-display uppercase transition-colors flex items-center gap-1" type="button">
+          <span class="material-symbols-outlined text-[13px]">restart_alt</span> RESET
+        </button>
+        <div class="flex items-center gap-1.5 pl-2 border-l border-border-hairline">
+          <div class="w-5 h-5 rounded-full bg-primary flex items-center justify-center font-bold text-surface-root text-[10px]">OP</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Brand & Primary Tab Navigation Header -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 py-2.5 min-h-[58px]">
+    <!-- Compact Castle Brand Mark -->
+    <div class="flex items-center gap-3 shrink-0 py-1">
+      <div class="w-8 h-8 bg-surface-elevated border border-primary-container flex items-center justify-center shadow-[0_0_8px_#FF6A00]">
+        <span class="material-symbols-outlined text-primary text-[20px]">shield</span>
+      </div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-2">
+          <span class="font-code-lg text-lg text-text-display font-bold tracking-wider font-mono">CASTLE</span>
+          <span class="px-1.5 py-0.5 bg-surface-variant text-text-muted font-label-caps text-[9px] uppercase tracking-widest border border-border-subtle font-semibold">SEC-OPS v3.4</span>
+        </div>
+        <span class="font-label-caps text-[10px] text-text-muted tracking-wider uppercase">CRYPTOGRAPHIC ENGINE // AES-256-GCM STUDIO</span>
+      </div>
+    </div>
+
+    <!-- Standardized 3-Tab Primary Navigation -->
+    <nav class="flex items-center gap-2 font-label-caps text-xs py-1">
+      <!-- TAB 01: LEARN (ACTIVE) -->
+      <a class="flex items-center gap-2 px-4 py-2 bg-primary-container text-surface-root font-bold uppercase tracking-wider shadow-[0_0_14px_rgba(255,106,0,0.35)] border border-primary-hover" href="#">
+        <span class="material-symbols-outlined text-[16px]">school</span>
+        <span class="">TAB 01: LEARN</span>
+      </a>
+      <!-- TAB 02: ENCRYPT (INACTIVE) -->
+      <a class="flex items-center gap-2 px-4 py-2 bg-surface-card border border-border-hairline text-text-muted hover:text-text-display hover:border-text-muted uppercase tracking-wider font-semibold transition-all" href="#">
+        <span class="material-symbols-outlined text-[16px]">lock</span>
+        <span class="">TAB 02: ENCRYPT</span>
+      </a>
+      <!-- TAB 03: DECRYPT (INACTIVE) -->
+      <a class="flex items-center gap-2 px-4 py-2 bg-surface-card border border-border-hairline text-text-muted hover:text-text-display hover:border-text-muted uppercase tracking-wider font-semibold transition-all" href="#">
+        <span class="material-symbols-outlined text-[16px]">lock_open</span>
+        <span class="">TAB 03: DECRYPT</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Sub-Navigation for Learn Section -->
+  <div class="w-full bg-surface-recessed border-t border-border-hairline py-1.5 px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto flex items-center justify-between font-label-caps text-xs gap-3">
+      <div class="flex items-center gap-2 text-text-muted text-[11px]">
+        <span class="text-primary font-bold">LEARN SCOPE:</span>
+        <a class="text-text-muted hover:text-text-display transition-colors px-2 py-0.5" href="#">WHAT &amp; WHY (FOUNDATIONS)</a>
+        <span class="text-border-subtle">/</span>
+        <span class="px-2 py-0.5 bg-surface-elevated border border-primary-container/40 text-primary font-bold shadow-[0_0_6px_rgba(255,106,0,0.2)]">
+          HOW AES WORKS: INTERACTIVE SIMULATOR [ACTIVE]
+        </span>
+      </div>
+      <div class="hidden md:flex items-center gap-2 font-code-sm text-[11px] text-text-muted">
+        <span class="w-1.5 h-1.5 rounded-full bg-status-verified"></span>
+        <span class="">FIPS 197 REVERSIBLE VECTOR STATE VISUALIZER</span>
+      </div>
+    </div>
+  </div>
+</header><main class="w-full pt-36 bg-surface-root"><div class="flex flex-col w-full">
+<!-- Top Command Sub-Bar -->
+<div class="w-full bg-surface-base border-b border-border-hairline py-3">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<span class="px-2.5 py-0.5 bg-primary/10 border border-primary-container font-label-caps text-xs text-primary tracking-widest uppercase font-semibold">MODULE B</span>
+<span class="font-label-caps text-xs text-text-muted">// FLAGSHIP SIMULATOR // 14-ROUND PIPELINE // FIPS 197 VERIFIED</span>
+</div>
+<div class="flex items-center gap-4 font-code-sm text-xs">
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-status-verified shadow-[0_0_8px_#10B981]"></span><span class="text-text-display font-medium">100% LOCAL WEBCRYPTO GCM // ZERO SERVER RETENTION</span></div>
+<div class="hidden sm:block text-border-subtle">|</div>
+<div class="hidden sm:flex items-center gap-1.5 text-text-muted"><span class="">LATENCY:</span><span class="text-secondary font-semibold">0.42ms</span></div>
+</div>
+</div>
+</div>
+
+<div class="max-w-7xl mx-auto px-6 lg:px-10 w-full py-20 lg:py-28 flex flex-col gap-28 lg:gap-36">
+<!-- Header Hero Block -->
+<div class="flex flex-col gap-6 border-l-2 border-primary-container pl-6 lg:pl-10">
+<div class="flex items-center gap-3 font-code-sm text-xs">
+<span class="text-primary uppercase tracking-widest font-semibold px-2.5 py-1 bg-primary-container/10 border border-primary-container/30">INTERACTIVE AES CRYPTOGRAPHY LABORATORY</span>
+<span class="text-text-muted">//</span>
+<span class="text-text-muted uppercase tracking-wider">GALOIS DIFFUSION VISUALIZER</span>
+</div>
+<h1 class="font-headline-lg text-4xl sm:text-5xl lg:text-6xl text-text-display uppercase tracking-tight font-bold">
+The AES-256 Internal Round Simulator
+</h1>
+<p class="font-body-lg text-lg text-text-muted max-w-4xl leading-relaxed">
+Demystifying military-grade symmetric transformations through interactive byte-level visualization, Galois field diffusion, and step-by-step state matrix telemetry. Examine each transformation cycle in complete isolation with cryptographic invariant verifications.
+</p>
+<div class="flex flex-wrap items-center gap-6 pt-4 font-code-sm text-xs text-text-muted border-t border-border-hairline max-w-3xl">
+<span class="">SPEC: <strong class="text-text-display font-medium">NIST FIPS 197</strong></span>
+<span class="">BLOCK: <strong class="text-text-display font-medium">128 BITS (16 BYTES)</strong></span>
+<span class="">KEY: <strong class="text-primary font-medium">256 BITS (14 ROUNDS)</strong></span>
+<span class="">MODE: <strong class="text-secondary font-medium">GCM AUTHENTICATED</strong></span>
+</div>
+</div>
+
+<!-- SECTION 1 // AES-256-GCM Process Pipeline -->
+<section class="bg-surface-card border border-border-hairline p-8 lg:p-14 flex flex-col gap-10">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border-hairline pb-6 gap-3">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary-container shadow-[0_0_8px_#FF6A00]"></span>
+<div>
+<span class="font-label-caps text-xs text-primary font-bold uppercase tracking-widest block">CHAPTER 01</span>
+<h2 class="font-headline-sm text-xl lg:text-2xl text-text-display uppercase tracking-wider font-semibold">SECTION 1 // AES-256-GCM Directional Process Pipeline</h2>
+</div>
+</div>
+<span class="font-label-caps text-xs text-text-muted tracking-wider border border-border-hairline px-3.5 py-1.5 bg-surface-base">AUTHENTICATED ENVELOPE SPECIFICATION</span>
+</div>
+
+<p class="font-body-md text-text-muted leading-relaxed max-w-4xl">
+The high-level cryptographic pipeline transitions raw entropy through key derivation into the core Rijndael round transformations, concluding with the assembly of the authenticated Galois/Counter Mode (.castle) envelope.
+</p>
+
+<!-- 4 Stages Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Stage 1 -->
+<div class="bg-surface-base border border-border-hairline p-6 lg:p-8 flex flex-col gap-4 group hover:border-border-active transition-all">
+<div class="flex items-center justify-between"><span class="font-code-sm text-xs text-text-muted font-bold tracking-wider">STAGE 01</span><span class="w-2 h-2 rounded-full bg-primary-container/80"></span></div>
+<div class="font-title-md text-lg text-text-display font-semibold">Secret Input</div>
+<div class="font-body-sm text-text-muted leading-relaxed">Raw passphrase string or generated 256-bit cryptographically secure pseudorandom entropy seed.</div>
+<div class="mt-auto pt-4 border-t border-border-hairline font-code-sm text-xs text-primary flex items-center justify-between"><span class="">Entropy Source:</span><span class="font-semibold">256-bit CS-PRNG</span></div>
+</div>
+
+<!-- Stage 2 -->
+<div class="bg-surface-base border border-border-hairline p-6 lg:p-8 flex flex-col gap-4 group hover:border-border-active transition-all">
+<div class="flex items-center justify-between"><span class="font-code-sm text-xs text-text-muted font-bold tracking-wider">STAGE 02</span><span class="w-2 h-2 rounded-full bg-primary-container/80"></span></div>
+<div class="font-title-md text-lg text-text-display font-semibold">Key Derivation</div>
+<div class="font-body-sm text-text-muted leading-relaxed">PBKDF2-SHA256 stretching across 250,000 iterations using unique 16-byte cryptosalt or direct hardware key import.</div>
+<div class="mt-auto pt-4 border-t border-border-hairline font-code-sm text-xs text-secondary flex items-center justify-between"><span class="">KDF Work Factor:</span><span class="font-semibold">250,000 Iters</span></div>
+</div>
+
+<!-- Stage 3 (Active Simulation) -->
+<div class="bg-surface-base border-2 border-primary-container p-6 lg:p-8 flex flex-col gap-4 shadow-[0_0_24px_rgba(255,106,0,0.18)]">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2"><span class="font-code-sm text-xs text-primary font-bold tracking-wider">STAGE 03</span><span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span></div>
+<span class="px-2 py-0.5 bg-primary-container text-surface-root font-code-sm text-xs font-bold uppercase tracking-wider">ACTIVE SIMULATION</span>
+</div>
+<div class="font-title-md text-lg text-text-display font-semibold">AES-256-GCM Core</div>
+<div class="font-body-sm text-text-muted leading-relaxed">14 rounds of substitution, row shifting, Galois mix columns, and round-key XOR over 128-bit blocks with unique 96-bit IV.</div>
+<div class="mt-auto pt-4 border-t border-primary-container/40 font-code-sm text-xs text-primary font-semibold flex items-center justify-between"><span class="">Rijndael Engine:</span><span class="text-text-display font-bold">14 Rounds</span></div>
+</div>
+
+<!-- Stage 4 -->
+<div class="bg-surface-base border border-border-hairline p-6 lg:p-8 flex flex-col gap-4 group hover:border-border-active transition-all">
+<div class="flex items-center justify-between"><span class="font-code-sm text-xs text-text-muted font-bold tracking-wider">STAGE 04</span><span class="w-2 h-2 rounded-full bg-status-verified"></span></div>
+<div class="font-title-md text-lg text-text-display font-semibold">Packaging</div>
+<div class="font-body-sm text-text-muted leading-relaxed">Assembles the <span class="text-text-display font-medium">.castle</span> authenticated envelope: Ciphertext + Salt + 96-bit IV + 128-bit GHASH Auth Tag.</div>
+<div class="mt-auto pt-4 border-t border-border-hairline font-code-sm text-xs text-status-verified flex items-center justify-between"><span class="">Authentication:</span><span class="font-semibold">GHASH Auth Tag</span></div>
+</div>
+</div>
+
+<!-- Directional Flow Banner -->
+<div class="flex items-center justify-between px-6 py-3 bg-surface-recessed border border-border-hairline text-text-muted font-code-sm text-xs overflow-x-auto">
+<span class="">RAW ENTROPY</span>
+<span class="text-primary font-bold px-2">──▶ [ PBKDF2 ] ──▶</span>
+<span class="text-text-display">256-BIT ROOT KEY</span>
+<span class="text-primary font-bold px-2">──▶ [ 14-ROUND RIJNDAEL ] ──▶</span>
+<span class="text-text-display">CIPHERTEXT STATE</span>
+<span class="text-secondary font-bold px-2">──▶ [ GHASH TAG ] ──▶</span>
+<span class="text-status-verified font-bold">.CASTLE VAULT FILE</span>
+</div>
+
+<!-- Breakdown Specification Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 bg-surface-recessed border border-border-hairline p-6 lg:p-8">
+<div><div class="font-label-caps text-xs text-text-muted uppercase tracking-wider">WHAT ENTERS</div><div class="font-code-sm text-sm text-text-display mt-2 font-medium">128-bit Block State + 256-bit Key + 96-bit IV Nonce</div></div>
+<div><div class="font-label-caps text-xs text-text-muted uppercase tracking-wider">TRANSFORMATION OCCURRING</div><div class="font-code-sm text-sm text-primary mt-2 font-medium">Non-Linear S-Box + Row Permutation + Galois Diffusion</div></div>
+<div><div class="font-label-caps text-xs text-text-muted uppercase tracking-wider">OUTPUT GENERATED</div><div class="font-code-sm text-sm text-text-display mt-2 font-medium">Ciphertext Block + 128-bit GHASH Tag Accumulator</div></div>
+<div><div class="font-label-caps text-xs text-text-muted uppercase tracking-wider">WHY IT MATTERS</div><div class="font-code-sm text-sm text-status-verified mt-2 font-medium">Guarantees Confidentiality AND Tamper-Proof Integrity</div></div>
+</div>
+</section>
+
+<!-- SECTION 2 // Educational Ingestion State -->
+<section class="bg-surface-card border border-border-hairline p-8 lg:p-14 flex flex-col gap-10">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border-hairline pb-6 gap-3">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary-container shadow-[0_0_8px_#FF6A00]"></span>
+<div>
+<span class="font-label-caps text-xs text-primary font-bold uppercase tracking-widest block">CHAPTER 02</span>
+<h2 class="font-headline-sm text-xl lg:text-2xl text-text-display uppercase tracking-wider font-semibold">SECTION 2 // Educational 16-Byte Ingestion State (128-Bit Block)</h2>
+</div>
+</div>
+<div class="flex items-center gap-3 font-code-sm text-xs">
+<span class="text-status-verified font-medium px-2.5 py-1 bg-secondary/10 border border-secondary/30">BLOCK 0001 OF 0001</span>
+<span class="text-text-muted hidden md:inline">// 16 BYTES TOTAL</span>
+</div>
+</div>
+
+<p class="font-body-md text-text-muted leading-relaxed max-w-4xl">
+The foundational primitive of AES is the 128-bit state block. Regardless of whether 128, 192, or 256-bit keys are utilized, the internal computation always operates on a fixed 16-byte state represented as a 4×4 byte grid.
+</p>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<div class="lg:col-span-5 flex flex-col gap-5">
+<label class="font-label-caps text-xs text-text-muted uppercase tracking-widest flex items-center justify-between">
+<span class="">Input Plaintext Simulation Vector:</span>
+<span class="text-primary font-mono text-[10px]">MAX 16 BYTES / BLOCK</span>
+</label>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-recessed border border-border-hairline focus:border-border-active px-4 py-3 font-code-md text-base text-text-display outline-none uppercase tracking-widest" maxlength="16" type="text" value="CASTLE">
+<button class="absolute right-2 px-4 py-1.5 bg-surface-elevated border border-border-subtle hover:border-primary-container text-text-muted hover:text-text-display font-code-sm text-xs font-semibold uppercase transition-colors">
+SYNC
+</button>
+</div>
+<div class="bg-surface-base p-5 border border-border-hairline flex flex-col gap-2 font-body-sm text-xs text-text-muted leading-relaxed">
+<div class="flex items-center gap-2 text-primary font-code-sm font-semibold uppercase">
+<span class="material-symbols-outlined text-[16px]">info</span>
+Block Width vs Key Size Disambiguation
+</div>
+<div class="">AES operates on standard <strong class="text-text-display">128-bit blocks (16 bytes)</strong>. The term "AES-256" references the master key length (<strong class="text-primary">256 bits</strong>) and its resulting <strong class="text-text-display">14 transformation rounds</strong>, NOT the block width.</div>
+<div class="text-[11px] text-text-muted border-t border-border-hairline pt-2 mt-1">If input exceeds 16 bytes in real streaming workflows, AES-GCM processes via CTR mode counter blocks with zero padding required.</div>
+</div>
+</div>
+
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="flex items-center justify-between font-label-caps text-xs text-text-muted uppercase tracking-wider">
+<span class="">16-Byte Block Allocation Matrix (Hex values)</span>
+<span class="text-secondary font-code-sm text-[11px]">6 PAYLOAD BYTES // 10 DEMO PAD BYTES</span>
+</div>
+
+<div class="grid grid-cols-8 sm:grid-cols-16 gap-1.5 bg-surface-recessed p-4 border border-border-hairline">
+<div class="flex flex-col items-center p-2 bg-primary-container/20 border-2 border-primary-container text-center"><span class="font-code-sm text-xs text-primary font-bold">0x63</span><span class="font-label-caps text-[11px] text-text-display uppercase font-bold mt-0.5">'C'</span></div>
+<div class="flex flex-col items-center p-2 bg-primary-container/20 border-2 border-primary-container text-center"><span class="font-code-sm text-xs text-primary font-bold">0x61</span><span class="font-label-caps text-[11px] text-text-display uppercase font-bold mt-0.5">'A'</span></div>
+<div class="flex flex-col items-center p-2 bg-primary-container/20 border-2 border-primary-container text-center"><span class="font-code-sm text-xs text-primary font-bold">0x73</span><span class="font-label-caps text-[11px] text-text-display uppercase font-bold mt-0.5">'S'</span></div>
+<div class="flex flex-col items-center p-2 bg-primary-container/20 border-2 border-primary-container text-center"><span class="font-code-sm text-xs text-primary font-bold">0x74</span><span class="font-label-caps text-[11px] text-text-display uppercase font-bold mt-0.5">'T'</span></div>
+<div class="flex flex-col items-center p-2 bg-primary-container/20 border-2 border-primary-container text-center"><span class="font-code-sm text-xs text-primary font-bold">0x6c</span><span class="font-label-caps text-[11px] text-text-display uppercase font-bold mt-0.5">'L'</span></div>
+<div class="flex flex-col items-center p-2 bg-primary-container/20 border-2 border-primary-container text-center"><span class="font-code-sm text-xs text-primary font-bold">0x65</span><span class="font-label-caps text-[11px] text-text-display uppercase font-bold mt-0.5">'E'</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+<div class="flex flex-col items-center p-2 bg-surface-base border border-subtle opacity-45 text-center"><span class="font-code-sm text-xs text-text-muted">0x00</span><span class="font-label-caps text-[10px] text-text-muted mt-0.5">pad</span></div>
+</div>
+
+<div class="flex items-start gap-2 font-code-sm text-xs text-text-muted">
+<span class="text-primary font-bold">*</span>
+<span class="">Grey cells are zero-padding for this visualizer demonstration only; real AES-GCM uses CTR-mode stream masking and handles arbitrary stream lengths without PKCS#7 or zero padding.</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 3 // 14-Round Execution Sequence -->
+<section class="bg-surface-card border border-border-hairline p-8 lg:p-14 flex flex-col gap-10">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border-hairline pb-6 gap-3">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary-container shadow-[0_0_8px_#FF6A00]"></span>
+<div>
+<span class="font-label-caps text-xs text-primary font-bold uppercase tracking-widest block">CHAPTER 03</span>
+<h2 class="font-headline-sm text-xl lg:text-2xl text-text-display uppercase tracking-wider font-semibold">SECTION 3 // 14-Round Execution Sequence</h2>
+</div>
+</div>
+<div class="font-code-md text-sm text-primary font-bold bg-primary/10 border border-primary-container/40 px-3.5 py-1.5">
+CURRENT: ROUND 5 / 14 — STANDARD ROUND
+</div>
+</div>
+
+<p class="font-body-md text-text-muted leading-relaxed max-w-4xl">
+Follow the execution timeline through the initial key whitening pre-round, the 13 consecutive standard rounds of substitution and diffusion, and the final round 14 terminal transformation.
+</p>
+
+<!-- Linear Timeline Stepper -->
+<div class="overflow-x-auto pb-4 pt-2">
+<div class="min-w-[960px] flex items-stretch gap-1.5">
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between">
+<span class="block font-label-caps text-xs text-text-muted font-bold">R0</span>
+<span class="block font-code-sm text-[11px] text-text-display uppercase truncate font-medium mt-1">Pre-White</span>
+<span class="block font-code-sm text-[9px] text-text-muted mt-1">AddKey</span>
+</button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R1</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R2</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R3</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R4</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-elevated border-2 border-primary-container p-3 text-center shadow-[0_0_16px_rgba(255,106,0,0.3)] flex flex-col justify-between scale-105 z-10"><span class="block font-label-caps text-xs text-primary font-bold">R5 [ACTIVE]</span><span class="block font-code-sm text-[11px] text-text-display uppercase font-bold mt-1">Round</span><span class="block font-code-sm text-[9px] text-primary font-semibold mt-1">Step 1/4</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R6</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R7</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R8</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R9</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R10</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R11</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R12</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-border-hairline p-3 text-center hover:border-text-muted transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-text-muted">R13</span><span class="block font-code-sm text-[11px] text-text-muted uppercase mt-1">Round</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">4-Steps</span></button>
+<button class="flex-1 bg-surface-base border border-secondary/40 p-3 text-center hover:border-secondary transition-all flex flex-col justify-between"><span class="block font-label-caps text-xs text-secondary font-bold">R14</span><span class="block font-code-sm text-[11px] text-secondary uppercase truncate mt-1">Terminal</span><span class="block font-code-sm text-[9px] text-text-muted mt-1">No MixCol</span></button>
+</div>
+</div>
+
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between font-code-sm text-xs text-text-muted">
+<span class="">CYCLE PROGRESS: 35.7% (ROUND 5 OF 14)</span>
+<span class="text-secondary font-semibold">REVERSIBLE RIJNDAEL CIPHERTEXT PIPELINE</span>
+</div>
+<div class="w-full bg-surface-recessed h-2 border border-border-hairline overflow-hidden">
+<div class="bg-primary-container h-full w-[35.7%] shadow-[0_0_12px_#FF6A00]"></div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 4 // 4x4 State Matrix Centerpiece & Transformation Controls -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<div class="lg:col-span-6 bg-surface-card border border-border-hairline p-8 lg:p-12 flex flex-col gap-8">
+<div class="flex items-center justify-between border-b border-border-hairline pb-5">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary-container shadow-[0_0_8px_#FF6A00]"></span>
+<div>
+<span class="font-label-caps text-xs text-primary font-bold uppercase tracking-widest block">CHAPTER 04A</span>
+<h3 class="font-headline-sm text-xl text-text-display uppercase tracking-wider font-semibold">SECTION 4 // 4×4 State Matrix</h3>
+</div>
+</div>
+<span class="font-code-sm text-xs text-text-muted border border-border-hairline px-2.5 py-1 bg-surface-base">COLUMN-MAJOR FORMAT</span>
+</div>
+
+<p class="font-body-sm text-text-muted leading-relaxed">
+Each 16-byte block is arrayed as a 4×4 two-dimensional matrix of bytes. Transformations are applied directly onto these cells in strict columnar order.
+</p>
+
+<!-- Matrix Grid -->
+<div class="grid grid-cols-4 gap-3.5 bg-surface-recessed p-6 border border-border-hairline">
+<div class="bg-surface-elevated border-2 border-primary-container p-4 flex flex-col items-center justify-center cursor-pointer shadow-[0_0_16px_rgba(255,106,0,0.25)]"><span class="font-label-caps text-[10px] text-text-muted">[0, 0]</span><span class="font-code-lg text-2xl text-primary font-bold mt-1">1d</span><span class="font-label-caps text-[10px] text-primary font-semibold mt-1">ACTIVE</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[0, 1]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">80</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[0, 2]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">48</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[0, 3]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">e2</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[1, 0]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">a0</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[1, 1]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">72</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[1, 2]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">06</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[1, 3]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">fc</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[2, 0]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">96</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[2, 1]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">79</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[2, 2]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">f2</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[2, 3]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">0e</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[3, 0]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">b6</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[3, 1]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">98</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[3, 2]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">31</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+<div class="bg-surface-card border border-border-hairline p-4 flex flex-col items-center justify-center"><span class="font-label-caps text-[10px] text-text-muted">[3, 3]</span><span class="font-code-lg text-xl text-text-display font-medium mt-1">3a</span><span class="font-label-caps text-[10px] text-text-muted mt-1">WAIT</span></div>
+</div>
+
+<!-- Color Legend -->
+<div class="flex flex-wrap items-center gap-6 pt-3 font-code-sm text-xs text-text-muted border-t border-border-hairline">
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-primary-container shadow-[0_0_6px_#FF6A00]"></span><span class="">Active Transformation Byte</span></div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-tertiary"></span><span class="">Shifted Row</span></div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-status-verified"></span><span class="">Result State</span></div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-surface-variant"></span><span class="">Invariant/Quiet</span></div>
+</div>
+</div>
+
+<!-- Transformation Stage Stepper Controls -->
+<div class="lg:col-span-6 bg-surface-card border border-border-hairline p-8 lg:p-12 flex flex-col justify-between gap-8">
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-border-hairline pb-5">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary-container shadow-[0_0_8px_#FF6A00]"></span>
+<div>
+<span class="font-label-caps text-xs text-primary font-bold uppercase tracking-widest block">CHAPTER 04B</span>
+<h3 class="font-headline-sm text-xl text-text-display uppercase tracking-wider font-semibold">Round 5 Transformation Step</h3>
+</div>
+</div>
+<span class="font-code-sm text-xs text-primary font-bold bg-primary-container/20 border border-primary-container px-3 py-1">STEP 1 / 4</span>
+</div>
+
+<!-- 4 Operation Tabs -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-surface-recessed p-2 border border-border-hairline">
+<button class="bg-surface-elevated border-b-2 border-primary-container py-3 text-center text-text-display font-label-caps text-xs uppercase font-bold tracking-wider">1. SubBytes</button>
+<button class="bg-transparent hover:bg-surface-base py-3 text-center text-text-muted hover:text-text-display font-label-caps text-xs uppercase transition-colors tracking-wider">2. ShiftRows</button>
+<button class="bg-transparent hover:bg-surface-base py-3 text-center text-text-muted hover:text-text-display font-label-caps text-xs uppercase transition-colors tracking-wider">3. MixCols</button>
+<button class="bg-transparent hover:bg-surface-base py-3 text-center text-text-muted hover:text-text-display font-label-caps text-xs uppercase transition-colors tracking-wider">4. AddKey</button>
+</div>
+
+<!-- Step Description Box -->
+<div class="bg-surface-base border border-border-hairline p-6 flex flex-col gap-4">
+<div class="font-title-md text-lg text-text-display font-semibold">Step 1: SubBytes (Byte Substitution)</div>
+<p class="font-body-md text-sm text-text-muted leading-relaxed">
+Each byte in the state matrix is independently replaced with a byte from the Rijndael S-Box lookup table. This non-linear substitution is the core mathematical source of confusion in AES, defeating linear approximations.
+</p>
+<div class="flex items-center gap-3 pt-3 border-t border-border-hairline font-code-sm text-xs text-text-display">
+<span class="text-primary font-bold tracking-wide">EQUATION:</span>
+<span class="font-mono bg-surface-recessed px-3 py-1.5 border border-border-subtle">S'[r, c] = S_BOX( S[r, c] )</span>
+</div>
+</div>
+</div>
+
+<div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-border-hairline">
+<div class="flex items-center gap-3">
+<button class="px-6 py-3 border border-border-hairline bg-surface-base hover:border-text-muted text-text-muted hover:text-text-display font-code-sm text-xs uppercase font-semibold transition-colors">⏮ PREV STEP</button>
+<button class="px-6 py-3 bg-primary-container hover:bg-primary-hover text-surface-root font-code-sm text-xs font-bold uppercase transition-colors shadow-[0_0_16px_rgba(255,106,0,0.3)]">NEXT STEP (1/4) ⏭</button>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-3 border border-border-hairline bg-surface-base hover:border-primary-container text-text-muted hover:text-primary font-code-sm text-xs uppercase font-semibold transition-colors">NEXT ROUND ⏩</button>
+<button class="px-4 py-3 border border-border-hairline bg-surface-base hover:border-border-active text-text-muted hover:text-text-display font-code-sm text-xs uppercase transition-colors">RESET</button>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 5 // Interactive SubBytes S-Box Deep Dive -->
+<section class="bg-surface-card border border-border-hairline p-8 lg:p-14 flex flex-col gap-10">
+<div class="flex items-center justify-between border-b border-border-hairline pb-6 flex-wrap gap-4">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary-container shadow-[0_0_8px_#FF6A00]"></span>
+<div>
+<span class="font-label-caps text-xs text-primary font-bold uppercase tracking-widest block">CHAPTER 05</span>
+<h2 class="font-headline-sm text-xl lg:text-2xl text-text-display uppercase tracking-wider font-semibold">SECTION 5 // Interactive SubBytes S-Box Deep Dive</h2>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3.5 py-1.5 bg-secondary/10 border border-secondary text-secondary font-code-sm text-xs font-semibold tracking-wide uppercase">COMPLETE 256-BYTE FIPS 197 MATRIX</span>
+<span class="font-code-sm text-xs text-text-muted hidden sm:inline">// BIJECTIVE INVERTIBLE MAPPING</span>
+</div>
+</div>
+
+<p class="font-body-md text-text-muted leading-relaxed max-w-4xl">
+Deep dive into the 256-byte Rijndael Substitution Box (S-Box). Every byte is decomposed into row (high nibble) and column (low nibble) coordinates to perform non-linear multiplicative inversion in GF(2⁸) combined with an affine transformation.
+</p>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-base border border-border-hairline p-6 flex flex-col gap-4">
+<div class="flex items-center justify-between border-b border-border-hairline pb-3">
+<span class="font-label-caps text-xs text-text-muted uppercase tracking-wider">SELECTED STATE CELL</span>
+<span class="px-2.5 py-1 bg-primary/10 border border-primary-container text-primary font-code-sm text-xs font-bold uppercase">MATRIX [0, 0]</span>
+</div>
+
+<div class="flex items-center justify-between pt-1">
+<div><div class="font-label-caps text-xs text-text-muted">INPUT BYTE</div><div class="font-headline-lg text-4xl text-primary font-bold font-mono">0x1D</div></div>
+<div class="font-code-sm text-xs text-text-muted text-right leading-relaxed">Binary: <span class="text-text-display font-medium font-mono">0001 1101</span><br>ASCII: <span class="text-secondary font-medium font-mono">[GS]</span></div>
+</div>
+
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">The 8-bit byte is split into two 4-bit nibbles, acting as 2D coordinate indices into the 16×16 affine lookup table:</p>
+
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-recessed p-3.5 border-l-2 border-primary-container border border-border-hairline flex flex-col gap-1">
+<span class="font-label-caps text-[10px] text-primary font-bold">HIGH NIBBLE (ROW)</span>
+<div class="flex items-baseline gap-1 mt-1 font-mono"><span class="font-code-lg text-lg text-primary font-bold">0x1</span><span class="font-code-sm text-xs text-text-muted">(0001)</span></div>
+<span class="font-code-sm text-[10px] text-text-muted uppercase">Target Row Index: 1</span>
+</div>
+<div class="bg-surface-recessed p-3.5 border-l-2 border-secondary border border-border-hairline flex flex-col gap-1">
+<span class="font-label-caps text-[10px] text-secondary font-bold">LOW NIBBLE (COL)</span>
+<div class="flex items-baseline gap-1 mt-1 font-mono"><span class="font-code-lg text-lg text-secondary font-bold">0xD</span><span class="font-code-sm text-xs text-text-muted">(1101)</span></div>
+<span class="font-code-sm text-[10px] text-text-muted uppercase">Target Col Index: 13</span>
+</div>
+</div>
+
+<div class="bg-surface-recessed border border-border-hairline p-3 text-center font-code-sm text-xs text-text-muted">
+<span class="text-text-display font-semibold">Lookup:</span> S-Box[ <span class="text-primary font-bold font-mono">0x1</span>, <span class="text-secondary font-bold font-mono">0xD</span> ] = <span class="text-primary-container font-bold text-base font-mono">0xA4</span>
+</div>
+</div>
+
+<div class="bg-surface-base border-2 border-primary-container p-6 flex flex-col gap-4 shadow-[0_0_20px_rgba(255,106,0,0.15)]">
+<div class="flex items-center justify-between border-b border-border-hairline pb-3">
+<span class="font-label-caps text-xs text-primary uppercase font-bold tracking-wider">TRANSFORMATION TELEMETRY</span>
+<span class="w-2 h-2 rounded-full bg-status-verified shadow-[0_0_8px_#10B981]"></span>
+</div>
+<div class="flex items-center justify-between py-1">
+<div class="flex flex-col items-center bg-surface-recessed border border-border-hairline px-4 py-2.5 flex-1">
+<span class="font-label-caps text-[10px] text-text-muted uppercase">Pre-State</span>
+<span class="font-code-lg text-lg text-text-display font-bold font-mono">0x1D</span>
+</div>
+<div class="px-3 text-primary font-bold font-code-sm text-xs">➔ S_BOX ➔</div>
+<div class="flex flex-col items-center bg-primary-container text-surface-root px-4 py-2.5 flex-1 shadow-[0_0_12px_rgba(255,106,0,0.3)]">
+<span class="font-label-caps text-[10px] text-surface-root/80 font-bold uppercase">Post-State</span>
+<span class="font-code-lg text-lg text-surface-root font-bold font-mono">0xA4</span>
+</div>
+</div>
+<div class="font-code-sm text-xs text-text-muted leading-relaxed">
+<span class="text-secondary font-semibold">Mathematical Rigor:</span> Inversion over Galois Field <span class="text-text-display font-semibold font-mono">GF(2⁸)</span> modulo irreducible polynomial <span class="text-primary font-mono text-[11px]">m(x) = x⁸ + x⁴ + x³ + x + 1</span> followed by an affine transformation over <span class="text-text-display font-semibold">GF(2)</span>.
+</div>
+</div>
+</div>
+
+<!-- S-Box 16x16 Grid Matrix Table -->
+<div class="lg:col-span-8 bg-surface-recessed border border-primary-container/40 p-6 flex flex-col gap-4 rounded">
+<div class="flex items-center justify-between pb-3 border-b border-border-hairline flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-xs text-text-display font-bold uppercase tracking-wider">RIJNDAEL S-BOX LOOKUP TABLE</span>
+<span class="font-code-sm text-xs text-text-muted font-normal">[16 × 16 = 256 BYTES]</span>
+</div>
+<div class="font-code-sm text-xs text-primary font-bold tracking-tight bg-surface-card px-3 py-1 border border-border-hairline">
+CROSSHAIR: <span class="text-primary">ROW 0x1</span> ∩ <span class="text-secondary">COL 0xD</span> ➔ <span class="text-status-verified font-bold font-mono">0xA4</span>
+</div>
+</div>
+<div class="overflow-x-auto max-w-full pb-2">
+<table class="border-collapse select-none font-code-sm text-[11px] mx-auto" style="min-width: 540px;">
+<thead>
+<tr class="text-text-muted font-code-sm text-[11px]">
+<th class="p-1 text-center font-bold text-[10px] text-text-muted border border-border-hairline bg-surface-base w-8">Y\X</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">0</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">1</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">2</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">3</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">4</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">5</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">6</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">7</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">8</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">9</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">A</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">B</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">C</th>
+<th class="p-1 text-center border border-secondary text-secondary bg-secondary/20 font-bold w-7 shadow-[0_0_6px_rgba(78,222,163,0.3)]">D</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">E</th>
+<th class="p-1 text-center border border-border-hairline bg-surface-base w-7">F</th>
+</tr>
+</thead>
+<tbody>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">0</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">63</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">7c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">77</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">7b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f2</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">6b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">6f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">c5</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">30</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">01</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">67</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">2b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">fe</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">d7</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ab</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">76</td></tr>
+<tr class="bg-primary/10"><th class="p-1 text-center font-bold text-primary border border-primary-container bg-primary/20 shadow-[0_0_6px_rgba(255,106,0,0.3)]">1</th><td class="border border-primary-container/30 text-center p-1 text-primary">ca</td><td class="border border-primary-container/30 text-center p-1 text-primary">82</td><td class="border border-primary-container/30 text-center p-1 text-primary">c9</td><td class="border border-primary-container/30 text-center p-1 text-primary">7d</td><td class="border border-primary-container/30 text-center p-1 text-primary">fa</td><td class="border border-primary-container/30 text-center p-1 text-primary">59</td><td class="border border-primary-container/30 text-center p-1 text-primary">47</td><td class="border border-primary-container/30 text-center p-1 text-primary">f0</td><td class="border border-primary-container/30 text-center p-1 text-primary">ad</td><td class="border border-primary-container/30 text-center p-1 text-primary">d4</td><td class="border border-primary-container/30 text-center p-1 text-primary">a2</td><td class="border border-primary-container/30 text-center p-1 text-primary">af</td><td class="border border-primary-container/30 text-center p-1 text-primary">9c</td><td class="border-2 border-primary-hover text-center p-1 font-bold text-surface-root bg-primary-container shadow-[0_0_12px_#FF6A00] animate-pulse z-10">A4</td><td class="border border-primary-container/30 text-center p-1 text-primary">72</td><td class="border border-primary-container/30 text-center p-1 text-primary">c0</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">2</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b7</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">fd</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">93</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">26</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">36</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">3f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f7</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">cc</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">34</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">a5</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e5</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f1</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">71</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">d8</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">31</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">15</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">3</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">04</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">c7</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">23</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">c3</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">18</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">96</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">05</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">9a</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">07</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">12</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">80</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e2</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">eb</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">27</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b2</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">75</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">4</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">09</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">83</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">2c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">1a</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">1b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">6e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">5a</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">a0</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">52</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">3b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">d6</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b3</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">29</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">e3</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">2f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">84</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">5</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">53</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">d1</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">00</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ed</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">20</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">fc</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b1</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">5b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">6a</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">cb</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">be</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">39</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">4a</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">4c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">58</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">cf</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">6</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">d0</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ef</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">aa</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">fb</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">43</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">4d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">33</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">85</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">45</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f9</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">02</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">7f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">50</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">3c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">9f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">a8</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">7</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">51</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">a3</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">40</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">8f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">92</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">9d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">38</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f5</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">bc</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b6</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">da</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">21</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">10</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">ff</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f3</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">d2</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">8</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">cd</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">0c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">13</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ec</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">5f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">97</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">44</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">17</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">c4</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">a7</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">7e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">3d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">64</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">5d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">19</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">73</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">9</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">60</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">81</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">4f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">dc</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">22</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">2a</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">90</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">88</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">46</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ee</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b8</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">14</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">de</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">5e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">0b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">db</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">A</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e0</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">32</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">3a</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">0a</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">49</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">06</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">24</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">5c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">c2</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">d3</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ac</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">62</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">91</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">95</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e4</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">79</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">B</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e7</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">c8</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">37</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">6d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">8d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">d5</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">4e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">a9</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">6c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">56</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f4</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ea</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">65</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">7a</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ae</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">08</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">C</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ba</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">78</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">25</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">2e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">1c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">a6</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b4</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">c6</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e8</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">dd</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">74</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">1f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">4b</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">bd</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">8b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">8a</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">D</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">70</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">3e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b5</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">66</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">48</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">03</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f6</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">0e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">61</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">35</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">57</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b9</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">86</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">c1</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">1d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">9e</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">E</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e1</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">f8</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">98</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">11</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">69</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">d9</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">8e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">94</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">9b</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">1e</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">87</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e9</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">ce</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">55</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">28</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">df</td></tr>
+<tr><th class="p-1 text-center font-bold text-text-muted border border-border-hairline bg-surface-base">F</th><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">8c</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">a1</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">89</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">0d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">bf</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">e6</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">42</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">68</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">41</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">99</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">2d</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">0f</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">b0</td><td class="border border-secondary/40 text-center p-1 text-secondary bg-secondary/10 font-semibold">54</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">bb</td><td class="border border-border-hairline text-center p-1 text-text-muted bg-surface-card">16</td></tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between pt-3 border-t border-border-hairline font-code-sm text-xs text-text-muted flex-wrap gap-2">
+<span class="">NON-LINEAR S-BOX: GF(2⁸) MULTIPLICATIVE INVERSION + AFFINE MAP</span>
+<span class="text-status-verified font-medium">BIJECTION: ZERO FIXED POINTS (NO S(x) = x)</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 6 // Stages 2, 3, 4 Transformation Panels -->
+<section class="flex flex-col gap-10">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-border-hairline pb-6 gap-3">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary-container shadow-[0_0_8px_#FF6A00]"></span>
+<div>
+<span class="font-label-caps text-xs text-primary font-bold uppercase tracking-widest block">CHAPTER 06</span>
+<h2 class="font-headline-sm text-xl lg:text-2xl text-text-display uppercase tracking-wider font-semibold">SECTION 6 // Diffusion, Scrambling &amp; Key Injection</h2>
+</div>
+</div>
+<span class="font-code-sm text-xs text-text-muted border border-border-hairline px-3.5 py-1.5 bg-surface-base">REMAINING ROUND PRIMITIVES</span>
+</div>
+
+<p class="font-body-md text-text-muted leading-relaxed max-w-4xl">
+Following non-linear byte substitution, three complementary operations disperse byte interdependencies across the state and combine cryptographic entropy from the master key schedule.
+</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- ShiftRows Card -->
+<div class="bg-surface-card border border-border-hairline p-8 lg:p-10 flex flex-col gap-6 group hover:border-border-active transition-all">
+<div class="flex items-center justify-between border-b border-border-hairline pb-4">
+<span class="font-label-caps text-xs text-primary font-bold tracking-wider">STAGE 2 // DIFFUSION</span>
+<span class="font-code-sm text-xs text-text-muted">ROW OFFSETS</span>
+</div>
+<div class="font-title-md text-lg text-text-display font-semibold">ShiftRows Operation</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">Bytes in the last three rows of the state matrix are cyclically shifted left by different offsets to disperse column-byte relationships:</p>
+<div class="bg-surface-recessed p-5 border border-border-hairline flex flex-col gap-2.5 font-code-sm text-xs font-mono">
+<div class="flex items-center justify-between text-text-muted"><span class="">Row 0: Shift 0 bytes</span><span class="text-text-display font-semibold">[ b0, b1, b2, b3 ] ➔</span></div>
+<div class="flex items-center justify-between text-secondary"><span class="">Row 1: Shift 1 byte</span><span class="font-semibold">[ b5, b6, b7, b4 ] ⮌</span></div>
+<div class="flex items-center justify-between text-tertiary"><span class="">Row 2: Shift 2 bytes</span><span class="font-semibold">[ b10, b11, b8, b9 ] ⮌</span></div>
+<div class="flex items-center justify-between text-status-warning"><span class="">Row 3: Shift 3 bytes</span><span class="font-semibold">[ b15, b12, b13, b14 ] ⮌</span></div>
+</div>
+<div class="font-code-sm text-xs text-text-muted mt-auto pt-4 border-t border-border-hairline">Ensures bytes from each individual column intermingle across subsequent rounds.</div>
+</div>
+
+<!-- MixColumns Card -->
+<div class="bg-surface-card border border-border-hairline p-8 lg:p-10 flex flex-col gap-6 group hover:border-border-active transition-all">
+<div class="flex items-center justify-between border-b border-border-hairline pb-4">
+<span class="font-label-caps text-xs text-primary font-bold tracking-wider">STAGE 3 // SCRAMBLING</span>
+<span class="font-code-sm text-xs text-text-muted">GALOIS FIELD GF(2⁸)</span>
+</div>
+<div class="font-title-md text-lg text-text-display font-semibold">MixColumns Multiplier</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">Each 4-byte column is transformed using matrix multiplication over Galois Field GF(2⁸) with a fixed Maximum Distance Separable polynomial:</p>
+<div class="bg-surface-recessed p-5 border border-border-hairline font-code-sm text-xs flex flex-col items-center justify-center text-center gap-1.5 font-mono">
+<div class="text-text-muted font-label-caps text-[10px]">MDS MAXIMUM DISTANCE SEPARABLE MATRIX</div>
+<div class="text-primary font-bold tracking-widest leading-relaxed py-1">[ 02  03  01  01 ]<br>[ 01  02  03  01 ]<br>[ 01  01  02  03 ]<br>[ 03  01  01  02 ]</div>
+<div class="text-status-verified text-[11px] mt-1 font-semibold">Complete 4-byte diffusion per column</div>
+</div>
+<div class="font-code-sm text-xs text-text-muted mt-auto pt-4 border-t border-border-hairline">Omitted completely in Round 14 to allow mathematical cipher reversibility.</div>
+</div>
+
+<!-- AddRoundKey Card -->
+<div class="bg-surface-card border border-border-hairline p-8 lg:p-10 flex flex-col gap-6 group hover:border-border-active transition-all">
+<div class="flex items-center justify-between border-b border-border-hairline pb-4">
+<span class="font-label-caps text-xs text-primary font-bold tracking-wider">STAGE 4 // KEY INJECTION</span>
+<span class="font-code-sm text-xs text-text-muted">BITWISE XOR</span>
+</div>
+<div class="font-title-md text-lg text-text-display font-semibold">AddRoundKey Schedule</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">The 128-bit state matrix is bitwise XORed with the round subkey derived from the master 256-bit key schedule expansion:</p>
+<div class="bg-surface-recessed p-5 border border-border-hairline flex flex-col gap-3 font-code-sm text-xs font-mono">
+<div class="flex items-center justify-between"><span class="text-text-muted">State Matrix:</span><span class="text-text-display font-semibold">0x1D8048E2...</span></div>
+<div class="flex items-center justify-between"><span class="text-primary font-bold">⊕ Subkey 5:</span><span class="text-primary font-bold">0x4F921B7C...</span></div>
+<div class="border-t border-border-subtle pt-2.5 flex items-center justify-between"><span class="text-status-verified">New State:</span><span class="text-status-verified font-bold">0x5212539E...</span></div>
+</div>
+<div class="font-code-sm text-xs text-text-muted mt-auto pt-4 border-t border-border-hairline">Provides the fundamental mathematical security tied directly to your master key.</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION 7 // Laboratory Telemetry & Cryptographic Invariants -->
+<section class="bg-surface-base border border-border-hairline p-8 lg:p-14 flex flex-col gap-10">
+<div class="flex items-center justify-between border-b border-border-hairline pb-6 flex-wrap gap-4">
+<div class="flex items-center gap-3">
+<span class="w-2.5 h-2.5 bg-primary-container shadow-[0_0_8px_#FF6A00]"></span>
+<div>
+<span class="font-label-caps text-xs text-primary font-bold uppercase tracking-widest block">CHAPTER 07</span>
+<h2 class="font-headline-sm text-xl lg:text-2xl text-text-display uppercase tracking-wider font-semibold">SECTION 7 // Laboratory Telemetry &amp; Cryptographic Invariants</h2>
+</div>
+</div>
+<span class="font-code-sm text-xs text-text-muted border border-border-hairline px-3.5 py-1.5 bg-surface-card">FIPS PUB 197 COMPLIANCE AUDIT</span>
+</div>
+
+<p class="font-body-md text-text-muted leading-relaxed max-w-4xl">
+Mathematical proofs and empirical assertions verified on every round iteration. All cryptographic invariants confirm zero statistical bias, uniform distribution, and absence of weak keys.
+</p>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-recessed p-6 lg:p-8 border border-border-hairline flex flex-col gap-3">
+<span class="font-label-caps text-xs text-text-muted uppercase tracking-wider">SHANNON ENTROPY PRESERVATION</span>
+<span class="font-headline-sm text-2xl lg:text-3xl text-status-verified font-bold font-mono">7.9998 bits/byte</span>
+<span class="font-code-sm text-xs text-text-muted">Near-perfect theoretical diffusion</span>
+</div>
+
+<div class="bg-surface-recessed p-6 lg:p-8 border border-border-hairline flex flex-col gap-3">
+<span class="font-label-caps text-xs text-text-muted uppercase tracking-wider">AVALANCHE EFFECT (SAC)</span>
+<span class="font-headline-sm text-2xl lg:text-3xl text-text-display font-bold font-mono">50.2% Bit Flip</span>
+<span class="font-code-sm text-xs text-primary font-medium">1-bit plaintext shift alters 64+ ciphertext bits</span>
+</div>
+
+<div class="bg-surface-recessed p-6 lg:p-8 border border-border-hairline flex flex-col gap-3">
+<span class="font-label-caps text-xs text-text-muted uppercase tracking-wider">INVERTIBILITY VERIFICATION</span>
+<span class="font-headline-sm text-2xl lg:text-3xl text-status-verified font-bold font-mono">VERIFIED 100%</span>
+<span class="font-code-sm text-xs text-text-muted">Bijective S-Box &amp; InvMixColumns confirmed</span>
+</div>
+
+<div class="bg-surface-recessed p-6 lg:p-8 border border-border-hairline flex flex-col gap-3">
+<span class="font-label-caps text-xs text-text-muted uppercase tracking-wider">EXECUTION SANDBOX</span>
+<span class="font-headline-sm text-2xl lg:text-3xl text-text-display font-bold font-mono">ISOLATED MEMORY</span>
+<span class="font-code-sm text-xs text-secondary font-medium">Zero DOM leakage // Zero network telemetry</span>
+</div>
+</div>
+
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-6 lg:p-8 bg-surface-recessed border border-border-hairline gap-4 mt-4">
+<span class="font-body-md text-sm text-text-muted">Ready to put these transformations into production on live arbitrary streams and encrypted vault files?</span>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2.5 bg-primary-container text-surface-root font-code-sm text-xs font-bold uppercase tracking-wider hover:bg-primary-hover transition-colors">LAUNCH ENCRYPT WORKSPACE →</button>
+<button class="px-5 py-2.5 border border-border-hairline bg-surface-base text-text-muted hover:text-text-display font-code-sm text-xs font-semibold uppercase tracking-wider transition-colors">LAUNCH DECRYPT WORKSPACE</button>
+</div>
+</div>
+</section>
+</div>
+
+<footer class="w-full bg-surface-base border-t border-border-hairline py-6 mt-20">
+<div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4 font-code-sm text-xs text-text-muted">
+<div class="">CASTLE AES STUDIO // AES-256-GCM HARDWARE ENGINE // NIST SP 800-38D COMPLIANT</div>
+<div class="flex items-center gap-4"><span class="">CRYPTOGRAPHIC SPECS</span><span class="">//</span><span class="">FIPS 197 STANDARDS</span><span class="">//</span><span class="">MIT LICENSE</span></div>
+</div>
+</footer>
+</div></main>
+
+</body></html>

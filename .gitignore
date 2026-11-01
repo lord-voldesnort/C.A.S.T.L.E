@@ -1,0 +1,30 @@
+# Dependencies & Build
+node_modules/
+dist/
+.vercel/
+
+# Development, Testing & Scratch
+scratch/
+*.log
+*.tmp
+*.bak
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Agent & IDE Configurations
+.gemini/
+.codex/
+.impeccable/
+.vscode/
+.idea/
+
+# Operating System Metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+

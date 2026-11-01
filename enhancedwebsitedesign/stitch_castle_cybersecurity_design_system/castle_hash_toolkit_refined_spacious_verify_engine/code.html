@@ -1,0 +1,350 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 1454px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Castle Sec-Ops // Cryptographic Suite</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#e2e2e2", "surface-elevated": "#111111", "secondary-container": "#00a572", "inverse-on-surface": "#303030", "on-tertiary-fixed": "#001e2f", "text-body": "#E5E5E5", "on-primary-fixed": "#351000", "on-tertiary-fixed-variant": "#004c6e", "surface-container-low": "#1b1b1b", "on-error": "#690005", "primary-fixed-dim": "#ffb694", "error-container": "#93000a", "text-dark": "#050505", "outline": "#a98a7d", "on-primary-container": "#571f00", "inverse-surface": "#e2e2e2", "error": "#ffb4ab", "surface-variant": "#353535", "surface-container-high": "#2a2a2a", "primary": "#ffb694", "tertiary-container": "#00a2e6", "tertiary": "#89ceff", "on-surface-variant": "#e2bfb0", "on-error-container": "#ffdad6", "on-secondary-container": "#00311f", "text-muted": "#888888", "status-verified": "#10B981", "on-secondary-fixed-variant": "#005236", "primary-fixed": "#ffdbcc", "surface-base": "#0A0A0A", "status-danger": "#EF4444", "secondary-fixed-dim": "#4edea3", "on-secondary-fixed": "#002113", "inverse-primary": "#a14000", "surface-dim": "#131313", "surface-container-lowest": "#0e0e0e", "primary-container": "#ff6a00", "surface-bright": "#393939", "text-display": "#FFFFFF", "primary-hover": "#FF7D1A", "on-tertiary": "#00344d", "primary-active": "#E55F00", "secondary-fixed": "#6ffbbe", "surface-tint": "#ffb694", "status-warning": "#F59E0B", "status-info": "#0EA5E9", "primary-glow": "rgba(255, 106, 0, 0.15)", "tertiary-fixed-dim": "#89ceff", "on-background": "#e2e2e2", "secondary": "#4edea3", "surface-container": "#1f1f1f", "background": "#131313", "surface-root": "#000000", "border-hairline": "#1A1A1A", "border-subtle": "#262626", "on-primary": "#571f00", "surface-container-highest": "#353535", "outline-variant": "#5a4136", "on-primary-fixed-variant": "#7b2f00", "tertiary-fixed": "#c9e6ff", "surface-card": "#0D0D0D", "border-active": "#FF6A00", "on-secondary": "#003824", "surface": "#131313", "on-tertiary-container": "#00344e", "surface-recessed": "#050505" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-2xl": "3rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "space-md": "1rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "margin": "2.5rem", "space-3xl": "4rem", "space-xl": "2rem", "gutter": "1.5rem" }, "fontFamily": { "body-sm": ["Inter"], "headline-lg-mobile": ["Space Grotesk"], "hero": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "body-md": ["Inter"], "code-md": ["JetBrains Mono"], "headline-lg": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-lg": ["Inter"], "label-caps": ["JetBrains Mono"], "code-sm": ["JetBrains Mono"], "hero-mobile": ["Space Grotesk"], "code-lg": ["JetBrains Mono"], "title-md": ["Space Grotesk"] }, "fontSize": { "body-sm": ["12px", { "lineHeight": "1.50", "fontWeight": "400" }], "headline-lg-mobile": ["32px", { "lineHeight": "1.20", "letterSpacing": "-0.01em", "fontWeight": "700" }], "hero": ["64px", { "lineHeight": "1.10", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-sm": ["24px", { "lineHeight": "1.30", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "1.55", "fontWeight": "400" }], "code-md": ["13px", { "lineHeight": "1.50", "fontWeight": "500" }], "headline-lg": ["48px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-md": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "1.60", "fontWeight": "400" }], "label-caps": ["11px", { "lineHeight": "1.40", "letterSpacing": "0.08em", "fontWeight": "600" }], "code-sm": ["11px", { "lineHeight": "1.40", "fontWeight": "400" }], "hero-mobile": ["40px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }], "code-lg": ["15px", { "lineHeight": "1.50", "fontWeight": "500" }], "title-md": ["18px", { "lineHeight": "1.40", "letterSpacing": "0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface-root font-body-md text-body min-h-screen selection:bg-primary-container selection:text-text-dark"><header class="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A] border-b border-[#1A1A1A] shadow-[0_1px_8px_rgba(0,0,0,0.8)]"><div class="h-14 px-margin-mobile md:px-margin flex items-center justify-between border-b border-[#1A1A1A]"><div class="flex items-center gap-space-md"><div class="flex items-center gap-2.5"><div class="w-7 h-7 rounded bg-[#FF6A00]/10 border border-[#FF6A00]/40 flex items-center justify-center text-[#FF6A00] shrink-0"><span class="material-symbols-outlined text-[17px]">shield</span></div><div class="flex items-center gap-2"><span class="font-label-caps text-[14px] font-bold text-white tracking-wider">CASTLE</span><span class="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-[#161616] border border-[#262626] font-label-caps text-[10px] text-[#888888] font-medium tracking-wider uppercase">SEC-OPS v3.4 // MODULE-02 // HASH_TOOLKIT</span></div></div><div class="hidden xl:flex items-center gap-space-xs px-2 py-0.5 bg-[#0e0e0e] border border-[#262626] rounded"><span class="w-1.5 h-1.5 rounded-full bg-status-verified animate-pulse"></span><span class="font-label-caps text-[11px] text-status-verified uppercase font-semibold tracking-wider">AIR-GAP MODE ACTIVE</span></div></div><div class="flex items-center gap-3"><div class="hidden lg:flex items-center gap-3 font-code-sm text-[11px] text-[#888888] pr-2"><span class="flex items-center gap-1"><span class="text-[#FF6A00]">ENGINE:</span>WebCrypto API</span><span class="text-[#262626]">|</span><span class="flex items-center gap-1"><span class="text-[#FF6A00]">HASH-SUITE:</span>SHA-256 / SHA-512 / BLAKE3</span></div><button class="hidden sm:flex items-center gap-space-xs font-label-caps text-label-caps text-text-muted hover:text-text-display transition-colors" type="button" onclick="resetForm()"><span class="material-symbols-outlined text-[16px]">restart_alt</span>RESET WORKSPACE</button><button class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-card border border-border-subtle hover:border-border-active transition-all font-label-caps text-label-caps text-text-display rounded" type="button"><span class="material-symbols-outlined text-[16px]">grid_view</span>ALL TOOLS</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div><div class="h-12 px-margin-mobile md:px-margin bg-[#000000] flex items-center justify-between"><nav class="flex items-center h-full gap-2"><a class="h-8 px-4 rounded bg-[#111111] border border-[#262626] hover:border-[#FF6A00]/60 hover:text-white text-[#888888] font-label-caps text-[11px] font-semibold tracking-wider flex items-center justify-center transition-all" data-path="learn" href="#">TAB 01: LEARN</a><a class="h-8 px-4 rounded bg-[#111111] border border-[#262626] hover:border-[#FF6A00]/60 hover:text-white text-[#888888] font-label-caps text-[11px] font-semibold tracking-wider flex items-center justify-center transition-all" data-path="generate" href="#">TAB 02: GENERATE</a><a class="h-8 px-4 rounded bg-[#FF6A00] text-black font-label-caps text-[11px] font-bold tracking-wider shadow-[0_0_14px_rgba(255,106,0,0.35)] flex items-center justify-center transition-all" data-path="verify" href="#">TAB 03: VERIFY</a></nav><div class="hidden md:flex items-center gap-space-md font-code-sm text-code-sm text-text-muted"><span class="flex items-center gap-space-xs"><span class="text-[#FF6A00]">STATUS:</span>ISOLATED CLIENT SESSION</span><span class="text-border-subtle">|</span><span class="flex items-center gap-space-xs"><span class="text-[#FF6A00]">ENTROPY:</span>CSPRNG 256-BIT</span></div></div></header><main class="w-full pt-[104px] pb-16 bg-surface-root min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive & Tactical Wrapper (Centered, Max-Width Restraint) -->
+<div class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin py-space-xl flex flex-col gap-space-xl">
+<!-- Privacy & Subsystem Status Ribbon -->
+<div class="w-full bg-surface-card rounded px-space-md py-space-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm shadow-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-status-verified animate-pulse shrink-0"></span>
+<span class="font-code-sm text-code-sm text-text-body">
+          Local WebCrypto Engine isolate <span class="text-text-muted">•</span> 0 bytes transmitted <span class="text-text-muted">•</span> Complete client-side memory privacy
+        </span>
+</div>
+<div class="flex items-center gap-space-md font-label-caps text-label-caps text-text-muted shrink-0">
+<span>MEM-ALLOC: <span class="text-text-display">EPHEMERAL</span></span>
+<span>CIPHER: <span class="text-primary-container">SHA-256</span></span>
+</div>
+</div>
+<!-- Main Module Shell (Armor Plate Architecture) -->
+<section class="w-full bg-surface-card rounded-xl p-space-lg md:p-space-xl flex flex-col gap-space-xl shadow-xl relative overflow-hidden">
+<!-- Ambient Decorative Highlight Glow -->
+<div class="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-primary-glow pointer-events-none blur-3xl opacity-40"></div>
+<!-- Module Header & ID Telemetry -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded bg-surface-recessed flex items-center justify-center text-primary-container shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[26px]">fingerprint</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">MODULE // CRYPTO-02</span>
+<span class="px-1.5 py-0.5 rounded-sm bg-surface-recessed text-primary font-label-caps text-[10px] uppercase font-bold tracking-wider">UNIFIED</span>
+</div>
+<h1 class="font-title-md text-title-md text-text-display uppercase tracking-wide">
+              HASH INTEGRITY VERIFIER
+            </h1>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-code-sm text-code-sm text-text-muted bg-surface-recessed px-space-md py-1 rounded">
+            MODE: <span class="text-text-display">PUBLISHER CHECKSUM</span>
+</span>
+<button class="px-space-md py-1 bg-surface-recessed hover:bg-surface-elevated text-text-muted hover:text-text-display font-label-caps text-label-caps rounded transition-colors" onclick="resetForm()" type="button">
+            RESET STATE
+          </button>
+</div>
+</div>
+<!-- Tactical Workflow Selector (Two Primary Workflows) -->
+<div class="w-full bg-surface-recessed p-1 rounded flex flex-col sm:flex-row gap-1">
+<button class="flex-1 py-space-sm px-space-md flex items-center justify-center gap-space-sm rounded font-label-caps text-label-caps transition-all bg-surface-elevated text-primary-container shadow-sm" id="tabWorkflow1" onclick="switchWorkflow('checksum')" type="button">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+          FEATURE 1: VERIFY FILE INTEGRITY (VS KNOWN CHECKSUM)
+        </button>
+<button class="flex-1 py-space-sm px-space-md flex items-center justify-center gap-space-sm rounded font-label-caps text-label-caps transition-all text-text-muted hover:text-text-display hover:bg-surface-base" id="tabWorkflow2" onclick="switchWorkflow('dual')" type="button">
+<span class="material-symbols-outlined text-[18px]">difference</span>
+          FEATURE 2: COMPARE TWO FILES (DUAL PAYLOAD MATCH)
+        </button>
+</div>
+<!-- ================= WORKFLOW 1: FILE INTEGRITY CHECK ================= -->
+<div class="flex flex-col gap-space-xl" id="workflowChecksum">
+<!-- Guidance Micro-banner -->
+<div class="w-full bg-surface-recessed rounded p-space-md flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary-container text-[20px] shrink-0">info</span>
+<p class="font-body-md text-body-md text-text-body">
+            Compare an uploaded binary against an official release hash published by the software vendor to detect corrupted downloads, transport anomalies, or unauthorized tampering.
+          </p>
+</div>
+<!-- 2-Step Execution Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- STEP 1: Payload Selection -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">1. TARGET FILE TO VERIFY</span>
+<span class="font-code-sm text-code-sm text-status-verified flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified"></span> BUFFER STAGED
+              </span>
+</div>
+<div class="group relative w-full rounded-xl bg-surface-recessed p-space-lg flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-elevated transition-all min-h-[170px]">
+<div class="w-11 h-11 rounded-full bg-surface-card flex items-center justify-center text-primary-container mb-space-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[24px]">cloud_upload</span>
+</div>
+<p class="font-headline-sm text-[16px] text-text-display font-semibold mb-1">
+                Drag &amp; drop payload, or <span class="text-primary-container underline underline-offset-2">browse filesystem</span>
+</p>
+<div class="inline-flex items-center gap-space-sm mt-1 px-space-md py-1 rounded bg-surface-card font-code-sm text-code-sm text-text-muted">
+<span class="material-symbols-outlined text-status-verified text-[15px]">check_circle</span>
+<span class="text-text-display font-medium">ubuntu-24.04.1-desktop-amd64.iso</span>
+<span class="text-text-muted">(5.8 GB)</span>
+<span class="text-status-verified">• READY</span>
+</div>
+</div>
+</div>
+<!-- STEP 2: Expected Digest Input -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">2. EXPECTED PUBLISHER HASH</span>
+<div class="flex items-center gap-space-xs">
+<span class="px-2 py-0.5 rounded bg-surface-base font-code-sm text-[10px] text-primary-container font-medium uppercase">
+                  SHA-256 • 64 HEX
+                </span>
+</div>
+</div>
+<div class="relative w-full flex flex-col justify-between rounded-xl bg-surface-recessed p-space-md min-h-[170px]">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-caps text-label-caps text-text-muted" for="expectedDigestInput">PASTE EXPECTED CHECKSUM:</label>
+<button class="font-label-caps text-label-caps text-text-muted hover:text-text-display flex items-center gap-1 transition-colors" onclick="clearDigest()" type="button">
+<span class="material-symbols-outlined text-[13px]">backspace</span> CLEAR
+                  </button>
+</div>
+<textarea class="w-full bg-transparent font-code-md text-code-md text-text-display focus:outline-none resize-none selection:bg-primary selection:text-text-dark" id="expectedDigestInput" placeholder="Paste 32 (MD5), 40 (SHA-1), 64 (SHA-256), or 128 (SHA-512) hex string..." rows="3">c387cf3e3d36b8568600d81e0ba33ff128a3f8546f39e80fd29fa3a9aa765c87</textarea>
+</div>
+<div class="flex items-center justify-between pt-space-xs">
+<span class="font-code-sm text-code-sm text-text-muted">Detected: SHA-256 (Canonical Ubuntu Release Digest)</span>
+<button class="px-space-sm py-1 rounded bg-surface-base hover:bg-surface-elevated text-primary font-code-sm text-code-sm flex items-center gap-1 transition-colors" onclick="pasteSampleHash()" type="button">
+<span class="material-symbols-outlined text-[14px]">content_paste</span> PASTE SAMPLE
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Action Trigger -->
+<div class="w-full flex flex-col sm:flex-row items-center gap-space-md">
+<button class="w-full sm:flex-1 py-space-md px-space-xl rounded bg-primary-container hover:bg-primary-hover active:bg-primary-active text-text-dark font-title-md text-title-md font-bold uppercase tracking-wider flex items-center justify-center gap-space-sm transition-all shadow-md" id="verifyActionBtn" onclick="triggerVerification()" type="button">
+<span class="material-symbols-outlined text-[22px]">verified</span>
+            VERIFY FILE INTEGRITY
+          </button>
+<button class="w-full sm:w-auto px-space-lg py-space-md bg-surface-recessed hover:bg-surface-elevated text-text-body font-label-caps text-label-caps rounded flex items-center justify-center gap-space-sm transition-colors" onclick="loadAlternativeAlgorithm()" type="button">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+            ALGORITHM OVERRIDE
+          </button>
+</div>
+<!-- Result Verification Shutter (Visible Success State) -->
+<div class="w-full bg-surface-recessed rounded-xl p-space-lg flex flex-col gap-space-md shadow-lg transition-all" id="verificationResultBox">
+<!-- Top Verdict Line -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm bg-surface-base p-space-md rounded">
+<div class="flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 flex items-center justify-center text-status-verified shrink-0">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-status-verified font-bold uppercase tracking-wide">
+                  ✓ MATCH CONFIRMED — FILE INTEGRITY VERIFIED
+                </span>
+<span class="font-body-md text-body-md text-text-body">
+                  The computed SHA-256 matches the expected publisher checksum byte-for-byte.
+                </span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-code-sm text-code-sm text-status-verified bg-surface-recessed px-space-md py-1 rounded shrink-0">
+<span class="material-symbols-outlined text-[15px]">lock</span> 256 / 256 BITS IDENTICAL
+            </div>
+</div>
+<!-- Dual Monospace Hex Inspections -->
+<div class="flex flex-col gap-space-sm font-code-md text-code-md">
+<!-- Local Hash -->
+<div class="bg-surface-base p-space-md rounded flex flex-col md:flex-row md:items-center justify-between gap-space-xs">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">LOCAL PAYLOAD DIGEST (COMPUTED IN WEBCRYPTO):</span>
+<span class="text-text-display break-all select-all font-medium">c387cf3e3d36b8568600d81e0ba33ff128a3f8546f39e80fd29fa3a9aa765c87</span>
+</div>
+<span class="font-code-sm text-code-sm text-status-verified self-start md:self-auto shrink-0 uppercase tracking-widest">[VALID]</span>
+</div>
+<!-- Expected Hash -->
+<div class="bg-surface-base p-space-md rounded flex flex-col md:flex-row md:items-center justify-between gap-space-xs">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">PUBLISHER CHECKSUM (EXPECTED SOURCE):</span>
+<span class="text-text-display break-all select-all font-medium">c387cf3e3d36b8568600d81e0ba33ff128a3f8546f39e80fd29fa3a9aa765c87</span>
+</div>
+<span class="font-code-sm text-code-sm text-status-verified self-start md:self-auto shrink-0 uppercase tracking-widest">[MATCH]</span>
+</div>
+</div>
+<!-- Verification Action Dock & Concise Disclaimer -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pt-space-xs">
+<p class="font-body-sm text-body-sm text-text-muted max-w-xl">
+              Note: A matching hash confirms data integrity, but does not verify publisher legitimacy on its own.
+            </p>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="px-space-md py-1.5 rounded bg-surface-elevated hover:bg-surface-base text-text-display font-code-sm text-code-sm flex items-center gap-1 transition-colors" onclick="copyVerifiedHash()" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span> COPY DIGEST
+              </button>
+<a class="px-space-md py-1.5 rounded bg-surface-elevated hover:bg-surface-base text-primary font-code-sm text-code-sm flex items-center gap-1 transition-colors" href="https://www.virustotal.com" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">travel_explore</span> VIRUSTOTAL SEARCH ↗
+              </a>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= WORKFLOW 2: DUAL FILE COMPARISON ================= -->
+<div class="hidden flex flex-col gap-space-lg" id="workflowDual">
+<div class="w-full bg-surface-recessed rounded p-space-md flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary-container text-[20px] shrink-0">compare</span>
+<p class="font-body-md text-body-md text-text-body">
+            Upload two files simultaneously to perform an instant, in-browser cryptographic diff to determine if both binaries are bit-for-bit identical.
+          </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- File A -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">PRIMARY FILE (PAYLOAD A)</span>
+<div class="w-full rounded-xl bg-surface-recessed p-space-lg flex flex-col items-center justify-center text-center min-h-[160px] cursor-pointer hover:bg-surface-elevated transition-colors">
+<span class="material-symbols-outlined text-[32px] text-text-muted mb-1">insert_drive_file</span>
+<p class="font-code-md text-code-md text-text-display font-semibold">staging-firmware-v4.1.bin</p>
+<span class="font-code-sm text-code-sm text-text-muted">42.8 MB • SHA-256 Calculated</span>
+</div>
+</div>
+<!-- File B -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">SECONDARY FILE (PAYLOAD B)</span>
+<div class="w-full rounded-xl bg-surface-recessed p-space-lg flex flex-col items-center justify-center text-center min-h-[160px] cursor-pointer hover:bg-surface-elevated transition-colors">
+<span class="material-symbols-outlined text-[32px] text-text-muted mb-1">insert_drive_file</span>
+<p class="font-code-md text-code-md text-text-display font-semibold">production-firmware-v4.1.bin</p>
+<span class="font-code-sm text-code-sm text-text-muted">42.8 MB • SHA-256 Calculated</span>
+</div>
+</div>
+</div>
+<div class="w-full bg-surface-recessed p-space-md rounded flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 rounded-full bg-status-verified"></span>
+<span class="font-code-sm text-code-sm text-status-verified font-medium">BINARY IDENTICAL (0 BIT FLIPS DETECTED)</span>
+</div>
+<button class="px-space-lg py-1.5 rounded bg-primary-container text-text-dark font-label-caps text-label-caps font-bold" type="button">
+            RUN FULL STREAM SCAN
+          </button>
+</div>
+</div>
+<!-- ================= SECONDARY FEATURE: VERIFY TEXT STRING ================= -->
+<div class="w-full pt-space-xs">
+<details class="group bg-surface-recessed rounded overflow-hidden transition-all">
+<summary class="list-none px-space-md py-space-sm flex items-center justify-between cursor-pointer text-text-muted hover:text-text-display select-none">
+<span class="font-body-md text-body-md flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+              Need to verify raw text or string instead?
+            </span>
+<span class="font-label-caps text-label-caps text-primary-container flex items-center gap-1 group-open:rotate-180 transition-transform">
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</span>
+</summary>
+<div class="px-space-md pb-space-md pt-space-xs flex flex-col gap-space-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-caps text-label-caps text-text-muted" for="rawTextInput">RAW TEXT INPUT STRING:</label>
+<textarea class="w-full bg-surface-base p-space-sm rounded font-code-sm text-code-sm text-text-display resize-none focus:outline-none" id="rawTextInput" placeholder="Enter alphanumeric text string to verify..." rows="2"></textarea>
+</div>
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-caps text-label-caps text-text-muted" for="rawTextExpected">EXPECTED HASH STRING:</label>
+<textarea class="w-full bg-surface-base p-space-sm rounded font-code-sm text-code-sm text-text-display resize-none focus:outline-none" id="rawTextExpected" placeholder="Paste expected hash to compare..." rows="2"></textarea>
+</div>
+</div>
+<div class="flex justify-end">
+<button class="px-space-md py-1.5 rounded bg-surface-elevated hover:bg-surface-base text-text-display font-code-sm text-code-sm" type="button">
+                COMPUTE &amp; VERIFY STRING
+              </button>
+</div>
+</div>
+</details>
+</div>
+</section>
+<!-- Companion Subsystem Links (Pacing & Navigational Equilibrium) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-sm">
+<a class="group p-space-md bg-surface-card hover:bg-surface-elevated rounded flex items-center justify-between transition-colors shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded bg-surface-recessed flex items-center justify-center text-text-muted group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">COMPANION TOOL 01</span>
+<span class="font-body-md text-body-md text-text-display font-medium">TAB 01 // LEARN CRYPTOGRAPHIC PRINCIPLES</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted group-hover:text-text-display group-hover:translate-x-1 transition-all">arrow_forward</span>
+</a>
+<a class="group p-space-md bg-surface-card hover:bg-surface-elevated rounded flex items-center justify-between transition-colors shadow-sm" href="#">
+<div class="flex items-center gap-space-md">
+<div class="w-9 h-9 rounded bg-surface-recessed flex items-center justify-center text-text-muted group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">tag</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">COMPANION TOOL 02</span>
+<span class="font-body-md text-body-md text-text-display font-medium">TAB 02 // GENERATE IMMUTABLE DIGESTS</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted group-hover:text-text-display group-hover:translate-x-1 transition-all">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<script>
+  function switchWorkflow(mode) {
+    const tab1 = document.getElementById('tabWorkflow1');
+    const tab2 = document.getElementById('tabWorkflow2');
+    const view1 = document.getElementById('workflowChecksum');
+    const view2 = document.getElementById('workflowDual');
+
+    if (mode === 'checksum') {
+      tab1.className = "flex-1 py-space-sm px-space-md flex items-center justify-center gap-space-sm rounded font-label-caps text-label-caps transition-all bg-surface-elevated text-primary-container shadow-sm";
+      tab2.className = "flex-1 py-space-sm px-space-md flex items-center justify-center gap-space-sm rounded font-label-caps text-label-caps transition-all text-text-muted hover:text-text-display hover:bg-surface-base";
+      view1.classList.remove('hidden');
+      view2.classList.add('hidden');
+    } else {
+      tab2.className = "flex-1 py-space-sm px-space-md flex items-center justify-center gap-space-sm rounded font-label-caps text-label-caps transition-all bg-surface-elevated text-primary-container shadow-sm";
+      tab1.className = "flex-1 py-space-sm px-space-md flex items-center justify-center gap-space-sm rounded font-label-caps text-label-caps transition-all text-text-muted hover:text-text-display hover:bg-surface-base";
+      view2.classList.remove('hidden');
+      view1.classList.add('hidden');
+    }
+  }
+
+  function triggerVerification() {
+    const resultBox = document.getElementById('verificationResultBox');
+    resultBox.classList.remove('opacity-60');
+    resultBox.classList.add('scale-[1.005]');
+    setTimeout(() => {
+      resultBox.classList.remove('scale-[1.005]');
+    }, 200);
+  }
+
+  function copyVerifiedHash() {
+    const hashText = "c387cf3e3d36b8568600d81e0ba33ff128a3f8546f39e80fd29fa3a9aa765c87";
+    navigator.clipboard?.writeText(hashText);
+    const btn = event.currentTarget;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[16px] text-status-verified">check</span> COPIED';
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+    }, 1500);
+  }
+
+  function clearDigest() {
+    document.getElementById('expectedDigestInput').value = '';
+    document.getElementById('expectedDigestInput').focus();
+  }
+
+  function pasteSampleHash() {
+    document.getElementById('expectedDigestInput').value = "c387cf3e3d36b8568600d81e0ba33ff128a3f8546f39e80fd29fa3a9aa765c87";
+  }
+
+  function resetForm() {
+    clearDigest();
+    switchWorkflow('checksum');
+  }
+
+  function loadAlternativeAlgorithm() {
+    const current = document.getElementById('expectedDigestInput').value;
+    alert("Algorithm selector: SHA-256 currently active. WebCrypto auto-detects SHA-512, SHA-384, SHA-1, and MD5 based on string length.");
+  }
+</script></main><footer class="fixed bottom-0 left-0 right-0 h-10 bg-surface-base border-t border-border-hairline z-40 px-margin flex items-center justify-between font-label-caps text-label-caps text-text-muted"><div class="flex items-center gap-space-lg"><span class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-status-verified"></span>SUBSYSTEM: READY</span><span class="hidden sm:inline text-border-subtle">//</span><span class="hidden sm:inline">INGRESS: BLOCKED</span><span class="hidden sm:inline text-border-subtle">//</span><span class="hidden sm:inline">PERSISTENCE: 0 BYTES</span></div><div class="flex items-center gap-space-md"><span class="hidden md:inline">SHA-256 / SHA-512 / BLAKE3 / HMAC</span><span class="text-text-display">SEC-OPS v4.12.0-STABLE</span></div></footer>
+
+</body></html>

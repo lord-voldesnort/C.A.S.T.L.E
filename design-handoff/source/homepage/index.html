@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Castle — Cybersecurity Toolbox Platform</title>
+
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<!-- Theme Configuration matching DESIGN.md -->
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "bg-main": "#090909",
+          "background": "#191209",
+          "surface": "#151515",
+          "surface-elevated": "#1D1D1D",
+          "surface-container": "#251e15",
+          "surface-container-low": "#211a11",
+          "surface-container-high": "#30291e",
+          "surface-container-highest": "#3c3429",
+          "surface-bright": "#40382d",
+          "border": "#2B2B2B",
+          "outline": "#9f8e78",
+          "primary": "#ffd597",
+          "primary-container": "#ffb000",
+          "on-surface": "#eee0d0",
+          "on-surface-variant": "#d7c4ac",
+          "text-primary": "#F5F5F5",
+          "text-secondary": "#A3A3A3",
+          "text-muted": "#6B7280",
+          "success": "#22C55E",
+          "warning": "#FACC15",
+          "danger": "#EF4444",
+          "info": "#3B82F6"
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        spacing: {
+          "base": "4px",
+          "xs": "4px",
+          "sm": "8px",
+          "md": "16px",
+          "lg": "24px",
+          "xl": "32px",
+          "xxl": "64px",
+          "gutter": "24px",
+          "margin-mobile": "16px",
+          "margin-desktop": "40px"
+        },
+        fontFamily: {
+          "hero": ["Space Grotesk", "sans-serif"],
+          "headline-md": ["Space Grotesk", "sans-serif"],
+          "headline-sm": ["Space Grotesk", "sans-serif"],
+          "title-lg": ["Space Grotesk", "sans-serif"],
+          "headline-lg": ["Space Grotesk", "sans-serif"],
+          "body-lg": ["Inter", "sans-serif"],
+          "body-md": ["Inter", "sans-serif"],
+          "body-sm": ["Inter", "sans-serif"],
+          "label-md": ["Inter", "sans-serif"],
+          "code": ["JetBrains Mono", "monospace"]
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* Base Styles & Utilities */
+  body {
+    background-color: #090909;
+    color: #eee0d0;
+  }
+  
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  
+  /* Armor Plate Component (Cards & Containers) */
+  .armor-plate {
+    background-color: #151515;
+    border: 1px solid rgba(43, 43, 43, 0.8);
+    position: relative;
+    transition: all 0.2s ease-in-out;
+  }
+  .armor-plate::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ffd597;
+    border-left: 2px solid #ffd597;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .armor-plate:hover::before, .armor-plate:focus-within::before {
+    opacity: 1;
+  }
+  .armor-plate:hover {
+    border-color: rgba(255, 213, 151, 0.3);
+  }
+  
+  .armor-plate-interactive {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .armor-plate-interactive:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 213, 151, 0.5) !important;
+    box-shadow: 0 12px 24px -10px rgba(255, 213, 151, 0.15);
+  }
+  
+  /* Interactive Buttons */
+  .btn-primary {
+    @apply bg-[#ffd597] text-[#432c00] font-label-md text-label-md px-md py-sm rounded transition-all font-semibold tracking-wide;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 15px rgba(255, 213, 151, 0.35);
+    background-color: #ffc83d;
+  }
+  
+  /* Technical Background Grid */
+  .tech-grid {
+    background-image: 
+      linear-gradient(to right, rgba(43, 43, 43, 0.25) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(43, 43, 43, 0.25) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Custom Range Input Styling */
+  input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #251e15;
+    border-radius: 2px;
+    border: 1px solid #2B2B2B;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 2px;
+    background: #ffd597;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+    box-shadow: 0 0 8px rgba(255, 213, 151, 0.5);
+  }
+  input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: #251e15;
+    border-radius: 2px;
+    border: 1px solid #2B2B2B;
+  }
+  input[type=range]::-moz-range-thumb {
+    height: 18px;
+    width: 18px;
+    border-radius: 2px;
+    background: #ffd597;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(255, 213, 151, 0.5);
+  }
+</style>
+</head>
+
+<body class="font-body-md text-body-md text-on-surface bg-main antialiased relative min-h-screen flex flex-col">
+
+<!-- Global Background Shader Grid -->
+<div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
+  <div class="absolute inset-0 tech-grid"></div>
+</div>
+
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-40 bg-background/90 backdrop-blur-md border-b border-border/50 shadow-sm flex items-center justify-between px-margin-desktop py-sm max-w-full">
+  <div class="flex items-center gap-xl">
+    <!-- Brand -->
+    <a class="font-title-lg text-title-lg font-bold tracking-tighter text-primary uppercase" href="#">C.A.S.T.L.E.</a>
+    <!-- Navigation Links -->
+    <div class="hidden md:flex gap-md items-center">
+      <a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Home</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs rounded" href="#tools-section">Tools</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs rounded" href="#tools-section">Categories</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs rounded" href="#">Learn</a>
+      <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs rounded" href="#">About</a>
+    </div>
+  </div>
+  
+  <div class="flex items-center gap-md">
+    <div class="flex gap-xs">
+      <button class="text-on-surface-variant hover:text-primary transition-colors p-sm rounded hover:bg-surface-container-highest/50" title="Search">
+        <span class="material-symbols-outlined text-[20px]">search</span>
+      </button>
+      <button class="text-on-surface-variant hover:text-primary transition-colors p-sm rounded hover:bg-surface-container-highest/50" title="Source Code">
+        <span class="material-symbols-outlined text-[20px]">code</span>
+      </button>
+      <button class="text-on-surface-variant hover:text-primary transition-colors p-sm rounded hover:bg-surface-container-highest/50" title="Theme Mode">
+        <span class="material-symbols-outlined text-[20px]">dark_mode</span>
+      </button>
+    </div>
+    <button class="hidden md:flex items-center gap-sm btn-primary" onclick="window.location.hash='tools-section'">
+      Launch Castle
+    </button>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow pt-[80px] px-margin-mobile md:px-margin-desktop pb-xxl flex flex-col gap-xl w-full">
+
+  <!-- Hero Section -->
+  <section class="relative armor-plate p-lg rounded-lg overflow-hidden flex flex-col md:flex-row items-center gap-lg mx-auto w-full max-w-7xl">
+    <div class="relative z-10 flex flex-col gap-sm md:w-3/5">
+      <h1 class="font-headline-md text-headline-lg-mobile md:text-headline-md text-text-primary uppercase tracking-tight">
+        Build Your Digital Fortress
+      </h1>
+      <p class="font-body-md text-body-md text-text-secondary max-w-2xl">
+        A modern collection of cybersecurity tools designed for tactical analysis, encrypted communication, and network defense operations.
+      </p>
+      <div class="pt-sm">
+        <button class="btn-primary flex items-center gap-sm w-fit bg-surface-container-highest text-primary border border-primary/30 hover:bg-primary hover:text-on-primary" onclick="document.getElementById('tools-section').scrollIntoView({behavior: 'smooth'})">
+          <span class="material-symbols-outlined text-[18px]">travel_explore</span>
+          Explore Modules
+        </button>
+      </div>
+    </div>
+    
+    <!-- Hero Interactive 3D Wireframe animation -->
+    <div class="relative w-full h-40 md:h-56 md:w-2/5 rounded bg-transparent overflow-hidden flex items-center justify-center">
+      <div class="absolute inset-0 w-full h-full" style="display:block;">
+        <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+        <div id="threejs-container-ANIMATION_12" style="width:100%;height:100%"></div>
+        <script>
+        (function() {
+          const container = document.getElementById('threejs-container-ANIMATION_12');
+          if (!container) return;
+          const width = container.clientWidth || window.innerWidth;
+          const height = container.clientHeight || window.innerHeight;
+          
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+          const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+          renderer.setSize(width, height);
+          container.appendChild(renderer.domElement);
+          
+          const group = new THREE.Group();
+          
+          // Central Keep
+          const keepGeom = new THREE.BoxGeometry(2, 4, 2);
+          const material = new THREE.MeshBasicMaterial({ 
+              color: 0xFFB000, 
+              wireframe: true,
+              transparent: true,
+              opacity: 0.6
+          });
+          const keep = new THREE.Mesh(keepGeom, material);
+          group.add(keep);
+          
+          // Outer Walls
+          const wallGeom = new THREE.BoxGeometry(6, 1.5, 6);
+          const walls = new THREE.Mesh(wallGeom, material);
+          walls.position.y = -1;
+          group.add(walls);
+          
+          // Corner Turrets
+          const turretGeom = new THREE.BoxGeometry(1, 3, 1);
+          const positions = [
+              [2.5, 0, 2.5],
+              [-2.5, 0, 2.5],
+              [2.5, 0, -2.5],
+              [-2.5, 0, -2.5]
+          ];
+          
+          positions.forEach(pos => {
+              const turret = new THREE.Mesh(turretGeom, material);
+              turret.position.set(...pos);
+              group.add(turret);
+          });
+          
+          scene.add(group);
+          camera.position.z = 10;
+          camera.position.y = 2;
+          camera.lookAt(0, 0, 0);
+          
+          function animate() {
+              requestAnimationFrame(animate);
+              group.rotation.y += 0.003;
+              group.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1;
+              material.opacity = 0.4 + Math.sin(Date.now() * 0.002) * 0.2;
+              renderer.render(scene, camera);
+          }
+          animate();
+          
+          window.addEventListener('resize', () => {
+              const w = container.clientWidth || window.innerWidth;
+              const h = container.clientHeight || window.innerHeight;
+              camera.aspect = w / h;
+              camera.updateProjectionMatrix();
+              renderer.setSize(w, h);
+          });
+        })();
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Search & Category Filter Bar -->
+  <section class="flex flex-col gap-md max-w-7xl mx-auto w-full" id="tools-section">
+    <div class="relative group w-full max-w-2xl">
+      <span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors">search</span>
+      <input class="w-full bg-surface border border-border/50 rounded text-text-primary py-sm pl-[48px] pr-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all font-code text-code placeholder-text-muted" placeholder="Search tools, decoders, generators, scanners..." type="text">
+    </div>
+    
+    <div class="flex flex-wrap gap-sm">
+      <button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface-container-highest text-primary border border-primary/30">All Tools</button>
+      <button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Authentication</button>
+      <button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Web Security</button>
+      <button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Encryption</button>
+      <button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Utilities</button>
+    </div>
+  </section>
+
+  <!-- Tool Cards Grid -->
+  <section class="w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg max-w-7xl mx-auto w-full">
+      
+      <!-- Flagship Tool: Password (Unified Creation & Analysis) -->
+      <div class="armor-plate armor-plate-interactive p-md md:p-lg rounded flex flex-col h-full group gap-md border-primary/40" data-category="Auth" data-tool="password-modal" data-launch-tool="password-modal">
+        <div class="flex justify-between items-center mb-xs">
+          <div class="flex items-center gap-xs">
+            <span class="material-symbols-outlined text-primary transition-colors text-[24px]">key</span>
+            <span class="text-[10px] font-code text-primary/90 uppercase tracking-wider">Auth</span>
+          </div>
+          <span class="bg-primary/20 text-primary px-xs py-[2px] rounded font-code text-[10px] border border-primary/30 uppercase font-bold tracking-wider">FLAGSHIP</span>
+        </div>
+        <h3 class="font-title-lg text-lg md:text-xl font-bold text-text-primary leading-tight">Password</h3>
+        <p class="font-body-md text-body-md text-text-secondary leading-relaxed flex-grow mt-sm mb-md">See how strong your password really is, understand how fast it could be cracked, and generate one that isn't.</p>
+        <button data-launch-tool="password-modal" class="w-full text-center mt-auto py-sm bg-primary/20 hover:bg-[#ffd597] text-[#ffd597] hover:text-[#432c00] border border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-all text-xs font-bold group-hover:bg-[#ffd597] group-hover:text-[#432c00] cursor-pointer">
+          Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </button>
+      </div>
+
+      <!-- Flagship Tool: AES Studio -->
+      <div class="armor-plate armor-plate-interactive p-md md:p-lg rounded flex flex-col h-full group gap-md border-primary/30" data-category="Encryption" data-tool="aes-studio-modal" data-launch-tool="aes-studio-modal">
+        <div class="flex justify-between items-center mb-xs">
+          <div class="flex items-center gap-xs">
+            <span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">lock</span>
+            <span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Crypto</span>
+          </div>
+          <span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-warning border border-warning/20">Intermediate</span>
+        </div>
+        <h3 class="font-title-lg text-lg md:text-xl font-bold text-text-primary leading-tight">AES Studio</h3>
+        <p class="font-body-md text-body-md text-text-secondary leading-relaxed flex-grow mt-sm mb-md">Encrypt any file or message so only someone with the right key can open it — and see exactly how real encryption works along the way.</p>
+        <button data-launch-tool="aes-studio-modal" class="w-full text-center mt-auto py-sm bg-surface-container-highest/30 hover:bg-[#ffd597] text-primary hover:text-[#432c00] border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-xs font-bold group-hover:bg-[#ffd597] group-hover:text-[#432c00] cursor-pointer">
+          Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </button>
+      </div>
+
+      <!-- Flagship Tool: Hash Toolkit -->
+      <div class="armor-plate armor-plate-interactive p-md md:p-lg rounded flex flex-col h-full group gap-md border-primary/30" data-category="Encryption" data-tool="hash-toolkit-modal" data-launch-tool="hash-toolkit-modal">
+        <div class="flex justify-between items-center mb-xs">
+          <div class="flex items-center gap-xs">
+            <span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">fingerprint</span>
+            <span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Crypto</span>
+          </div>
+          <span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+        </div>
+        <h3 class="font-title-lg text-lg md:text-xl font-bold text-text-primary leading-tight">Hash Toolkit</h3>
+        <p class="font-body-md text-body-md text-text-secondary leading-relaxed flex-grow mt-sm mb-md">Check whether a file has been corrupted or tampered with, and learn what a 'hash' actually is — without needing to know cryptography first.</p>
+        <button data-launch-tool="hash-toolkit-modal" class="w-full text-center mt-auto py-sm bg-surface-container-highest/30 hover:bg-[#ffd597] text-primary hover:text-[#432c00] border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-xs font-bold group-hover:bg-[#ffd597] group-hover:text-[#432c00] cursor-pointer">
+          Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </button>
+      </div>
+
+      <!-- Tool 7: JWT Decoder & Verifier -->
+      <div class="armor-plate armor-plate-interactive p-md md:p-lg rounded flex flex-col h-full group gap-md" data-category="Web Security" data-tool="jwt-modal" data-launch-tool="jwt-modal">
+        <div class="flex justify-between items-center mb-xs">
+          <div class="flex items-center gap-xs">
+            <span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">code</span>
+            <span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Web</span>
+          </div>
+          <span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-warning border border-warning/20">Intermediate</span>
+        </div>
+        <h3 class="font-title-lg text-lg md:text-xl font-bold text-text-primary leading-tight">JWT Decoder & Verifier</h3>
+        <p class="font-body-md text-body-md text-text-secondary leading-relaxed flex-grow mt-sm mb-md">See exactly what's inside a login token, and tell the difference between a token that's just readable and one that's actually been verified.</p>
+        <button data-launch-tool="jwt-modal" class="w-full text-center mt-auto py-sm bg-surface-container-highest/30 hover:bg-[#ffd597] text-primary hover:text-[#432c00] border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-xs font-bold group-hover:bg-[#ffd597] group-hover:text-[#432c00] cursor-pointer">
+          Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </button>
+      </div>
+
+      <!-- Tool 14: URL Structure Analyzer -->
+      <div class="armor-plate armor-plate-interactive p-md md:p-lg rounded flex flex-col h-full group gap-md" data-category="Utilities" data-tool="url-phishing-modal" data-launch-tool="url-phishing-modal">
+        <div class="flex justify-between items-center mb-xs">
+          <div class="flex items-center gap-xs">
+            <span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">link</span>
+            <span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Utils</span>
+          </div>
+          <span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-warning border border-warning/20">Intermediate</span>
+        </div>
+        <h3 class="font-title-lg text-lg md:text-xl font-bold text-text-primary leading-tight">URL Structure Analyzer</h3>
+        <p class="font-body-md text-body-md text-text-secondary leading-relaxed flex-grow mt-sm mb-md">Paste a suspicious link and see the specific tricks being used to disguise it — before you click it for real.</p>
+        <button data-launch-tool="url-phishing-modal" class="w-full text-center mt-auto py-sm bg-surface-container-highest/30 hover:bg-[#ffd597] text-primary hover:text-[#432c00] border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-xs font-bold group-hover:bg-[#ffd597] group-hover:text-[#432c00] cursor-pointer">
+          Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="w-full mt-auto bg-surface-container-lowest border-t border-border/50 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-lg gap-md">
+  <div class="flex items-center gap-md">
+    <span class="font-title-lg text-title-lg text-primary uppercase">C.A.S.T.L.E.</span>
+  </div>
+  <div class="flex flex-wrap justify-center gap-md font-code text-body-sm text-text-muted">
+    <a class="hover:text-primary transition-colors cursor-pointer" href="#">GitHub</a>
+    <a class="hover:text-primary transition-colors cursor-pointer" href="#">Documentation</a>
+    <a class="hover:text-primary transition-colors cursor-pointer" href="#">Privacy</a>
+    <a class="hover:text-primary transition-colors cursor-pointer" href="#">License</a>
+    <span>© 2026 Castle Protection Platform</span>
+  </div>
+</footer>
+
+<!-- UNIFIED PASSWORD FLAGSHIP WORKSPACE MODAL -->
+<div id="password-modal" class="fixed inset-0 z-50 flex items-center justify-center p-xs md:p-md hidden">
+  <!-- Backdrop -->
+  <div id="pw-modal-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+
+  <!-- Modal Content (Tactical Armor Plate) -->
+  <div class="armor-plate bg-surface border border-border/90 rounded-lg p-sm md:p-md max-w-3xl w-full my-auto shadow-2xl relative z-10 flex flex-col gap-sm md:gap-md max-h-[92vh] overflow-y-auto">
+    
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center border-b border-border/50 pb-xs">
+      <div class="flex items-center gap-sm">
+        <div class="p-xs bg-surface-container-highest/60 rounded border border-primary/40 text-primary">
+          <span class="material-symbols-outlined text-[24px]">key</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-xs">
+            <span class="font-code text-[11px] text-primary/80 uppercase tracking-widest">MODULE // AUTH-01</span>
+            <span class="bg-primary/20 text-primary text-[10px] font-code px-xs rounded border border-primary/30 uppercase font-bold">FLAGSHIP</span>
+          </div>
+          <h2 class="font-headline-sm text-lg md:text-xl text-text-primary uppercase tracking-tight">Password</h2>
+        </div>
+      </div>
+
+      <button id="pw-modal-close" class="text-text-muted hover:text-primary transition-colors p-xs rounded hover:bg-surface-container-highest/50 flex items-center justify-center cursor-pointer" title="Close Workspace">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
+    </div>
+
+    <!-- Visible Privacy Guarantee Notice -->
+    <div class="p-xs md:p-sm bg-surface-container-lowest border border-primary/30 rounded flex items-center gap-xs text-xs font-code text-primary/90">
+      <span class="material-symbols-outlined text-[18px] text-primary shrink-0">lock</span>
+      <span>Everything is generated locally inside your browser. Nothing leaves your device.</span>
+    </div>
+
+    <!-- Workspace Tab Selector -->
+    <div class="flex gap-xs bg-bg-main p-xs rounded border border-border/60">
+      <button id="pw-tab-btn-create" class="flex-1 py-xs md:py-sm px-md text-xs md:text-sm font-headline-sm font-semibold rounded border border-primary bg-primary/20 text-primary transition-all flex items-center justify-center gap-xs uppercase tracking-wider cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">add_circle</span>
+        <span>Tab 1: Create Password</span>
+      </button>
+
+      <button id="pw-tab-btn-analyze" class="flex-1 py-xs md:py-sm px-md text-xs md:text-sm font-headline-sm font-semibold rounded border border-border/50 bg-surface-container-lowest text-text-secondary hover:text-on-surface hover:border-outline transition-all flex items-center justify-center gap-xs uppercase tracking-wider cursor-pointer">
+        <span class="material-symbols-outlined text-[16px]">analytics</span>
+        <span>Tab 2: Analyze Password</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: CREATE PASSWORD PANEL -->
+    <div id="pw-tab-panel-create" class="flex flex-col gap-md">
+      
+      <!-- Presets Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-xs p-xs bg-surface-container-lowest rounded border border-border/50">
+        <span class="font-code text-[11px] text-text-muted uppercase">Quick Presets:</span>
+        <div class="flex gap-xs">
+          <button id="pw-preset-max-sec" class="px-xs py-[2px] bg-surface-container-highest hover:bg-primary/20 text-primary border border-primary/40 rounded text-[11px] font-code transition-colors cursor-pointer">
+            ⚡ Max Security
+          </button>
+          <button id="pw-preset-max-mem" class="px-xs py-[2px] bg-surface-container-highest hover:bg-primary/20 text-primary border border-primary/40 rounded text-[11px] font-code transition-colors cursor-pointer">
+            🧠 Max Memorability
+          </button>
+        </div>
+      </div>
+
+      <!-- Generation Method Selection Cards -->
+      <div class="flex flex-col gap-xs">
+        <label class="font-code text-xs text-text-muted uppercase tracking-wider">Choose How to Create Your Password</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-xs">
+          
+          <div data-method-card="random" class="armor-plate p-xs md:p-sm rounded border border-primary bg-primary/10 cursor-pointer flex flex-col gap-[2px] transition-all hover:border-primary">
+            <div class="flex items-center gap-xs text-primary font-code text-xs font-bold uppercase">
+              <span class="material-symbols-outlined text-[16px]">casino</span>
+              <span>Fully Random</span>
+            </div>
+            <p class="text-[10px] text-text-secondary line-clamp-2">Traditional cryptographically secure randomness.</p>
+          </div>
+
+          <div data-method-card="word" class="armor-plate p-xs md:p-sm rounded border border-border/50 bg-surface-container-lowest cursor-pointer flex flex-col gap-[2px] transition-all hover:border-primary">
+            <div class="flex items-center gap-xs text-text-primary font-code text-xs font-bold uppercase">
+              <span class="material-symbols-outlined text-[16px]">spellcheck</span>
+              <span>Memorable Word</span>
+            </div>
+            <p class="text-[10px] text-text-secondary line-clamp-2">Transforms & blends 1 memorable word intelligently.</p>
+          </div>
+
+          <div data-method-card="phrase" class="armor-plate p-xs md:p-sm rounded border border-border/50 bg-surface-container-lowest cursor-pointer flex flex-col gap-[2px] transition-all hover:border-primary">
+            <div class="flex items-center gap-xs text-text-primary font-code text-xs font-bold uppercase">
+              <span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+              <span>Phrase Based</span>
+            </div>
+            <p class="text-[10px] text-text-secondary line-clamp-2">Derives a secure password inspired by a secret phrase.</p>
+          </div>
+
+          <div data-method-card="initialism" class="armor-plate p-xs md:p-sm rounded border border-border/50 bg-surface-container-lowest cursor-pointer flex flex-col gap-[2px] transition-all hover:border-primary">
+            <div class="flex items-center gap-xs text-text-primary font-code text-xs font-bold uppercase">
+              <span class="material-symbols-outlined text-[16px]">text_fields</span>
+              <span>Initialism</span>
+            </div>
+            <p class="text-[10px] text-text-secondary line-clamp-2">Sentence initials blended with crypto salt.</p>
+          </div>
+
+          <div data-method-card="theme" class="armor-plate p-xs md:p-sm rounded border border-border/50 bg-surface-container-lowest cursor-pointer flex flex-col gap-[2px] transition-all hover:border-primary">
+            <div class="flex items-center gap-xs text-text-primary font-code text-xs font-bold uppercase">
+              <span class="material-symbols-outlined text-[16px]">palette</span>
+              <span>Theme Based</span>
+            </div>
+            <p class="text-[10px] text-text-secondary line-clamp-2">Inspired by Space, Ocean, Tech, Nature, Fantasy.</p>
+          </div>
+
+          <div data-method-card="memory_assisted" class="armor-plate p-xs md:p-sm rounded border border-primary/60 bg-surface-container cursor-pointer flex flex-col gap-[2px] transition-all hover:border-primary shadow-[0_0_12px_rgba(255,213,151,0.2)]">
+            <div class="flex items-center gap-xs text-primary font-code text-xs font-bold uppercase">
+              <span class="material-symbols-outlined text-[16px]">psychology</span>
+              <span>Memory Assisted</span>
+            </div>
+            <p class="text-[10px] text-text-secondary line-clamp-2">Castle Signature: 3-5 conversational memory prompts.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Specific Method Input Container -->
+      <div id="pw-method-inputs-container" class="bg-surface-container-lowest border border-border/60 rounded p-sm flex flex-col gap-sm">
+        
+        <!-- Panel 1: Random -->
+        <div data-input-panel="random" class="text-xs font-code text-text-secondary">
+          <span>Fully Random Mode: Uses browser Web Crypto hardware random number generator across enabled character sets.</span>
+        </div>
+
+        <!-- Panel 2: Word -->
+        <div data-input-panel="word" class="hidden flex flex-col gap-xs">
+          <label class="font-code text-xs text-text-primary uppercase">Enter One Memorable Word:</label>
+          <input id="pw-input-word" type="text" value="castle" placeholder="e.g. dragon, coffee, football" class="w-full bg-bg-main border border-border rounded px-sm py-xs text-xs font-code text-primary focus:border-primary focus:outline-none" />
+          <span class="text-[10px] text-text-muted">Castle transforms, splits, and blends this word with secure randomness without simply appending characters.</span>
+        </div>
+
+        <!-- Panel 3: Phrase -->
+        <div data-input-panel="phrase" class="hidden flex flex-col gap-xs">
+          <label class="font-code text-xs text-text-primary uppercase">Enter a Personal Phrase:</label>
+          <input id="pw-input-phrase" type="text" value="My favourite mountain" placeholder="e.g. My first cricket century" class="w-full bg-bg-main border border-border rounded px-sm py-xs text-xs font-code text-primary focus:border-primary focus:outline-none" />
+          <span class="text-[10px] text-text-muted">Castle derives a high-entropy password inspired by concepts in your phrase.</span>
+        </div>
+
+        <!-- Panel 4: Initialism -->
+        <div data-input-panel="initialism" class="hidden flex flex-col gap-xs">
+          <label class="font-code text-xs text-text-primary uppercase">Enter a Sentence:</label>
+          <input id="pw-input-initialism" type="text" value="My Dog Bruno Loves Eating Chicken Every Sunday" placeholder="e.g. I Always Eat Breakfast At Seven" class="w-full bg-bg-main border border-border rounded px-sm py-xs text-xs font-code text-primary focus:border-primary focus:outline-none" />
+          <span class="text-[10px] text-text-muted">Extracts sentence initials, interleaves word count, and adds random symbol salt.</span>
+        </div>
+
+        <!-- Panel 5: Theme -->
+        <div data-input-panel="theme" class="hidden flex flex-col gap-xs">
+          <label class="font-code text-xs text-text-primary uppercase">Select Inspiration Theme:</label>
+          <div class="flex flex-wrap gap-xs">
+            <button data-theme-btn="space" class="px-sm py-xs bg-primary/20 text-primary border border-primary rounded text-xs font-code cursor-pointer">🌌 Space</button>
+            <button data-theme-btn="ocean" class="px-sm py-xs bg-surface-container-lowest text-text-secondary border border-border/50 rounded text-xs font-code cursor-pointer">🌊 Ocean</button>
+            <button data-theme-btn="technology" class="px-sm py-xs bg-surface-container-lowest text-text-secondary border border-border/50 rounded text-xs font-code cursor-pointer">⚡ Technology</button>
+            <button data-theme-btn="nature" class="px-sm py-xs bg-surface-container-lowest text-text-secondary border border-border/50 rounded text-xs font-code cursor-pointer">🌿 Nature</button>
+            <button data-theme-btn="mountains" class="px-sm py-xs bg-surface-container-lowest text-text-secondary border border-border/50 rounded text-xs font-code cursor-pointer">🏔️ Mountains</button>
+            <button data-theme-btn="fantasy" class="px-sm py-xs bg-surface-container-lowest text-text-secondary border border-border/50 rounded text-xs font-code cursor-pointer">⚔️ Fantasy</button>
+          </div>
+        </div>
+
+        <!-- Panel 6: Memory Assisted (Conversational Wizard) -->
+        <div data-input-panel="memory_assisted" class="hidden flex flex-col gap-sm">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center gap-xs text-primary font-code text-xs">
+              <span class="material-symbols-outlined text-[18px]">psychology</span>
+              <span class="uppercase font-bold">Castle Memory Prompts</span>
+            </div>
+            <button id="pw-refresh-prompts-btn" class="text-[10px] font-code text-primary hover:underline flex items-center gap-[2px] cursor-pointer">
+              <span class="material-symbols-outlined text-[12px]">refresh</span> New Random Prompts
+            </button>
+          </div>
+          
+          <div id="pw-conversational-container" class="flex flex-col gap-xs">
+            <div id="pw-prompt-questions-list" class="grid grid-cols-1 md:grid-cols-2 gap-xs">
+              <!-- Dynamically rendered prompts -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Advanced Password Settings -->
+      <div class="flex flex-col gap-sm">
+        <div class="flex justify-between items-center">
+          <label for="pw-length-slider" class="font-code text-xs text-text-primary uppercase tracking-wider">Password Length</label>
+          <span id="pw-length-val" class="font-code text-sm text-primary font-bold bg-surface-container px-sm py-[2px] rounded border border-primary/30">16</span>
+        </div>
+        <input id="pw-length-slider" type="range" min="4" max="128" value="16" class="w-full cursor-pointer">
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-xs text-xs font-code">
+          <label class="flex items-center gap-xs p-xs bg-surface-container-lowest border border-border/50 rounded cursor-pointer">
+            <input id="pw-opt-uppercase" type="checkbox" checked class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+            <span>Uppercase</span>
+          </label>
+          <label class="flex items-center gap-xs p-xs bg-surface-container-lowest border border-border/50 rounded cursor-pointer">
+            <input id="pw-opt-lowercase" type="checkbox" checked class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+            <span>Lowercase</span>
+          </label>
+          <label class="flex items-center gap-xs p-xs bg-surface-container-lowest border border-border/50 rounded cursor-pointer">
+            <input id="pw-opt-numbers" type="checkbox" checked class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+            <span>Numbers</span>
+          </label>
+          <label class="flex items-center gap-xs p-xs bg-surface-container-lowest border border-border/50 rounded cursor-pointer">
+            <input id="pw-opt-symbols" type="checkbox" checked class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+            <span>Symbols</span>
+          </label>
+        </div>
+
+        <label class="flex items-center gap-xs p-xs bg-surface-container-lowest border border-border/50 rounded cursor-pointer text-xs font-code">
+          <input id="pw-opt-ambiguous" type="checkbox" class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+          <span class="text-text-secondary">Exclude Ambiguous Characters <span class="text-text-muted text-[10px]">(l, 1, I, O, 0, o, |)</span></span>
+        </label>
+      </div>
+
+      <!-- Generated Password Output -->
+      <div class="flex flex-col gap-xs">
+        <label class="font-code text-xs text-text-muted uppercase tracking-wider flex justify-between items-center">
+          <span>Generated Password Output</span>
+          <span class="text-primary/70">Local Web Crypto</span>
+        </label>
+
+        <div class="flex items-center gap-xs bg-bg-main border border-border rounded p-xs md:p-sm relative focus-within:border-primary/80 transition-all">
+          <input id="pw-output-field" readonly type="text" class="w-full bg-transparent font-code text-base md:text-lg text-primary font-bold tracking-wider px-sm py-xs outline-none select-all overflow-x-auto" placeholder="Generating password...">
+          
+          <div class="flex items-center gap-xs shrink-0">
+            <button id="pw-toggle-output-vis" class="bg-surface-container-highest/50 text-text-secondary hover:text-primary p-xs rounded transition-all flex items-center justify-center cursor-pointer" title="Show / Hide Password">
+              <span class="material-symbols-outlined text-[18px]">visibility</span>
+            </button>
+            <button id="pw-refresh-btn" class="bg-surface-container-highest/50 hover:bg-surface-bright text-primary border border-border/60 hover:border-primary/40 p-xs rounded transition-all flex items-center justify-center cursor-pointer" title="Regenerate Password">
+              <span class="material-symbols-outlined text-[18px]">refresh</span>
+            </button>
+            <button id="pw-copy-btn" class="btn-primary flex items-center gap-xs text-xs py-xs px-sm uppercase cursor-pointer" title="Copy to Clipboard">
+              <span class="material-symbols-outlined text-[14px]">content_copy</span>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button id="pw-generate-btn" class="btn-primary w-full py-sm text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-xs cursor-pointer">
+        <span class="material-symbols-outlined text-[18px]">autorenew</span>
+        Generate Password
+      </button>
+
+      <!-- DUAL INDEPENDENT METERS (Strength Meter & Memorability Meter) -->
+      <div class="bg-surface-container-lowest border border-border/60 rounded p-sm flex flex-col gap-sm">
+        
+        <!-- Meter 1: Cryptographic Strength -->
+        <div class="flex flex-col gap-xs">
+          <div class="flex justify-between items-center">
+            <span class="font-code text-xs text-text-secondary uppercase">1. Cryptographic Strength Meter</span>
+            <span id="pw-strength-label" class="font-code text-xs uppercase font-bold text-success">STRONG</span>
+          </div>
+          <div class="flex gap-xs w-full">
+            <div class="pw-strength-bar flex-1 h-2 rounded-xs bg-success transition-all duration-200"></div>
+            <div class="pw-strength-bar flex-1 h-2 rounded-xs bg-success transition-all duration-200"></div>
+            <div class="pw-strength-bar flex-1 h-2 rounded-xs bg-success transition-all duration-200"></div>
+            <div class="pw-strength-bar flex-1 h-2 rounded-xs bg-surface-container-highest transition-all duration-200"></div>
+          </div>
+        </div>
+
+        <!-- Meter 2: Memorability Meter -->
+        <div class="flex flex-col gap-xs border-t border-border/30 pt-xs">
+          <div class="flex justify-between items-center">
+            <span class="font-code text-xs text-text-secondary uppercase">2. Human Memorability Meter</span>
+            <span id="pw-memorability-label" class="font-code text-xs uppercase font-bold text-primary">85% (HIGH RECALL)</span>
+          </div>
+          <div class="w-full bg-surface-container-highest h-2 rounded-xs overflow-hidden">
+            <div id="pw-memorability-bar" class="h-full bg-primary rounded-xs transition-all duration-300 shadow-[0_0_8px_rgba(255,213,151,0.6)]" style="width: 85%;"></div>
+          </div>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="grid grid-cols-3 gap-xs pt-xs border-t border-border/30 text-center font-code">
+          <div class="p-xs bg-surface/50 rounded border border-border/30">
+            <span class="text-[10px] text-text-muted uppercase block">Entropy</span>
+            <span id="pw-entropy-bits" class="text-xs text-primary font-bold">95 bits</span>
+          </div>
+          <div class="p-xs bg-surface/50 rounded border border-border/30">
+            <span class="text-[10px] text-text-muted uppercase block">Est. Offline Crack Time</span>
+            <span id="pw-crack-time" class="text-xs text-text-primary font-semibold truncate block">3.4M years</span>
+          </div>
+          <div class="p-xs bg-surface/50 rounded border border-border/30">
+            <span class="text-[10px] text-text-muted uppercase block">Distribution</span>
+            <div id="pw-char-dist-pills" class="flex flex-wrap gap-[2px] justify-center mt-[2px]">
+              <!-- Pill badges -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Collapsible "Why this password?" Section -->
+      <div class="border border-border/60 rounded bg-surface-container-lowest overflow-hidden">
+        <button id="pw-why-toggle" class="w-full p-xs md:p-sm flex justify-between items-center text-xs font-code text-primary uppercase font-bold hover:bg-surface/50 transition-colors cursor-pointer">
+          <span class="flex items-center gap-xs">
+            <span class="material-symbols-outlined text-[16px]">help_outline</span>
+            Why this password?
+          </span>
+          <span id="pw-why-icon" class="material-symbols-outlined text-[18px] transition-transform duration-200">expand_more</span>
+        </button>
+
+        <div id="pw-why-content" class="p-xs md:p-sm border-t border-border/40 hidden bg-bg-main/50">
+          <ul id="pw-why-list" class="flex flex-col gap-xs">
+            <!-- Dynamically populated explanations -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Session Password History -->
+      <div class="flex flex-col gap-xs">
+        <span class="font-code text-xs text-text-muted uppercase">Current Session Password History</span>
+        <div id="pw-history-list" class="flex flex-col gap-xs">
+          <!-- Dynamically populated history -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB 2: ANALYZE PASSWORD PANEL -->
+    <div id="pw-tab-panel-analyze" class="hidden flex flex-col gap-md">
+      
+      <div class="flex flex-col gap-xs">
+        <label class="font-code text-xs text-text-primary uppercase tracking-wider">Paste or Enter Custom Password to Audit:</label>
+        <div class="flex items-center gap-xs bg-bg-main border border-border rounded p-xs relative focus-within:border-primary/80 transition-all">
+          <input id="pw-analyze-input" type="password" placeholder="Enter password to evaluate..." class="w-full bg-transparent font-code text-base text-primary px-sm py-xs outline-none" />
+          <button id="pw-toggle-analyze-vis" class="bg-surface-container-highest/50 text-text-secondary hover:text-primary p-xs rounded transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-[18px]">visibility</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Real-Time Dual Meters for Custom Password -->
+      <div class="bg-surface-container-lowest border border-border/60 rounded p-sm flex flex-col gap-sm">
+        
+        <div class="flex flex-col gap-xs">
+          <div class="flex justify-between items-center">
+            <span class="font-code text-xs text-text-secondary uppercase">Cryptographic Strength</span>
+            <span id="pw-analyze-strength-label" class="font-code text-xs uppercase font-bold text-text-muted">ENTER PASSWORD</span>
+          </div>
+          <div class="flex gap-xs w-full">
+            <div class="pw-analyze-strength-bar flex-1 h-2 rounded-xs bg-surface-container-highest"></div>
+            <div class="pw-analyze-strength-bar flex-1 h-2 rounded-xs bg-surface-container-highest"></div>
+            <div class="pw-analyze-strength-bar flex-1 h-2 rounded-xs bg-surface-container-highest"></div>
+            <div class="pw-analyze-strength-bar flex-1 h-2 rounded-xs bg-surface-container-highest"></div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-xs border-t border-border/30 pt-xs">
+          <div class="flex justify-between items-center">
+            <span class="font-code text-xs text-text-secondary uppercase">Memorability Score</span>
+            <span id="pw-analyze-memorability-label" class="font-code text-xs uppercase font-bold text-text-muted">0%</span>
+          </div>
+          <div class="w-full bg-surface-container-highest h-2 rounded-xs overflow-hidden">
+            <div id="pw-analyze-memorability-bar" class="h-full bg-primary rounded-xs transition-all duration-300" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Metrics Breakdown Grid -->
+        <div class="grid grid-cols-3 gap-xs pt-xs border-t border-border/30 text-center font-code">
+          <div class="p-xs bg-surface/50 rounded border border-border/30">
+            <span class="text-[10px] text-text-muted uppercase block">Entropy</span>
+            <span id="pw-analyze-entropy-bits" class="text-xs text-primary font-bold">0 bits</span>
+          </div>
+          <div class="p-xs bg-surface/50 rounded border border-border/30">
+            <span class="text-[10px] text-text-muted uppercase block">Est. Crack Time</span>
+            <span id="pw-analyze-crack-time" class="text-xs text-text-primary font-semibold truncate block">N/A</span>
+          </div>
+          <div class="p-xs bg-surface/50 rounded border border-border/30">
+            <span class="text-[10px] text-text-muted uppercase block">Length Rating</span>
+            <span id="pw-analyze-length-rating" class="text-xs text-text-secondary font-semibold block">N/A</span>
+          </div>
+        </div>
+
+        <div id="pw-analyze-dist-pills" class="flex flex-wrap gap-xs justify-center pt-xs">
+          <!-- Character distribution pills -->
+        </div>
+
+      </div>
+
+      <!-- Detected Patterns & Flaws -->
+      <div id="pw-analyze-patterns" class="flex flex-wrap gap-xs">
+        <!-- Pattern Badges -->
+      </div>
+
+      <!-- Weaknesses & Suggestions Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-sm">
+        <div class="p-sm bg-surface-container-lowest border border-border/50 rounded flex flex-col gap-xs">
+          <span class="font-code text-xs text-danger uppercase font-bold flex items-center gap-xs">
+            <span class="material-symbols-outlined text-[16px]">warning</span> Identified Weaknesses
+          </span>
+          <ul id="pw-analyze-weaknesses-list" class="flex flex-col gap-xs">
+            <li class="text-xs text-text-muted">Type or paste a password above to inspect vulnerabilities.</li>
+          </ul>
+        </div>
+
+        <div class="p-sm bg-surface-container-lowest border border-border/50 rounded flex flex-col gap-xs">
+          <span class="font-code text-xs text-primary uppercase font-bold flex items-center gap-xs">
+            <span class="material-symbols-outlined text-[16px]">lightbulb</span> Recommendations
+          </span>
+          <ul id="pw-analyze-suggestions-list" class="flex flex-col gap-xs">
+            <!-- Suggestions -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Smart Recommended Improved Password Box -->
+      <div id="pw-analyze-rec-box" class="p-sm bg-surface-container border border-primary/40 rounded flex flex-col gap-xs hidden">
+        <span class="font-code text-xs text-primary font-bold uppercase flex items-center gap-xs">
+          <span class="material-symbols-outlined text-[16px]">auto_awesome</span> Recommended Structure-Preserving Upgrade
+        </span>
+        <p class="text-xs text-text-secondary">Castle generated an improved version preserving your memory hooks while boosting entropy:</p>
+        <div class="flex items-center justify-between p-xs bg-bg-main border border-border rounded font-code text-sm text-primary font-bold">
+          <span id="pw-analyze-rec-output">---</span>
+          <button id="pw-analyze-copy-rec-btn" class="btn-primary text-xs py-xs px-sm uppercase cursor-pointer">
+            Copy Upgrade
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- UNIFIED HASH TOOLKIT MODAL -->
+<div id="hash-toolkit-modal" class="fixed inset-0 z-50 flex items-center justify-center p-xs md:p-md hidden">
+  <!-- Backdrop -->
+  <div id="hash-toolkit-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+
+  <!-- Modal Content (Tactical Armor Plate) -->
+  <div class="armor-plate bg-surface border border-border/90 rounded-lg p-sm md:p-md max-w-3xl w-full my-auto shadow-2xl relative z-10 flex flex-col gap-sm md:gap-md max-h-[92vh] overflow-y-auto">
+    
+    <!-- Modal Header -->
+    <div class="flex justify-between items-center border-b border-border/50 pb-xs">
+      <div class="flex items-center gap-sm">
+        <div class="p-xs bg-surface-container-highest/60 rounded border border-primary/40 text-primary">
+          <span class="material-symbols-outlined text-[24px]">fingerprint</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-xs">
+            <span class="font-code text-[11px] text-primary/80 uppercase tracking-widest">MODULE // CRYPTO-02</span>
+            <span class="bg-primary/20 text-primary text-[10px] font-code px-xs rounded border border-primary/30 uppercase font-bold">UNIFIED</span>
+          </div>
+          <h2 class="font-headline-sm text-lg md:text-xl text-text-primary uppercase tracking-tight">Hash Toolkit</h2>
+        </div>
+      </div>
+
+      <button id="hash-toolkit-close" class="text-text-muted hover:text-primary transition-colors p-xs rounded hover:bg-surface-container-highest/50 flex items-center justify-center cursor-pointer" title="Close Workspace">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
+    </div>
+
+    <!-- Visible Privacy Guarantee Notice -->
+    <div class="p-xs md:p-sm bg-surface-container-lowest border border-primary/30 rounded flex items-center gap-xs text-xs font-code text-primary/90">
+      <span class="material-symbols-outlined text-[18px] text-primary shrink-0">lock</span>
+      <span>Runs entirely in your browser — nothing you upload here ever leaves your device.</span>
+    </div>
+
+    <!-- Workspace Tab Selector (ARIA Role tablist) -->
+    <div role="tablist" aria-label="Hash Toolkit Tabs" class="flex gap-xs bg-bg-main p-xs rounded border border-border/60">
+      <button id="hash-tab-btn-learn" role="tab" aria-selected="true" aria-controls="hash-tab-panel-learn" data-tab-name="learn" tabindex="0" class="flex-1 py-xs md:py-sm px-md text-xs md:text-sm font-headline-sm font-semibold rounded border border-primary bg-primary/20 text-primary transition-all flex items-center justify-center gap-xs uppercase tracking-wider cursor-pointer outline-none focus:ring-1 focus:ring-primary">
+        <span class="material-symbols-outlined text-[16px]">school</span>
+        <span>Learn</span>
+      </button>
+
+      <button id="hash-tab-btn-generate" role="tab" aria-selected="false" aria-controls="hash-tab-panel-generate" data-tab-name="generate" tabindex="-1" class="flex-1 py-xs md:py-sm px-md text-xs md:text-sm font-headline-sm font-semibold rounded border border-border/50 bg-surface-container-lowest text-text-secondary hover:text-on-surface hover:border-outline transition-all flex items-center justify-center gap-xs uppercase tracking-wider cursor-pointer outline-none focus:ring-1 focus:ring-primary">
+        <span class="material-symbols-outlined text-[16px]">tag</span>
+        <span>Generate</span>
+      </button>
+
+      <button id="hash-tab-btn-verify" role="tab" aria-selected="false" aria-controls="hash-tab-panel-verify" data-tab-name="verify" tabindex="-1" class="flex-1 py-xs md:py-sm px-md text-xs md:text-sm font-headline-sm font-semibold rounded border border-border/50 bg-surface-container-lowest text-text-secondary hover:text-on-surface hover:border-outline transition-all flex items-center justify-center gap-xs uppercase tracking-wider cursor-pointer outline-none focus:ring-1 focus:ring-primary">
+        <span class="material-symbols-outlined text-[16px]">verified</span>
+        <span>Verify</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: LEARN PANEL -->
+    <div id="hash-tab-panel-learn" role="tabpanel" aria-labelledby="hash-tab-btn-learn" class="flex flex-col gap-md">
+      <!-- Section A: Plain-language explainer -->
+      <div class="p-sm bg-surface-container-lowest border border-border/60 rounded flex flex-col gap-xs">
+        <span class="font-code text-xs text-primary font-bold uppercase flex items-center gap-xs">
+          <span class="material-symbols-outlined text-[16px]">info</span> What is a Hash?
+        </span>
+        <p class="text-xs md:text-sm text-text-secondary leading-relaxed">
+          A hash is like a fingerprint for data. Feed it any text or file, and it spits out a fixed-length string of letters and numbers. The same input always produces the exact same hash. Change even a single character of the input, and the hash comes out completely different. And it only works one way — you can't take a hash and reverse it back into the original data.
+        </p>
+      </div>
+
+      <!-- Section B: Live avalanche-effect demo -->
+      <div class="p-sm bg-surface-container-lowest border border-border/60 rounded flex flex-col gap-sm">
+        <span class="font-code text-xs text-primary font-bold uppercase flex items-center gap-xs">
+          <span class="material-symbols-outlined text-[16px]">bolt</span> Live Avalanche Effect Demo
+        </span>
+        <div class="flex flex-col gap-xs">
+          <label for="hash-learn-input" class="font-code text-xs text-text-muted uppercase">Input Text:</label>
+          <input id="hash-learn-input" type="text" placeholder="Type something…" value="Castle Security" class="w-full bg-bg-main border border-border rounded px-sm py-xs text-xs md:text-sm font-code text-primary focus:border-primary focus:outline-none transition-all" />
+        </div>
+
+        <div class="flex flex-col gap-xs">
+          <span class="font-code text-xs text-text-muted uppercase">Live SHA-256 Digest:</span>
+          <div class="hash-avalanche-container bg-bg-main border border-border rounded p-xs md:p-sm transition-all duration-300">
+            <span id="hash-learn-output" class="font-code text-xs md:text-sm text-primary font-bold tracking-wider select-all break-all">...</span>
+          </div>
+          <span class="text-[11px] font-code text-text-muted italic">
+            Try changing just one letter above and watch the hash completely change.
+          </span>
+        </div>
+      </div>
+
+      <!-- Section C: Where you'll actually see this -->
+      <div class="p-sm bg-surface-container-lowest border border-border/60 rounded flex flex-col gap-sm">
+        <span class="font-code text-xs text-primary font-bold uppercase flex items-center gap-xs">
+          <span class="material-symbols-outlined text-[16px]">visibility</span> Where You'll Actually See This
+        </span>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-xs font-code text-xs">
+          <li class="p-xs bg-bg-main/60 border border-border/40 rounded text-text-secondary flex items-start gap-xs">
+            <span class="text-primary font-bold">1.</span>
+            <span><strong>Password storage</strong> — websites store a hash of your password, never the password itself.</span>
+          </li>
+          <li class="p-xs bg-bg-main/60 border border-border/40 rounded text-text-secondary flex items-start gap-xs">
+            <span class="text-primary font-bold">2.</span>
+            <span><strong>File downloads</strong> — publishers list a hash so you can confirm your download wasn't corrupted or tampered with.</span>
+          </li>
+          <li class="p-xs bg-bg-main/60 border border-border/40 rounded text-text-secondary flex items-start gap-xs">
+            <span class="text-primary font-bold">3.</span>
+            <span><strong>Git commits</strong> — every saved code change gets an ID that's a hash of that change's content.</span>
+          </li>
+          <li class="p-xs bg-bg-main/60 border border-border/40 rounded text-text-secondary flex items-start gap-xs">
+            <span class="text-primary font-bold">4.</span>
+            <span><strong>Docker images</strong> — container images have an ID that's a hash of everything inside them, so two people can confirm they have the exact same image.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TAB 2: GENERATE PANEL -->
+    <div id="hash-tab-panel-generate" role="tabpanel" aria-labelledby="hash-tab-btn-generate" class="hidden flex flex-col gap-md">
+      <!-- 1. Source toggle -->
+      <div class="flex flex-col gap-xs">
+        <label class="font-code text-xs text-text-muted uppercase">Select Input Source:</label>
+        <div class="flex gap-xs bg-bg-main p-xs rounded border border-border/60">
+          <button id="hash-gen-source-text" class="flex-1 py-xs px-sm rounded font-code text-xs font-bold uppercase transition-all bg-primary/20 text-primary border border-primary/50 cursor-pointer">Text Mode</button>
+          <button id="hash-gen-source-file" class="flex-1 py-xs px-sm rounded font-code text-xs font-bold uppercase transition-all bg-surface-container-lowest text-text-secondary border border-border/50 hover:text-on-surface cursor-pointer">File Mode</button>
+        </div>
+      </div>
+
+      <!-- Text input container -->
+      <div id="hash-gen-text-panel" class="flex flex-col gap-xs">
+        <label for="hash-gen-text-input" class="font-code text-xs text-text-muted uppercase">Enter Text to Hash:</label>
+        <textarea id="hash-gen-text-input" rows="3" placeholder="Enter text to hash…" class="w-full bg-bg-main border border-border rounded p-sm font-code text-xs md:text-sm text-primary focus:border-primary focus:outline-none"></textarea>
+      </div>
+
+      <!-- File input container -->
+      <div id="hash-gen-file-panel" class="hidden flex flex-col gap-xs">
+        <label class="font-code text-xs text-text-muted uppercase">Select or Drop File to Hash:</label>
+        <div id="hash-gen-dropzone" class="armor-plate p-md rounded border-2 border-dashed border-border/80 hover:border-primary/80 transition-all cursor-pointer flex flex-col items-center justify-center gap-xs text-center">
+          <span class="material-symbols-outlined text-[32px] text-primary">cloud_upload</span>
+          <span class="font-code text-xs text-text-primary">Drag & drop any file here, or click to browse</span>
+          <span class="text-[10px] font-code text-text-muted">Files up to several hundred MB are processed locally</span>
+          <input id="hash-gen-file-input" type="file" class="hidden" />
+        </div>
+        <div id="hash-gen-file-info"></div>
+      </div>
+
+      <!-- 2. Algorithm checkboxes -->
+      <div class="flex flex-col gap-xs">
+        <label class="font-code text-xs text-text-muted uppercase">Select Hashing Algorithms:</label>
+        <div class="flex flex-wrap gap-sm p-xs bg-surface-container-lowest rounded border border-border/50 font-code text-xs">
+          <label class="flex items-center gap-xs cursor-pointer">
+            <input type="checkbox" name="hash-gen-algo" value="MD5" class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+            <span>MD5</span>
+            <span class="text-[10px] px-xs rounded bg-warning/10 text-warning border border-warning/30">Broken for security use — fine for basic integrity checks only.</span>
+          </label>
+          <label class="flex items-center gap-xs cursor-pointer">
+            <input type="checkbox" name="hash-gen-algo" value="SHA-1" class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+            <span>SHA-1</span>
+            <span class="text-[10px] px-xs rounded bg-warning/10 text-warning border border-warning/30">Broken for security use — fine for basic integrity checks only.</span>
+          </label>
+          <label class="flex items-center gap-xs cursor-pointer">
+            <input type="checkbox" name="hash-gen-algo" value="SHA-256" checked class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+            <span>SHA-256</span>
+          </label>
+          <label class="flex items-center gap-xs cursor-pointer">
+            <input type="checkbox" name="hash-gen-algo" value="SHA-512" class="rounded bg-surface-container border-border text-primary focus:ring-primary/50">
+            <span>SHA-512</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div id="hash-gen-progress" class="hidden flex flex-col gap-xs p-xs bg-bg-main border border-border/60 rounded">
+        <div class="flex justify-between items-center text-xs font-code">
+          <span id="hash-gen-progress-text" class="text-primary font-bold">Hashing… 0%</span>
+          <span class="material-symbols-outlined text-[16px] animate-spin text-primary">sync</span>
+        </div>
+        <div class="w-full bg-surface-container-highest h-2 rounded-xs overflow-hidden">
+          <div id="hash-gen-progress-bar" class="h-full bg-primary rounded-xs transition-all duration-150" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- 3. Results area -->
+      <div id="hash-gen-results" class="flex flex-col gap-xs">
+        <!-- Results populated dynamically -->
+      </div>
+    </div>
+
+    <!-- TAB 3: VERIFY PANEL -->
+    <div id="hash-tab-panel-verify" role="tabpanel" aria-labelledby="hash-tab-btn-verify" class="hidden flex flex-col gap-md">
+      <!-- Persistent info line -->
+      <div class="p-xs bg-surface-container-lowest border border-border/50 rounded text-xs font-code text-text-muted flex items-center gap-xs">
+        <span class="material-symbols-outlined text-[16px] text-primary shrink-0">info</span>
+        <span>To verify a file, you need either a second copy of it, or a hash published by whoever you got it from — this tool compares what you give it, it can't know the 'correct' hash on its own.</span>
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="flex gap-xs bg-bg-main p-xs rounded border border-border/60">
+        <button id="hash-verify-toggle-a" class="flex-1 py-xs px-sm rounded font-code text-xs font-bold uppercase transition-all bg-primary/20 text-primary border border-primary/50 cursor-pointer">Compare to a known hash</button>
+        <button id="hash-verify-toggle-b" class="flex-1 py-xs px-sm rounded font-code text-xs font-bold uppercase transition-all bg-surface-container-lowest text-text-secondary border border-border/50 hover:text-on-surface cursor-pointer">Compare two files</button>
+      </div>
+
+      <!-- MODE A PANEL -->
+      <div id="hash-verify-panel-a" class="flex flex-col gap-md">
+        <div class="flex flex-col gap-xs">
+          <label class="font-code text-xs text-text-muted uppercase">1. File to Verify:</label>
+          <div id="hash-verify-modea-dropzone" class="armor-plate p-md rounded border-2 border-dashed border-border/80 hover:border-primary/80 transition-all cursor-pointer flex flex-col items-center justify-center gap-xs text-center">
+            <span class="material-symbols-outlined text-[32px] text-primary">cloud_upload</span>
+            <span class="font-code text-xs text-text-primary">Drag & drop file to verify, or click to browse</span>
+            <input id="hash-verify-modea-file-input" type="file" class="hidden" />
+          </div>
+          <div id="hash-verify-modea-file-info"></div>
+        </div>
+
+        <div class="flex flex-col gap-xs">
+          <label for="hash-verify-modea-expected" class="font-code text-xs text-text-muted uppercase">2. Expected Hash Value:</label>
+          <input id="hash-verify-modea-expected" type="text" placeholder="Paste the hash you're checking against…" class="w-full bg-bg-main border border-border rounded px-sm py-xs text-xs md:text-sm font-code text-primary focus:border-primary focus:outline-none transition-all" />
+          <span class="text-[10px] font-code text-text-muted">Algorithm will be auto-detected by length (MD5: 32, SHA-1: 40, SHA-256: 64, SHA-512: 128)</span>
+        </div>
+
+        <div id="hash-verify-modea-validation"></div>
+
+        <div id="hash-verify-modea-progress" class="hidden flex flex-col gap-xs p-xs bg-bg-main border border-border/60 rounded">
+          <div class="flex justify-between items-center text-xs font-code">
+            <span id="hash-verify-modea-progress-text" class="text-primary font-bold">Computing digest… 0%</span>
+            <span class="material-symbols-outlined text-[16px] animate-spin text-primary">sync</span>
+          </div>
+          <div class="w-full bg-surface-container-highest h-2 rounded-xs overflow-hidden">
+            <div id="hash-verify-modea-progress-bar" class="h-full bg-primary rounded-xs transition-all duration-150" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div id="hash-verify-modea-result"></div>
+      </div>
+
+      <!-- MODE B PANEL (Side-by-side on desktop, stacked on mobile) -->
+      <div id="hash-verify-panel-b" class="hidden flex flex-col gap-md">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+          <div class="flex flex-col gap-xs">
+            <label class="font-code text-xs text-text-muted uppercase">File A:</label>
+            <div id="hash-verify-modeb-dropzone-a" class="armor-plate p-md rounded border-2 border-dashed border-border/80 hover:border-primary/80 transition-all cursor-pointer flex flex-col items-center justify-center gap-xs text-center">
+              <span class="material-symbols-outlined text-[28px] text-primary">upload_file</span>
+              <span class="font-code text-xs text-text-primary">Drop File A</span>
+              <input id="hash-verify-modeb-file-a" type="file" class="hidden" />
+            </div>
+            <div id="hash-verify-modeb-info-a"></div>
+          </div>
+
+          <div class="flex flex-col gap-xs">
+            <label class="font-code text-xs text-text-muted uppercase">File B:</label>
+            <div id="hash-verify-modeb-dropzone-b" class="armor-plate p-md rounded border-2 border-dashed border-border/80 hover:border-primary/80 transition-all cursor-pointer flex flex-col items-center justify-center gap-xs text-center">
+              <span class="material-symbols-outlined text-[28px] text-primary">upload_file</span>
+              <span class="font-code text-xs text-text-primary">Drop File B</span>
+              <input id="hash-verify-modeb-file-b" type="file" class="hidden" />
+            </div>
+            <div id="hash-verify-modeb-info-b"></div>
+          </div>
+        </div>
+
+        <div id="hash-verify-modeb-progress" class="hidden flex flex-col gap-xs p-xs bg-bg-main border border-border/60 rounded">
+          <div class="flex justify-between items-center text-xs font-code">
+            <span id="hash-verify-modeb-progress-text" class="text-primary font-bold">Comparing files via SHA-256… 0%</span>
+            <span class="material-symbols-outlined text-[16px] animate-spin text-primary">sync</span>
+          </div>
+          <div class="w-full bg-surface-container-highest h-2 rounded-xs overflow-hidden">
+            <div id="hash-verify-modeb-progress-bar" class="h-full bg-primary rounded-xs transition-all duration-150" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div id="hash-verify-modeb-result"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- AES STUDIO MODAL -->
+<div id="aes-studio-modal" class="fixed inset-0 z-50 flex items-center justify-center p-xs md:p-md hidden">
+  <div id="aes-studio-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+  <div class="armor-plate bg-surface border border-border/90 rounded-lg p-sm md:p-md max-w-3xl w-full my-auto shadow-2xl relative z-10 flex flex-col gap-sm max-h-[92vh] overflow-y-auto">
+    <div class="flex items-center justify-between gap-sm"><div><p class="text-primary text-[10px] font-code uppercase tracking-wider">Cryptography workspace</p><h2 class="font-headline-sm text-lg text-text-primary uppercase">AES Studio</h2></div><button id="aes-studio-close" class="text-text-muted hover:text-primary p-xs" title="Close AES Studio" aria-label="Close AES Studio"><span class="material-symbols-outlined">close</span></button></div>
+    <p class="p-xs border border-primary/30 bg-primary/5 text-xs text-text-secondary rounded">Everything happens locally inside your browser. Castle never stores or uploads your files, text, or passphrases.</p>
+    <div role="tablist" aria-label="AES Studio tabs" class="flex gap-xs bg-bg-main p-xs rounded border border-border/60"><button role="tab" aria-selected="true" aria-controls="aes-panel-learn" data-tab-name="learn" tabindex="0" class="flex-1 py-xs md:py-sm px-md text-xs md:text-sm font-headline-sm font-semibold rounded border border-primary bg-primary/20 text-primary transition-all uppercase cursor-pointer">Learn</button><button role="tab" aria-selected="false" aria-controls="aes-panel-encrypt" data-tab-name="encrypt" tabindex="-1" class="flex-1 py-xs md:py-sm px-md text-xs md:text-sm font-headline-sm font-semibold rounded border border-border/50 bg-surface-container-lowest text-text-secondary transition-all uppercase cursor-pointer">Encrypt</button><button role="tab" aria-selected="false" aria-controls="aes-panel-decrypt" data-tab-name="decrypt" tabindex="-1" class="flex-1 py-xs md:py-sm px-md text-xs md:text-sm font-headline-sm font-semibold rounded border border-border/50 bg-surface-container-lowest text-text-secondary transition-all uppercase cursor-pointer">Decrypt</button></div>
+    <div id="aes-panel-learn" data-aes-panel="learn" role="tabpanel" class="flex flex-col gap-sm"><div class="grid md:grid-cols-2 gap-sm"><div class="armor-plate p-sm rounded"><h3 class="text-primary font-code text-sm">Encryption vs Hashing</h3><p class="text-xs text-text-secondary">Hashing is one-way and verifies data has not changed. Encryption is two-way and keeps data secret from anyone without the key.</p></div><div class="armor-plate p-sm rounded"><h3 class="text-primary font-code text-sm">Why AES-256-GCM</h3><p class="text-xs text-text-secondary">AES is used by banks, cloud storage, hospitals, password managers, and secure messaging. GCM also detects changes.</p></div><div class="armor-plate p-sm rounded"><h3 class="text-primary font-code text-sm">Keys, salt, and IV</h3><p class="text-xs text-text-secondary">A passphrase is strengthened with PBKDF2 and a salt. A new IV ensures each encryption is unique.</p></div><div class="armor-plate p-sm rounded"><h3 class="text-primary font-code text-sm">Symmetric encryption</h3><p class="text-xs text-text-secondary">The same secret encrypts and decrypts. Never send it with the encrypted file.</p></div></div><div class="armor-plate p-sm rounded border-primary/30"><h3 class="text-primary font-code text-sm">Why encryption mode matters</h3><div class="grid grid-cols-2 gap-sm mt-xs"><div><canvas id="aes-ecb-canvas" class="w-full border border-border rounded" aria-label="ECB-encrypted image retains a visible pattern"></canvas><p class="text-xs text-warning">ECB: the pattern remains visible.</p></div><div><canvas id="aes-gcm-canvas" class="w-full border border-border rounded" aria-label="GCM encrypted image appears as random noise"></canvas><p class="text-xs text-success">GCM: encrypted data looks like noise.</p></div></div><p class="text-xs text-text-secondary mt-xs">Castle only lets you encrypt in GCM mode for this reason.</p></div><div class="armor-plate p-sm rounded border-primary/30"><h3 class="text-primary font-code text-sm">Two-way encryption flow</h3><div class="grid grid-cols-3 items-center gap-xs text-center text-xs font-code"><span>Plaintext</span><span>AES-256-GCM</span><span>Ciphertext</span><span class="material-symbols-outlined text-primary">article</span><span class="material-symbols-outlined text-primary animate-pulse">lock</span><span class="material-symbols-outlined text-primary">encrypted</span></div></div><details class="armor-plate p-sm rounded"><summary class="cursor-pointer text-primary font-code text-sm">Advanced: AES round visualizer</summary><div class="mt-sm flex flex-col gap-xs"><input id="aes-round-input" value="castle" class="bg-bg-main border border-border rounded px-sm py-xs text-xs font-code"><button id="aes-round-next" class="text-left text-primary text-xs font-bold uppercase">Next step</button><code id="aes-round-output" class="text-xs text-text-secondary break-all">Choose a sample and step through a conceptual AES round.</code></div></details></div>
+    <div id="aes-panel-encrypt" data-aes-panel="encrypt" role="tabpanel" class="hidden flex flex-col gap-sm"><div class="flex gap-xs"><button id="aes-encrypt-source-text" class="flex-1 py-xs px-sm rounded font-code text-xs font-bold uppercase transition-all border cursor-pointer bg-primary/20 text-primary border-primary/50">Text</button><button id="aes-encrypt-source-file" class="flex-1 py-xs px-sm rounded font-code text-xs font-bold uppercase transition-all border cursor-pointer bg-surface-container-lowest text-text-secondary border-border/50">File</button></div><textarea id="aes-plain-text" class="w-full min-h-28 bg-bg-main border border-border rounded p-sm text-sm font-code text-text-primary" placeholder="Text to encrypt locally"></textarea><div id="aes-encrypt-file-area" class="hidden"><div id="aes-encrypt-dropzone" class="armor-plate p-md rounded border-2 border-dashed border-border/80 cursor-pointer text-center text-xs font-code"><span class="material-symbols-outlined text-primary">upload_file</span><p>Drop a file or click to browse</p><input id="aes-encrypt-file" type="file" class="hidden"></div><p id="aes-encrypt-file-info" class="text-xs text-primary"></p></div><p id="aes-advisor" class="text-xs text-text-secondary">Plain text is protected locally with a fresh IV and authenticated encryption.</p><div class="flex gap-xs"><button id="aes-key-passphrase" class="flex-1 py-xs px-sm rounded font-code text-xs font-bold uppercase transition-all border cursor-pointer bg-primary/20 text-primary border-primary/50">Passphrase</button><button id="aes-key-random" class="flex-1 py-xs px-sm rounded font-code text-xs font-bold uppercase transition-all border cursor-pointer bg-surface-container-lowest text-text-secondary border-border/50">Random key</button></div><div id="aes-passphrase-area"><input id="aes-passphrase" type="password" class="w-full bg-bg-main border border-border rounded px-sm py-xs text-sm font-code" placeholder="Secret passphrase"><p id="aes-passphrase-analysis" class="text-xs text-text-secondary mt-xs"></p><button id="aes-open-password" class="text-primary text-xs font-bold uppercase">Generate strong passphrase</button></div><p id="aes-random-key-warning" class="hidden p-xs border border-warning/50 bg-warning/10 text-warning text-xs">The generated key is the only recovery path. Store it separately.</p><button id="aes-encrypt-run" class="py-sm bg-primary/20 text-primary border border-primary/50 font-label-md rounded uppercase cursor-pointer">Encrypt locally</button><div id="aes-encrypt-progress" class="hidden h-2 bg-bg-main rounded overflow-hidden"><div id="aes-encrypt-progress-bar" class="h-full bg-primary" style="width:0%"></div></div><div id="aes-encrypt-result"></div></div>
+    <div id="aes-panel-decrypt" data-aes-panel="decrypt" role="tabpanel" class="hidden flex flex-col gap-sm"><textarea id="aes-cipher-text" class="w-full min-h-24 bg-bg-main border border-border rounded p-sm text-xs font-code" placeholder="Paste Castle ciphertext, or use an encrypted file below"></textarea><div id="aes-decrypt-dropzone" class="armor-plate p-md rounded border-2 border-dashed border-border/80 cursor-pointer text-center text-xs font-code"><span class="material-symbols-outlined text-primary">file_open</span><p>Drop encrypted file or click to browse</p><input id="aes-decrypt-file" type="file" class="hidden"></div><p id="aes-decrypt-file-info" class="text-xs text-primary"></p><p id="aes-decrypt-mode" class="text-xs text-text-secondary">The encrypted payload identifies whether it needs a passphrase or random key.</p><input id="aes-decrypt-secret" type="password" class="w-full bg-bg-main border border-border rounded px-sm py-xs text-sm font-code" placeholder="Passphrase or saved random key"><button id="aes-decrypt-run" class="py-sm bg-primary/20 text-primary border border-primary/50 font-label-md rounded uppercase cursor-pointer">Decrypt locally</button><div id="aes-decrypt-progress" class="hidden h-2 bg-bg-main rounded overflow-hidden"><div id="aes-decrypt-progress-bar" class="h-full bg-primary" style="width:0%"></div></div><div id="aes-decrypt-result"></div></div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/password/entropy.js"></script>
+<script src="js/password/questions.js"></script>
+<script src="js/password/transformations.js"></script>
+<script src="js/password/generator.js"></script>
+<script src="js/password/analysis.js"></script>
+<script src="js/password/ui.js"></script>
+<script src="js/hash/md5.js"></script>
+<script src="js/hash/crypto.js"></script>
+<script src="js/hash/learn.js"></script>
+<script src="js/hash/generator.js"></script>
+<script src="js/hash/verifier.js"></script>
+<script src="js/hash/ui.js"></script>
+<script src="js/hash-toolkit.js"></script>
+<script src="js/aes/crypto.js"></script>
+<script src="js/aes/advisor.js"></script>
+<script src="js/aes/coach.js"></script>
+<script src="js/aes/learn.js"></script>
+<script src="js/aes/encrypt.js"></script>
+<script src="js/aes/decrypt.js"></script>
+<script src="js/aes/ui.js"></script>
+<script src="js/ui/tooltip.js"></script>
+<script src="js/url-phishing/heuristics.js"></script>
+<script src="js/url-phishing/learn.js"></script>
+<script src="js/url-phishing/analyze.js"></script>
+<script src="js/url-phishing/build.js"></script>
+<script src="js/url-phishing/ui.js"></script>
+<script src="js/jwt/crypto.js"></script>
+<script src="js/jwt/claims.js"></script>
+<script src="js/jwt/learn.js"></script>
+<script src="js/jwt/decode.js"></script>
+<script src="js/jwt/build.js"></script>
+<script src="js/jwt/tests.js"></script>
+<script src="js/jwt/ui.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style="width: 1280px; height: 2066px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CASTLE // Defensive Cryptography Workspace &amp; Client-Side Security Suite</title>
+<!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#000000',
+              surface: '#090909',
+              surfaceCard: '#0D0D0D',
+              surfaceAlt: '#070707',
+              border: '#1A1A1A',
+              borderSubtle: '#141414',
+              orange: '#FF6A00',
+              orangeMuted: 'rgba(255, 106, 0, 0.10)',
+              orangeGlow: 'rgba(255, 106, 0, 0.18)',
+              emerald: '#10B981',
+            }
+          },
+          fontFamily: {
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Inter"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Base & Precision Technical Grid Styling -->
+<style data-purpose="base-styling">
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    .bg-tech-grid {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+
+    ::selection {
+      background: #FF6A00;
+      color: #000000;
+    }
+
+    /* Tactile high-precision defense card micro-interactions */
+    .hero-tool-card {
+      position: relative;
+      background: #090909;
+      border: 1px solid #1C1C1C;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-tool-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 106, 0, 0.55);
+      box-shadow: 0 16px 36px -12px rgba(255, 106, 0, 0.15), 0 0 0 1px rgba(255, 106, 0, 0.25);
+    }
+
+    .hero-tool-card::before,
+    .hero-tool-card::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .hero-tool-card::before {
+      top: -1px;
+      left: -1px;
+      border-top: 2px solid #FF6A00;
+      border-left: 2px solid #FF6A00;
+    }
+
+    .hero-tool-card::after {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 2px solid #FF6A00;
+      border-right: 2px solid #FF6A00;
+    }
+
+    .hero-tool-card:hover::before,
+    .hero-tool-card:hover::after {
+      opacity: 1;
+    }
+</style>
+</head>
+<body class="min-h-screen bg-black text-gray-200 antialiased bg-tech-grid flex flex-col selection:bg-brand-orange selection:text-black">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 w-full bg-brand-black/95 backdrop-blur-md border-b border-[#161616]">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-15 py-3.5 flex items-center justify-between">
+<!-- Brand & Version Indicator -->
+<div class="flex items-center space-x-6">
+<a class="flex items-center space-x-3 group" data-purpose="site-logo" href="#">
+<div class="w-7 h-7 rounded border border-brand-orange/40 bg-[#0E0E0E] flex items-center justify-center p-1 group-hover:border-brand-orange transition-colors">
+<svg class="w-4 h-4 text-brand-orange" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+<path d="M9 10h6"></path>
+<path d="M12 7v6"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<span class="font-heading font-bold text-sm tracking-wider text-white group-hover:text-brand-orange transition-colors">CASTLE</span>
+<span class="font-mono text-[8px] uppercase tracking-widest text-zinc-500 font-medium">CRYPTOGRAPHIC SUITE</span>
+</div>
+</a>
+<!-- Desktop Navigation Items -->
+<nav class="hidden md:flex items-center space-x-6 font-mono text-[11px] uppercase tracking-wider text-zinc-400">
+<a class="hover:text-white transition-colors text-white border-b-2 border-brand-orange py-4 -mb-[1px]" href="#modules">Tool Suite</a>
+<a class="hover:text-white transition-colors py-4" href="#philosophy">Zero-Knowledge Architecture</a>
+<a class="hover:text-white transition-colors py-4" href="#docs">Docs</a>
+</nav>
+</div>
+<!-- Right Telemetry & Interactive Actions -->
+<div class="flex items-center space-x-3">
+<div class="hidden lg:flex items-center space-x-2 px-2.5 py-1 rounded bg-[#0A0A0A] border border-[#1E1E1E]">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="font-mono text-[10px] uppercase font-medium text-zinc-300 tracking-wider">AIR-GAPPED ENGINE</span>
+</div>
+<a class="inline-flex items-center space-x-2 px-3 py-1.5 bg-brand-orange hover:bg-[#ff7b1a] text-black font-heading font-semibold text-xs tracking-wider uppercase rounded transition-all shadow-[0_0_12px_-2px_rgba(255,106,0,0.4)]" href="#modules">
+<span class="">Access Tools</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</a>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: MainContent -->
+<main class="flex-grow">
+<!-- BEGIN: HeroSection (Tightened, Editorial, Non-Pushing Hero) -->
+<section class="relative pt-8 pb-7 md:pt-12 md:pb-8 border-b border-[#141414] overflow-hidden" data-purpose="hero-section">
+<!-- Ambient Subtle Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[180px] bg-brand-orange/[0.04] blur-[90px] pointer-events-none rounded-full"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<!-- Top Eyebrow Tag -->
+<div class="flex items-center space-x-2 mb-3">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-orange animate-pulse"></span>
+<span class="font-mono text-[10px] uppercase tracking-widest text-brand-orange font-semibold">CASTLE // CLIENT RUNTIME V2.4</span>
+</div>
+<!-- Core Editorial Headline & Summary Grid -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-5 pb-5">
+<div class="max-w-3xl"><div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6 mb-2"><div class="relative w-28 h-28 md:w-36 md:h-36 shrink-0 flex items-center justify-center"><threejs-scene src="{{DATA:ANIMATION:ANIMATION_138}}" class="w-full h-full bg-transparent"></threejs-scene></div><div class="flex-1"><h1 class="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold tracking-tight text-white uppercase leading-[1.05]">CASTLE&nbsp;<span class="text-brand-orange">:</span> CYBERSECURITY &amp; ANALYSIS TOOLKIT<br class="hidden sm:inline"><span class="text-zinc-400 font-medium text-2xl sm:text-3xl lg:text-4xl block mt-1 tracking-normal">FOR LEARNING AND EVALUATION</span></h1></div></div><p class="mt-2 text-zinc-400 text-sm md:text-base leading-relaxed font-sans max-w-2xl">CASTLE delivers browser-native security utilities to audit passwords, compute cryptographic checksums, encrypt confidential data with AES-256-GCM, inspect web tokens, and dissect suspicious hyperlinks. Zero telemetry, zero server persistence.</p></div>
+<!-- Telemetry Strip (Compact, live technical status) -->
+<div class="flex flex-wrap lg:flex-nowrap items-center gap-2 pt-1 font-mono text-[10px] uppercase text-zinc-300">
+<div class="flex items-center space-x-2 px-2.5 py-1.5 rounded bg-[#090909] border border-[#1A1A1A]">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+<span class="">100% Local WebCrypto</span>
+</div>
+<div class="flex items-center space-x-2 px-2.5 py-1.5 rounded bg-[#090909] border border-[#1A1A1A]">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-orange"></span>
+<span class="">0 KB Server Storage</span>
+</div>
+<div class="flex items-center space-x-2 px-2.5 py-1.5 rounded bg-[#090909] border border-[#1A1A1A]">
+<span class="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
+<span class="">Air-Gapped Client Thread</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: CoreToolCardsGrid (The Hero of the Page: 3 + 2 Balanced Grid with Distinct Vector Motifs) -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-7 pb-20" data-purpose="core-tools-grid" id="modules">
+<!-- Top Modular Toolbar Strip -->
+<div class="flex items-center justify-between pb-6 border-b border-[#151515] mb-8">
+<div class="flex items-center space-x-3">
+<span class="font-heading font-bold text-xs uppercase tracking-wider text-white">Active Defense Modules</span>
+<span class="font-mono text-[10px] bg-[#121212] text-brand-orange border border-brand-orange/30 px-1.5 py-0.5 rounded">5/5 READY</span>
+</div>
+<div class="hidden sm:flex items-center space-x-4 font-mono text-[11px] text-zinc-500">
+<span class="">[W3C WebCrypto Supported]</span>
+<span class="text-zinc-600">//</span>
+<span class="">[Zero Network I/O]</span>
+</div>
+</div>
+<!-- 5 Tool Cards Grid: Row 1 = 3 cards, Row 2 = 2 centered/wide-balanced cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- TOOL 1: Password Workspace -->
+<a class="hero-tool-card rounded-lg p-6 flex flex-col justify-between group cursor-pointer" data-purpose="card-password" href="#">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between border-b border-[#181818] pb-3 mb-5">
+<div class="flex items-center space-x-2">
+<span class="font-mono text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30">AUTH-01</span>
+<span class="font-mono text-[10px] uppercase text-zinc-500">ENTROPY ENGINE</span>
+</div>
+<span class="font-mono text-[9px] text-zinc-600 uppercase">SYS // SEC</span>
+</div>
+<!-- Distinctive Vector Linework Motif: Geometric Vault Key / Stepped Lock Cipher Motif -->
+<div class="w-full h-32 rounded bg-[#050505] border border-[#161616] mb-5 flex items-center justify-center relative overflow-hidden group-hover:border-brand-orange/30 transition-colors">
+<div class="absolute inset-0 bg-tech-grid opacity-30"></div>
+<svg class="w-48 h-24 text-zinc-600 group-hover:text-zinc-400 transition-colors relative z-10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" viewBox="0 0 192 96">
+<!-- Stepped geometric cipher lock structure -->
+<rect height="44" stroke="#262626" width="44" x="24" y="26"></rect>
+<rect height="28" stroke="#333333" width="28" x="32" y="34"></rect>
+<circle cx="46" cy="48" fill="#FF6A00" fill-opacity="0.15" r="7" stroke="#FF6A00" stroke-width="1.5"></circle>
+<!-- Extended precision key shaft & stepped bittings -->
+<line stroke="#FF6A00" stroke-width="1.5" x1="46" x2="152" y1="48" y2="48"></line>
+<line stroke="#FF6A00" stroke-width="1.5" x1="88" x2="88" y1="48" y2="34"></line>
+<line stroke="#FF6A00" stroke-width="1.5" x1="104" x2="104" y1="48" y2="38"></line>
+<line stroke="#FF6A00" stroke-width="1.5" x1="124" x2="124" y1="48" y2="30"></line>
+<line stroke="#FF6A00" stroke-width="1.5" x1="138" x2="138" y1="48" y2="36"></line>
+<line stroke="#FF6A00" stroke-width="1.5" x1="152" x2="152" y1="48" y2="28"></line>
+<!-- Reticle alignment notches -->
+<line stroke="#444" stroke-dasharray="2 2" x1="46" x2="46" y1="12" y2="84"></line>
+<circle cx="152" cy="28" fill="#FF6A00" r="2.5"></circle>
+</svg>
+<div class="absolute bottom-2 right-2 font-mono text-[8px] text-zinc-600 tracking-wider">CIPHER // PRNG</div>
+</div>
+<!-- Title & Clean Purpose-Driven Description -->
+<div class="space-y-2">
+<h2 class="text-xl font-heading font-bold text-white group-hover:text-brand-orange transition-colors">
+              Password Workspace
+            </h2>
+<p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+              Algorithmic credential generator and real-time GPU brute-force resistance auditor. Generates high-entropy passphrases entirely in local thread memory.
+            </p>
+</div>
+</div>
+<!-- Interactive CTA Bottom -->
+<div class="mt-6 pt-4 border-t border-[#161616] flex items-center justify-between text-zinc-300 group-hover:text-brand-orange transition-colors">
+<span class="font-heading font-semibold text-xs uppercase tracking-wider">Open Workspace</span>
+<span class="font-mono text-sm transform group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</a>
+<!-- TOOL 2: Hash Toolkit -->
+<a class="hero-tool-card rounded-lg p-6 flex flex-col justify-between group cursor-pointer" data-purpose="card-hash" href="#">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between border-b border-[#181818] pb-3 mb-5">
+<div class="flex items-center space-x-2">
+<span class="font-mono text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30">CRYPTO-02</span>
+<span class="font-mono text-[10px] uppercase text-zinc-500">INTEGRITY CHECK</span>
+</div>
+<span class="font-mono text-[9px] text-zinc-600 uppercase">SYS // DIGEST</span>
+</div>
+<!-- Distinctive Vector Linework Motif: Cryptographic Fingerprint / Concentric Algorithmic Rings -->
+<div class="w-full h-32 rounded bg-[#050505] border border-[#161616] mb-5 flex items-center justify-center relative overflow-hidden group-hover:border-brand-orange/30 transition-colors"><div class="absolute inset-0 bg-tech-grid opacity-30"></div><svg class="w-48 h-24 text-zinc-600 group-hover:text-zinc-400 transition-colors relative z-10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" viewBox="0 0 192 96"><rect x="16" y="22" width="32" height="9" stroke="#333333" stroke-width="1" rx="1"></rect><line x1="20" y1="26.5" x2="42" y2="26.5" stroke="#666666" stroke-width="1"></line><rect x="16" y="35" width="44" height="9" stroke="#444444" stroke-width="1" rx="1"></rect><line x1="20" y1="39.5" x2="52" y2="39.5" stroke="#FF6A00" stroke-width="1" stroke-opacity="0.8"></line><rect x="16" y="48" width="24" height="9" stroke="#2a2a2a" stroke-width="1" rx="1"></rect><line x1="20" y1="52.5" x2="34" y2="52.5" stroke="#555555" stroke-width="1"></line><rect x="16" y="61" width="38" height="9" stroke="#383838" stroke-width="1" rx="1"></rect><line x1="20" y1="65.5" x2="46" y2="65.5" stroke="#444444" stroke-width="1"></line><text x="16" y="82" fill="#666666" font-family="monospace" font-size="7px" letter-spacing="0.5px">M (ANY SIZE)</text><path d="M50 26.5 L74 44" stroke="#555555" stroke-width="1" stroke-dasharray="2 2"></path><path d="M62 39.5 L78 46" stroke="#FF6A00" stroke-width="1.25"></path><path d="M42 52.5 L78 50" stroke="#FF6A00" stroke-width="1.25"></path><path d="M56 65.5 L74 52" stroke="#555555" stroke-width="1" stroke-dasharray="2 2"></path><polygon points="82,32 108,48 82,64" stroke="#FF6A00" stroke-width="1.5" fill="#0D0D0D"></polygon><circle cx="91" cy="48" r="3.5" stroke="#FF6A00" stroke-width="1.2" fill="#FF6A00" fill-opacity="0.2"></circle><path d="M88 48 L94 48" stroke="#FFFFFF" stroke-width="1.2"></path><line x1="108" y1="48" x2="124" y2="48" stroke="#FF6A00" stroke-width="1.5"></line><polygon points="124,45 128,48 124,51" fill="#FF6A00"></polygon><rect x="130" y="20" width="46" height="56" stroke="#FF6A00" stroke-width="1.25" rx="2" fill="#0A0A0A"></rect><path d="M130 26 L130 20 L136 20" stroke="#FFFFFF" stroke-width="1.2"></path><path d="M170 20 L176 20 L176 26" stroke="#FFFFFF" stroke-width="1.2"></path><path d="M130 70 L130 76 L136 76" stroke="#FFFFFF" stroke-width="1.2"></path><path d="M170 76 L176 76 L176 70" stroke="#FFFFFF" stroke-width="1.2"></path><line x1="136" y1="29" x2="170" y2="29" stroke="#444444" stroke-width="1.2" stroke-dasharray="2 2"></line><line x1="136" y1="37" x2="164" y2="37" stroke="#FF6A00" stroke-width="1.2"></line><line x1="136" y1="45" x2="170" y2="45" stroke="#444444" stroke-width="1.2" stroke-dasharray="2 2"></line><line x1="136" y1="53" x2="158" y2="53" stroke="#FF6A00" stroke-width="1.2"></line><line x1="136" y1="61" x2="168" y2="61" stroke="#E5E5E5" stroke-width="1.2"></line><line x1="136" y1="69" x2="160" y2="69" stroke="#444444" stroke-width="1.2" stroke-dasharray="2 2"></line><text x="132" y="85" fill="#FF6A00" font-family="monospace" font-size="6.5px" font-weight="bold">256-BIT DIGEST</text></svg><div class="absolute bottom-2 right-2 font-mono text-[8px] text-zinc-600 tracking-wider">HASH // ONE-WAY DIGEST</div></div>
+<!-- Title & Clean Purpose-Driven Description -->
+<div class="space-y-2">
+<h2 class="text-xl font-heading font-bold text-white group-hover:text-brand-orange transition-colors">
+              Hash Toolkit
+            </h2>
+<p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+              Instant cryptographic checksum generation and byte-for-byte binary diff comparison. Compute SHA-256, SHA-512, and MD5 hashes with zero server transit.
+            </p>
+</div>
+</div>
+<!-- Interactive CTA Bottom -->
+<div class="mt-6 pt-4 border-t border-[#161616] flex items-center justify-between text-zinc-300 group-hover:text-brand-orange transition-colors">
+<span class="font-heading font-semibold text-xs uppercase tracking-wider">Open Toolkit</span>
+<span class="font-mono text-sm transform group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</a>
+<!-- TOOL 3: AES Studio -->
+<a class="hero-tool-card rounded-lg p-6 flex flex-col justify-between group cursor-pointer" data-purpose="card-aes" href="#">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between border-b border-[#181818] pb-3 mb-5">
+<div class="flex items-center space-x-2">
+<span class="font-mono text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30">CRYPTO-03</span>
+<span class="font-mono text-[10px] uppercase text-zinc-500">AES-256-GCM</span>
+</div>
+<span class="font-mono text-[9px] text-zinc-600 uppercase">SYS // ENCLAVE</span>
+</div>
+<!-- Distinctive Vector Linework Motif: Interlocking Symmetric Security Block / Dual-Key Cipher Vault -->
+<div class="w-full h-32 rounded bg-[#050505] border border-[#161616] mb-5 flex items-center justify-center relative overflow-hidden group-hover:border-brand-orange/30 transition-colors"><div class="absolute inset-0 bg-tech-grid opacity-30"></div><svg class="w-48 h-24 text-zinc-600 group-hover:text-zinc-400 transition-colors relative z-10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" viewBox="0 0 192 96"><rect x="14" y="22" width="46" height="52" stroke="#444444" stroke-width="1.2" rx="1" fill="#080808"></rect><line x1="20" y1="30" x2="48" y2="30" stroke="#FFFFFF" stroke-width="1.2"></line><line x1="20" y1="38" x2="52" y2="38" stroke="#777777" stroke-width="1"></line><line x1="20" y1="46" x2="42" y2="46" stroke="#FFFFFF" stroke-width="1.2"></line><line x1="20" y1="54" x2="50" y2="54" stroke="#777777" stroke-width="1"></line><line x1="20" y1="62" x2="38" y2="62" stroke="#777777" stroke-width="1"></line><text x="16" y="83" fill="#888888" font-family="monospace" font-size="6.5px">PLAINTEXT</text><line x1="60" y1="44" x2="76" y2="44" stroke="#FF6A00" stroke-width="1.2"></line><polygon points="76,42 80,44 76,46" fill="#FF6A00"></polygon><line x1="80" y1="52" x2="64" y2="52" stroke="#555555" stroke-width="1" stroke-dasharray="2 2"></line><polygon points="64,50 60,52 64,54" fill="#555555"></polygon><rect x="82" y="24" width="28" height="48" stroke="#FF6A00" stroke-width="1.5" rx="2" fill="#0D0D0D"></rect><circle cx="96" cy="38" r="5.5" stroke="#FF6A00" stroke-width="1.2" fill="#000000"></circle><circle cx="96" cy="38" r="2" fill="#FF6A00"></circle><path d="M96 43.5 L96 55" stroke="#FF6A00" stroke-width="1.5"></path><line x1="96" y1="49" x2="100" y2="49" stroke="#FF6A00" stroke-width="1.5"></line><line x1="96" y1="53" x2="101" y2="53" stroke="#FF6A00" stroke-width="1.5"></line><text x="84" y="83" fill="#FF6A00" font-family="monospace" font-size="6.5px" font-weight="bold">AES-256</text><line x1="110" y1="44" x2="126" y2="44" stroke="#FF6A00" stroke-width="1.2"></line><polygon points="126,42 130,44 126,46" fill="#FF6A00"></polygon><line x1="130" y1="52" x2="114" y2="52" stroke="#555555" stroke-width="1" stroke-dasharray="2 2"></line><polygon points="114,50 110,52 114,54" fill="#555555"></polygon><rect x="132" y="22" width="46" height="52" stroke="#FF6A00" stroke-width="1.25" rx="1" fill="rgba(255,106,0,0.04)"></rect><rect x="137" y="28" width="14" height="8" stroke="#FF6A00" stroke-width="1" fill="rgba(255,106,0,0.2)"></rect><rect x="154" y="28" width="18" height="8" stroke="#555555" stroke-width="1"></rect><rect x="137" y="39" width="20" height="8" stroke="#555555" stroke-width="1"></rect><rect x="160" y="39" width="12" height="8" stroke="#FFFFFF" stroke-width="1"></rect><rect x="137" y="50" width="15" height="8" stroke="#FF6A00" stroke-width="1" fill="rgba(255,106,0,0.25)"></rect><rect x="155" y="50" width="17" height="8" stroke="#444444" stroke-width="1"></rect><rect x="137" y="62" width="36" height="6" fill="#FF6A00" fill-opacity="0.15" stroke="#FF6A00" stroke-width="0.8"></rect><text x="139" y="67" fill="#FF6A00" font-family="monospace" font-size="5px" font-weight="bold">GCM AUTH TAG</text><text x="134" y="83" fill="#FF6A00" font-family="monospace" font-size="6.5px">CIPHERTEXT</text></svg><div class="absolute bottom-2 right-2 font-mono text-[8px] text-zinc-600 tracking-wider">AES-GCM // SYMMETRIC</div></div>
+<!-- Title & Clean Purpose-Driven Description -->
+<div class="space-y-2">
+<h2 class="text-xl font-heading font-bold text-white group-hover:text-brand-orange transition-colors">
+              AES Studio
+            </h2>
+<p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+              Military-grade authenticated symmetric encryption for files and confidential text payloads. Utilizes PBKDF2 key derivation and randomized 96-bit IVs.
+            </p>
+</div>
+</div>
+<!-- Interactive CTA Bottom -->
+<div class="mt-6 pt-4 border-t border-[#161616] flex items-center justify-between text-zinc-300 group-hover:text-brand-orange transition-colors">
+<span class="font-heading font-semibold text-xs uppercase tracking-wider">Open Studio</span>
+<span class="font-mono text-sm transform group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</a>
+<!-- TOOL 4: JWT Inspector (Row 2 - col 1 on wide screens) -->
+<a class="hero-tool-card lg:col-span-1 md:col-span-1 rounded-lg p-6 flex flex-col justify-between group cursor-pointer" data-purpose="card-jwt" href="#">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between border-b border-[#181818] pb-3 mb-5">
+<div class="flex items-center space-x-2">
+<span class="font-mono text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30">WEB-01</span>
+<span class="font-mono text-[10px] uppercase text-zinc-500">RFC 7519</span>
+</div>
+<span class="font-mono text-[9px] text-zinc-600 uppercase">SYS // TOKEN</span>
+</div>
+<!-- Distinctive Vector Linework Motif: Tripartite Token Schematic (Header / Payload / Signature) -->
+<div class="w-full h-32 rounded bg-[#050505] border border-[#161616] mb-5 flex items-center justify-center relative overflow-hidden group-hover:border-brand-orange/30 transition-colors">
+<div class="absolute inset-0 bg-tech-grid opacity-30"></div>
+<svg class="w-48 h-24 text-zinc-600 group-hover:text-zinc-400 transition-colors relative z-10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" viewBox="0 0 192 96">
+<!-- Three distinct token segments -->
+<rect height="36" stroke="#444" width="34" x="26" y="30"></rect>
+<line stroke="#444" x1="33" x2="53" y1="42" y2="42"></line>
+<line stroke="#444" x1="33" x2="47" y1="48" y2="48"></line>
+<!-- Dot delimiter 1 -->
+<circle cx="70" cy="48" fill="#FF6A00" r="2.5"></circle>
+<!-- Payload Central Block -->
+<rect fill="rgba(255,106,0,0.08)" height="44" stroke="#FF6A00" stroke-width="1.5" width="46" x="78" y="26"></rect>
+<line stroke="#FF6A00" stroke-width="1.2" x1="86" x2="116" y1="38" y2="38"></line>
+<line stroke="#FF6A00" stroke-width="1.2" x1="86" x2="110" y1="46" y2="46"></line>
+<line stroke="#FF6A00" stroke-width="1.2" x1="86" x2="104" y1="54" y2="54"></line>
+<!-- Dot delimiter 2 -->
+<circle cx="134" cy="48" fill="#FF6A00" r="2.5"></circle>
+<!-- Signature Key Verification Block -->
+<rect height="36" stroke="#444" width="34" x="142" y="30"></rect>
+<path d="M152 46l4 4 12-10" stroke="#FF6A00" stroke-width="1.5"></path>
+</svg>
+<div class="absolute bottom-2 right-2 font-mono text-[8px] text-zinc-600 tracking-wider">HS256 // VERIFY</div>
+</div>
+<!-- Title & Clean Purpose-Driven Description -->
+<div class="space-y-2">
+<h2 class="text-xl font-heading font-bold text-white group-hover:text-brand-orange transition-colors">
+              JWT Inspector
+            </h2>
+<p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+              Local token decoder and cryptographic HMAC signature verifier. Analyze claims, detect algorithm confusion risks, and test tokens offline.
+            </p>
+</div>
+</div>
+<!-- Interactive CTA Bottom -->
+<div class="mt-6 pt-4 border-t border-[#161616] flex items-center justify-between text-zinc-300 group-hover:text-brand-orange transition-colors">
+<span class="font-heading font-semibold text-xs uppercase tracking-wider">Open Inspector</span>
+<span class="font-mono text-sm transform group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</a>
+<!-- TOOL 5: URL Structure Analyzer (Row 2 - col 2 spanning nicely) -->
+<a class="hero-tool-card lg:col-span-2 md:col-span-1 rounded-lg p-6 flex flex-col justify-between group cursor-pointer" data-purpose="card-url" href="#">
+<div>
+<!-- Header Meta -->
+<div class="flex items-center justify-between border-b border-[#181818] pb-3 mb-5">
+<div class="flex items-center space-x-2">
+<span class="font-mono text-[10px] font-bold tracking-wider px-2 py-0.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30">UTILS-01</span>
+<span class="font-mono text-[10px] uppercase text-zinc-500">HOMOGLYPH AUDIT</span>
+</div>
+<span class="font-mono text-[9px] text-zinc-600 uppercase">SYS // HEURISTICS</span>
+</div>
+<!-- Distinctive Vector Linework Motif: Optical Radar Targeting Reticle & Decomposed Path Diagnostics -->
+<div class="w-full h-32 rounded bg-[#050505] border border-[#161616] mb-5 flex items-center justify-center relative overflow-hidden group-hover:border-brand-orange/30 transition-colors">
+<div class="absolute inset-0 bg-tech-grid opacity-30"></div>
+<svg class="w-72 h-24 text-zinc-600 group-hover:text-zinc-400 transition-colors relative z-10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" viewBox="0 0 288 96">
+<!-- Radar Target Reticle -->
+<circle cx="68" cy="48" r="30" stroke="#262626"></circle>
+<circle cx="68" cy="48" r="18" stroke="#383838" stroke-dasharray="3 2"></circle>
+<circle cx="68" cy="48" fill="#FF6A00" fill-opacity="0.1" r="8" stroke="#FF6A00" stroke-width="1.5"></circle>
+<line stroke="#FF6A00" stroke-width="1.5" x1="68" x2="68" y1="20" y2="76"></line>
+<line stroke="#FF6A00" stroke-width="1.5" x1="40" x2="96" y1="48" y2="48"></line>
+<!-- Directed Path Network Linking Nodes -->
+<line stroke="#444" stroke-dasharray="3 2" x1="96" x2="136" y1="48" y2="34"></line>
+<line stroke="#444" stroke-dasharray="3 2" x1="96" x2="136" y1="48" y2="62"></line>
+<rect height="18" stroke="#333" width="40" x="136" y="25"></rect>
+<rect height="18" stroke="#333" width="40" x="136" y="53"></rect>
+<line stroke="#FF6A00" stroke-width="1.2" x1="176" x2="204" y1="34" y2="34"></line>
+<line stroke="#444" x1="176" x2="204" y1="62" y2="62"></line>
+<!-- Destination Verdict Pin -->
+<polygon fill="#FF6A00" points="208,30 220,34 208,38"></polygon>
+<circle cx="240" cy="48" r="14" stroke="#FF6A00" stroke-width="1.5"></circle>
+<line stroke="#FF6A00" stroke-width="1.5" x1="234" x2="246" y1="48" y2="48"></line>
+</svg>
+<div class="absolute bottom-2 right-2 font-mono text-[8px] text-zinc-600 tracking-wider">RADAR // PUNYCODE SCAN</div>
+</div>
+<!-- Title & Clean Purpose-Driven Description -->
+<div class="space-y-2">
+<h2 class="text-xl font-heading font-bold text-white group-hover:text-brand-orange transition-colors">
+              URL Structure Analyzer
+            </h2>
+<p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans max-w-2xl">
+              Dissects deceptive hyperlinks, punycode lookalikes, brand spoofing chains, and anomalous TLD tactics before interaction. Pinpoint phishing indicators safely.
+            </p>
+</div>
+</div>
+<!-- Interactive CTA Bottom -->
+<div class="mt-6 pt-4 border-t border-[#161616] flex items-center justify-between text-zinc-300 group-hover:text-brand-orange transition-colors">
+<span class="font-heading font-semibold text-xs uppercase tracking-wider">Open URL Analyzer</span>
+<span class="font-mono text-sm transform group-hover:translate-x-1 transition-transform">→</span>
+</div>
+</a>
+</div>
+</section>
+<!-- END: CoreToolCardsGrid -->
+<!-- BEGIN: ZeroKnowledgePhilosophySection -->
+<section class="border-t border-[#161616] bg-brand-surfaceAlt py-16 relative overflow-hidden" data-purpose="philosophy-section" id="philosophy">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+<!-- Statement Left Column -->
+<div class="lg:col-span-5 space-y-4">
+<div class="inline-flex items-center space-x-2 text-brand-orange font-mono text-xs uppercase tracking-widest font-semibold">
+<span class="">// ARCHITECTURAL MANDATE</span>
+</div>
+<h2 class="text-2xl sm:text-3xl font-heading font-bold uppercase text-white leading-tight">
+            Why Client-Side Execution is Castle's Baseline Guarantee.
+          </h2>
+<p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+            Traditional web tools upload plaintext passwords, confidential private keys, and token payloads to backend instances. Even over TLS, your credentials exist in remote volatile memory.
+          </p>
+<p class="text-zinc-400 text-xs sm:text-sm leading-relaxed font-sans">
+            Castle operates in absolute isolation. All cryptographic operations run inside your browser's native W3C Web Cryptography API thread. Zero bits transmitted.
+          </p>
+</div>
+<!-- Technical Architecture Specs Grid -->
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4" id="zk-specs">
+<div class="bg-[#070707] border border-[#181818] p-5 rounded">
+<div class="w-7 h-7 rounded bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange mb-3">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+</div>
+<h3 class="font-heading font-bold text-xs text-white mb-1 uppercase tracking-wider">WebCrypto API Native</h3>
+<p class="text-zinc-500 text-xs font-sans leading-relaxed">
+              Direct operating system hardware entropy and PRNG primitives without external cloud libraries.
+            </p>
+</div>
+<div class="bg-[#070707] border border-[#181818] p-5 rounded">
+<div class="w-7 h-7 rounded bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange mb-3">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+</div>
+<h3 class="font-heading font-bold text-xs text-white mb-1 uppercase tracking-wider">Zero Telemetry</h3>
+<p class="text-zinc-500 text-xs font-sans leading-relaxed">
+              No tracking pixels, third-party analytics, or session recorders. DevTools confirms 0 bytes sent.
+            </p>
+</div>
+<div class="bg-[#070707] border border-[#181818] p-5 rounded">
+<div class="w-7 h-7 rounded bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange mb-3">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+</div>
+<h3 class="font-heading font-bold text-xs text-white mb-1 uppercase tracking-wider">Offline Functional</h3>
+<p class="text-zinc-500 text-xs font-sans leading-relaxed">
+              Disconnect Wi-Fi or run fully air-gapped. All cryptographic engines operate in memory.
+            </p>
+</div>
+<div class="bg-[#070707] border border-[#181818] p-5 rounded">
+<div class="w-7 h-7 rounded bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange mb-3">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7C5 4 4 5 4 7z"></path></svg>
+</div>
+<h3 class="font-heading font-bold text-xs text-white mb-1 uppercase tracking-wider">Ephemeral Memory</h3>
+<p class="text-zinc-500 text-xs font-sans leading-relaxed">
+              Closing a module immediately purges generated keys and intermediate buffers from the execution space.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ZeroKnowledgePhilosophySection -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: MainFooter -->
+<footer class="border-t border-[#141414] bg-brand-black py-10 text-zinc-500 text-xs font-mono" data-purpose="site-footer" id="docs">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-[#141414]">
+<!-- Brand recap -->
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 rounded bg-[#0A0A0A] border border-brand-orange/40 flex items-center justify-center text-brand-orange">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+</div>
+<span class="text-white font-heading font-bold tracking-wider text-sm">CASTLE DEFENSE WORKSPACE</span>
+<span class="text-zinc-600">// CLIENT RUNTIME</span>
+</div>
+<!-- Links -->
+<div class="flex flex-wrap items-center gap-5 text-[11px] uppercase tracking-wider">
+<a class="hover:text-brand-orange transition-colors" href="#">Cryptographic Specs</a>
+<a class="hover:text-brand-orange transition-colors" href="#">W3C WebCrypto Spec</a>
+<a class="hover:text-brand-orange transition-colors" href="#">Security Model</a>
+<a class="hover:text-brand-orange transition-colors" href="#">Repository</a>
+</div>
+</div>
+<!-- Legal Note -->
+<div class="pt-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[11px] text-zinc-600">
+<p class="">
+        CASTLE LABS. NO CLOUD PERSISTENCE. 100% LOCAL WEBCRYPTO CLIENT RUNTIME.
+      </p>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-zinc-400 font-mono">ALL ENCLAVES SYNCHRONIZED &amp; ISOLATED</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+
+
+</body></html>

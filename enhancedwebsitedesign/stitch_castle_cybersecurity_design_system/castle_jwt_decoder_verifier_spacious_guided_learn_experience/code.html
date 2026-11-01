@@ -1,0 +1,677 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 5898px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-error-container": "#ffdad6", "on-surface": "#e2e2e2", "tertiary-fixed": "#c9e6ff", "background": "#131313", "tertiary": "#89ceff", "text-muted": "#888888", "surface-container-lowest": "#0e0e0e", "surface-bright": "#393939", "surface-base": "#0A0A0A", "primary-active": "#E55F00", "on-tertiary-fixed": "#001e2f", "on-surface-variant": "#e2bfb0", "surface-card": "#0D0D0D", "surface-container-highest": "#353535", "on-tertiary": "#00344d", "primary-fixed-dim": "#ffb694", "on-tertiary-fixed-variant": "#004c6e", "on-secondary-container": "#00311f", "border-subtle": "#262626", "surface-root": "#000000", "primary-fixed": "#ffdbcc", "status-danger": "#EF4444", "border-active": "#FF6A00", "secondary-fixed": "#6ffbbe", "on-secondary-fixed-variant": "#005236", "error": "#ffb4ab", "surface-container-low": "#1b1b1b", "secondary-container": "#00a572", "status-warning": "#F59E0B", "surface-elevated": "#111111", "error-container": "#93000a", "inverse-surface": "#e2e2e2", "inverse-on-surface": "#303030", "primary-container": "#ff6a00", "surface-dim": "#131313", "secondary": "#4edea3", "text-dark": "#050505", "primary": "#ffb694", "surface-tint": "#ffb694", "on-background": "#e2e2e2", "tertiary-container": "#00a2e6", "on-primary-fixed": "#351000", "on-error": "#690005", "status-verified": "#10B981", "border-hairline": "#1A1A1A", "surface": "#131313", "surface-container": "#1f1f1f", "outline-variant": "#5a4136", "inverse-primary": "#a14000", "on-primary-fixed-variant": "#7b2f00", "surface-variant": "#353535", "on-primary": "#571f00", "on-primary-container": "#571f00", "tertiary-fixed-dim": "#89ceff", "surface-recessed": "#050505", "on-secondary": "#003824", "on-tertiary-container": "#00344e", "primary-hover": "#FF7D1A", "primary-glow": "rgba(255, 106, 0, 0.15)", "on-secondary-fixed": "#002113", "outline": "#a98a7d", "text-display": "#FFFFFF", "surface-container-high": "#2a2a2a", "secondary-fixed-dim": "#4edea3", "text-body": "#E5E5E5", "status-info": "#0EA5E9" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin-mobile": "1rem", "gutter": "1.5rem", "space-xl": "2rem", "space-xs": "0.25rem", "gutter-mobile": "1rem", "margin": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-lg": "1.5rem", "space-3xl": "4rem", "space-2xl": "3rem" }, "fontFamily": { "code-sm": [ "JetBrains Mono" ], "label-caps": [ "JetBrains Mono" ], "body-lg": [ "Inter" ], "body-md": [ "Inter" ], "code-md": [ "JetBrains Mono" ], "hero": [ "Space Grotesk" ], "headline-md": [ "Space Grotesk" ], "code-lg": [ "JetBrains Mono" ], "hero-mobile": [ "Space Grotesk" ], "body-sm": [ "Inter" ], "headline-lg": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "title-md": [ "Space Grotesk" ], "headline-sm": [ "Space Grotesk" ] }, "fontSize": { "code-sm": [ "11px", { "lineHeight": "1.40", "fontWeight": "400" } ], "label-caps": [ "11px", { "lineHeight": "1.40", "letterSpacing": "0.08em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "1.60", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "1.55", "fontWeight": "400" } ], "code-md": [ "13px", { "lineHeight": "1.50", "fontWeight": "500" } ], "hero": [ "64px", { "lineHeight": "1.10", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-md": [ "32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "code-lg": [ "15px", { "lineHeight": "1.50", "fontWeight": "500" } ], "hero-mobile": [ "40px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "1.50", "fontWeight": "400" } ], "headline-lg": [ "48px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-lg-mobile": [ "32px", { "lineHeight": "1.20", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "title-md": [ "18px", { "lineHeight": "1.40", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-sm": [ "24px", { "lineHeight": "1.30", "fontWeight": "600" } ] } } } }</script></head><body class="bg-surface-root font-body-md text-body min-h-screen flex flex-col selection:bg-primary-container selection:text-text-dark"><header class="fixed top-0 w-full z-50 bg-surface-root border-b border-border-hairline"><div class="w-full bg-surface-base border-b border-border-hairline px-gutter py-space-xs"><div class="max-w-7xl mx-auto flex items-center justify-between font-label-caps text-label-caps text-text-muted"><div class="flex items-center gap-space-md"><span class="flex items-center gap-space-xs text-status-verified"><span class="w-1.5 h-1.5 rounded-full bg-status-verified animate-pulse"></span>AIR-GAP VERIFIED // 100% CLIENT-SIDE</span><span class="text-border-subtle">|</span><span class="hidden sm:inline">ZERO SERVER PERSISTENCE</span></div><div class="flex items-center gap-space-md font-code-sm text-code-sm"><span class="text-text-muted">ENGINE: <span class="text-text-display">WebCrypto HMAC Isolate</span></span><span class="text-border-subtle">|</span><span class="text-text-muted">ENTROPY: <span class="text-status-verified">Local Browser RAM</span></span></div></div></div><div class="w-full bg-surface-card border-b border-border-hairline"><div class="h-14 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center justify-center w-8 h-8 rounded bg-surface-recessed border border-border-subtle text-primary"><span class="material-symbols-outlined text-[18px]">shield_lock</span></div><div class="flex items-center gap-space-sm"><span class="font-title-md text-title-md text-text-display uppercase tracking-wider font-bold">CASTLE</span><span class="text-border-subtle font-code-sm">/</span><span class="font-code-sm text-code-sm text-primary tracking-wide uppercase">SEC-OPS</span><span class="px-space-xs py-0.5 rounded bg-surface-recessed border border-border-hairline font-label-caps text-[10px] text-text-muted uppercase tracking-wider">MOD-04</span></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded bg-surface-recessed border border-border-subtle text-text-muted hover:text-text-display hover:border-primary-container transition-all font-code-sm text-code-sm" type="button"><span class="material-symbols-outlined text-[15px]">restart_alt</span><span class="hidden sm:inline">RESET WORKSPACE</span></button><div class="h-5 w-px bg-border-hairline"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold text-xs"><span class="material-symbols-outlined text-[18px]">person</span></div></div></div></div></div><div class="w-full bg-surface-base border-b border-border-hairline"><div class="max-w-7xl mx-auto px-gutter py-space-xs"><nav class="flex items-center gap-space-sm font-code-sm text-code-sm"><a aria-current="page" class="px-space-md py-space-xs rounded bg-primary-container text-text-dark font-bold border border-primary-container shadow-[0_0_16px_rgba(255,106,0,0.15)] flex items-center gap-space-xs transition-colors" data-path="learn" href="#"><span class="material-symbols-outlined text-[15px]">menu_book</span><span class="">TAB 01: LEARN</span></a><a class="px-space-md py-space-xs rounded bg-surface-card border border-border-hairline text-text-muted hover:text-text-display hover:border-border-subtle flex items-center gap-space-xs transition-colors" data-path="decode-and-verify" href="#"><span class="material-symbols-outlined text-[15px]">troubleshoot</span><span class="">TAB 02: DECODE &amp; VERIFY</span></a><a class="px-space-md py-space-xs rounded bg-surface-card border border-border-hairline text-text-muted hover:text-text-display hover:border-border-subtle flex items-center gap-space-xs transition-colors" data-path="build-and-sign" href="#"><span class="material-symbols-outlined text-[15px]">draw</span><span class="">TAB 03: BUILD &amp; SIGN</span></a></nav></div></div></header><main class="w-full pt-[137px] flex-1 bg-surface-root"><div class="max-w-7xl mx-auto px-gutter py-space-lg"><div class="flex flex-col w-full text-body font-body-md">
+<!-- HERO / SCENARIO CHAPTER 00 -->
+<section class="w-full pb-space-3xl pt-space-md border-b border-border-hairline">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-primary mb-space-md">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>MODULE 04 // WEB SECURITY // JSON WEB TOKENS</span>
+</div>
+<div class="max-w-4xl">
+<h1 class="font-hero text-hero text-text-display mb-space-md tracking-tight">
+        UNDERSTANDING JSON WEB TOKENS: THE DIGITAL PASSPORT
+      </h1>
+<p class="font-body-lg text-body-lg text-text-muted leading-relaxed max-w-3xl">
+        A JSON Web Token (JWT) is a compact, URL-safe container that carries cryptographically verified claims between disparate systems. APIs, single-page applications, and microservices employ it to verify identity, roles, and temporal grants without repeated database lookups.
+      </p>
+</div>
+<!-- 3-Step Real World Journey -->
+<div class="mt-space-2xl grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<div class="bg-surface-card p-space-lg rounded border border-border-hairline relative">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-code-sm text-code-sm text-primary">PHASE 01</span>
+<span class="material-symbols-outlined text-text-muted text-[20px]">fingerprint</span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-xs">User Authenticates</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+          Client transmits credentials (e.g., username/password or MFA token) over TLS to the authorization gateway for initial identity assertion.
+        </p>
+</div>
+<div class="bg-surface-card p-space-lg rounded border border-border-hairline relative">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-code-sm text-code-sm text-primary">PHASE 02</span>
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-xs">Passport Issued</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+          Auth server encodes identity claims, seals them mathematically using its private key or HMAC secret, and returns a lightweight token string.
+        </p>
+</div>
+<div class="bg-surface-card p-space-lg rounded border border-border-hairline relative">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-code-sm text-code-sm text-secondary">PHASE 03</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">key_vertical</span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-xs">Seamless Verification</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+          Client presents the Bearer token with every subsequent HTTP request. Downstream services verify the signature in RAM without querying a central session database.
+        </p>
+</div>
+</div>
+<div class="mt-space-2xl flex items-center justify-center">
+<a class="font-code-sm text-code-sm text-text-muted hover:text-primary transition-colors flex items-center gap-space-xs py-space-xs px-space-md rounded bg-surface-recessed border border-border-hairline" href="#ch-01">
+<span>SCROLL TO EXPLORE THE ANATOMY</span>
+<span class="material-symbols-outlined text-[15px] animate-bounce">arrow_downward</span>
+</a>
+</div>
+</section>
+<!-- CHAPTER 01: THREE SEGMENTS -->
+<section class="w-full py-space-3xl border-b border-border-hairline" id="ch-01">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-muted mb-space-xs">
+<span class="font-code-sm text-primary">CHAPTER 01</span>
+<span>//</span>
+<span>ANATOMICAL DECONSTRUCTION</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-display mb-space-md">
+      Meet the Token: Three Colored Segments
+    </h2>
+<p class="font-body-lg text-body-lg text-text-muted max-w-3xl mb-space-xl">
+      Every valid JWT is a single string split into three distinct segments delimited by literal period (<code class="font-code-md text-text-display">.</code>) glyphs: the <strong class="text-status-danger">Header</strong>, the <strong class="text-primary-container">Payload</strong>, and the <strong class="text-status-info">Signature</strong>.
+    </p>
+<!-- Raw interactive token display box -->
+<div class="bg-surface-card rounded p-space-xl border border-border-hairline mb-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-caps text-label-caps text-text-muted">ENCODED JWT STREAM (RFC 7519)</span>
+<span class="font-code-sm text-code-sm text-text-muted">184 BYTES TOTAL</span>
+</div>
+<div class="p-space-lg bg-surface-recessed rounded border border-border-hairline break-all font-code-lg text-code-lg tracking-wider leading-loose">
+<button class="inline-block transition-all text-status-danger font-semibold hover:underline decoration-status-danger underline-offset-4 cursor-pointer focus:outline-none" id="btn-seg-header" onclick="selectSegment('header')">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</button><span class="text-text-muted font-bold px-0.5">.</span><button class="inline-block transition-all text-primary-container font-semibold hover:underline decoration-primary-container underline-offset-4 cursor-pointer focus:outline-none" id="btn-seg-payload" onclick="selectSegment('payload')">eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFsaWNlIFNlY3VyaXR5IiwiYWRtaW4iOnRydWV9</button><span class="text-text-muted font-bold px-0.5">.</span><button class="inline-block transition-all text-status-info font-semibold hover:underline decoration-status-info underline-offset-4 cursor-pointer focus:outline-none" id="btn-seg-signature" onclick="selectSegment('signature')">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</button>
+</div>
+<!-- Segment Selector Controls -->
+<div class="flex flex-wrap items-center gap-space-sm mt-space-lg">
+<button class="px-space-md py-space-sm font-code-sm text-code-sm rounded bg-surface-elevated border border-status-danger text-status-danger flex items-center gap-space-xs transition-colors" id="tab-btn-header" onclick="selectSegment('header')">
+<span class="w-2 h-2 rounded-full bg-status-danger"></span>
+<span>SEGMENT 01: HEADER</span>
+</button>
+<button class="px-space-md py-space-sm font-code-sm text-code-sm rounded bg-surface-base border border-border-hairline text-text-muted hover:text-text-display flex items-center gap-space-xs transition-colors" id="tab-btn-payload" onclick="selectSegment('payload')">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>SEGMENT 02: PAYLOAD</span>
+</button>
+<button class="px-space-md py-space-sm font-code-sm text-code-sm rounded bg-surface-base border border-border-hairline text-text-muted hover:text-text-display flex items-center gap-space-xs transition-colors" id="tab-btn-signature" onclick="selectSegment('signature')">
+<span class="w-2 h-2 rounded-full bg-status-info"></span>
+<span>SEGMENT 03: SIGNATURE</span>
+</button>
+</div>
+</div>
+<!-- Dynamic Segment Explainer Card -->
+<div class="bg-surface-elevated rounded p-space-xl border border-border-hairline transition-all" id="segment-explainer">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-status-danger" id="explainer-dot"></span>
+<h4 class="font-headline-sm text-headline-sm text-text-display" id="explainer-title">The Header Segment</h4>
+</div>
+<span class="font-code-sm text-code-sm text-text-muted" id="explainer-meta">ALGORITHM &amp; METADATA</span>
+</div>
+<p class="font-body-md text-body-md text-text-muted leading-relaxed" id="explainer-desc">
+        Specifies cryptographic directives governing token verification. It informs the validating recipient which hashing algorithm was chosen (e.g. HS256, RS256) and confirms the wrapper standard (<code class="font-code-sm text-primary">typ: "JWT"</code>).
+      </p>
+</div>
+</section>
+<!-- CHAPTER 02: BASE64URL ENCODING VS ENCRYPTION -->
+<section class="w-full py-space-3xl border-b border-border-hairline">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-muted mb-space-xs">
+<span class="font-code-sm text-primary">CHAPTER 02</span>
+<span>//</span>
+<span>CRYPTOGRAPHIC DISAMBIGUATION</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-display mb-space-md">
+      What's Inside: Base64URL Encoding vs Encryption
+    </h2>
+<!-- High-Visibility Architectural Banner -->
+<div class="bg-surface-card rounded p-space-lg border-l-4 border-l-primary-container border-y border-r border-border-hairline mb-space-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary-container text-[32px]">warning</span>
+<div>
+<h4 class="font-title-md text-title-md text-text-display tracking-wide uppercase">BASE64URL IS ENCODING, NOT ENCRYPTION</h4>
+<p class="font-body-md text-body-md text-text-muted">
+            Anyone who intercepts or stores a JWT can read the raw claims in plaintext within milliseconds. Zero cryptographic keys are needed to inspect the claims.
+          </p>
+</div>
+</div>
+<div class="shrink-0 px-space-md py-space-xs rounded bg-surface-recessed border border-border-hairline font-code-sm text-code-sm text-text-muted">
+        CONFIDENTIALITY: <span class="text-status-danger font-semibold">0% (PLAINTEXT)</span>
+</div>
+</div>
+<!-- Side-by-Side Deconstructed Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl">
+<!-- Header Card -->
+<div class="bg-surface-card rounded p-space-xl border border-status-danger/30 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-code-sm text-code-sm text-status-danger uppercase tracking-wider font-semibold">DECODED HEADER</span>
+<span class="font-code-sm text-code-sm text-text-muted">JOSE METADATA</span>
+</div>
+<pre class="bg-surface-recessed p-space-md rounded border border-border-hairline font-code-sm text-code-sm text-body overflow-x-auto leading-relaxed mb-space-md"><code>{
+  <span class="text-status-danger font-semibold">"alg"</span>: <span class="text-text-display">"HS256"</span>,
+  <span class="text-status-danger font-semibold">"typ"</span>: <span class="text-text-display">"JWT"</span>
+}</code></pre>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-text-muted">
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-status-danger text-[16px] mt-0.5">check_circle</span>
+<span><strong class="text-text-display font-code-sm">alg: HS256</strong> — Defines HMAC with SHA-256 for symmetric signing.</span>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-status-danger text-[16px] mt-0.5">check_circle</span>
+<span><strong class="text-text-display font-code-sm">typ: JWT</strong> — Informs token parsers of RFC 7519 semantics.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Payload Card -->
+<div class="bg-surface-card rounded p-space-xl border border-primary-container/30 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-code-sm text-code-sm text-primary-container uppercase tracking-wider font-semibold">DECODED PAYLOAD</span>
+<span class="font-code-sm text-code-sm text-text-muted">IDENTITY CLAIMS</span>
+</div>
+<pre class="bg-surface-recessed p-space-md rounded border border-border-hairline font-code-sm text-code-sm text-body overflow-x-auto leading-relaxed mb-space-md"><code>{
+  <span class="text-primary-container font-semibold">"sub"</span>: <span class="text-text-display">"1234567890"</span>,
+  <span class="text-primary-container font-semibold">"name"</span>: <span class="text-text-display">"Alice Security"</span>,
+  <span class="text-primary-container font-semibold">"admin"</span>: <span class="text-status-verified font-semibold">true</span>
+}</code></pre>
+<ul class="space-y-space-sm font-body-sm text-body-sm text-text-muted">
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px] mt-0.5">check_circle</span>
+<span><strong class="text-text-display font-code-sm">sub</strong> — Unique identifier representing the authenticated principal.</span>
+</li>
+<li class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary-container text-[16px] mt-0.5">check_circle</span>
+<span><strong class="text-text-display font-code-sm">admin</strong> — Application role claim used by downstream gateways for RBAC.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Base64 vs Base64URL Expandable Box -->
+<details class="group mt-space-lg bg-surface-card rounded border border-border-hairline overflow-hidden transition-all">
+<summary class="flex items-center justify-between p-space-md cursor-pointer list-none select-none hover:bg-surface-elevated transition-colors">
+<div class="flex items-center gap-space-sm font-code-md text-code-md text-text-display">
+<span class="material-symbols-outlined text-primary text-[18px]">terminal</span>
+<span>Why use Base64URL instead of standard Base64?</span>
+</div>
+<span class="material-symbols-outlined text-text-muted group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="p-space-md pt-0 font-body-md text-body-md text-text-muted border-t border-border-hairline mt-space-xs space-y-space-xs bg-surface-recessed">
+<p>
+          Standard Base64 utilizes the characters <code class="font-code-sm text-status-danger">+</code> and <code class="font-code-sm text-status-danger">/</code>, alongside padding glyphs <code class="font-code-sm text-status-danger">=</code>. When passed in HTTP headers, URL query parameters, or cookie values, these characters require percent-encoding (<code class="font-code-sm text-text-muted">%2B</code>, <code class="font-code-sm text-text-muted">%2F</code>).
+        </p>
+<p>
+<strong>Base64URL</strong> replaces <code class="font-code-sm text-status-verified">+</code> with <code class="font-code-sm text-status-verified">-</code> (hyphen) and <code class="font-code-sm text-status-verified">/</code> with <code class="font-code-sm text-status-verified">_</code> (underscore), while stripping trailing pad symbols entirely. This ensures tokens traverse URLs and HTTP transport layers unaltered without escaping.
+        </p>
+</div>
+</details>
+</section>
+<!-- CHAPTER 03: THE CENTRAL TRUTH -->
+<section class="w-full py-space-3xl border-b border-border-hairline">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-muted mb-space-xs">
+<span class="font-code-sm text-primary">CHAPTER 03</span>
+<span>//</span>
+<span>THE CORE TENET</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-display mb-space-md">
+      The Central Truth: Decoded Does Not Mean Verified
+    </h2>
+<p class="font-body-lg text-body-lg text-text-muted max-w-3xl mb-space-2xl">
+      Anyone can decode a JWT. Reading a token proves nothing about who produced it or whether an adversary altered the underlying payload during transit. Trust hinges strictly on mathematical signature verification.
+    </p>
+<!-- Visual Duel Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl">
+<!-- Duel A: Unverified -->
+<div class="bg-surface-card rounded p-space-xl border border-status-warning/40 relative">
+<div class="flex items-center gap-space-sm mb-space-md">
+<div class="w-8 h-8 rounded bg-status-warning/10 flex items-center justify-center text-status-warning">
+<span class="material-symbols-outlined text-[20px]">gpp_maybe</span>
+</div>
+<span class="font-label-caps text-label-caps px-space-xs py-1 rounded bg-status-warning/10 text-status-warning border border-status-warning/30">
+            STATE A: DECODED ONLY — ZERO INTEGRITY PROOF
+          </span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-sm">Client-Side Parser Output</h3>
+<p class="font-body-md text-body-md text-text-muted mb-space-lg">
+          A client decodes the JSON payload locally to display the user's name on a navigation bar. <strong>No signature math has occurred.</strong> If an adversary substituted claims, the app remains oblivious.
+        </p>
+<div class="p-space-md rounded bg-surface-recessed border border-border-hairline font-code-sm text-code-sm space-y-space-xs">
+<div class="text-text-muted">// Parsed directly without secret key</div>
+<div class="text-text-display">user.name = "Alice Security"</div>
+<div class="text-status-warning">user.role = "admin" <span class="text-text-muted font-normal">(UNCONFIRMED CLAIM)</span></div>
+</div>
+</div>
+<!-- Duel B: Verified -->
+<div class="bg-surface-card rounded p-space-xl border border-status-verified/40 relative">
+<div class="flex items-center gap-space-sm mb-space-md">
+<div class="w-8 h-8 rounded bg-status-verified/10 flex items-center justify-center text-status-verified">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<span class="font-label-caps text-label-caps px-space-xs py-1 rounded bg-status-verified/10 text-status-verified border border-status-verified/30">
+            STATE B: CRYPTOGRAPHICALLY VERIFIED
+          </span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-sm">HMAC SHA-256 Engine Validation</h3>
+<p class="font-body-md text-body-md text-text-muted mb-space-lg">
+          The API gateway runs <code class="font-code-sm text-text-display">crypto.subtle.verify()</code> using the known server secret. A bit-for-bit mathematical match proves the identity issuer and total integrity.
+        </p>
+<div class="p-space-md rounded bg-surface-recessed border border-border-hairline font-code-sm text-code-sm space-y-space-xs">
+<div class="text-text-muted">// Signature computed matches wire signature</div>
+<div class="text-status-verified">HMAC_SHA256(Header + "." + Payload, SECRET) == SflKxw...</div>
+<div class="text-text-display">INTEGRITY: <span class="text-status-verified font-semibold">AUTHENTIC &amp; UNTOUCHED</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CHAPTER 04: INTERACTIVE TAMPERING SANDBOX -->
+<section class="w-full py-space-3xl border-b border-border-hairline">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-muted mb-space-xs">
+<span class="font-code-sm text-primary">CHAPTER 04</span>
+<span>//</span>
+<span>LAB BENCH</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-display mb-space-md">
+      Interactive Tampering Sandbox
+    </h2>
+<p class="font-body-lg text-body-lg text-text-muted max-w-3xl mb-space-xl">
+      Experience the cryptographic tamper-evident seal firsthand. Change a single character inside the payload without knowing the secret key, and observe the immediate cryptographic failure.
+    </p>
+<div class="bg-surface-card rounded p-space-xl border border-border-hairline">
+<!-- Status Banner -->
+<div class="p-space-md rounded border border-status-verified bg-status-verified/5 flex items-center justify-between mb-space-lg transition-colors" id="sandbox-status-bar">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-status-verified text-[20px]" id="sandbox-status-icon">verified</span>
+<span class="font-code-sm text-code-sm text-status-verified font-semibold" id="sandbox-status-text">
+            ✓ SIGNATURE VERIFIED WITH 'demo-secret'
+          </span>
+</div>
+<span class="font-code-sm text-code-sm text-text-muted hidden sm:inline" id="sandbox-hash-status">SHA256 HASH COMPLIANT</span>
+</div>
+<!-- Visual Hash Pipeline -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md items-center mb-space-lg">
+<div class="bg-surface-recessed p-space-md rounded border border-border-hairline">
+<span class="font-label-caps text-label-caps text-text-muted block mb-space-xs">PAYLOAD CLAIM STATE</span>
+<div class="font-code-md text-code-md text-text-display" id="sandbox-role-display">
+            "role": "<span class="text-secondary font-semibold">user</span>"
+          </div>
+</div>
+<div class="flex flex-col items-center justify-center py-space-xs">
+<span class="material-symbols-outlined text-text-muted rotate-90 lg:rotate-0">east</span>
+<span class="font-code-sm text-code-sm text-text-muted mt-1">HMAC-SHA256(H.P, secret)</span>
+</div>
+<div class="bg-surface-recessed p-space-md rounded border border-border-hairline">
+<span class="font-label-caps text-label-caps text-text-muted block mb-space-xs">CALCULATED SIGNATURE</span>
+<div class="font-code-sm text-code-sm text-status-info truncate" id="sandbox-signature-display">
+            SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+          </div>
+</div>
+</div>
+<!-- Controls -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-md border-t border-border-hairline">
+<button class="px-space-md py-space-sm rounded bg-status-danger/10 border border-status-danger text-status-danger hover:bg-status-danger hover:text-text-dark font-code-sm text-code-sm transition-all flex items-center gap-space-xs" id="btn-tamper" onclick="tamperPayload()">
+<span class="material-symbols-outlined text-[16px]">edit_note</span>
+<span>TAMPER WITH PAYLOAD ("role": "admin")</span>
+</button>
+<button class="px-space-md py-space-sm rounded bg-surface-recessed border border-border-hairline text-text-muted hover:text-text-display font-code-sm text-code-sm transition-all flex items-center gap-space-xs" id="btn-reset" onclick="resetPayload()">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>RESET ORIGINAL TOKEN</span>
+</button>
+</div>
+<div class="mt-space-lg text-text-muted font-body-sm text-body-sm hidden p-space-md rounded bg-status-danger/5 border border-status-danger/20" id="tamper-explanation">
+<strong class="text-status-danger block mb-1">Cryptographic Avalanche Effect:</strong>
+        When you altered <code class="font-code-sm text-text-display">"role": "user"</code> to <code class="font-code-sm text-text-display">"role": "admin"</code>, the input string to the cryptographic hash function completely changed. Because the attacker lacks the secret key <code class="font-code-sm text-text-display">demo-secret</code>, they cannot forge a new valid signature for that altered string. The server executes HMAC on the modified input, compares it against the token's attached signature, and unconditionally drops the request.
+      </div>
+</div>
+</section>
+<!-- CHAPTER 05: TOKEN LIFECYCLES -->
+<section class="w-full py-space-3xl border-b border-border-hairline">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-muted mb-space-xs">
+<span class="font-code-sm text-primary">CHAPTER 05</span>
+<span>//</span>
+<span>TEMPORAL SAFETY</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-display mb-space-md">
+      Token Lifecycles: Expiration &amp; Time Claims
+    </h2>
+<p class="font-body-lg text-body-lg text-text-muted max-w-3xl mb-space-xl">
+      Tokens are bearer instruments: anyone in possession of a valid token can impersonate the bearer until expiration. For this reason, tokens must strictly declare temporal constraints according to RFC 7519.
+    </p>
+<!-- Visual Interactive Timeline -->
+<div class="bg-surface-card rounded p-space-xl border border-border-hairline mb-space-xl">
+<div class="flex items-center justify-between mb-space-lg">
+<span class="font-label-caps text-label-caps text-text-muted">CHRONOLOGICAL VERIFICATION TIMELINE</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1 rounded font-code-sm text-code-sm bg-status-verified text-text-dark font-semibold" id="btn-time-valid" onclick="setTokenTime(false)">T = +15m (ACTIVE)</button>
+<button class="px-space-sm py-1 rounded font-code-sm text-code-sm bg-surface-recessed text-text-muted hover:text-text-display border border-border-hairline" id="btn-time-expired" onclick="setTokenTime(true)">T = +75m (EXPIRED)</button>
+</div>
+</div>
+<!-- Timeline Bar Component -->
+<div class="relative py-space-xl">
+<!-- Connecting Line -->
+<div class="h-1 w-full bg-surface-container-high rounded relative">
+<div class="h-1 bg-status-verified rounded transition-all duration-300 w-1/2" id="timeline-progress"></div>
+</div>
+<!-- Waypoints -->
+<div class="flex justify-between items-center -mt-3.5 relative">
+<!-- iat -->
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-surface-elevated border-2 border-primary flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</div>
+<span class="font-code-sm text-code-sm text-text-display mt-2">iat</span>
+<span class="font-code-sm text-[10px] text-text-muted">12:00:00 UTC</span>
+</div>
+<!-- current cursor -->
+<div class="flex flex-col items-center transition-all duration-300" id="timeline-cursor">
+<div class="w-7 h-7 rounded-full bg-status-verified flex items-center justify-center text-text-dark font-bold text-xs shadow-[0_0_12px_rgba(16,185,129,0.3)]" id="timeline-cursor-dot">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+</div>
+<span class="font-code-sm text-code-sm text-status-verified mt-2 font-semibold" id="timeline-cursor-label">CURRENT TIME</span>
+<span class="font-code-sm text-[10px] text-text-muted" id="timeline-cursor-sub">12:15:00 UTC</span>
+</div>
+<!-- exp -->
+<div class="flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-surface-elevated border-2 border-status-danger flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-status-danger"></span>
+</div>
+<span class="font-code-sm text-code-sm text-text-display mt-2">exp</span>
+<span class="font-code-sm text-[10px] text-text-muted">13:00:00 UTC</span>
+</div>
+</div>
+</div>
+<!-- Current Timeline Status Box -->
+<div class="mt-space-md p-space-md rounded bg-surface-recessed border border-border-hairline flex items-center justify-between" id="time-status-banner">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-status-verified text-[20px]" id="time-status-icon">check_circle</span>
+<span class="font-code-sm text-code-sm text-text-display" id="time-status-text">TOKEN IS VALID // 45 MINUTES REMAINING</span>
+</div>
+<span class="font-code-sm text-code-sm text-text-muted">RFC 7519 COMPLIANT</span>
+</div>
+</div>
+<!-- 3 RFC Claims Explained -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="bg-surface-card p-space-md rounded border border-border-hairline">
+<code class="font-code-md text-code-md text-primary block mb-space-xs">exp (Expiration Time)</code>
+<p class="font-body-sm text-body-sm text-text-muted">
+          Unix epoch timestamp after which the token must be rejected unconditionally by all verifiers.
+        </p>
+</div>
+<div class="bg-surface-card p-space-md rounded border border-border-hairline">
+<code class="font-code-md text-code-md text-primary block mb-space-xs">iat (Issued At)</code>
+<p class="font-body-sm text-body-sm text-text-muted">
+          Identifies the instant when the JWT was minted. Used to determine token age and enforce max session limits.
+        </p>
+</div>
+<div class="bg-surface-card p-space-md rounded border border-border-hairline">
+<code class="font-code-md text-code-md text-primary block mb-space-xs">nbf (Not Before)</code>
+<p class="font-body-sm text-body-sm text-text-muted">
+          Timestamp identifying the exact moment before which the token must not be accepted for processing.
+        </p>
+</div>
+</div>
+</section>
+<!-- CHAPTER 06: COMMON PITFALLS & DEFENSE RULES -->
+<section class="w-full py-space-3xl border-b border-border-hairline">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-muted mb-space-xs">
+<span class="font-code-sm text-primary">CHAPTER 06</span>
+<span>//</span>
+<span>VULNERABILITY SURFACE</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-display mb-space-md">
+      Common Pitfalls &amp; Defense Rules
+    </h2>
+<p class="font-body-lg text-body-lg text-text-muted max-w-3xl mb-space-2xl">
+      Misconfigured libraries and architectural oversights turn an otherwise robust standard into a high-severity entry point. Maintain these four ironclad operational safeguards:
+    </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Pitfall 1 -->
+<div class="bg-surface-card p-space-xl rounded border border-border-hairline flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-status-danger font-code-sm text-code-sm mb-space-sm">
+<span class="material-symbols-outlined text-[18px]">no_encryption</span>
+<span>VULNERABILITY 01</span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-xs">The 'alg: none' Exploit</h3>
+<p class="font-body-md text-body-md text-text-muted mb-space-md">
+            The JOSE spec permits an algorithm of <code class="font-code-sm text-text-display">"none"</code> for unauthenticated tokens. Naive libraries parse this and bypass signature validation altogether.
+          </p>
+</div>
+<div class="p-space-sm rounded bg-surface-recessed border border-border-hairline font-code-sm text-code-sm text-status-verified flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span>DEFENSE: Whitelist explicit algorithms on the server verifier.</span>
+</div>
+</div>
+<!-- Pitfall 2 -->
+<div class="bg-surface-card p-space-xl rounded border border-border-hairline flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-status-danger font-code-sm text-code-sm mb-space-sm">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>VULNERABILITY 02</span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-xs">Storing Sensitive Secrets in Claims</h3>
+<p class="font-body-md text-body-md text-text-muted mb-space-md">
+            Storing passwords, credit card numbers, or PII in a JWT payload exposes confidential records to browser extensions, log scrapers, and intermediate proxies.
+          </p>
+</div>
+<div class="p-space-sm rounded bg-surface-recessed border border-border-hairline font-code-sm text-code-sm text-status-verified flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span>DEFENSE: Store only opaque UUIDs or public role identifiers.</span>
+</div>
+</div>
+<!-- Pitfall 3 -->
+<div class="bg-surface-card p-space-xl rounded border border-border-hairline flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-status-danger font-code-sm text-code-sm mb-space-sm">
+<span class="material-symbols-outlined text-[18px]">key_off</span>
+<span>VULNERABILITY 03</span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-xs">Weak HMAC Signing Secrets</h3>
+<p class="font-body-md text-body-md text-text-muted mb-space-md">
+            Tokens signed with dictionary words (e.g. <code class="font-code-sm text-text-display">"secret123"</code>) can be cracked offline in seconds using tools like Hashcat at billions of hashes per second.
+          </p>
+</div>
+<div class="p-space-sm rounded bg-surface-recessed border border-border-hairline font-code-sm text-code-sm text-status-verified flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span>DEFENSE: Require 256-bit high-entropy secrets (32+ cryptographically random bytes).</span>
+</div>
+</div>
+<!-- Pitfall 4 -->
+<div class="bg-surface-card p-space-xl rounded border border-border-hairline flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-status-warning font-code-sm text-code-sm mb-space-sm">
+<span class="material-symbols-outlined text-[18px]">sync_problem</span>
+<span>ARCHITECTURAL TRADEOFF</span>
+</div>
+<h3 class="font-title-md text-title-md text-text-display mb-space-xs">Client-Side Revocation Challenge</h3>
+<p class="font-body-md text-body-md text-text-muted mb-space-md">
+            Because JWTs are stateless, you cannot unilaterally revoke an active token without introducing a centralized blacklist or token revocation list (TRL) back into memory.
+          </p>
+</div>
+<div class="p-space-sm rounded bg-surface-recessed border border-border-hairline font-code-sm text-code-sm text-status-verified flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+<span>DEFENSE: Enforce short lifetimes (&lt;15 mins) paired with rotating refresh tokens.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CHAPTER 07: TACTICAL HANDOFFS -->
+<section class="w-full py-space-3xl">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-muted mb-space-xs">
+<span class="font-code-sm text-primary">CHAPTER 07</span>
+<span>//</span>
+<span>FIELD APPLICATION</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-display mb-space-md">
+      Tactical Handoffs: Put It Into Practice
+    </h2>
+<p class="font-body-lg text-body-lg text-text-muted max-w-3xl mb-space-2xl">
+      Transition from theoretical mechanics to client-side cryptographic execution. Choose your active workspace below:
+    </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl">
+<!-- Action Card 1 -->
+<div class="bg-surface-card p-space-xl rounded border border-border-hairline hover:border-primary-container transition-all group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded bg-surface-recessed border border-border-hairline flex items-center justify-center text-primary group-hover:scale-105 transition-transform mb-space-md">
+<span class="material-symbols-outlined text-[24px]">troubleshoot</span>
+</div>
+<div class="font-label-caps text-label-caps text-text-muted mb-space-xs">DIAGNOSTIC WORKSPACE</div>
+<h3 class="font-headline-sm text-headline-sm text-text-display mb-space-sm">Launch Decode &amp; Verify</h3>
+<p class="font-body-md text-body-md text-text-muted mb-space-xl">
+            Inspect arbitrary JWT tokens, analyze payload claims, compute verification checksums with custom HMAC secrets, and run automated vulnerability scanners locally in your browser.
+          </p>
+</div>
+<a class="w-full py-space-sm px-space-md rounded bg-surface-elevated border border-border-subtle hover:border-primary text-text-display font-code-sm text-code-sm flex items-center justify-between transition-colors" data-path="decode-and-verify" href="#">
+<span>INITIALIZE DECODER CONSOLE</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Action Card 2 -->
+<div class="bg-surface-card p-space-xl rounded border border-border-hairline hover:border-primary-container transition-all group flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded bg-surface-recessed border border-border-hairline flex items-center justify-center text-primary-container group-hover:scale-105 transition-transform mb-space-md">
+<span class="material-symbols-outlined text-[24px]">draw</span>
+</div>
+<div class="font-label-caps text-label-caps text-text-muted mb-space-xs">GENERATOR WORKSPACE</div>
+<h3 class="font-headline-sm text-headline-sm text-text-display mb-space-sm">Launch Build &amp; Sign</h3>
+<p class="font-body-md text-body-md text-text-muted mb-space-xl">
+            Draft structured claims, assign explicit temporal boundaries (exp, nbf, iat), and generate production-grade signed JWTs powered by local WebCrypto entropy engines.
+          </p>
+</div>
+<a class="w-full py-space-sm px-space-md rounded bg-primary-container text-text-dark font-code-sm text-code-sm font-semibold flex items-center justify-between hover:bg-primary-hover transition-colors" data-path="build-and-sign" href="#">
+<span>INITIALIZE TOKEN MINT</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Chapter 01 Segment Explorer Data & Interaction
+  const segmentData = {
+    header: {
+      title: "The Header Segment",
+      meta: "ALGORITHM & METADATA",
+      desc: "Specifies cryptographic directives governing token verification. It informs the validating recipient which hashing algorithm was chosen (e.g. HS256, RS256) and confirms the wrapper standard (typ: \"JWT\").",
+      colorClass: "bg-status-danger"
+    },
+    payload: {
+      title: "The Payload Segment",
+      meta: "CLAIMS & IDENTITY ATTRIBUTES",
+      desc: "Contains the JSON claims about the entity (e.g. user ID, role, permissions) along with temporal claims like issued-at and expiration. It is merely encoded into Base64URL, not encrypted.",
+      colorClass: "bg-primary-container"
+    },
+    signature: {
+      title: "The Signature Segment",
+      meta: "MATHEMATICAL INTEGRITY PROOF",
+      desc: "Formed by hashing the combined header and payload strings using a secret cryptographic key. If a single bit in the header or payload changes, the signature verification immediately fails.",
+      colorClass: "bg-status-info"
+    }
+  };
+
+  function selectSegment(segmentKey) {
+    const data = segmentData[segmentKey];
+    if (!data) return;
+
+    // Update explainer text
+    document.getElementById("explainer-title").textContent = data.title;
+    document.getElementById("explainer-meta").textContent = data.meta;
+    document.getElementById("explainer-desc").textContent = data.desc;
+
+    // Update indicator dot
+    const dot = document.getElementById("explainer-dot");
+    dot.className = "w-2.5 h-2.5 rounded-full " + data.colorClass;
+
+    // Reset button states
+    ['header', 'payload', 'signature'].forEach(k => {
+      const btn = document.getElementById("tab-btn-" + k);
+      if (k === segmentKey) {
+        btn.className = "px-space-md py-space-sm font-code-sm text-code-sm rounded bg-surface-elevated border border-primary text-text-display flex items-center gap-space-xs transition-colors";
+      } else {
+        btn.className = "px-space-md py-space-sm font-code-sm text-code-sm rounded bg-surface-base border border-border-hairline text-text-muted hover:text-text-display flex items-center gap-space-xs transition-colors";
+      }
+    });
+  }
+
+  // Chapter 04 Tampering Sandbox Interaction
+  function tamperPayload() {
+    const statusBar = document.getElementById("sandbox-status-bar");
+    const statusIcon = document.getElementById("sandbox-status-icon");
+    const statusText = document.getElementById("sandbox-status-text");
+    const hashStatus = document.getElementById("sandbox-hash-status");
+    const roleDisplay = document.getElementById("sandbox-role-display");
+    const signatureDisplay = document.getElementById("sandbox-signature-display");
+    const explanation = document.getElementById("tamper-explanation");
+
+    statusBar.className = "p-space-md rounded border border-status-danger bg-status-danger/10 flex items-center justify-between mb-space-lg transition-colors";
+    statusIcon.className = "material-symbols-outlined text-status-danger text-[20px]";
+    statusIcon.textContent = "cancel";
+    statusText.className = "font-code-sm text-code-sm text-status-danger font-semibold";
+    statusText.textContent = "✗ SIGNATURE INVALID — THE SIGNATURE DOES NOT MATCH THE MODIFIED PAYLOAD";
+    
+    hashStatus.className = "font-code-sm text-code-sm text-status-danger font-semibold";
+    hashStatus.textContent = "HASH MISMATCH";
+
+    roleDisplay.innerHTML = '"role": "<span class="text-status-danger font-semibold">admin</span>"';
+    signatureDisplay.className = "font-code-sm text-code-sm text-status-danger line-through truncate";
+    explanation.classList.remove("hidden");
+  }
+
+  function resetPayload() {
+    const statusBar = document.getElementById("sandbox-status-bar");
+    const statusIcon = document.getElementById("sandbox-status-icon");
+    const statusText = document.getElementById("sandbox-status-text");
+    const hashStatus = document.getElementById("sandbox-hash-status");
+    const roleDisplay = document.getElementById("sandbox-role-display");
+    const signatureDisplay = document.getElementById("sandbox-signature-display");
+    const explanation = document.getElementById("tamper-explanation");
+
+    statusBar.className = "p-space-md rounded border border-status-verified bg-status-verified/5 flex items-center justify-between mb-space-lg transition-colors";
+    statusIcon.className = "material-symbols-outlined text-status-verified text-[20px]";
+    statusIcon.textContent = "verified";
+    statusText.className = "font-code-sm text-code-sm text-status-verified font-semibold";
+    statusText.textContent = "✓ SIGNATURE VERIFIED WITH 'demo-secret'";
+
+    hashStatus.className = "font-code-sm text-code-sm text-text-muted hidden sm:inline";
+    hashStatus.textContent = "SHA256 HASH COMPLIANT";
+
+    roleDisplay.innerHTML = '"role": "<span class="text-secondary font-semibold">user</span>"';
+    signatureDisplay.className = "font-code-sm text-code-sm text-status-info truncate";
+    explanation.classList.add("hidden");
+  }
+
+  // Chapter 05 Timeline Interaction
+  function setTokenTime(isExpired) {
+    const progress = document.getElementById("timeline-progress");
+    const cursor = document.getElementById("timeline-cursor");
+    const cursorDot = document.getElementById("timeline-cursor-dot");
+    const cursorLabel = document.getElementById("timeline-cursor-label");
+    const cursorSub = document.getElementById("timeline-cursor-sub");
+    const statusBanner = document.getElementById("time-status-banner");
+    const statusIcon = document.getElementById("time-status-icon");
+    const statusText = document.getElementById("time-status-text");
+    const btnValid = document.getElementById("btn-time-valid");
+    const btnExpired = document.getElementById("btn-time-expired");
+
+    if (isExpired) {
+      progress.className = "h-1 bg-status-danger rounded transition-all duration-300 w-full";
+      cursorDot.className = "w-7 h-7 rounded-full bg-status-danger flex items-center justify-center text-text-dark font-bold text-xs shadow-[0_0_12px_rgba(239,68,68,0.3)]";
+      cursorLabel.className = "font-code-sm text-code-sm text-status-danger mt-2 font-semibold";
+      cursorSub.textContent = "13:15:00 UTC";
+      statusIcon.className = "material-symbols-outlined text-status-danger text-[20px]";
+      statusIcon.textContent = "error";
+      statusText.textContent = "TOKEN EXPIRED // 15 MINUTES PAST EXPIRATION";
+      statusBanner.className = "mt-space-md p-space-md rounded bg-status-danger/10 border border-status-danger/30 flex items-center justify-between";
+
+      btnValid.className = "px-space-sm py-1 rounded font-code-sm text-code-sm bg-surface-recessed text-text-muted hover:text-text-display border border-border-hairline";
+      btnExpired.className = "px-space-sm py-1 rounded font-code-sm text-code-sm bg-status-danger text-text-dark font-semibold";
+    } else {
+      progress.className = "h-1 bg-status-verified rounded transition-all duration-300 w-1/2";
+      cursorDot.className = "w-7 h-7 rounded-full bg-status-verified flex items-center justify-center text-text-dark font-bold text-xs shadow-[0_0_12px_rgba(16,185,129,0.3)]";
+      cursorLabel.className = "font-code-sm text-code-sm text-status-verified mt-2 font-semibold";
+      cursorSub.textContent = "12:15:00 UTC";
+      statusIcon.className = "material-symbols-outlined text-status-verified text-[20px]";
+      statusIcon.textContent = "check_circle";
+      statusText.textContent = "TOKEN IS VALID // 45 MINUTES REMAINING";
+      statusBanner.className = "mt-space-md p-space-md rounded bg-surface-recessed border border-border-hairline flex items-center justify-between";
+
+      btnValid.className = "px-space-sm py-1 rounded font-code-sm text-code-sm bg-status-verified text-text-dark font-semibold";
+      btnExpired.className = "px-space-sm py-1 rounded font-code-sm text-code-sm bg-surface-recessed text-text-muted hover:text-text-display border border-border-hairline";
+    }
+  }
+</script></div></main><footer class="w-full bg-surface-base border-t border-border-hairline py-space-md mt-auto"><div class="max-w-7xl mx-auto px-gutter flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md font-code-sm text-code-sm text-text-muted"><span>SEC-OPS v4.8.2-SECURE</span><span class="text-border-subtle">•</span><span>100% CLIENT-SIDE EXECUTION // ZERO TELEMETRY INGRESS</span></div><div class="flex items-center gap-space-lg font-code-sm text-code-sm text-text-muted"><a class="hover:text-primary transition-colors" data-path="cryptographic-standards" href="#">STANDARDS</a><a class="hover:text-primary transition-colors" data-path="entropy-specification" href="#">ENTROPY SPEC</a><a class="hover:text-primary transition-colors" data-path="zero-knowledge-audit" href="#">ZK AUDIT</a><a class="hover:text-primary transition-colors" data-path="incident-response" href="#">AIR-GAP ISOLATE</a></div></div></footer>
+
+</body></html>

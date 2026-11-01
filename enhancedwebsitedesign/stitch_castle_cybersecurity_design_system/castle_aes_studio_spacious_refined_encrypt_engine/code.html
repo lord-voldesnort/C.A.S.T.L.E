@@ -1,0 +1,771 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 3718px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>Castle Sec-Ops // Cryptographic Suite // AES-256 Encrypt</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+  @layer base {
+    html, body { margin: 0; padding: 0; }
+    body { overscroll-behavior: none; }
+    main > :first-child { margin-top: 0 !important; }
+    main > :last-child { margin-bottom: 0 !important; }
+  }
+  ::-webkit-scrollbar { display: none; }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "error": "#ffb4ab",
+          "on-secondary-container": "#00311f",
+          "primary": "#ffb694",
+          "surface-container-high": "#2a2a2a",
+          "inverse-primary": "#a14000",
+          "tertiary": "#89ceff",
+          "surface-root": "#000000",
+          "primary-fixed-dim": "#ffb694",
+          "border-active": "#FF6A00",
+          "surface-tint": "#ffb694",
+          "tertiary-fixed": "#c9e6ff",
+          "on-primary-container": "#571f00",
+          "on-primary-fixed-variant": "#7b2f00",
+          "surface-recessed": "#050505",
+          "on-primary-fixed": "#351000",
+          "on-error": "#690005",
+          "on-tertiary-container": "#00344e",
+          "surface-variant": "#353535",
+          "on-secondary": "#003824",
+          "primary-active": "#E55F00",
+          "on-error-container": "#ffdad6",
+          "on-tertiary-fixed": "#001e2f",
+          "border-hairline": "#1A1A1A",
+          "surface-bright": "#393939",
+          "secondary-fixed-dim": "#4edea3",
+          "status-warning": "#F59E0B",
+          "on-secondary-fixed-variant": "#005236",
+          "on-secondary-fixed": "#002113",
+          "status-info": "#0EA5E9",
+          "surface-card": "#0D0D0D",
+          "on-background": "#e2e2e2",
+          "primary-fixed": "#ffdbcc",
+          "secondary-container": "#00a572",
+          "inverse-surface": "#e2e2e2",
+          "on-surface": "#e2e2e2",
+          "on-tertiary-fixed-variant": "#004c6e",
+          "on-surface-variant": "#e2bfb0",
+          "primary-hover": "#FF7D1A",
+          "outline": "#a98a7d",
+          "secondary-fixed": "#6ffbbe",
+          "surface-base": "#0A0A0A",
+          "tertiary-container": "#00a2e6",
+          "on-tertiary": "#00344d",
+          "surface": "#131313",
+          "on-primary": "#571f00",
+          "status-danger": "#EF4444",
+          "surface-elevated": "#111111",
+          "tertiary-fixed-dim": "#89ceff",
+          "secondary": "#4edea3",
+          "background": "#131313",
+          "status-verified": "#10B981",
+          "surface-container": "#1f1f1f",
+          "primary-container": "#ff6a00",
+          "outline-variant": "#5a4136",
+          "text-dark": "#050505",
+          "surface-dim": "#131313",
+          "text-display": "#FFFFFF",
+          "text-body": "#E5E5E5",
+          "inverse-on-surface": "#303030",
+          "border-subtle": "#222222",
+          "error-container": "#93000a",
+          "surface-container-highest": "#353535",
+          "text-muted": "#888888",
+          "surface-container-low": "#1b1b1b",
+          "primary-glow": "rgba(255, 106, 0, 0.15)",
+          "surface-container-lowest": "#0e0e0e"
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        spacing: {
+          "space-xl": "2rem",
+          "space-2xl": "3rem",
+          "gutter": "1.5rem",
+          "margin": "2.5rem",
+          "margin-mobile": "1rem",
+          "space-md": "1rem",
+          "gutter-mobile": "1rem",
+          "space-xs": "0.25rem",
+          "space-3xl": "4rem",
+          "space-sm": "0.5rem",
+          "space-lg": "1.5rem"
+        },
+        fontFamily: {
+          "body-sm": ["Inter"],
+          "label-caps": ["JetBrains Mono"],
+          "headline-md": ["Space Grotesk"],
+          "headline-sm": ["Space Grotesk"],
+          "headline-lg-mobile": ["Space Grotesk"],
+          "body-lg": ["Inter"],
+          "code-lg": ["JetBrains Mono"],
+          "hero": ["Space Grotesk"],
+          "hero-mobile": ["Space Grotesk"],
+          "headline-lg": ["Space Grotesk"],
+          "body-md": ["Inter"],
+          "code-sm": ["JetBrains Mono"],
+          "code-md": ["JetBrains Mono"],
+          "title-md": ["Space Grotesk"]
+        },
+        fontSize: {
+          "body-sm": ["12px", { "lineHeight": "1.50", "fontWeight": "400" }],
+          "label-caps": ["11px", { "lineHeight": "1.40", "letterSpacing": "0.08em", "fontWeight": "600" }],
+          "headline-md": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+          "headline-sm": ["24px", { "lineHeight": "1.30", "fontWeight": "600" }],
+          "headline-lg-mobile": ["32px", { "lineHeight": "1.20", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+          "body-lg": ["16px", { "lineHeight": "1.60", "fontWeight": "400" }],
+          "code-lg": ["15px", { "lineHeight": "1.50", "fontWeight": "500" }],
+          "hero": ["64px", { "lineHeight": "1.10", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+          "hero-mobile": ["40px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "headline-lg": ["48px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "body-md": ["14px", { "lineHeight": "1.55", "fontWeight": "400" }],
+          "code-sm": ["11px", { "lineHeight": "1.40", "fontWeight": "400" }],
+          "code-md": ["13px", { "lineHeight": "1.50", "fontWeight": "500" }],
+          "title-md": ["18px", { "lineHeight": "1.40", "letterSpacing": "0.01em", "fontWeight": "600" }]
+        }
+      }
+    }
+  };
+</script>
+</head>
+<body class="bg-surface-root font-body-md text-text-body min-h-screen selection:bg-primary-container selection:text-text-dark antialiased">
+<!-- TOP SEC-OPS HEADER & NAVIGATION (Harmonized with Decrypt Screen) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-[#000000] border-b border-[#222222]/80 backdrop-blur-md"><div class="w-full bg-[#050505] border-b border-[#1c1c1c] px-4 sm:px-8 py-1.5 flex flex-wrap items-center justify-between text-[11px] font-label-caps tracking-wider text-text-muted"><div class="flex items-center gap-2 flex-wrap"><span class="flex items-center gap-1.5 text-status-verified font-medium"><span class="w-2 h-2 rounded-full bg-status-verified shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>AIR-GAP MODE ACTIVE</span><span class="text-[#2a2a2a]">//</span><span class="">ZERO INGRESS TELEMETRY</span><span class="text-[#2a2a2a]">//</span><span class="text-[#F5F5F5]">CASTLE SEC-OPS</span><span class="text-[#2a2a2a]">//</span><span class="">UTILITIES</span><span class="text-[#2a2a2a]">//</span><span class="text-primary-container font-semibold">MODULE-03</span><span class="text-[#2a2a2a]">//</span><span class="">AES-STUDIO</span></div><div class="flex items-center gap-4 pt-1 sm:pt-0"><div class="hidden md:flex items-center gap-3 font-code-sm text-xs"><span class="">CRYPTO-HASH: <strong class="text-[#F5F5F5]">SHA-512/WASM</strong></span><span class="text-[#2a2a2a]">|</span><span class="">SEC-LEVEL: <strong class="text-status-verified">TIER-1</strong></span></div><div class="flex items-center gap-2"><button type="button" onclick="resetForm()" class="px-2.5 py-0.5 rounded-DEFAULT bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-text-muted hover:text-[#F5F5F5] transition-colors flex items-center gap-1 font-label-caps text-[10px]"><span class="material-symbols-outlined text-[13px]">restart_alt</span>RESET</button><div class="flex items-center gap-1 text-[#F5F5F5] font-code-sm text-[11px] pl-1"><span class="material-symbols-outlined text-primary-container text-[14px]">shield_person</span><span class="font-medium">OPERATOR-01</span></div></div></div></div><div class="max-w-6xl mx-auto px-6 sm:px-10 py-3 flex flex-col md:flex-row md:items-center justify-between gap-4"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-DEFAULT bg-primary-container/10 border border-primary-container/40 flex items-center justify-center text-primary-container shadow-[0_0_12px_rgba(255,106,0,0.2)]"><span class="material-symbols-outlined text-xl">security</span></div><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-headline-sm font-bold text-lg sm:text-xl tracking-tight text-[#F5F5F5] font-mono">CASTLE</span><span class="px-1.5 py-0.2 rounded-DEFAULT bg-[#141414] border border-[#333333] text-primary-container font-label-caps text-[10px] font-semibold">SEC-OPS v3.4</span></div><span class="font-code-sm text-[11px] text-text-muted tracking-wide">CRYPTOGRAPHIC ENGINE // LOCAL AIR-GAP</span></div></div><nav class="flex items-center gap-2 font-code-md text-xs sm:text-sm"><a href="#" class="px-4 py-2 rounded-DEFAULT bg-[#0e0e0e] hover:bg-[#141414] border border-[#222222] hover:border-[#333333] text-text-muted hover:text-[#F5F5F5] transition-all font-medium">TAB 01: LEARN</a><a href="#" aria-current="page" class="px-4 py-2 rounded-DEFAULT bg-primary-container text-text-dark font-semibold border border-primary-container shadow-[0_0_14px_rgba(255,106,0,0.35)] transition-all flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-text-dark inline-block"></span>TAB 02: ENCRYPT</a><a href="#" class="px-4 py-2 rounded-DEFAULT bg-[#0e0e0e] hover:bg-[#141414] border border-[#222222] hover:border-[#333333] text-text-muted hover:text-[#F5F5F5] transition-all font-medium">TAB 03: DECRYPT</a></nav></div></header>
+<!-- MAIN PROGRESSIVE-DISCLOSURE WORKSPACE -->
+<main class="w-full pt-28 bg-[#000000]">
+<div class="max-w-4xl mx-auto px-6 sm:px-10 py-12 flex flex-col gap-10">
+<!-- 1. HEADER SECTION (CLEAN & SPACIOUS) -->
+<section class="flex flex-col gap-4">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2 py-0.5 rounded-DEFAULT bg-[#141414] border border-[#222222] font-label-caps text-label-caps text-primary-container tracking-wider">MODULE 02 // ENCRYPT</span>
+<span class="text-text-muted font-code-sm text-code-sm">//</span>
+<span class="font-label-caps text-label-caps text-text-muted">AES-256 AIR-GAPPED ENCRYPTION WORKSPACE</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<h1 class="font-headline-lg text-3xl sm:text-4xl text-[#F5F5F5] tracking-tight font-bold">
+          AES-256 AIR-GAPPED ENCRYPTION ENGINE
+        </h1>
+<div class="flex items-center gap-2 bg-[#0e0e0e] border border-[#222222] px-3 py-1.5 rounded-DEFAULT shrink-0">
+<span class="w-2 h-2 rounded-full bg-status-verified shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
+<span class="font-code-sm text-code-sm text-text-muted">GHASH GENERATION:</span>
+<span class="font-code-sm text-code-sm text-status-verified font-medium">ONLINE</span>
+</div>
+</div>
+<p class="font-body-lg text-base text-text-muted max-w-3xl leading-relaxed">
+        Execute authenticated Galois/Counter Mode symmetric encryption strictly inside your browser's isolated memory buffer. Zero network telemetry, zero server persistence.
+      </p>
+<div class="flex flex-wrap items-center gap-2 pt-1 font-code-sm text-xs">
+<div class="px-2.5 py-1 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] flex items-center gap-1.5">
+<span class="text-text-muted font-label-caps">SPEC:</span>
+<span class="text-[#F5F5F5]">NIST SP 800-38D</span>
+</div>
+<div class="px-2.5 py-1 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] flex items-center gap-1.5">
+<span class="text-text-muted font-label-caps">CIPHER:</span>
+<span class="text-primary-fixed-dim">AES-256-GCM (14 ROUNDS)</span>
+</div>
+<div class="px-2.5 py-1 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] flex items-center gap-1.5">
+<span class="text-text-muted font-label-caps">AUTH:</span>
+<span class="text-status-verified">128-BIT GHASH TAG</span>
+</div>
+<div class="px-2.5 py-1 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] flex items-center gap-1.5">
+<span class="text-text-muted font-label-caps">ISOLATION:</span>
+<span class="text-tertiary-fixed">LOCAL AIR-GAP (0 NET)</span>
+</div>
+</div>
+</section>
+<!-- 2. AIR-GAP PRIVACY NOTICE BANNER -->
+<section class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] hover:border-[#FF6A00]/30 transition-colors p-5 sm:p-6 shadow-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-start sm:items-center gap-4">
+<div class="w-10 h-10 rounded-DEFAULT bg-[#141414] border border-[#262626] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-container text-2xl">shield_lock</span>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-caps text-label-caps text-[#F5F5F5] tracking-wider">AES STUDIO // AIR-GAPPED PRIVACY</span>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-secondary-container/20 text-secondary font-label-caps text-[10px] border border-secondary/30">100% CLIENT-SIDE WEBCRYPTO</span>
+</div>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted mt-1 leading-normal">
+              Everything happens strictly inside your local V8 memory buffer. Castle never transmits, analyzes, or stores your keys, plain text, or payloads.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 sm:gap-4 shrink-0 font-code-sm text-xs text-text-muted border-t sm:border-t-0 border-[#222222] pt-2 sm:pt-0">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified"></span>
+<span>LOCAL BUFFER</span>
+</div>
+<span class="text-[#2a2a2a]">•</span>
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-status-info"></span>
+<span>ZERO SERVER</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. MAIN ENCRYPTION TASK CARD (SEQUENTIAL & UNCLUTTERED) -->
+<section class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] hover:border-[#FF6A00]/40 transition-colors p-8 sm:p-10 shadow-2xl flex flex-col gap-10">
+<!-- STEP 01: CONTENT INGRESS BUFFER -->
+<div class="flex flex-col gap-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-DEFAULT bg-primary-container text-text-dark font-label-caps text-xs flex items-center justify-center font-bold">01</span>
+<h2 class="font-title-md text-base sm:text-lg text-[#F5F5F5] uppercase tracking-wide font-semibold">Payload Ingress Buffer</h2>
+</div>
+<div class="flex items-center gap-1 bg-[#050505] p-1 rounded-DEFAULT border border-[#222222]">
+<button class="px-3 py-1 rounded-DEFAULT bg-[#141414] text-[#F5F5F5] font-code-sm text-xs font-medium border border-[#333333] transition-colors" id="toggle-text-btn" onclick="setPayloadType('text')" type="button">TEXT PAYLOAD</button>
+<button class="px-3 py-1 rounded-DEFAULT bg-transparent text-text-muted hover:text-[#F5F5F5] font-code-sm text-xs transition-colors" id="toggle-file-btn" onclick="setPayloadType('file')" type="button">FILE ENVELOPE (.BIN / .DOC)</button>
+</div>
+</div>
+<!-- Plaintext Ingress Area -->
+<div class="flex flex-col gap-2" id="panel-text-mode">
+<div class="relative rounded-DEFAULT bg-[#050505] border border-[#222222] focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all p-4">
+<textarea class="w-full bg-transparent font-code-md text-xs sm:text-sm text-[#F5F5F5] placeholder-text-muted/50 resize-none outline-none leading-relaxed selection:bg-primary-container selection:text-text-dark" id="plaintext-input" placeholder="Enter sensitive tactical payload, intelligence notes, or secrets..." rows="6" spellcheck="false">Confidential tactical security intelligence data block.</textarea>
+<div class="flex items-center justify-between pt-3 border-t border-[#1a1a1a] text-text-muted font-code-sm text-xs">
+<span class="flex items-center gap-1.5 text-status-verified">
+<span class="material-symbols-outlined text-[14px]">verified_user</span>
+<span>PLAINTEXT IN-MEMORY READY</span>
+</span>
+<div class="flex items-center gap-4">
+<span id="char-counter">54 CHARS // 54 BYTES (UTF-8)</span>
+<button class="text-primary-container hover:text-primary-hover uppercase font-label-caps text-[11px] font-semibold transition-colors" onclick="clearText()" type="button">CLEAR BUFFER</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Drag & Drop File Bay (Hidden by Default) -->
+<div class="hidden flex-col items-center justify-center p-8 rounded-DEFAULT bg-[#050505] border border-dashed border-[#262626] hover:border-primary-container/60 hover:bg-[#0a0a0a] transition-all cursor-pointer group text-center" id="panel-file-mode">
+<span class="material-symbols-outlined text-4xl text-primary-container group-hover:scale-110 transition-transform">upload_file</span>
+<div class="font-code-md text-xs sm:text-sm text-[#F5F5F5] mt-2.5 font-medium">Drop payload file or click to browse</div>
+<div class="font-body-sm text-xs text-text-muted mt-1">Supports authenticated encryption payloads up to 256MB client-side</div>
+<div class="mt-4 px-4 py-1.5 rounded-DEFAULT bg-[#141414] border border-[#262626] font-label-caps text-xs text-text-muted group-hover:text-[#F5F5F5] group-hover:border-primary-container transition-colors">
+            SELECT LOCAL FILE
+          </div>
+</div>
+<!-- Ingress Advisory Footer -->
+<div class="px-4 py-2.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-wrap items-center justify-between gap-2 text-xs font-code-sm text-text-muted">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span class="text-[#F5F5F5] font-medium">CRYPTOGRAPHIC AEAD SEEDING</span>
+</div>
+<div>
+            Plain text is protected locally with a fresh unique 96-bit IV and authenticating 128-bit GHASH tag on every execution.
+          </div>
+</div>
+</div>
+<div class="h-[1px] w-full bg-[#1c1c1c]"></div>
+<!-- STEP 02: KEY ARCHITECTURE & DERIVATION -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-6 h-6 rounded-DEFAULT bg-primary-container text-text-dark font-label-caps text-xs flex items-center justify-center font-bold">02</span>
+<h2 class="font-title-md text-base sm:text-lg text-[#F5F5F5] uppercase tracking-wide font-semibold">Key Architecture &amp; Derivation</h2>
+</div>
+<span class="px-2 py-0.5 rounded-DEFAULT bg-[#141414] border border-[#222222] font-label-caps text-label-caps text-text-muted">SELECT PRIMITIVE</span>
+</div>
+<!-- 2 Large Distinct Selection Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card A: Passphrase Derivation (Selected) -->
+<div class="cursor-pointer p-5 rounded-DEFAULT bg-[#050505] border-2 border-primary-container shadow-[0_0_16px_rgba(255,106,0,0.18)] transition-all flex flex-col justify-between relative group" id="key-choice-passphrase" onclick="selectKeyMode('passphrase')">
+<div class="absolute top-4 right-4 text-primary-container">
+<span class="material-symbols-outlined text-[20px]">radio_button_checked</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5 mb-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">password</span>
+<span class="font-headline-sm text-sm sm:text-base text-[#F5F5F5] font-semibold">PASSPHRASE DERIVATION</span>
+</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+                Derives a 256-bit key using PBKDF2 with 250,000 SHA-256 iterations and a fresh random 16-byte cryptographically secure salt.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#1a1a1a] flex items-center justify-between font-code-sm text-xs">
+<span class="text-text-muted">KDF: <strong class="text-[#F5F5F5]">PBKDF2-HMAC-SHA256</strong></span>
+<span class="text-secondary font-bold">RECOVERABLE</span>
+</div>
+</div>
+<!-- Card B: Random Crypto Key (Unselected) -->
+<div class="cursor-pointer p-5 rounded-DEFAULT bg-[#050505] border border-[#222222] hover:border-[#333333] transition-all flex flex-col justify-between relative group" id="key-choice-random" onclick="selectKeyMode('random')">
+<div class="absolute top-4 right-4 text-text-muted group-hover:text-primary-container">
+<span class="material-symbols-outlined text-[20px]">radio_button_unchecked</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5 mb-2">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary-container text-[20px]">key</span>
+<span class="font-headline-sm text-sm sm:text-base text-[#F5F5F5] font-semibold">RANDOM CRYPTO KEY</span>
+</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+                Generates a pure 256-bit hardware-backed random key using WebCrypto CSPRNG. The key must be stored securely as there is zero password recovery.
+              </p>
+</div>
+<div class="mt-4 pt-3 border-t border-[#1a1a1a] flex items-center justify-between font-code-sm text-xs">
+<span class="text-text-muted">ENTROPY: <strong class="text-[#F5F5F5]">256-BIT RAW CSPRNG</strong></span>
+<span class="text-status-warning font-bold">ZERO-RECOVERY</span>
+</div>
+</div>
+</div>
+<!-- Passphrase Input Sub-Panel -->
+<div class="flex flex-col gap-3" id="passphrase-sub-panel">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<label class="font-label-caps text-label-caps text-text-muted tracking-wider block" for="passphrase-input">
+              SECRET PASSPHRASE AUTHORIZATION
+            </label>
+<button class="font-code-sm text-xs text-primary-container hover:text-primary-hover flex items-center gap-1.5 transition-colors font-medium" onclick="generateTacticalPassphrase()" type="button">
+<span class="material-symbols-outlined text-[15px]">bolt</span>
+<span>GENERATE STRONG PASSPHRASE</span>
+</button>
+</div>
+<div class="relative rounded-DEFAULT bg-[#050505] border border-[#222222] focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all flex items-center">
+<input class="w-full bg-transparent font-code-md text-xs sm:text-sm text-[#F5F5F5] px-4 py-3 outline-none placeholder-text-muted/50 tracking-wider" id="passphrase-input" oninput="evaluateEntropy(this.value)" type="password" value="c@stl3-X99-alpha-telemetry-fortress-vault!">
+<button class="px-4 text-text-muted hover:text-[#F5F5F5] transition-colors" onclick="togglePassVisibility()" title="Toggle visibility" type="button">
+<span class="material-symbols-outlined text-[18px]" id="pass-vis-icon">visibility</span>
+</button>
+</div>
+<!-- Shannon Strength Telemetry Card -->
+<div class="p-4 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-2.5">
+<div class="flex items-center justify-between font-code-sm text-xs flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<span class="text-secondary font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">shield</span>
+                  FORTRESS GRADE (95.4 bits Shannon entropy)
+                </span>
+<span class="text-text-muted">•</span>
+<span class="text-text-muted">Est. Crack Time: <span class="text-[#F5F5F5] font-medium">Trillions of years</span></span>
+</div>
+<span class="text-secondary font-bold font-label-caps text-[11px]">[PASSED]</span>
+</div>
+<!-- Segmented Meter -->
+<div class="grid grid-cols-4 gap-1.5 h-1.5 w-full">
+<div class="bg-secondary rounded-DEFAULT"></div>
+<div class="bg-secondary rounded-DEFAULT"></div>
+<div class="bg-secondary rounded-DEFAULT"></div>
+<div class="bg-secondary rounded-DEFAULT shadow-[0_0_8px_rgba(78,222,163,0.6)]"></div>
+</div>
+<div class="flex items-center justify-between font-code-sm text-xs text-text-muted pt-0.5">
+<span>Common dictionary pattern: <span class="text-status-verified font-mono">None detected</span></span>
+<span>Keyspace: 2^256 states</span>
+</div>
+</div>
+</div>
+<!-- Zero-Knowledge Cryptographic Notice -->
+<div class="p-4 rounded-DEFAULT bg-status-warning/5 border border-status-warning/20 flex items-start gap-3">
+<span class="material-symbols-outlined text-status-warning text-xl shrink-0 mt-0.5">lock_reset</span>
+<div class="space-y-0.5">
+<div class="font-label-caps text-label-caps text-status-warning font-semibold">ZERO-KNOWLEDGE CRYPTOGRAPHIC NOTICE</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+              Plaintext and derived keys remain strictly within volatile browser RAM and are purged on navigation. Galois/Counter Mode authenticates ciphertext integrity deterministically before storage.
+            </p>
+</div>
+</div>
+</div>
+<!-- PRIMARY ACTION CTA -->
+<div class="pt-2">
+<button class="w-full py-4 px-6 rounded-DEFAULT bg-primary-container hover:bg-primary-hover active:bg-primary-active text-text-dark font-headline-sm text-base sm:text-lg uppercase tracking-wider flex items-center justify-center gap-3 transition-all shadow-[0_4px_24px_rgba(255,106,0,0.25)] hover:shadow-[0_4px_30px_rgba(255,106,0,0.45)] font-bold active:scale-[0.99]" id="encrypt-action-btn" onclick="triggerEncryption()" type="button">
+<span class="material-symbols-outlined text-xl">lock</span>
+<span>ENCRYPT LOCALLY → [AIR-GAP EXECUTION]</span>
+</button>
+<p class="text-center font-code-sm text-xs text-text-muted mt-2.5">
+          SubtleCrypto API • No network socket connection • In-memory execution
+        </p>
+</div>
+</section>
+<!-- 4. STEP 03: SEALED CIPHERTEXT & POST-ENCRYPTION OUTPUT -->
+<section class="mt-4 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] hover:border-[#FF6A00]/40 transition-colors p-8 sm:p-10 shadow-2xl flex flex-col gap-6" id="output-container">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#1c1c1c]">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-DEFAULT bg-status-verified/15 border border-status-verified/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-verified text-xl">verified</span>
+</div>
+<div>
+<h3 class="font-title-md text-base sm:text-lg text-[#F5F5F5] font-semibold">ENCRYPTION COMPLETE &amp; AUTHENTICATED ENVELOPE SEALED</h3>
+<p class="font-body-sm text-xs text-status-verified">Payload sealed with AES-256-GCM • 0 bytes transmitted</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-DEFAULT bg-status-verified/10 border border-status-verified/30 text-status-verified font-label-caps text-xs self-start sm:self-auto">INTEGRITY SEAL: SECURE</span>
+</div>
+<!-- Base64URL Encrypted Envelope Section -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between font-label-caps text-label-caps text-text-muted">
+<span>BASE64URL ENCRYPTED ENVELOPE (.CASTLE)</span>
+<span class="text-primary-container font-mono text-[11px]">AEAD PROTECTED</span>
+</div>
+<div class="relative rounded-DEFAULT bg-[#050505] border border-[#222222] p-5 focus-within:border-secondary transition-colors">
+<div class="font-code-md text-xs sm:text-sm text-secondary font-medium tracking-wide break-all leading-relaxed max-h-40 overflow-y-auto selection:bg-secondary selection:text-text-dark font-mono" id="ciphertext-box">eyJ2ZXJzaW9uIjoxLCJhbGdvcml0aG0iOiJBRVMtMjU2LUdDTSIsIm1vZGUiOiJwYXNzcGhyYXNlIiwic2FsdCI6Ijc1ZTgyOWY3MmQwYjBkMWQ2ZmQxYTFmNDQxZTFmMTc1IiwiaXYiOiI5NTYxM2Y3ZTQxNzYzOGI4YjI5ZDA5YmEiLCJhdXRoVGFnIjoiMGEwNmU2Y2M2YzRlZDY0ODg3MDM1OTFlNjQzOGZhNDEiLCJwbS1pdGVyYXRpb25zIjoyNTAwMDAsImNpcGhlcnRleHQiOiJFWjJaWEpaYVc5VWlqb1hMQ0poYjZkdmNtbDBhR29pT2lKQlJWTXRNanUyTFVkRFRTSXNJbTF2WkdVaU9pSndZWE56Y0doeVkzWE5MaXdpYzJGc2RDSUtrTjFhalpLSzFMU1RCNVpFWnNWREVySmsxdldDOVBTSXNJbWwySWpvaVZHSm1jbGMzVFdsbDFidXRubTVvZGlJc0luUjVjR1VpT2lKMFpYaDBJaXdpYm1GdFpTSTZJbU5oYzNSc1pTMXRaWE56WW1Wc2JHTnJJbTFwYldVaU9pSjBaWGgwTDNCc1lXTGlJd2l6R0YwWVNJNklqQmhWa1JIUVUxSlN5OXZhME5MYURKd1FXTFRjWlZtRm94ZERndmVrWjBia2hCTXZVbk5sWGVITDNTbnAwUjJMSk4zZ1haMkl2T0hOc2RTd3IxSGphV1V4VUxGa2JtNURhRlZ5VVVVMlIwUTRWM05VSzFwa01PWlVtSnJQU0o5In0=</div>
+<div class="pt-4 mt-4 border-t border-[#1a1a1a] flex flex-wrap items-center justify-between gap-2 text-text-muted font-code-sm text-xs">
+<span>SIZE: 486 BYTES (BASE64URL)</span>
+<button class="text-text-muted hover:text-[#F5F5F5] underline transition-colors" onclick="toggleJsonModal()" type="button">VIEW ENVELOPE JSON SCHEMA</button>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+<button class="py-3 px-4 rounded-DEFAULT bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#FF6A00]/40 text-[#F5F5F5] font-code-md text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow-sm" id="btn-copy-ciphertext" onclick="copyCiphertext()" type="button">
+<span class="material-symbols-outlined text-[16px]" id="copy-btn-icon">content_copy</span>
+<span id="copy-btn-text">COPY CIPHERTEXT</span>
+</button>
+<button class="py-3 px-4 rounded-DEFAULT bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] hover:border-[#FF6A00]/40 text-[#F5F5F5] font-code-md text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors shadow-sm" onclick="downloadEnvelope()" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary-container">download</span>
+<span>DOWNLOAD .CASTLE ENVELOPE</span>
+</button>
+</div>
+<!-- Cross-Tool Bridge Action (Mirrors Decrypt Screen) -->
+<div class="pt-1">
+<a class="w-full py-2.5 px-4 rounded-DEFAULT bg-[#050505] hover:bg-[#111111] border border-[#1f1f1f] hover:border-[#FF6A00]/30 text-primary-fixed-dim hover:text-[#F5F5F5] font-code-sm text-xs flex items-center justify-between transition-colors" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary-container">fingerprint</span>
+<span>CROSS-VERIFY IN SHA-256 HASH TOOLKIT</span>
+</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- 5. STEP 04: CRYPTOGRAPHIC TELEMETRY & SECURITY POSTURE REVIEW -->
+<section class="flex flex-col gap-6">
+<div class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] p-8 sm:p-10 shadow-lg flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-[#1c1c1c] pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-lg">data_object</span>
+<span class="font-label-caps text-label-caps text-[#F5F5F5] tracking-wider font-semibold">CRYPTOGRAPHIC TELEMETRY (NIST SP 800-38D)</span>
+</div>
+<span class="font-code-sm text-xs text-text-muted">EXEC: <span class="text-tertiary">0.38ms</span></span>
+</div>
+<!-- Grid of 6 parameters -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 font-code-sm text-xs">
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">ALGORITHM</span>
+<span class="text-[#F5F5F5] font-medium">AES-256-GCM (FIPS 197)</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">AUTH TAG</span>
+<span class="text-status-verified font-medium">128-BIT GHASH GENERATED</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">NONCE / IV</span>
+<span class="text-[#F5F5F5] font-medium">96-BIT CSPRNG INJECTED</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">SALT EXTRACT</span>
+<span class="text-[#F5F5F5] font-medium">16-BYTE CRYPTO SALT</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">KDF ITERATIONS</span>
+<span class="text-[#F5F5F5] font-medium">250,000 ROUNDS PBKDF2</span>
+</div>
+<div class="p-3.5 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex flex-col gap-1">
+<span class="text-text-muted text-[10px] font-label-caps">BUFFER STATE</span>
+<span class="text-secondary font-medium">EPHEMERAL ZEROED</span>
+</div>
+</div>
+<!-- Security Posture Review Card (95 / 100 OPTIMAL) -->
+<div class="pt-4 border-t border-[#1c1c1c] space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-[#F5F5F5]">SECURITY POSTURE REVIEW</span>
+<span class="font-code-sm text-xs text-status-verified font-medium">95 / 100 OPTIMAL</span>
+</div>
+<div class="w-full bg-[#1c1c1c] h-1.5 rounded-full overflow-hidden flex">
+<div class="bg-status-verified h-full w-[95%] shadow-[0_0_8px_rgba(16,185,129,0.6)]"></div>
+</div>
+<!-- 3 Checklist Points -->
+<ul class="pt-2 space-y-2 font-body-sm text-xs sm:text-sm text-text-muted">
+<li class="flex items-start gap-2">
+<span class="font-code-sm text-xs text-primary-container font-semibold">01.</span>
+<span><strong class="text-[#F5F5F5]">Separate Communication Channels:</strong> Never send the decryption passphrase over the exact same channel as the encrypted file or envelope.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-code-sm text-xs text-primary-container font-semibold">02.</span>
+<span><strong class="text-[#F5F5F5]">Recipient Verification:</strong> Confirm cryptographic fingerprint or verify identity out-of-band before relaying high-value ciphertext.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="font-code-sm text-xs text-primary-container font-semibold">03.</span>
+<span><strong class="text-[#F5F5F5]">Air-Gap Offline Backup:</strong> Retain an original plain backup in an offline secure vault until transmission confirmation.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Expandable Technical Disclosure Accordion -->
+<div class="rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] hover:border-[#FF6A00]/30 transition-colors p-6 shadow-md">
+<details class="group cursor-pointer">
+<summary class="flex items-center justify-between font-label-caps text-label-caps text-text-muted hover:text-[#F5F5F5] transition-colors list-none">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-warning text-[18px]">info</span>
+<span>HOW GCM COMBINES CONFIDENTIALITY AND INTEGRITY (AEAD)</span>
+</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-5 space-y-3">
+<p class="font-body-sm text-xs sm:text-sm text-text-muted leading-relaxed">
+              Unlike legacy CBC mode which requires separate HMAC computation (Encrypt-then-MAC), Galois/Counter Mode computes authenticated encryption simultaneously. GCM uses standard CTR mode for data encryption and evaluates a universal polynomial over the Galois field GF(2^128) using the GHASH function to produce a 128-bit authentication tag.
+            </p>
+<div class="p-4 rounded-DEFAULT bg-[#050505] border border-[#1a1a1a] flex items-start gap-3">
+<span class="material-symbols-outlined text-primary-container text-xl shrink-0 mt-0.5">verified_user</span>
+<div class="space-y-1 font-code-sm text-xs">
+<div class="text-[#F5F5F5] font-semibold">AUTHENTICATED ADDITIONAL DATA (AAD) ASSURANCE</div>
+<div class="text-text-muted">The resulting .castle envelope bundles ciphertext, CSPRNG initialization vector, PBKDF2 derivation salt, and the GHASH tag into a single self-contained atomic structure.</div>
+</div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<!-- 6. COMPLIANCE & SPEC BANNER -->
+<section class="p-5 sm:p-6 rounded-DEFAULT bg-[#0e0e0e] border border-[#222222] shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-4 font-code-sm text-xs text-text-muted">
+<div>STANDARDS: <span class="text-[#F5F5F5] font-medium">NIST FIPS PUB 197 // RFC 5116 AEAD</span></div>
+<span class="text-surface-variant hidden md:inline">|</span>
+<div>INGRESS EGRESS: <span class="text-status-verified font-medium">AIR-GAP RESTRICTED</span></div>
+<span class="text-surface-variant hidden md:inline">|</span>
+<div>KEY DERIVATION: <span class="text-[#F5F5F5] font-medium">PBKDF2 SHA-256 (250K)</span></div>
+</div>
+<div class="font-label-caps text-label-caps text-text-muted">
+        AUTHENTICATED AES ENGINE // ZERO TELEMETRY INGRESS
+      </div>
+</section>
+</div>
+<!-- JSON Envelope Schema Modal Dialog -->
+<div class="fixed inset-0 z-50 bg-[#000000]/80 backdrop-blur-sm hidden items-center justify-center p-4" id="json-modal">
+<div class="bg-[#0e0e0e] border border-[#222222] max-w-2xl w-full p-6 shadow-2xl flex flex-col gap-4 rounded-DEFAULT">
+<div class="flex items-center justify-between pb-3 border-b border-[#1c1c1c]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">code</span>
+<span class="font-headline-sm text-base text-[#F5F5F5] font-semibold">.CASTLE ENVELOPE STRUCT</span>
+</div>
+<button class="text-text-muted hover:text-[#F5F5F5]" onclick="toggleJsonModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<pre class="bg-[#050505] p-4 font-code-sm text-xs text-secondary overflow-x-auto max-h-80 border border-[#1a1a1a] font-mono leading-relaxed rounded-DEFAULT">{
+  "version": 1,
+  "algorithm": "AES-256-GCM",
+  "kdf": {
+    "type": "PBKDF2",
+    "hash": "SHA-256",
+    "iterations": 250000,
+    "saltHex": "75e829f72d0b0d1d6fd1a1f441e1f175"
+  },
+  "ivHex": "95613f7e417638b8b29d09ba",
+  "authTagHex": "0a06e6cc6c4ed6488703591e6438fa41",
+  "ciphertextB64": "FW2ZXJZaW9...",
+  "checksum": "sha256:e3b0c44298fc1c14..."
+}</pre>
+<div class="flex justify-end gap-2 pt-2">
+<button class="px-4 py-1.5 bg-[#141414] hover:bg-[#1f1f1f] font-label-caps text-xs text-[#F5F5F5] border border-[#262626] transition-colors rounded-DEFAULT" onclick="toggleJsonModal()">CLOSE</button>
+</div>
+</div>
+</div>
+</main>
+<!-- DEFENSIVE SYSTEM PROFILE FOOTER (Standardized with Decrypt Screen) -->
+<footer class="w-full bg-[#000000] border-t border-[#222222] mt-24">
+<div class="max-w-6xl mx-auto px-6 sm:px-10 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div class="space-y-2">
+<div class="font-label-caps text-label-caps text-[#F5F5F5]">SYSTEM PROFILE</div>
+<p class="font-code-sm text-xs text-text-muted leading-relaxed">Castle Sec-Ops Hardware Console &amp; High-Assurance Air-Gapped WebCrypto Platform.</p>
+</div>
+<div class="space-y-2">
+<div class="font-label-caps text-label-caps text-[#F5F5F5]">CRYPTOGRAPHIC SPEC</div>
+<p class="font-code-sm text-xs text-text-muted leading-relaxed">FIPS 197 Block Cipher // AES-GCM 128/256-bit // SP 800-38D Auth Tag Validation.</p>
+</div>
+<div class="space-y-2">
+<div class="font-label-caps text-label-caps text-[#F5F5F5]">SHANNON ENTROPY METER</div>
+<p class="font-code-sm text-xs text-text-muted leading-relaxed">Deterministic local evaluation // Zero telemetry ingress // Sub-millisecond execution.</p>
+</div>
+<div class="space-y-2">
+<div class="font-label-caps text-label-caps text-[#F5F5F5]">CONSOLE INTEGRITY</div>
+<div class="flex items-center gap-1.5 font-code-sm text-xs text-status-verified">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified shadow-[0_0_6px_rgba(16,185,129,0.8)]"></span>
+          HOST ATTESTATION VALIDATED
+        </div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center justify-between gap-3 pt-6 border-t border-[#1a1a1a] font-code-sm text-xs text-text-muted">
+<div class="flex items-center gap-2">
+<span>ENGINE BUILD: 4.8.1-RELEASE</span>
+<span class="text-border-subtle">//</span>
+<span>SIG: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</span>
+</div>
+<div class="font-label-caps text-label-caps text-text-muted">© 2025 CASTLE SEC-OPS ARCHITECTURE. ALL SESSIONS ISOLATED.</div>
+</div>
+</div>
+</footer>
+<!-- SCRIPT LOGIC -->
+<script>
+  let currentKeyMode = 'passphrase';
+  let currentPayloadType = 'text';
+
+  function setPayloadType(type) {
+    currentPayloadType = type;
+    const textPanel = document.getElementById('panel-text-mode');
+    const filePanel = document.getElementById('panel-file-mode');
+    const textBtn = document.getElementById('toggle-text-btn');
+    const fileBtn = document.getElementById('toggle-file-btn');
+
+    if (type === 'text') {
+      textPanel.classList.remove('hidden');
+      textPanel.classList.add('flex');
+      filePanel.classList.add('hidden');
+      filePanel.classList.remove('flex');
+
+      textBtn.className = "px-3 py-1 rounded-DEFAULT bg-[#141414] text-[#F5F5F5] font-code-sm text-xs font-medium border border-[#333333] transition-colors";
+      fileBtn.className = "px-3 py-1 rounded-DEFAULT bg-transparent text-text-muted hover:text-[#F5F5F5] font-code-sm text-xs transition-colors";
+    } else {
+      textPanel.classList.add('hidden');
+      textPanel.classList.remove('flex');
+      filePanel.classList.remove('hidden');
+      filePanel.classList.add('flex');
+
+      fileBtn.className = "px-3 py-1 rounded-DEFAULT bg-[#141414] text-[#F5F5F5] font-code-sm text-xs font-medium border border-[#333333] transition-colors";
+      textBtn.className = "px-3 py-1 rounded-DEFAULT bg-transparent text-text-muted hover:text-[#F5F5F5] font-code-sm text-xs transition-colors";
+    }
+  }
+
+  function selectKeyMode(mode) {
+    currentKeyMode = mode;
+    const passCard = document.getElementById('key-choice-passphrase');
+    const randCard = document.getElementById('key-choice-random');
+    const subPanel = document.getElementById('passphrase-sub-panel');
+
+    if (mode === 'passphrase') {
+      passCard.className = "cursor-pointer p-5 rounded-DEFAULT bg-[#050505] border-2 border-primary-container shadow-[0_0_16px_rgba(255,106,0,0.18)] transition-all flex flex-col justify-between relative group";
+      randCard.className = "cursor-pointer p-5 rounded-DEFAULT bg-[#050505] border border-[#222222] hover:border-[#333333] transition-all flex flex-col justify-between relative group";
+      passCard.querySelector('.material-symbols-outlined').innerText = "radio_button_checked";
+      randCard.querySelector('.material-symbols-outlined').innerText = "radio_button_unchecked";
+      passCard.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-primary-container text-[20px]";
+      randCard.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-text-muted group-hover:text-primary-container text-[20px]";
+      subPanel.classList.remove('hidden');
+    } else {
+      randCard.className = "cursor-pointer p-5 rounded-DEFAULT bg-[#050505] border-2 border-primary-container shadow-[0_0_16px_rgba(255,106,0,0.18)] transition-all flex flex-col justify-between relative group";
+      passCard.className = "cursor-pointer p-5 rounded-DEFAULT bg-[#050505] border border-[#222222] hover:border-[#333333] transition-all flex flex-col justify-between relative group";
+      randCard.querySelector('.material-symbols-outlined').innerText = "radio_button_checked";
+      passCard.querySelector('.material-symbols-outlined').innerText = "radio_button_unchecked";
+      randCard.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-primary-container text-[20px]";
+      passCard.querySelector('.material-symbols-outlined').className = "material-symbols-outlined text-text-muted group-hover:text-primary-container text-[20px]";
+      subPanel.classList.add('hidden');
+    }
+  }
+
+  function togglePassVisibility() {
+    const input = document.getElementById('passphrase-input');
+    const icon = document.getElementById('pass-vis-icon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.innerText = 'visibility_off';
+    } else {
+      input.type = 'password';
+      icon.innerText = 'visibility';
+    }
+  }
+
+  function generateTacticalPassphrase() {
+    const words = ["CASTLE", "SPECTRE", "VECTOR", "BASTION", "TELEMETRY", "ZENITH", "QUANTUM", "VERTEX", "SHIELD", "CITADEL"];
+    const w1 = words[Math.floor(Math.random() * words.length)];
+    const w2 = words[Math.floor(Math.random() * words.length)];
+    const randNum = Math.floor(1000 + Math.random() * 9000);
+    const symbols = ["#", "!", "$", "%", "@", "&"];
+    const sym = symbols[Math.floor(Math.random() * symbols.length)];
+    
+    const newPass = `${w1}-${randNum}-${w2}${sym}99`;
+    const input = document.getElementById('passphrase-input');
+    input.value = newPass;
+    evaluateEntropy(newPass);
+  }
+
+  function evaluateEntropy(val) {
+    const charCount = document.getElementById('char-counter');
+    const plainText = document.getElementById('plaintext-input').value;
+    const bytes = new TextEncoder().encode(plainText).length;
+    if (charCount) charCount.innerText = `${plainText.length} CHARS // ${bytes} BYTES (UTF-8)`;
+  }
+
+  function clearText() {
+    const input = document.getElementById('plaintext-input');
+    input.value = "";
+    evaluateEntropy("");
+  }
+
+  function resetForm() {
+    clearText();
+    const pass = document.getElementById('passphrase-input');
+    if (pass) pass.value = "";
+    selectKeyMode('passphrase');
+  }
+
+  function copyCiphertext() {
+    const box = document.getElementById('ciphertext-box');
+    navigator.clipboard.writeText(box.innerText.trim());
+    const btnText = document.getElementById('copy-btn-text');
+    const btnIcon = document.getElementById('copy-btn-icon');
+    btnText.innerText = "COPIED TO BUFFER";
+    btnIcon.innerText = "check";
+    btnIcon.classList.add('text-status-verified');
+    setTimeout(() => {
+      btnText.innerText = "COPY CIPHERTEXT";
+      btnIcon.innerText = "content_copy";
+      btnIcon.classList.remove('text-status-verified');
+    }, 2000);
+  }
+
+  function triggerEncryption() {
+    const btn = document.getElementById('encrypt-action-btn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = `<span class="material-symbols-outlined text-xl animate-spin">refresh</span><span>COMPUTING GHASH & DERIVING...</span>`;
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+      const output = document.getElementById('output-container');
+      output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      output.classList.add('border-primary-container');
+      setTimeout(() => output.classList.remove('border-primary-container'), 1800);
+    }, 450);
+  }
+
+  function toggleJsonModal() {
+    const modal = document.getElementById('json-modal');
+    if (modal.classList.contains('hidden')) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    } else {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  }
+
+  function downloadEnvelope() {
+    const content = document.getElementById('ciphertext-box').innerText.trim();
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `payload-${Date.now()}.castle`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  document.getElementById('plaintext-input').addEventListener('input', (e) => {
+    evaluateEntropy(e.target.value);
+  });
+</script>
+
+
+</body></html>

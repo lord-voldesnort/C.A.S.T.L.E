@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CASTLE // SEC-OPS v3.4 - Password Generator</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "status-verified": "#10B981",
+          "on-surface-variant": "#e2bfb0",
+          "status-info": "#0EA5E9",
+          "on-primary-container": "#571f00",
+          "surface-elevated": "#111111",
+          "text-display": "#FFFFFF",
+          "primary-fixed-dim": "#ffb694",
+          "secondary-fixed": "#6ffbbe",
+          "surface-container-highest": "#353535",
+          "outline-variant": "#5a4136",
+          "secondary-container": "#00a572",
+          "tertiary-fixed": "#c9e6ff",
+          "primary-active": "#E55F00",
+          "text-dark": "#050505",
+          "background": "#000000",
+          "surface-container-high": "#222222",
+          "status-warning": "#F59E0B",
+          "surface-card": "#0D0D0D",
+          "primary-hover": "#FF7D1A",
+          "primary-fixed": "#ffdbcc",
+          "status-danger": "#EF4444",
+          "on-secondary-fixed-variant": "#005236",
+          "inverse-primary": "#a14000",
+          "surface-tint": "#ffb694",
+          "error": "#ffb4ab",
+          "surface-root": "#000000",
+          "primary-container": "#ff6a00",
+          "on-background": "#e2e2e2",
+          "on-error": "#690005",
+          "on-surface": "#e2e2e2",
+          "on-secondary": "#003824",
+          "surface-dim": "#0a0a0a",
+          "primary-glow": "rgba(255, 106, 0, 0.18)",
+          "tertiary-container": "#00a2e6",
+          "surface-container-low": "#141414",
+          "secondary-fixed-dim": "#4edea3",
+          "on-tertiary-fixed": "#001e2f",
+          "on-secondary-container": "#00311f",
+          "text-muted": "#888888",
+          "on-tertiary-container": "#00344e",
+          "on-error-container": "#ffdad6",
+          "on-tertiary-fixed-variant": "#004c6e",
+          "secondary": "#4edea3",
+          "tertiary": "#89ceff",
+          "on-primary-fixed": "#351000",
+          "inverse-on-surface": "#303030",
+          "primary": "#ff6a00",
+          "on-secondary-fixed": "#002113",
+          "surface-bright": "#2c2c2c",
+          "surface-recessed": "#050505",
+          "tertiary-fixed-dim": "#89ceff",
+          "on-primary-fixed-variant": "#7b2f00",
+          "surface-container-lowest": "#080808",
+          "inverse-surface": "#e2e2e2",
+          "border-subtle": "#222222",
+          "border-hairline": "#181818",
+          "on-primary": "#000000",
+          "surface-base": "#0A0A0A",
+          "surface-container": "#181818",
+          "surface": "#0F0F0F",
+          "outline": "#333333",
+          "error-container": "#93000a",
+          "text-body": "#E5E5E5",
+          "border-active": "#FF6A00",
+          "surface-variant": "#262626",
+          "on-tertiary": "#00344d"
+        },
+        borderRadius: {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        fontFamily: {
+          "body-md": ["Inter", "sans-serif"],
+          "headline-lg": ["Space Grotesk", "sans-serif"],
+          "headline-md": ["Space Grotesk", "sans-serif"],
+          "headline-sm": ["Space Grotesk", "sans-serif"],
+          "title-md": ["Space Grotesk", "sans-serif"],
+          "code-lg": ["JetBrains Mono", "monospace"],
+          "code-md": ["JetBrains Mono", "monospace"],
+          "code-sm": ["JetBrains Mono", "monospace"],
+          "label-caps": ["JetBrains Mono", "monospace"]
+        }
+      }
+    }
+  };
+</script>
+<style>
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background: #ff6a00;
+    cursor: pointer;
+    box-shadow: 0 0 14px rgba(255,106,0,0.7);
+    border: 2px solid #ffffff;
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    background: #ff6a00;
+    cursor: pointer;
+    box-shadow: 0 0 14px rgba(255,106,0,0.7);
+    border: 2px solid #ffffff;
+  }
+</style>
+</head>
+<body class="bg-surface-root text-text-body font-body-md antialiased selection:bg-primary-container selection:text-text-dark min-h-screen">
+<!-- ==========================================
+       TOP NAVIGATION BAR & TELEMETRY
+       ========================================== -->
+<header class="w-full border-b border-border-hairline bg-surface-root sticky top-0 z-50">
+<!-- Air-Gap Status Strip -->
+<div class="border-b border-border-hairline bg-surface-recessed px-6 lg:px-12 py-1.5 flex items-center justify-between text-xs font-code-sm text-text-muted">
+<div class="flex items-center gap-2 overflow-hidden truncate">
+<span class="size-2 rounded-full bg-status-verified shrink-0 animate-pulse"></span>
+<span class="tracking-wider uppercase text-status-verified font-medium">AIR-GAP MODE ACTIVE</span>
+<span class="text-border-subtle">//</span>
+<span class="hidden sm:inline tracking-wider">ZERO INGRESS TELEMETRY</span>
+<span class="hidden md:inline text-border-subtle">//</span>
+<span class="hidden md:inline text-text-body font-mono">CASTLE SEC-OPS</span>
+<span class="hidden lg:inline text-border-subtle">//</span>
+<span class="hidden lg:inline text-primary-container font-mono">UTILITIES // MODULE-01 // PASSWORD-ENGINE</span>
+</div>
+<div class="flex items-center gap-4 shrink-0 font-code-sm">
+<div class="hidden md:flex items-center gap-2">
+<span class="text-text-muted">CRYPTO-PRNG:</span>
+<span class="text-text-body font-mono">WebCrypto / CSPRNG</span>
+</div>
+<span class="hidden md:inline text-border-subtle">|</span>
+<div class="hidden sm:flex items-center gap-2">
+<span class="text-text-muted">SEC-LEVEL:</span>
+<span class="text-status-verified font-mono font-bold">TIER-1</span>
+</div>
+<button class="flex items-center gap-1 text-text-muted hover:text-white transition-colors cursor-pointer px-2 py-0.5 rounded hover:bg-surface-container border border-border-hairline text-xs font-code-sm">
+<span class="material-symbols-outlined text-sm">restart_alt</span>
+<span class="hidden sm:inline">RESET WORKSPACE</span>
+</button>
+</div>
+</div>
+<!-- Primary Suite Branding Row -->
+<div class="px-6 lg:px-12 py-3 flex items-center justify-between gap-6 border-b border-border-hairline bg-surface-card/80">
+<div class="flex items-center gap-3.5">
+<div class="size-9 rounded bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-xl">shield</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+<span class="text-white text-lg font-bold tracking-tight font-headline-md font-mono">CASTLE</span>
+<span class="px-2 py-0.5 rounded bg-surface-container border border-border-subtle text-primary-container font-label-caps text-xs tracking-wider inline-block">
+            SEC-OPS v3.4 // AUTH-01
+          </span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-primary-container/10 border border-primary-container/30 text-primary-container text-xs font-code-sm">
+<span class="size-1.5 rounded-full bg-border-active"></span>
+<span class="font-medium tracking-wide">100% Client-Side WebCrypto // Zero Server Storage</span>
+</div>
+</div>
+</div>
+<!-- Primary Navigation Tabs Directly Below Header -->
+<div class="px-6 lg:px-12 bg-surface-recessed border-b border-border-hairline flex items-center justify-start gap-2 py-2.5">
+<div class="inline-flex items-center gap-2 p-1 bg-surface-card border border-border-subtle rounded-lg">
+<!-- Tab 1: Password Generator (Active) -->
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-primary-container text-text-dark font-code-md text-sm font-bold tracking-wider uppercase shadow-[0_0_18px_rgba(255,106,0,0.4)] border border-primary-container transition-all" href="#section-methods">
+<span class="material-symbols-outlined text-base font-bold">keygen</span>
+<span>PASSWORD GENERATOR</span>
+</a>
+<!-- Tab 2: Strength Checker (Inactive) -->
+<a class="inline-flex items-center gap-2 px-5 py-2.5 rounded text-text-muted hover:text-white hover:bg-surface-container font-code-md text-sm font-medium tracking-wider uppercase transition-all border border-transparent" href="#section-telemetry">
+<span class="material-symbols-outlined text-base">verified_user</span>
+<span>STRENGTH CHECKER</span>
+</a>
+</div>
+</div>
+</header>
+<!-- ==========================================
+       MAIN CONTENT CONTAINER
+       ========================================== -->
+<main class="max-w-6xl mx-auto px-6 lg:px-10 py-12 space-y-16">
+<!-- PAGE INTRODUCTION -->
+<section class="border-b border-border-subtle pb-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-card border border-border-subtle rounded text-primary-container font-label-caps text-xs mb-3">
+<span class="size-2 rounded-full bg-border-active animate-pulse"></span>
+        PASSWORD SECURITY // CSPRNG ARCHITECTURE
+      </div>
+<h1 class="text-white text-3xl md:text-5xl font-black leading-tight tracking-tight font-headline-lg uppercase">
+        Generate a Strong Password
+      </h1>
+<p class="text-text-muted text-base md:text-lg font-normal leading-relaxed mt-3 max-w-3xl">
+        Create a unique password or memorable passphrase tailored to your needs. Understand its strength and learn why it is difficult to guess.
+      </p>
+<div class="mt-4 flex items-center gap-2 text-status-verified font-code-sm text-xs bg-surface-card border border-status-verified/20 px-3.5 py-2 rounded-md max-w-fit">
+<span class="material-symbols-outlined text-base text-status-verified">verified</span>
+<span>• 100% Local WebCrypto CSPRNG — Your password stays isolated in volatile client RAM and is never logged or transmitted.</span>
+</div>
+</section>
+<!-- SECTION 1: HOW WOULD YOU LIKE TO CREATE YOUR PASSWORD? (6 METHODS GRID) -->
+<section class="scroll-mt-24" id="section-methods">
+<div class="flex items-center justify-between mb-6">
+<div>
+<span class="text-primary-container font-label-caps text-xs tracking-wider block mb-1">SECTION 01</span>
+<h2 class="text-white text-xl md:text-2xl font-bold font-headline-md tracking-tight">
+            How would you like to create your password?
+          </h2>
+<p class="text-text-muted text-sm mt-0.5">Select a generation engine model to configure parameters.</p>
+</div>
+<span class="hidden sm:inline-block text-xs font-code-sm text-text-muted bg-surface-container px-3 py-1 rounded border border-border-hairline">
+          6 MODELS AVAILABLE
+        </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<!-- 1. Fully Random (Active / Selected) -->
+<div class="relative bg-surface-card border-2 border-border-active p-6 rounded-lg transition-all duration-200 cursor-pointer shadow-[0_0_25px_rgba(255,106,0,0.14)] flex flex-col justify-between">
+<span class="absolute top-0 left-0 w-2.5 h-2.5 border-t-2 border-l-2 border-primary-container"></span>
+<span class="absolute top-0 right-0 w-2.5 h-2.5 border-t-2 border-r-2 border-primary-container"></span>
+<span class="absolute bottom-0 left-0 w-2.5 h-2.5 border-b-2 border-l-2 border-primary-container"></span>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 border-b-2 border-r-2 border-primary-container"></span>
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="size-11 rounded bg-surface-container flex items-center justify-center text-primary-container border border-primary-container/30">
+<span class="material-symbols-outlined text-2xl">shuffle</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-primary-container/20 text-primary-container text-xs font-label-caps tracking-wider font-bold">
+<span class="size-1.5 rounded-full bg-border-active"></span> SELECTED
+              </span>
+</div>
+<h3 class="text-white text-lg font-bold font-headline-md tracking-tight">
+              1. Fully Random
+            </h3>
+<p class="text-text-muted text-sm leading-relaxed mt-2 font-body-sm">
+              Best for maximum unpredictability when the password will be stored in a password manager.
+            </p>
+</div>
+<div class="mt-5 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-code-sm text-text-muted">
+<span>ENTROPY: ~157 BITS</span>
+<span class="text-status-verified font-medium">MAXIMUM DEFENSE</span>
+</div>
+</div>
+<!-- 2. Memorable Word -->
+<div class="relative bg-surface-card border border-border-subtle p-6 rounded-lg hover:border-text-muted/60 transition-all duration-200 cursor-pointer flex flex-col justify-between group">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="size-11 rounded bg-surface-container flex items-center justify-center text-text-muted group-hover:text-white border border-border-hairline transition-colors">
+<span class="material-symbols-outlined text-2xl">spellcheck</span>
+</div>
+<span class="text-text-muted text-xs font-label-caps">BALANCED RECALL</span>
+</div>
+<h3 class="text-white text-lg font-bold font-headline-md tracking-tight">
+              2. Memorable Word
+            </h3>
+<p class="text-text-muted text-sm leading-relaxed mt-2 font-body-sm">
+              Easier to remember while retaining unpredictability when words are selected randomly.
+            </p>
+</div>
+<div class="mt-5 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-code-sm text-text-muted">
+<span>ENTROPY: ~78 BITS</span>
+<span>HUMAN FRIENDLY</span>
+</div>
+</div>
+<!-- 3. Personal Phrase -->
+<div class="relative bg-surface-card border border-border-subtle p-6 rounded-lg hover:border-text-muted/60 transition-all duration-200 cursor-pointer flex flex-col justify-between group">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="size-11 rounded bg-surface-container flex items-center justify-center text-text-muted group-hover:text-white border border-border-hairline transition-colors">
+<span class="material-symbols-outlined text-2xl">format_quote</span>
+</div>
+<span class="text-text-muted text-xs font-label-caps">PASSPHRASE</span>
+</div>
+<h3 class="text-white text-lg font-bold font-headline-md tracking-tight">
+              3. Personal Phrase
+            </h3>
+<p class="text-text-muted text-sm leading-relaxed mt-2 font-body-sm">
+              For users who want to base a password on a phrase they can remember. Clearly distinguished from pure randomness.
+            </p>
+</div>
+<div class="mt-5 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-code-sm text-text-muted">
+<span>ENTROPY: ~94 BITS</span>
+<span>HIGH ACCESSIBILITY</span>
+</div>
+</div>
+<!-- 4. Initialism -->
+<div class="relative bg-surface-card border border-border-subtle p-6 rounded-lg hover:border-text-muted/60 transition-all duration-200 cursor-pointer flex flex-col justify-between group">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="size-11 rounded bg-surface-container flex items-center justify-center text-text-muted group-hover:text-white border border-border-hairline transition-colors">
+<span class="material-symbols-outlined text-2xl">short_text</span>
+</div>
+<span class="text-text-muted text-xs font-label-caps">COGNITIVE KEY</span>
+</div>
+<h3 class="text-white text-lg font-bold font-headline-md tracking-tight">
+              4. Initialism
+            </h3>
+<p class="text-text-muted text-sm leading-relaxed mt-2 font-body-sm">
+              Turn a memorable sentence into a compact password using leading initials and salt.
+            </p>
+</div>
+<div class="mt-5 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-code-sm text-text-muted">
+<span>ENTROPY: ~112 BITS</span>
+<span>MNEMONIC DRIFT</span>
+</div>
+</div>
+<!-- 5. Theme Based -->
+<div class="relative bg-surface-card border border-border-subtle p-6 rounded-lg hover:border-text-muted/60 transition-all duration-200 cursor-pointer flex flex-col justify-between group">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="size-11 rounded bg-surface-container flex items-center justify-center text-text-muted group-hover:text-white border border-border-hairline transition-colors">
+<span class="material-symbols-outlined text-2xl">auto_stories</span>
+</div>
+<span class="text-text-muted text-xs font-label-caps">DOMAIN ANCHORS</span>
+</div>
+<h3 class="text-white text-lg font-bold font-headline-md tracking-tight">
+              5. Theme Based
+            </h3>
+<p class="text-text-muted text-sm leading-relaxed mt-2 font-body-sm">
+              A personalized style for users who prefer themed words (Space, Ocean, Tech, Nature, Fantasy).
+            </p>
+</div>
+<div class="mt-5 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-code-sm text-text-muted">
+<span>ENTROPY: ~124 BITS</span>
+<span>CUSTOM ONTOLOGY</span>
+</div>
+</div>
+<!-- 6. Memory Assisted -->
+<div class="relative bg-surface-card border border-border-subtle p-6 rounded-lg hover:border-text-muted/60 transition-all duration-200 cursor-pointer flex flex-col justify-between group">
+<div>
+<div class="flex items-start justify-between mb-4">
+<div class="size-11 rounded bg-surface-container flex items-center justify-center text-primary border border-border-hairline">
+<span class="material-symbols-outlined text-2xl">psychology</span>
+</div>
+<span class="inline-flex items-center gap-1 text-primary text-xs font-label-caps font-semibold">
+<span class="material-symbols-outlined text-sm">verified</span> SIGNATURE LABS
+              </span>
+</div>
+<h3 class="text-white text-lg font-bold font-headline-md tracking-tight">
+              6. Memory Assisted
+            </h3>
+<p class="text-text-muted text-sm leading-relaxed mt-2 font-body-sm">
+              Castle Signature: Guided 3-4 conversational memory prompts transformed without storing raw answers.
+            </p>
+</div>
+<div class="mt-5 pt-3 border-t border-border-subtle flex items-center justify-between text-xs font-code-sm text-text-muted">
+<span>ENTROPY: ~140 BITS</span>
+<span class="text-primary">ZERO RAW RETENTION</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: METHOD-SPECIFIC CONFIGURATION SETTINGS -->
+<section class="bg-surface-card border border-border-subtle rounded-lg p-6 lg:p-8 space-y-7">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-border-hairline">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-primary-container font-label-caps text-xs">SECTION 02</span>
+<span class="text-text-muted">//</span>
+<span class="text-text-muted text-xs font-label-caps">ACTIVE CONFIGURATION</span>
+</div>
+<h2 class="text-white text-xl font-bold font-headline-md tracking-tight">
+            Method Settings: Fully Random Engine
+          </h2>
+</div>
+<!-- Quick Presets -->
+<div class="flex items-center gap-2">
+<span class="text-xs font-code-sm text-text-muted">Presets:</span>
+<button class="px-2.5 py-1 text-xs font-code-sm rounded bg-surface-container hover:bg-surface-container-high border border-border-subtle text-text-muted hover:text-white transition-colors">
+            Standard Defense (16)
+          </button>
+<button class="px-2.5 py-1 text-xs font-code-sm rounded bg-primary-container/15 border border-primary-container/40 text-primary-container font-semibold transition-colors">
+            Maximum Entropy (24)
+          </button>
+</div>
+</div>
+<!-- Password Length Slider -->
+<div>
+<div class="flex flex-wrap items-baseline justify-between gap-4 mb-3">
+<div>
+<label class="text-white font-headline-md text-base font-semibold block" for="length-slider">Password Length</label>
+<span class="text-text-muted text-xs font-body-sm">Adjust character count between 8 and 64</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-3.5 py-1 bg-surface-container-high border border-primary-container/50 text-primary-container font-code-md text-sm font-bold rounded shadow-[0_0_10px_rgba(255,106,0,0.2)]">
+              20 CHARACTERS
+            </span>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer focus:outline-none accent-primary-container" id="length-slider" max="64" min="8" type="range" value="20"/>
+</div>
+<div class="flex justify-between text-xs font-code-sm text-text-muted mt-2">
+<span>8 (Minimum)</span>
+<span class="text-status-verified font-medium">Default: 20 chars (Exceeds brute-force threshold)</span>
+<span>64 (Maximum)</span>
+</div>
+</div>
+<div class="border-t border-border-hairline pt-4"></div>
+<!-- Character Pool Toggles -->
+<div>
+<label class="text-white font-headline-md text-sm font-semibold block mb-1">Character Set Toggles</label>
+<p class="text-text-muted text-xs font-body-sm mb-3.5">Include or exclude specific character groups to customize keyspace R.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<!-- Toggle 1: Uppercase -->
+<label class="flex items-center justify-between p-3.5 rounded bg-surface-container border border-primary-container/60 cursor-pointer">
+<div class="flex items-center gap-3">
+<input checked="" class="rounded border-border-subtle bg-surface-card text-primary-container focus:ring-0 focus:ring-offset-0 size-4" type="checkbox"/>
+<span class="font-code-md text-sm text-white font-semibold">Uppercase</span>
+</div>
+<span class="text-text-muted font-code-sm text-xs">A-Z</span>
+</label>
+<!-- Toggle 2: Lowercase -->
+<label class="flex items-center justify-between p-3.5 rounded bg-surface-container border border-primary-container/60 cursor-pointer">
+<div class="flex items-center gap-3">
+<input checked="" class="rounded border-border-subtle bg-surface-card text-primary-container focus:ring-0 focus:ring-offset-0 size-4" type="checkbox"/>
+<span class="font-code-md text-sm text-white font-semibold">Lowercase</span>
+</div>
+<span class="text-text-muted font-code-sm text-xs">a-z</span>
+</label>
+<!-- Toggle 3: Digits -->
+<label class="flex items-center justify-between p-3.5 rounded bg-surface-container border border-primary-container/60 cursor-pointer">
+<div class="flex items-center gap-3">
+<input checked="" class="rounded border-border-subtle bg-surface-card text-primary-container focus:ring-0 focus:ring-offset-0 size-4" type="checkbox"/>
+<span class="font-code-md text-sm text-white font-semibold">Digits</span>
+</div>
+<span class="text-text-muted font-code-sm text-xs">0-9</span>
+</label>
+<!-- Toggle 4: Special Symbols -->
+<label class="flex items-center justify-between p-3.5 rounded bg-surface-container border border-primary-container/60 cursor-pointer">
+<div class="flex items-center gap-3">
+<input checked="" class="rounded border-border-subtle bg-surface-card text-primary-container focus:ring-0 focus:ring-offset-0 size-4" type="checkbox"/>
+<span class="font-code-md text-sm text-white font-semibold">Special Symbols</span>
+</div>
+<span class="text-text-muted font-code-sm text-xs">!@#$%^&amp;*</span>
+</label>
+</div>
+</div>
+<!-- Exclude Ambiguous Glyphs Filter -->
+<div class="flex items-center justify-between p-4 rounded bg-surface-container-low border border-border-subtle">
+<div class="flex items-start gap-3">
+<input checked="" class="mt-1 rounded border-border-subtle bg-surface-card text-primary-container focus:ring-0 focus:ring-offset-0 size-4" id="exclude-ambiguous" type="checkbox"/>
+<div>
+<label class="text-white font-code-md text-sm font-semibold cursor-pointer" for="exclude-ambiguous">
+              Exclude Ambiguous Characters
+            </label>
+<p class="text-text-muted text-xs font-body-sm mt-0.5">
+              Prevents mistyping by filtering confusing glyphs: <code class="text-primary font-code-sm font-semibold">l, 1, I, O, 0, o, |</code>
+</p>
+</div>
+</div>
+<span class="hidden sm:inline-block px-2.5 py-1 bg-surface-card border border-border-hairline text-status-verified font-code-sm text-xs rounded">
+          ENABLED
+        </span>
+</div>
+<!-- SECTION 3: PRIMARY ACTION BUTTON -->
+<div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-primary-container hover:bg-primary-hover active:bg-primary-active text-text-dark font-code-md text-sm font-bold rounded tracking-wider uppercase transition-all shadow-[0_0_24px_rgba(255,106,0,0.35)] hover:shadow-[0_0_32px_rgba(255,106,0,0.5)] cursor-pointer">
+<span class="material-symbols-outlined text-xl">cached</span>
+<span>GENERATE PASSWORD</span>
+</button>
+<div class="flex items-center gap-2 text-text-muted text-xs font-code-sm">
+<span>SHORTCUT:</span>
+<kbd class="px-2 py-1 bg-surface-container rounded border border-border-subtle text-white font-mono">[SPACE]</kbd>
+<span>OR</span>
+<kbd class="px-2 py-1 bg-surface-container rounded border border-border-subtle text-white font-mono">[ENTER]</kbd>
+</div>
+</div>
+</section>
+<!-- SECTION 4: YOUR GENERATED PASSWORD (POPULATED RESULT) -->
+<section class="bg-surface-card border-2 border-border-subtle rounded-lg p-6 lg:p-8 space-y-5">
+<div class="flex items-center justify-between pb-3 border-b border-border-hairline text-xs font-code-sm text-text-muted">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-status-verified"></span>
+<span class="text-white font-medium">STAGE 04 // YOUR GENERATED PASSWORD</span>
+</div>
+<span class="font-mono">PRNG: WEBCRYPTO CSPRNG / 256-BIT ENTROPY POOL</span>
+</div>
+<!-- High-Contrast Monospace Display -->
+<div class="bg-surface-root border border-border-subtle rounded-lg p-5 lg:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="font-code-lg text-xl sm:text-2xl md:text-3xl tracking-widest text-white font-semibold select-all break-all">
+<span class="text-primary-container">mQ9#</span><span>xK2$</span><span class="text-primary-container">vL8!</span><span>wP4&amp;</span><span class="text-primary-container">yT7@</span>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="p-2.5 rounded bg-surface-container hover:bg-surface-container-high text-text-muted hover:text-white transition-colors border border-border-hairline" title="Show/Hide Visibility">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2.5 rounded bg-surface-container hover:bg-surface-container-high text-text-muted hover:text-white transition-colors border border-border-hairline" title="Regenerate">
+<span class="material-symbols-outlined text-lg">autorenew</span>
+</button>
+<button class="p-2.5 rounded bg-surface-container hover:bg-surface-container-high text-text-muted hover:text-status-danger transition-colors border border-border-hairline" title="Clear Buffer">
+<span class="material-symbols-outlined text-lg">delete_sweep</span>
+</button>
+</div>
+</div>
+<!-- Action Toolbar -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-2 px-6 py-3 bg-primary-container hover:bg-primary-hover active:bg-primary-active text-text-dark font-code-md text-sm font-bold rounded tracking-wider transition-colors shadow-[0_0_18px_rgba(255,106,0,0.3)]">
+<span class="material-symbols-outlined text-base">content_copy</span>
+<span>COPY CREDENTIAL</span>
+</button>
+<span class="inline-flex items-center gap-1.5 text-status-verified text-xs font-code-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+            Ready to copy (RAM buffer)
+          </span>
+</div>
+<span class="text-xs font-code-sm text-text-muted">
+          MEMORY BUFFER: VOLATILE REGISTER // SHA-256 SALT
+        </span>
+</div>
+</section>
+<!-- SECTION 5: PASSWORD STRENGTH ASSESSMENT -->
+<section class="scroll-mt-24 bg-surface-card border border-border-subtle rounded-lg p-6 lg:p-8 space-y-6" id="section-telemetry">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border-hairline">
+<div>
+<span class="text-primary-container font-label-caps text-xs">SECTION 05</span>
+<h2 class="text-white text-xl font-bold font-headline-md tracking-tight">
+            Password Strength Assessment
+          </h2>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container border border-status-verified/40 rounded text-status-verified font-label-caps text-xs">
+<span class="size-2 rounded-full bg-status-verified"></span>
+          157 BITS ENTROPY — FORTRESS GRADE
+        </div>
+</div>
+<!-- Segmented Strength Meter with 4 glowing bars -->
+<div>
+<div class="flex items-center justify-between mb-2.5">
+<span class="text-white font-headline-md text-sm font-semibold">Cryptographic Rating</span>
+<span class="text-primary-container font-label-caps text-xs font-bold tracking-wider">FORTRESS (UNBREAKABLE)</span>
+</div>
+<div class="grid grid-cols-4 gap-2.5 h-3.5 mb-3">
+<div class="bg-primary-container rounded-sm shadow-[0_0_10px_rgba(255,106,0,0.5)]"></div>
+<div class="bg-primary-container rounded-sm shadow-[0_0_10px_rgba(255,106,0,0.5)]"></div>
+<div class="bg-primary-container rounded-sm shadow-[0_0_10px_rgba(255,106,0,0.5)]"></div>
+<div class="bg-primary-container rounded-sm shadow-[0_0_10px_rgba(255,106,0,0.5)]"></div>
+</div>
+<p class="text-text-muted text-xs leading-relaxed font-body-sm">
+          Hardware-backed WebCrypto PRNG combined with 95-character search space exceeds brute-force thresholds against distributed GPU clusters (10<sup>11</sup> h/s).
+        </p>
+</div>
+</section>
+<!-- SECTION 6: PASSWORD CHARACTERISTICS TELEMETRY GRID -->
+<section class="bg-surface-card border border-border-subtle rounded-lg p-6 lg:p-8 space-y-6">
+<div class="pb-4 border-b border-border-hairline">
+<span class="text-primary-container font-label-caps text-xs">SECTION 06</span>
+<h2 class="text-white text-xl font-bold font-headline-md tracking-tight">
+          Password Characteristics
+        </h2>
+<p class="text-text-muted text-xs font-body-sm mt-0.5">Real-time breakdown of pool weighting and cryptographic bounds.</p>
+</div>
+<!-- Telemetry Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+<!-- Length -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline">
+<span class="text-text-muted text-xs font-code-sm block">LENGTH</span>
+<span class="text-white font-headline-md text-xl font-bold mt-1 block">20 chars</span>
+<span class="text-status-verified text-xs font-code-sm mt-0.5 block">High security</span>
+</div>
+<!-- Uppercase -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline">
+<span class="text-text-muted text-xs font-code-sm block">UPPERCASE</span>
+<span class="text-white font-headline-md text-xl font-bold mt-1 block">6 chars</span>
+<span class="text-text-muted text-xs font-code-sm mt-0.5 block">30% density</span>
+</div>
+<!-- Lowercase -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline">
+<span class="text-text-muted text-xs font-code-sm block">LOWERCASE</span>
+<span class="text-white font-headline-md text-xl font-bold mt-1 block">7 chars</span>
+<span class="text-text-muted text-xs font-code-sm mt-0.5 block">35% density</span>
+</div>
+<!-- Digits -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline">
+<span class="text-text-muted text-xs font-code-sm block">DIGITS</span>
+<span class="text-white font-headline-md text-xl font-bold mt-1 block">4 chars</span>
+<span class="text-text-muted text-xs font-code-sm mt-0.5 block">20% density</span>
+</div>
+<!-- Special Characters -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline">
+<span class="text-text-muted text-xs font-code-sm block">SPECIAL CHARACTERS</span>
+<span class="text-primary-container font-headline-md text-xl font-bold mt-1 block">3 chars</span>
+<span class="text-text-muted text-xs font-code-sm mt-0.5 block">15% density</span>
+</div>
+<!-- Character Pool Size -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline">
+<span class="text-text-muted text-xs font-code-sm block">CHARACTER POOL SIZE</span>
+<span class="text-white font-headline-md text-xl font-bold mt-1 block">95 chars</span>
+<span class="text-text-muted text-xs font-code-sm mt-0.5 block">Expanded ASCII</span>
+</div>
+<!-- Estimated Crack Time (Span 2 columns on lg) -->
+<div class="p-4 rounded bg-surface-container border border-primary-container/30 col-span-2">
+<div class="flex items-center justify-between">
+<span class="text-text-muted text-xs font-code-sm block">ESTIMATED CRACK TIME</span>
+<span class="material-symbols-outlined text-primary-container text-base">speed</span>
+</div>
+<span class="text-primary-container font-headline-md text-xl font-bold mt-1 block">TRILLIONS OF YEARS</span>
+<span class="text-text-muted text-xs font-body-sm mt-0.5 block">Offline assault at 10<sup>11</sup> hashes/second resistance.</span>
+</div>
+</div>
+</section>
+<!-- SECTION 7: WHY THIS PASSWORD? -->
+<section class="bg-surface-card border border-border-subtle rounded-lg p-6 lg:p-8 space-y-6">
+<div class="pb-4 border-b border-border-hairline">
+<span class="text-primary-container font-label-caps text-xs">SECTION 07</span>
+<h2 class="text-white text-xl font-bold font-headline-md tracking-tight">
+          Why This Password?
+        </h2>
+<p class="text-text-muted text-xs font-body-sm mt-0.5">Mathematical verification and architectural resistance factors.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- Factor Card 1 -->
+<div class="p-5 rounded bg-surface-container border border-border-hairline flex flex-col justify-between">
+<div>
+<div class="size-9 rounded bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container mb-3.5">
+<span class="material-symbols-outlined text-lg">memory</span>
+</div>
+<h3 class="text-white font-headline-md text-base font-semibold">Cryptographic Hardware Entropy</h3>
+<p class="text-text-muted text-xs leading-relaxed font-body-sm mt-2">
+              Generated via <code class="text-white font-mono">window.crypto.getRandomValues()</code> directly tapping into system hardware noise pools, ensuring zero pattern leakage.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-border-subtle text-xs font-code-sm text-status-verified flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span>CSPRNG Validated</span>
+</div>
+</div>
+<!-- Factor Card 2 -->
+<div class="p-5 rounded bg-surface-container border border-border-hairline flex flex-col justify-between">
+<div>
+<div class="size-9 rounded bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container mb-3.5">
+<span class="material-symbols-outlined text-lg">all_inclusive</span>
+</div>
+<h3 class="text-white font-headline-md text-base font-semibold">Exponential Search Space</h3>
+<p class="text-text-muted text-xs leading-relaxed font-body-sm mt-2">
+              95<sup>20</sup> possible combinations (~157 bits) makes dictionary, masked brute-force, and rainbow table lookups mathematically impossible.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-border-subtle text-xs font-code-sm text-status-verified flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>Keyspace: 2<sup>157</sup> Combinations</span>
+</div>
+</div>
+<!-- Factor Card 3 -->
+<div class="p-5 rounded bg-surface-container border border-border-hairline flex flex-col justify-between">
+<div>
+<div class="size-9 rounded bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container mb-3.5">
+<span class="material-symbols-outlined text-lg">grain</span>
+</div>
+<h3 class="text-white font-headline-md text-base font-semibold">Uniform Symbol Distribution</h3>
+<p class="text-text-muted text-xs leading-relaxed font-body-sm mt-2">
+              Balanced character weighting eliminates positional frequency bias and suppresses keyboard walks or common leetspeak substitutions.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-border-subtle text-xs font-code-sm text-status-verified flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">security</span>
+<span>Zero Spatial Leakage</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 8: USING YOUR PASSWORD SAFELY -->
+<section class="bg-surface-card border border-border-subtle rounded-lg p-6 lg:p-8 space-y-6">
+<div class="pb-4 border-b border-border-hairline">
+<span class="text-primary-container font-label-caps text-xs">SECTION 08</span>
+<h2 class="text-white text-xl font-bold font-headline-md tracking-tight">
+          Using Your Password Safely
+        </h2>
+<p class="text-text-muted text-xs font-body-sm mt-0.5">Practical operational security protocols for credential hygiene.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Tip 1 -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline flex items-start gap-3.5">
+<div class="size-7 rounded bg-surface-root text-primary-container font-mono font-bold text-xs flex items-center justify-center border border-border-subtle shrink-0 mt-0.5">
+            01
+          </div>
+<div>
+<h4 class="text-white text-sm font-semibold font-headline-md">1. Use a unique password for each account</h4>
+<p class="text-text-muted text-xs font-body-sm mt-1 leading-relaxed">
+              Never reuse passwords across personal and enterprise accounts to prevent credential stuffing cascade attacks.
+            </p>
+</div>
+</div>
+<!-- Tip 2 -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline flex items-start gap-3.5">
+<div class="size-7 rounded bg-surface-root text-primary-container font-mono font-bold text-xs flex items-center justify-center border border-border-subtle shrink-0 mt-0.5">
+            02
+          </div>
+<div>
+<h4 class="text-white text-sm font-semibold font-headline-md">2. Store difficult passwords in a password manager</h4>
+<p class="text-text-muted text-xs font-body-sm mt-1 leading-relaxed">
+              Use a reputable, air-gapped or end-to-end encrypted password manager rather than browser cache or plain notes.
+            </p>
+</div>
+</div>
+<!-- Tip 3 -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline flex items-start gap-3.5">
+<div class="size-7 rounded bg-surface-root text-primary-container font-mono font-bold text-xs flex items-center justify-center border border-border-subtle shrink-0 mt-0.5">
+            03
+          </div>
+<div>
+<h4 class="text-white text-sm font-semibold font-headline-md">3. Enable multi-factor authentication (MFA / FIDO2)</h4>
+<p class="text-text-muted text-xs font-body-sm mt-1 leading-relaxed">
+              Enforce hardware security keys or authenticator apps wherever available for defense-in-depth protection.
+            </p>
+</div>
+</div>
+<!-- Tip 4 -->
+<div class="p-4 rounded bg-surface-container border border-border-hairline flex items-start gap-3.5">
+<div class="size-7 rounded bg-surface-root text-primary-container font-mono font-bold text-xs flex items-center justify-center border border-border-subtle shrink-0 mt-0.5">
+            04
+          </div>
+<div>
+<h4 class="text-white text-sm font-semibold font-headline-md">4. Never enter credentials across unverified domains</h4>
+<p class="text-text-muted text-xs font-body-sm mt-1 leading-relaxed">
+              Verify SSL certificates and complete domain names to protect against typosquatting and sophisticated spear-phishing.
+            </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ==========================================
+       FOOTER
+       ========================================== -->
+<footer class="border-t border-border-hairline bg-surface-recessed py-8 px-6 text-text-muted font-code-sm text-xs mt-16">
+<div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-status-verified"></span>
+<span class="text-white font-medium">CASTLE CRYPTOGRAPHIC LABS // ZERO TELEMETRY NODE</span>
+</div>
+<div>
+<span>ALL COMPUTATIONS OCCUR LOCALLY VIA W3C WEBCRYPTO API</span>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,539 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 3816px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>Castle Sec-Ops // Cryptographic Suite</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#e2e2e2", "surface-elevated": "#111111", "secondary-container": "#00a572", "inverse-on-surface": "#303030", "on-tertiary-fixed": "#001e2f", "text-body": "#E5E5E5", "on-primary-fixed": "#351000", "on-tertiary-fixed-variant": "#004c6e", "surface-container-low": "#1b1b1b", "on-error": "#690005", "primary-fixed-dim": "#ffb694", "error-container": "#93000a", "text-dark": "#050505", "outline": "#a98a7d", "on-primary-container": "#571f00", "inverse-surface": "#e2e2e2", "error": "#ffb4ab", "surface-variant": "#353535", "surface-container-high": "#2a2a2a", "primary": "#ffb694", "tertiary-container": "#00a2e6", "tertiary": "#89ceff", "on-surface-variant": "#e2bfb0", "on-error-container": "#ffdad6", "on-secondary-container": "#00311f", "text-muted": "#888888", "status-verified": "#10B981", "on-secondary-fixed-variant": "#005236", "primary-fixed": "#ffdbcc", "surface-base": "#0A0A0A", "status-danger": "#EF4444", "secondary-fixed-dim": "#4edea3", "on-secondary-fixed": "#002113", "inverse-primary": "#a14000", "surface-dim": "#131313", "surface-container-lowest": "#0e0e0e", "primary-container": "#ff6a00", "surface-bright": "#393939", "text-display": "#FFFFFF", "primary-hover": "#FF7D1A", "on-tertiary": "#00344d", "primary-active": "#E55F00", "secondary-fixed": "#6ffbbe", "surface-tint": "#ffb694", "status-warning": "#F59E0B", "status-info": "#0EA5E9", "primary-glow": "rgba(255, 106, 0, 0.15)", "tertiary-fixed-dim": "#89ceff", "on-background": "#e2e2e2", "secondary": "#4edea3", "surface-container": "#1f1f1f", "background": "#131313", "surface-root": "#000000", "border-hairline": "#1A1A1A", "border-subtle": "#262626", "on-primary": "#571f00", "surface-container-highest": "#353535", "outline-variant": "#5a4136", "on-primary-fixed-variant": "#7b2f00", "tertiary-fixed": "#c9e6ff", "surface-card": "#0D0D0D", "border-active": "#FF6A00", "on-secondary": "#003824", "surface": "#131313", "on-tertiary-container": "#00344e", "surface-recessed": "#050505" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-2xl": "3rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "space-md": "1rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "margin": "2.5rem", "space-3xl": "4rem", "space-xl": "2rem", "gutter": "1.5rem" }, "fontFamily": { "body-sm": ["Inter"], "headline-lg-mobile": ["Space Grotesk"], "hero": ["Space Grotesk"], "headline-sm": ["Space Grotesk"], "body-md": ["Inter"], "code-md": ["JetBrains Mono"], "headline-lg": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-lg": ["Inter"], "label-caps": ["JetBrains Mono"], "code-sm": ["JetBrains Mono"], "hero-mobile": ["Space Grotesk"], "code-lg": ["JetBrains Mono"], "title-md": ["Space Grotesk"] }, "fontSize": { "body-sm": ["12px", { "lineHeight": "1.50", "fontWeight": "400" }], "headline-lg-mobile": ["32px", { "lineHeight": "1.20", "letterSpacing": "-0.01em", "fontWeight": "700" }], "hero": ["64px", { "lineHeight": "1.10", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-sm": ["24px", { "lineHeight": "1.30", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "1.55", "fontWeight": "400" }], "code-md": ["13px", { "lineHeight": "1.50", "fontWeight": "500" }], "headline-lg": ["48px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-md": ["32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "1.60", "fontWeight": "400" }], "label-caps": ["11px", { "lineHeight": "1.40", "letterSpacing": "0.08em", "fontWeight": "600" }], "code-sm": ["11px", { "lineHeight": "1.40", "fontWeight": "400" }], "hero-mobile": ["40px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }], "code-lg": ["15px", { "lineHeight": "1.50", "fontWeight": "500" }], "title-md": ["18px", { "lineHeight": "1.40", "letterSpacing": "0.01em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface-root font-body-md text-body min-h-screen selection:bg-primary-container selection:text-text-dark"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-base shadow-[0_1px_8px_rgba(0,0,0,0.8)]"><div class="h-14 px-margin flex items-center justify-between border-b border-border-hairline"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-7 h-7 bg-primary-container text-black flex items-center justify-center font-headline-sm font-bold text-[15px]"><span class="material-symbols-outlined text-[18px]">shield</span></div><div class="flex items-baseline gap-space-xs"><span class="font-label-caps text-label-caps text-text-display font-bold tracking-wider">CASTLE</span><span class="font-code-sm text-code-sm text-primary">SEC-OPS v3.4</span></div></div><div class="hidden md:flex items-center gap-space-xs px-space-sm py-0.5 bg-surface-recessed border border-border-hairline"><span class="w-1.5 h-1.5 rounded-full bg-status-verified animate-pulse"></span><span class="font-label-caps text-label-caps text-status-verified uppercase">AIR-GAP MODE ACTIVE</span></div><div class="hidden xl:flex items-center gap-space-xs font-code-sm text-code-sm text-text-muted"><span class="text-border-subtle">//</span><span class="px-space-xs py-0.5 bg-surface-elevated text-text-display uppercase font-label-caps text-label-caps">MODULE-02 // HASH_TOOLKIT</span></div></div><div class="flex items-center gap-space-md"><div class="hidden lg:flex items-center gap-space-md font-code-sm text-code-sm text-text-muted"><span class="flex items-center gap-space-xs"><span class="text-primary-container">ENGINE:</span>WebCrypto API</span><span class="text-border-subtle">|</span><span class="flex items-center gap-space-xs"><span class="text-primary-container">HASH-SUITE:</span>SHA-256 / SHA-512 / BLAKE3</span></div><button class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-card border border-border-subtle hover:border-border-active transition-all font-label-caps text-label-caps text-text-display" type="button"><span class="material-symbols-outlined text-[16px]">grid_view</span>ALL TOOLS</button><div class="w-8 h-8 rounded-full bg-surface-elevated border border-border-subtle flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[18px]">person</span></div></div></div><div class="h-12 px-margin bg-surface-root border-b border-border-hairline flex items-center justify-between"><nav class="flex items-center gap-space-xs h-full py-1.5"><a aria-current="page" class="h-full flex items-center px-space-lg font-label-caps text-label-caps uppercase bg-primary-container text-black font-bold shadow-[0_0_14px_rgba(255,106,0,0.35)] transition-colors" data-path="learn" href="#"><span class="material-symbols-outlined text-[16px] mr-1">menu_book</span>TAB 01: LEARN</a><a class="h-full flex items-center px-space-lg font-label-caps text-label-caps uppercase bg-surface-card border border-border-subtle text-text-muted hover:text-text-display hover:border-border-active transition-colors" data-path="generate" href="#"><span class="material-symbols-outlined text-[16px] mr-1">lock_reset</span>TAB 02: GENERATE</a><a class="h-full flex items-center px-space-lg font-label-caps text-label-caps uppercase bg-surface-card border border-border-subtle text-text-muted hover:text-text-display hover:border-border-active transition-colors" data-path="verify" href="#"><span class="material-symbols-outlined text-[16px] mr-1">verified</span>TAB 03: VERIFY</a></nav><div class="hidden md:flex items-center gap-space-sm font-code-sm text-code-sm text-text-muted"><span class="w-2 h-2 rounded-full bg-status-verified"></span><span class="font-label-caps text-label-caps text-status-verified uppercase">CSPRNG 256-BIT LOCAL ENTROPY</span></div></div></header><main class="w-full pt-[104px] pb-16 bg-surface-root min-h-screen"><div class="flex flex-col w-full">
+<!-- Zero-Knowledge / Air-Gap Tactical Status Banner -->
+<section class="w-full bg-surface-recessed px-margin py-4">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-2 h-2 bg-status-verified"></div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-display tracking-widest uppercase">AIR-GAP PROTOCOL // ZERO SERVER TELEMETRY</span>
+<span class="font-code-sm text-code-sm text-text-muted">EXECUTION CONTEXT: Window.crypto.subtle // MEMORY BUFFER ONLY // 0 BYTES PERSISTED</span>
+</div>
+</div>
+<div class="flex items-center gap-space-lg font-code-sm text-code-sm text-text-muted">
+<span class="flex items-center gap-space-xs text-secondary"><span class="material-symbols-outlined text-[15px]">verified_user</span> CLIENT-SIDE IMMUTABLE</span>
+<span class="text-surface-variant">/</span>
+<span class="flex items-center gap-space-xs text-text-display"><span class="material-symbols-outlined text-[15px] text-primary-container">lan</span> NETWORK ISOLATED</span>
+</div>
+</div>
+</section>
+<!-- Module Header & Overview -->
+<section class="w-full px-margin pt-space-2xl pb-space-xl bg-surface-root">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-sm py-0.5 bg-surface-elevated text-primary font-label-caps text-label-caps tracking-widest uppercase">MODULE 02 // HASH TOOLKIT</span>
+<span class="text-surface-variant font-code-sm text-code-sm">//</span>
+<span class="font-label-caps text-label-caps text-text-muted tracking-wider uppercase">CRYPTOGRAPHIC INTEGRITY &amp; CHECKSUMS</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-baseline">
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<h1 class="font-headline-lg text-headline-lg text-text-display tracking-tight uppercase">
+            Cryptographic Hashing:<br>
+<span class="text-primary-container">The Digital Fingerprint</span>
+</h1>
+<p class="font-body-lg text-body-lg text-body max-w-3xl leading-relaxed">
+            A deterministic, one-way mathematical reduction engine. Cryptographic hash functions ingest arbitrary sequences of bits—from a single keystroke to petabyte-scale disk archives—and collapse them into a mathematically bounded, collision-resistant identifier.
+          </p>
+</div>
+<div class="lg:col-span-4 bg-surface-card p-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">PRIMITIVE SPECIFICATION</span>
+<span class="font-code-sm text-code-sm text-primary">NIST FIPS 180-4</span>
+</div>
+<div class="space-y-space-xs font-code-sm text-code-sm pt-space-xs">
+<div class="flex justify-between py-1 bg-surface-recessed px-space-sm">
+<span class="text-text-muted">Standard:</span>
+<span class="text-text-display font-medium">SHA-256 (Secure Hash Alg.)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-recessed px-space-sm">
+<span class="text-text-muted">Output Bit-Length:</span>
+<span class="text-text-display font-medium">256 Bits (32 Bytes)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-recessed px-space-sm">
+<span class="text-text-muted">Hex Representation:</span>
+<span class="text-text-display font-medium">64 Characters (Base16)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-recessed px-space-sm">
+<span class="text-text-muted">Reversibility:</span>
+<span class="text-status-danger font-medium">Mathematically Infeasible</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 1: Anatomy of a Hash Function (Process Flow) -->
+<section class="w-full px-margin py-space-2xl bg-surface-base">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">01 // PROCESS MODEL</span>
+<h2 class="font-headline-md text-headline-md text-text-display tracking-tight uppercase">ANATOMY OF DETERMINISTIC DATA REDUCTION</h2>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+          Regardless of the source payload volume, the mathematical compression matrix processes blocks via bitwise transformations, producing an identical, fixed-size digest every iteration.
+        </p>
+</div>
+<!-- Functional Pipeline Diagram -->
+<div class="w-full bg-surface-card p-space-xl flex flex-col gap-space-xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<!-- Stage 1: Input -->
+<div class="md:col-span-4 bg-surface-recessed p-space-lg flex flex-col gap-space-sm h-full justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-text-muted uppercase">STAGE 01: INGRESS</span>
+<span class="font-code-sm text-code-sm text-primary">N-BITS</span>
+</div>
+<div class="flex flex-col gap-space-xs my-space-md">
+<span class="font-title-md text-title-md text-text-display font-semibold uppercase">Arbitrary Input Data</span>
+<p class="font-body-sm text-body-sm text-text-muted">
+                Plaintext strings, raw binaries, complete kernel images, or high-definition disk images.
+              </p>
+</div>
+<div class="bg-surface-elevated p-space-sm font-code-sm text-code-sm text-text-body overflow-x-auto">
+<span class="text-text-muted">// Payload Example:</span><br>
+              "Castle Security Operations v4"
+            </div>
+</div>
+<!-- Arrow Connector 1 -->
+<div class="hidden md:flex md:col-span-1 justify-center items-center">
+<span class="material-symbols-outlined text-primary text-[28px]">arrow_forward</span>
+</div>
+<!-- Stage 2: Transform Engine -->
+<div class="md:col-span-2 bg-surface-recessed p-space-lg flex flex-col gap-space-sm h-full justify-between shadow-[0_0_16px_rgba(255,106,0,0.1)]">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary tracking-wider uppercase">STAGE 02: KERNEL</span>
+<span class="material-symbols-outlined text-[16px] text-primary">lock_clock</span>
+</div>
+<div class="flex flex-col gap-space-xs my-space-sm text-center">
+<span class="font-title-md text-title-md text-text-display font-semibold uppercase">SHA-256</span>
+<span class="font-code-sm text-code-sm text-text-muted">Merkle-Damgård Construction</span>
+</div>
+<div class="py-space-xs px-space-sm bg-surface-elevated text-center font-code-sm text-code-sm text-secondary">
+              64 Compression Rounds
+            </div>
+</div>
+<!-- Arrow Connector 2 -->
+<div class="hidden md:flex md:col-span-1 justify-center items-center">
+<span class="material-symbols-outlined text-primary text-[28px]">arrow_forward</span>
+</div>
+<!-- Stage 3: Digest Output -->
+<div class="md:col-span-4 bg-surface-recessed p-space-lg flex flex-col gap-space-sm h-full justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-status-verified uppercase">STAGE 03: DIGEST</span>
+<span class="font-code-sm text-code-sm text-status-verified">256 BITS</span>
+</div>
+<div class="flex flex-col gap-space-xs my-space-md">
+<span class="font-title-md text-title-md text-text-display font-semibold uppercase">Immutable Hex Digest</span>
+<p class="font-body-sm text-body-sm text-text-muted">
+                Fixed 64-hexadecimal sequence representing the unique mathematical signature of the ingress.
+              </p>
+</div>
+<div class="bg-surface-elevated p-space-sm font-code-sm text-code-sm text-text-display break-all select-all selection:bg-primary selection:text-text-dark">
+              e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+            </div>
+</div>
+</div>
+<!-- Technical Takeaway Inset -->
+<div class="bg-surface-recessed p-space-md flex items-start gap-space-md">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5">info</span>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-text-display uppercase">INVARIANCE PRINCIPLE</span>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Determinism guarantees that across any hardware, any processor architecture, and any epoch in time, applying SHA-256 to the exact same bit sequence will produce the exact identical 256-bit hexadecimal string with 100% mathematical fidelity.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Four Core Pillars of Cryptographic Hashing -->
+<section class="w-full px-margin py-space-3xl bg-surface-root">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-2xl">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">02 // MATHEMATICAL FOUNDATIONS</span>
+<h2 class="font-headline-md text-headline-md text-text-display tracking-tight uppercase">THE FOUR PILLARS OF INTEGRITY ASSURANCE</h2>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+          Standard algorithms like SHA-256 and BLAKE3 adhere to strict cryptographic primitives designed to prevent forgery, collision, and reverse reconstruction.
+        </p>
+</div>
+<!-- Bento Grid Layout: Core Pillars -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Pillar A: Deterministic Consistency -->
+<div class="bg-surface-card p-space-xl flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase">PILLAR 01 // PREDICTABILITY</span>
+<span class="material-symbols-outlined text-text-muted text-[22px]">sync_alt</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-display uppercase">Deterministic Consistency</h3>
+<p class="font-body-md text-body-md text-text-muted">
+              For any fixed input <span class="font-code-sm text-code-sm text-text-display">x</span>, evaluating <span class="font-code-sm text-code-sm text-text-display">H(x)</span> will perpetually generate <span class="font-code-sm text-code-sm text-text-display">y</span>. There is zero stochastic variance, entropy leakage, or hardware dependency.
+            </p>
+</div>
+<div class="bg-surface-recessed p-space-md font-code-sm text-code-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-text-muted">
+<span>H("ALPHA")</span>
+<span class="text-status-verified">→ 8b1a9953c4611296...</span>
+</div>
+<div class="flex items-center justify-between text-text-muted">
+<span>H("ALPHA") [Repeat Execution]</span>
+<span class="text-status-verified">→ 8b1a9953c4611296...</span>
+</div>
+</div>
+</div>
+<!-- Pillar B: Fixed-Length Invariant -->
+<div class="bg-surface-card p-space-xl flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase">PILLAR 02 // BOUNDED UNIFORMITY</span>
+<span class="material-symbols-outlined text-text-muted text-[22px]">straighten</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-display uppercase">Fixed-Length Invariant</h3>
+<p class="font-body-md text-body-md text-text-muted">
+              Input volume is decoupled from output scale. A single character payload yields a 256-bit digest. A 100-gigabyte database backup yields the identical 256-bit output length.
+            </p>
+</div>
+<div class="bg-surface-recessed p-space-md font-code-sm text-code-sm flex flex-col gap-space-xs">
+<div class="flex justify-between items-center text-text-muted">
+<span>Input: 1 Byte ("A")</span>
+<span class="text-text-display">Digest: 64 Hex Characters</span>
+</div>
+<div class="flex justify-between items-center text-text-muted">
+<span>Input: 40 Gigabytes (OS.iso)</span>
+<span class="text-text-display">Digest: 64 Hex Characters</span>
+</div>
+</div>
+</div>
+<!-- Pillar C: One-Way Irreversibility -->
+<div class="bg-surface-card p-space-xl flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase">PILLAR 03 // PRE-IMAGE RESISTANCE</span>
+<span class="material-symbols-outlined text-text-muted text-[22px]">visibility_off</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-display uppercase">One-Way Irreversibility</h3>
+<p class="font-body-md text-body-md text-text-muted">
+              Given a hash <span class="font-code-sm text-code-sm text-text-display">h</span>, discovering any input <span class="font-code-sm text-code-sm text-text-display">m</span> such that <span class="font-code-sm text-code-sm text-text-display">H(m) = h</span> requires astronomical brute-force operations (~2<sup>256</sup> operations for SHA-256).
+            </p>
+</div>
+<div class="bg-surface-elevated p-space-md flex items-center gap-space-md">
+<span class="material-symbols-outlined text-status-danger text-[22px]">warning</span>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-status-danger uppercase">CRITICAL DISTINCTION: HASHING ≠ ENCRYPTION</span>
+<span class="font-body-sm text-body-sm text-text-muted">Encryption is reversible via a decryption key. Hashes discard original data structures permanently. Hashes cannot be "decrypted".</span>
+</div>
+</div>
+</div>
+<!-- Pillar D: High Collision Resistance & Avalanche -->
+<div class="bg-surface-card p-space-xl flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase">PILLAR 04 // COLLISION RESISTANCE</span>
+<span class="material-symbols-outlined text-text-muted text-[22px]">shuffle</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-display uppercase">Extreme Sensitivity</h3>
+<p class="font-body-md text-body-md text-text-muted">
+              Strict compliance with the Avalanche Effect. Inverting a single bit in a terabyte payload causes more than 50% of the output bits in the digest to randomly invert, destroying correlation.
+            </p>
+</div>
+<div class="bg-surface-recessed p-space-md flex items-center justify-between font-code-sm text-code-sm">
+<span class="text-text-muted">Collision Probability (SHA-256):</span>
+<span class="text-status-verified font-medium">1 in 10<sup>77</sup> (Virtually Zero)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Interactive Sandbox - Avalanche Effect -->
+<section class="w-full px-margin py-space-3xl bg-surface-base">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">03 // INTERACTIVE LABORATORY</span>
+<h2 class="font-headline-md text-headline-md text-text-display tracking-tight uppercase">EXPERIENCE THE AVALANCHE EFFECT</h2>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+            Mutate a single glyph or character below. Observe how WebCrypto recomputes SHA-256 instantly, demonstrating complete decorrelation across all 256 bits.
+          </p>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-card p-1">
+<button class="px-space-md py-1.5 font-label-caps text-label-caps bg-surface-elevated text-text-display uppercase transition-colors hover:text-primary" id="preset-btn-1" type="button">
+            SAMPLE A: "Castle Security"
+          </button>
+<button class="px-space-md py-1.5 font-label-caps text-label-caps bg-surface-recessed text-text-muted uppercase transition-colors hover:text-text-display" id="preset-btn-2" type="button">
+            SAMPLE B: "Castle Security."
+          </button>
+</div>
+</div>
+<!-- Sandbox Workspace Shell -->
+<div class="w-full bg-surface-card p-space-xl flex flex-col gap-space-xl shadow-xl">
+<!-- Live Input Workspace -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-label-caps text-label-caps text-text-display uppercase tracking-wider flex items-center gap-space-xs" for="sandbox-input">
+<span class="material-symbols-outlined text-[16px] text-primary">edit_note</span> LIVE INPUT BUFFER
+            </label>
+<div class="flex items-center gap-space-md font-code-sm text-code-sm text-text-muted">
+<span>BYTE LENGTH: <span class="text-text-display font-medium" id="input-length">15</span></span>
+<span>ENTROPY: <span class="text-secondary font-medium">CSPRNG LOCAL</span></span>
+<button class="text-text-muted hover:text-primary transition-colors flex items-center gap-0.5" id="reset-input" type="button">
+<span class="material-symbols-outlined text-[14px]">restart_alt</span> RESET
+              </button>
+</div>
+</div>
+<input autocomplete="off" class="w-full bg-surface-recessed px-space-md py-space-sm font-code-md text-code-md text-text-display focus:outline-none focus:ring-1 focus:ring-primary-container" id="sandbox-input" spellcheck="false" type="text" value="Castle Security">
+</div>
+<!-- Real-Time Computed Digest Stream -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-text-muted uppercase tracking-wider flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-status-verified">verified</span> COMPUTED SHA-256 DIGEST (REAL-TIME WebCrypto)
+            </span>
+<button class="font-code-sm text-code-sm text-text-muted hover:text-text-display flex items-center gap-1 transition-colors" id="copy-digest-btn" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span> COPY HASH
+            </button>
+</div>
+<div class="w-full bg-surface-recessed p-space-md font-code-lg text-code-lg text-primary tracking-wider break-all select-all transition-all" id="digest-container">
+<span id="digest-output">7dab3ec388cb1f9ca3183f5ecedc0599e847c9613a722e91ff5eca3823815a88</span>
+</div>
+</div>
+<!-- Comparative Avalanche Showcase -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md pt-space-xs">
+<div class="bg-surface-recessed p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-text-display font-semibold">INPUT A: "castle"</span>
+<span class="font-label-caps text-label-caps text-text-muted">LOWERCASE 'c'</span>
+</div>
+<div class="font-code-sm text-code-sm text-text-muted break-all pt-1">
+              87ce6a0666d691522f28b26ddf5c4015f6fc2ec03099d08e5e8e97ffaebe6107
+            </div>
+</div>
+<div class="bg-surface-recessed p-space-md flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-code-sm text-code-sm text-text-display font-semibold">INPUT B: "Castle"</span>
+<span class="font-label-caps text-label-caps text-primary">UPPERCASE 'C' (1 BIT SHIFT)</span>
+</div>
+<div class="font-code-sm text-code-sm text-primary break-all pt-1">
+              86a07cf03cbcc59b83777d13eb2ecf10e47feae11d13b48f682662c6d7a46e9f
+            </div>
+</div>
+</div>
+<div class="bg-surface-elevated p-space-md flex items-center gap-space-md">
+<span class="material-symbols-outlined text-secondary text-[24px]">pattern</span>
+<p class="font-body-sm text-body-sm text-body">
+            Notice how changing one ASCII character flips roughly 128 out of 256 bits across the entire string. An observer cannot infer either the size, meaning, or proximity of the original text from the digest.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Real-World Applications -->
+<section class="w-full px-margin py-space-3xl bg-surface-root">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-2xl">
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps text-primary tracking-widest uppercase">04 // PRODUCTION SYSTEMS</span>
+<h2 class="font-headline-md text-headline-md text-text-display tracking-tight uppercase">WHERE HASHING IS DEPLOYED IN MODERN INFRASTRUCTURE</h2>
+<p class="font-body-md text-body-md text-text-muted max-w-2xl">
+          Hashing is the architectural spine of modern systems engineering, from container registries to secure distributed source control.
+        </p>
+</div>
+<!-- Bento Layout: Applications -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- App 1: Authentication & Passwords -->
+<div class="bg-surface-card p-space-lg flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="w-10 h-10 bg-surface-recessed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">password</span>
+</div>
+<span class="font-title-md text-title-md text-text-display font-semibold uppercase">Credential Storage</span>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+              Never store plaintext. Secure stacks use salted, memory-hard key derivation functions (Argon2id, PBKDF2) to resist ASIC and GPU brute-force recovery.
+            </p>
+</div>
+<div class="font-code-sm text-code-sm text-text-muted bg-surface-recessed px-space-sm py-1">
+            STACK: Argon2id // Salted
+          </div>
+</div>
+<!-- App 2: Software Integrity -->
+<div class="bg-surface-card p-space-lg flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="w-10 h-10 bg-surface-recessed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">inventory_2</span>
+</div>
+<span class="font-title-md text-title-md text-text-display font-semibold uppercase">Release Integrity</span>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+              Vendors publish SHA-256 and SHA-512 checksums alongside binary releases. Operators verify matching digests before runtime deployment to prevent MITM tampering.
+            </p>
+</div>
+<div class="font-code-sm text-code-sm text-text-muted bg-surface-recessed px-space-sm py-1">
+            STANDARD: SHA-256 Sums
+          </div>
+</div>
+<!-- App 3: Git & Merkle Trees -->
+<div class="bg-surface-card p-space-lg flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="w-10 h-10 bg-surface-recessed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">fork_right</span>
+</div>
+<span class="font-title-md text-title-md text-text-display font-semibold uppercase">Content Addressing</span>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+              Git does not track file diffs by filename; it indexes raw files, trees, and commits by their object hash. If any byte changes, the entire commit tree hash shifts.
+            </p>
+</div>
+<div class="font-code-sm text-code-sm text-text-muted bg-surface-recessed px-space-sm py-1">
+            ENGINE: Git SHA-1 / SHA-256
+          </div>
+</div>
+<!-- App 4: Docker & Immutability -->
+<div class="bg-surface-card p-space-lg flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md">
+<div class="w-10 h-10 bg-surface-recessed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">layers</span>
+</div>
+<span class="font-title-md text-title-md text-text-display font-semibold uppercase">Container Digests</span>
+<p class="font-body-sm text-body-sm text-text-muted leading-relaxed">
+              OCI image layers are referenced strictly by content digest (e.g., <span class="font-code-sm text-code-sm text-text-display">sha256:7f81...</span>), rendering deployment pipelines impervious to registry poisoning.
+            </p>
+</div>
+<div class="font-code-sm text-code-sm text-text-muted bg-surface-recessed px-space-sm py-1">
+            REGISTRY: OCI Content Digest
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Workflow Transition Handoff -->
+<section class="w-full px-margin pt-space-2xl pb-space-3xl bg-surface-base">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-xl">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 bg-primary-container"></span>
+<span class="font-label-caps text-label-caps text-text-display uppercase tracking-widest">NEXT TACTICAL PHASES // WORKFLOW PIPELINE</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Transition to Tab 02: Generate -->
+<a class="bg-surface-card p-space-xl flex flex-col justify-between gap-space-lg group transition-all duration-200 hover:bg-surface-elevated" href="#">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-primary uppercase">ACTIONABLE TOOL 02</span>
+<span class="material-symbols-outlined text-primary text-[24px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-display uppercase">Generate Hashes</h3>
+<p class="font-body-md text-body-md text-text-muted">
+              Compute real-time cryptographic digests for raw strings or stream gigabyte-scale local binary files with WebCrypto. Supports SHA-256, SHA-512, SHA-1, and MD5.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-text-display uppercase pt-space-sm">
+<span>SWITCH TO TAB 02: GENERATE</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</a>
+<!-- Transition to Tab 03: Verify -->
+<a class="bg-surface-card p-space-xl flex flex-col justify-between gap-space-lg group transition-all duration-200 hover:bg-surface-elevated" href="#">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-status-verified uppercase">ACTIONABLE TOOL 03</span>
+<span class="material-symbols-outlined text-status-verified text-[24px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-display uppercase">Verify Checksums</h3>
+<p class="font-body-md text-body-md text-text-muted">
+              Audit release artifacts against vendor checksum strings, or execute bit-for-bit differential comparisons between two localized files with immediate match status telemetry.
+            </p>
+</div>
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-text-display uppercase pt-space-sm">
+<span>SWITCH TO TAB 03: VERIFY</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+</div>
+<!-- Interactive Client-Side Execution Script -->
+<script>
+  (function initCryptoLab() {
+    const inputField = document.getElementById('sandbox-input');
+    const digestDisplay = document.getElementById('digest-output');
+    const lengthCounter = document.getElementById('input-length');
+    const presetBtn1 = document.getElementById('preset-btn-1');
+    const presetBtn2 = document.getElementById('preset-btn-2');
+    const resetBtn = document.getElementById('reset-input');
+    const copyBtn = document.getElementById('copy-digest-btn');
+    const digestContainer = document.getElementById('digest-container');
+
+    async function computeSHA256(str) {
+      try {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(str);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+      } catch (err) {
+        return 'CRYPTO_API_UNAVAILABLE';
+      }
+    }
+
+    async function updateDigest() {
+      const val = inputField.value;
+      if (lengthCounter) {
+        lengthCounter.textContent = new TextEncoder().encode(val).length;
+      }
+      const hex = await computeSHA256(val);
+      if (digestDisplay) {
+        digestDisplay.textContent = hex;
+        // Subtle momentary pulse on recalculate
+        digestContainer.classList.add('bg-surface-elevated');
+        setTimeout(() => {
+          digestContainer.classList.remove('bg-surface-elevated');
+        }, 120);
+      }
+    }
+
+    if (inputField) {
+      inputField.addEventListener('input', updateDigest);
+    }
+
+    if (presetBtn1) {
+      presetBtn1.addEventListener('click', () => {
+        inputField.value = 'Castle Security';
+        presetBtn1.className = 'px-space-md py-1.5 font-label-caps text-label-caps bg-surface-elevated text-text-display uppercase transition-colors';
+        presetBtn2.className = 'px-space-md py-1.5 font-label-caps text-label-caps bg-surface-recessed text-text-muted uppercase transition-colors hover:text-text-display';
+        updateDigest();
+      });
+    }
+
+    if (presetBtn2) {
+      presetBtn2.addEventListener('click', () => {
+        inputField.value = 'Castle Security.';
+        presetBtn2.className = 'px-space-md py-1.5 font-label-caps text-label-caps bg-surface-elevated text-text-display uppercase transition-colors';
+        presetBtn1.className = 'px-space-md py-1.5 font-label-caps text-label-caps bg-surface-recessed text-text-muted uppercase transition-colors hover:text-text-display';
+        updateDigest();
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        inputField.value = 'Castle Security';
+        updateDigest();
+      });
+    }
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', async () => {
+        const textToCopy = digestDisplay.textContent;
+        try {
+          await navigator.clipboard.writeText(textToCopy);
+          const origHtml = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<span class="material-symbols-outlined text-[14px] text-status-verified">done</span> COPIED';
+          setTimeout(() => {
+            copyBtn.innerHTML = origHtml;
+          }, 1500);
+        } catch (e) {
+          // Clipboard fallback silently handled
+        }
+      });
+    }
+
+    // Initial render
+    updateDigest();
+  })();
+</script></main><footer class="fixed bottom-0 left-0 right-0 h-10 bg-surface-base border-t border-border-hairline z-40 px-margin flex items-center justify-between font-label-caps text-label-caps text-text-muted"><div class="flex items-center gap-space-lg"><span class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-status-verified"></span>SUBSYSTEM: READY</span><span class="hidden sm:inline text-border-subtle">//</span><span class="hidden sm:inline">INGRESS: BLOCKED</span><span class="hidden sm:inline text-border-subtle">//</span><span class="hidden sm:inline">PERSISTENCE: 0 BYTES</span></div><div class="flex items-center gap-space-md"><span class="hidden md:inline">SHA-256 / SHA-512 / BLAKE3 / HMAC</span><span class="text-text-display">SEC-OPS v4.12.0-STABLE</span></div></footer>
+
+</body></html>

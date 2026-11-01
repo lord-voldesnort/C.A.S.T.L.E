@@ -1,0 +1,652 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 2798px; overflow: hidden; position: relative;"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-error-container": "#ffdad6", "on-surface": "#e2e2e2", "tertiary-fixed": "#c9e6ff", "background": "#131313", "tertiary": "#89ceff", "text-muted": "#888888", "surface-container-lowest": "#0e0e0e", "surface-bright": "#393939", "surface-base": "#0A0A0A", "primary-active": "#E55F00", "on-tertiary-fixed": "#001e2f", "on-surface-variant": "#e2bfb0", "surface-card": "#0D0D0D", "surface-container-highest": "#353535", "on-tertiary": "#00344d", "primary-fixed-dim": "#ffb694", "on-tertiary-fixed-variant": "#004c6e", "on-secondary-container": "#00311f", "border-subtle": "#262626", "surface-root": "#000000", "primary-fixed": "#ffdbcc", "status-danger": "#EF4444", "border-active": "#FF6A00", "secondary-fixed": "#6ffbbe", "on-secondary-fixed-variant": "#005236", "error": "#ffb4ab", "surface-container-low": "#1b1b1b", "secondary-container": "#00a572", "status-warning": "#F59E0B", "surface-elevated": "#111111", "error-container": "#93000a", "inverse-surface": "#e2e2e2", "inverse-on-surface": "#303030", "primary-container": "#ff6a00", "surface-dim": "#131313", "secondary": "#4edea3", "text-dark": "#050505", "primary": "#ffb694", "surface-tint": "#ffb694", "on-background": "#e2e2e2", "tertiary-container": "#00a2e6", "on-primary-fixed": "#351000", "on-error": "#690005", "status-verified": "#10B981", "border-hairline": "#1A1A1A", "surface": "#131313", "surface-container": "#1f1f1f", "outline-variant": "#5a4136", "inverse-primary": "#a14000", "on-primary-fixed-variant": "#7b2f00", "surface-variant": "#353535", "on-primary": "#571f00", "on-primary-container": "#571f00", "tertiary-fixed-dim": "#89ceff", "surface-recessed": "#050505", "on-secondary": "#003824", "on-tertiary-container": "#00344e", "primary-hover": "#FF7D1A", "primary-glow": "rgba(255, 106, 0, 0.15)", "on-secondary-fixed": "#002113", "outline": "#a98a7d", "text-display": "#FFFFFF", "surface-container-high": "#2a2a2a", "secondary-fixed-dim": "#4edea3", "text-body": "#E5E5E5", "status-info": "#0EA5E9" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "margin-mobile": "1rem", "gutter": "1.5rem", "space-xl": "2rem", "space-xs": "0.25rem", "gutter-mobile": "1rem", "margin": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "space-lg": "1.5rem", "space-3xl": "4rem", "space-2xl": "3rem" }, "fontFamily": { "code-sm": [ "JetBrains Mono" ], "label-caps": [ "JetBrains Mono" ], "body-lg": [ "Inter" ], "body-md": [ "Inter" ], "code-md": [ "JetBrains Mono" ], "hero": [ "Space Grotesk" ], "headline-md": [ "Space Grotesk" ], "code-lg": [ "JetBrains Mono" ], "hero-mobile": [ "Space Grotesk" ], "body-sm": [ "Inter" ], "headline-lg": [ "Space Grotesk" ], "headline-lg-mobile": [ "Space Grotesk" ], "title-md": [ "Space Grotesk" ], "headline-sm": [ "Space Grotesk" ] }, "fontSize": { "code-sm": [ "11px", { "lineHeight": "1.40", "fontWeight": "400" } ], "label-caps": [ "11px", { "lineHeight": "1.40", "letterSpacing": "0.08em", "fontWeight": "600" } ], "body-lg": [ "16px", { "lineHeight": "1.60", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "1.55", "fontWeight": "400" } ], "code-md": [ "13px", { "lineHeight": "1.50", "fontWeight": "500" } ], "hero": [ "64px", { "lineHeight": "1.10", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-md": [ "32px", { "lineHeight": "1.25", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "code-lg": [ "15px", { "lineHeight": "1.50", "fontWeight": "500" } ], "hero-mobile": [ "40px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "body-sm": [ "12px", { "lineHeight": "1.50", "fontWeight": "400" } ], "headline-lg": [ "48px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "headline-lg-mobile": [ "32px", { "lineHeight": "1.20", "letterSpacing": "-0.01em", "fontWeight": "700" } ], "title-md": [ "18px", { "lineHeight": "1.40", "letterSpacing": "0.01em", "fontWeight": "600" } ], "headline-sm": [ "24px", { "lineHeight": "1.30", "fontWeight": "600" } ] } } } }</script></head><body class="bg-surface-root font-body-md text-body min-h-screen flex flex-col selection:bg-primary-container selection:text-text-dark"><header class="fixed top-0 w-full z-50 bg-surface-root border-b border-border-hairline"><div class="w-full bg-surface-base border-b border-border-hairline px-gutter py-space-xs"><div class="max-w-7xl mx-auto flex items-center justify-between font-label-caps text-label-caps text-text-muted"><div class="flex items-center gap-space-md"><span class="flex items-center gap-space-xs text-status-verified"><span class="w-1.5 h-1.5 rounded-full bg-status-verified animate-pulse"></span>AIR-GAP VERIFIED // 100% CLIENT-SIDE</span><span class="text-border-subtle">|</span><span class="hidden sm:inline">ZERO SERVER PERSISTENCE</span></div><div class="flex items-center gap-space-md font-code-sm text-code-sm"><span class="text-text-muted">ENGINE: <span class="text-text-display">WebCrypto HMAC Isolate</span></span><span class="text-border-subtle">|</span><span class="text-text-muted">ENTROPY: <span class="text-status-verified">Local Browser RAM</span></span></div></div></div><div class="w-full bg-surface-card"><div class="h-14 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><div class="flex items-center justify-center w-8 h-8 rounded bg-surface-recessed border border-border-subtle text-primary"><span class="material-symbols-outlined text-[18px]">shield_lock</span></div><div class="flex flex-col"><span class="font-title-md text-title-md text-text-display uppercase tracking-wider">CASTLE SEC-OPS</span><span class="font-label-caps text-label-caps text-text-muted -mt-1">WEB SECURITY // MODULE-04</span></div></div><div class="flex items-center gap-space-md"><button class="flex items-center gap-space-xs px-space-sm py-1.5 rounded bg-surface-recessed border border-border-subtle text-text-muted hover:text-text-display hover:border-primary-container transition-all font-code-sm text-code-sm" type="button"><span class="material-symbols-outlined text-[15px]">restart_alt</span><span class="hidden sm:inline">RESET WORKSPACE</span></button><div class="h-5 w-px bg-border-hairline"></div><div class="flex items-center gap-space-sm pl-space-xs"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></div><div class="w-full bg-surface-base border-t border-border-hairline"><div class="max-w-7xl mx-auto px-gutter py-2.5"><nav class="flex items-center gap-space-xs" data-active-classes="text-text-display border-b-2 border-primary-container bg-surface-elevated font-semibold shadow-[0_0_16px_rgba(255,106,0,0.15)]"><a class="flex items-center gap-2 px-space-md py-2 rounded bg-surface-elevated border border-border-subtle text-text-muted hover:text-text-display hover:border-border-hairline transition-all font-code-md text-code-md" data-path="learn" href="#"><span class="text-[11px] font-label-caps px-1.5 py-0.5 rounded bg-surface-base text-text-muted border border-border-hairline">01</span><span class="">LEARN</span></a><a class="flex items-center gap-2 px-space-md py-2 rounded bg-primary-container text-text-dark font-bold font-code-md text-code-md shadow-[0_0_16px_rgba(255,106,0,0.30)] border border-primary-container transition-all" data-path="decode-and-verify" href="#"><span class="text-[11px] font-label-caps px-1.5 py-0.5 rounded bg-surface-root text-primary-container font-mono">02</span><span class="">DECODE &amp; VERIFY</span></a><a class="flex items-center gap-2 px-space-md py-2 rounded bg-surface-elevated border border-border-subtle text-text-muted hover:text-text-display hover:border-border-hairline transition-all font-code-md text-code-md" data-path="build-and-sign" href="#"><span class="text-[11px] font-label-caps px-1.5 py-0.5 rounded bg-surface-base text-text-muted border border-border-hairline">03</span><span class="">BUILD &amp; SIGN</span></a></nav></div></div></header><main class="w-full pt-[137px] flex-1 bg-surface-root"><div class="flex flex-col w-full">
+<!-- Top Tab Sub-Nav Highlight Sync (Reaffirming Module Context) -->
+<div class="w-full bg-surface-base px-gutter py-space-sm border-b border-border-hairline">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-caps text-label-caps text-primary-container px-space-xs py-0.5 rounded bg-surface-recessed border border-border-subtle">ZONE-02</span>
+<span class="font-headline-sm text-headline-sm text-text-display">JWT Decoder &amp; Cryptographic Verifier</span>
+</div>
+<div class="flex items-center gap-space-md font-code-sm text-code-sm text-text-muted">
+<span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-status-verified animate-ping"></span><span class="text-text-body font-semibold">SubtleCrypto Engine</span> ACTIVE</span>
+<span class="text-border-subtle">/</span>
+<span>RFC 7519 COMPLIANT</span>
+<span class="text-border-subtle">/</span>
+<span class="text-status-info">ZERO INGRESS</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto w-full px-gutter py-space-xl flex flex-col gap-space-2xl">
+<!-- Zero-Knowledge & Ephemeral Reassurance Banner -->
+<div class="w-full bg-surface-card border border-border-hairline rounded-lg p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-md relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex items-start sm:items-center gap-space-md pl-space-xs">
+<div class="w-9 h-9 rounded bg-surface-recessed border border-border-subtle flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">security_update_good</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm font-label-caps text-label-caps text-text-display uppercase tracking-wider">
+<span>CLIENT-SIDE CRYPTO ISOLATE</span>
+<span class="text-status-verified text-[10px] bg-status-verified/10 px-1.5 py-0.5 rounded border border-status-verified/30">100% AIR-GAPPED</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">
+            Castle makes zero network requests involving your token, key, or decoded payload. Ephemeral memory clearance executes immediately on tab closure or hard reset.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0 self-end sm:self-auto font-code-sm text-code-sm">
+<span class="text-text-muted">ISOLATE ID:</span>
+<span class="text-text-display bg-surface-recessed px-2 py-1 rounded border border-border-subtle font-mono">0x4F9B..E12C</span>
+</div>
+</div>
+<!-- ================= STAGE 01 // TOKEN INGRESS BUFFER ================= -->
+<section class="flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 bg-primary-container"></span>
+<h2 class="font-headline-sm text-headline-sm text-text-display tracking-tight">STAGE 01 // TOKEN INGRESS BUFFER</h2>
+</div>
+<div class="flex items-center gap-space-md font-label-caps text-label-caps text-text-muted">
+<span class="text-status-verified" id="byte-counter">203 BYTES</span>
+<span class="text-border-subtle">//</span>
+<span class="text-text-body">3 DOT-DELIMITED SEGMENTS</span>
+</div>
+</div>
+<div class="bg-surface-card border border-border-hairline rounded-lg p-space-md flex flex-col gap-space-md focus-within:border-primary-container transition-colors shadow-sm">
+<!-- Action Row -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm border-b border-border-hairline pb-space-sm">
+<div class="flex items-center gap-space-xs font-label-caps text-label-caps text-text-muted">
+<span class="material-symbols-outlined text-[15px] text-primary">terminal</span>
+<span>BASE64URL INGRESS STREAM</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-recessed border border-border-subtle hover:border-primary text-text-body hover:text-text-display font-code-sm text-code-sm transition-all" id="btn-paste" type="button">
+<span class="material-symbols-outlined text-[14px]">content_paste</span>
+<span>Paste Clipboard</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-recessed border border-border-subtle hover:border-primary text-text-body hover:text-text-display font-code-sm text-code-sm transition-all" id="btn-demo" type="button">
+<span class="material-symbols-outlined text-[14px]">play_circle</span>
+<span>Load Demo Token</span>
+</button>
+<button class="flex items-center gap-1 px-2.5 py-1 rounded bg-surface-recessed border border-border-subtle hover:border-status-danger text-text-muted hover:text-status-danger font-code-sm text-code-sm transition-all" id="btn-clear" type="button">
+<span class="material-symbols-outlined text-[14px]">delete</span>
+<span>Clear</span>
+</button>
+</div>
+</div>
+<!-- Token Textarea -->
+<div class="relative">
+<textarea class="w-full bg-surface-recessed border border-border-subtle rounded p-space-md font-code-md text-code-md text-text-body placeholder:text-text-muted/40 focus:outline-none focus:ring-1 focus:ring-primary-container focus:border-primary-container transition-all leading-relaxed break-all resize-y selection:bg-primary-container selection:text-text-dark" id="jwt-input" placeholder="Paste your RFC 7519 JWT here (e.g. eyJhbGciOi...)" rows="4" spellcheck="false">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFsaWNlIFNlY3VyaXR5IiwiYWRtaW4iOnRydWUsImlhdCI6MTcwMDAwMDAwMCwiZXhwIjoyMDgwMDAwMDAwfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</textarea>
+</div>
+<!-- Visual Segment Anatomy Pill Bar -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-xs font-code-sm text-code-sm">
+<div class="bg-status-danger/10 border border-status-danger/30 px-3 py-1.5 rounded flex items-center justify-between text-status-danger">
+<span class="font-semibold">01 // HEADER</span>
+<span class="font-mono text-[10px] text-text-muted">36 B</span>
+</div>
+<div class="bg-primary-container/10 border border-primary-container/30 px-3 py-1.5 rounded flex items-center justify-between text-primary">
+<span class="font-semibold">02 // PAYLOAD</span>
+<span class="font-mono text-[10px] text-text-muted">145 B</span>
+</div>
+<div class="bg-status-info/10 border border-status-info/30 px-3 py-1.5 rounded flex items-center justify-between text-status-info">
+<span class="font-semibold">03 // SIGNATURE</span>
+<span class="font-mono text-[10px] text-text-muted">43 B</span>
+</div>
+</div>
+<!-- Plain English Summary Banner -->
+<div class="bg-surface-elevated border-l-2 border-primary-container p-space-sm flex items-center gap-space-sm font-code-sm text-code-sm text-text-body">
+<span class="material-symbols-outlined text-primary text-[18px]">info</span>
+<span>Token for subject <strong class="text-text-display font-mono">'1234567890'</strong> (Alice Security), admin role granted, active (expires in 4,392 days), declares <strong class="text-primary font-mono">HS256</strong> signature.</span>
+</div>
+</div>
+</section>
+<!-- ================= STAGE 02 // DECODED ARCHITECTURE ================= -->
+<section class="flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 bg-primary-container"></span>
+<h2 class="font-headline-sm text-headline-sm text-text-display tracking-tight">STAGE 02 // DECODED SEGMENTS &amp; CLAIMS</h2>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">Decoded locally via Base64URL reversibility. Base64URL is encoding, not encryption.</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- LEFT: HEADER (JOSE METADATA) -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-space-lg flex flex-col justify-between gap-space-md relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-status-danger"></div>
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between border-b border-border-hairline pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-caps bg-status-danger/20 text-status-danger border border-status-danger/40 uppercase">HEADER (JOSE)</span>
+<span class="font-title-md text-title-md text-text-display">Metadata &amp; Algorithm</span>
+</div>
+<span class="font-code-sm text-code-sm text-text-muted">RFC 7515</span>
+</div>
+<div class="bg-surface-recessed border border-border-hairline rounded p-space-md relative">
+<button class="absolute top-2 right-2 text-text-muted hover:text-text-display p-1 rounded hover:bg-surface-elevated transition-colors" onclick="navigator.clipboard.writeText('{\n  &quot;alg&quot;: &quot;HS256&quot;,\n  &quot;typ&quot;: &quot;JWT&quot;\n}')" title="Copy Header JSON">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<pre class="font-code-md text-code-md text-status-danger overflow-x-auto leading-relaxed"><code>{
+  <span class="text-text-body">"alg"</span>: <span class="text-status-verified">"HS256"</span>,
+  <span class="text-text-body">"typ"</span>: <span class="text-status-info">"JWT"</span>
+}</code></pre>
+</div>
+</div>
+<!-- Plain-English JOSE Annotations -->
+<div class="bg-surface-base border border-border-subtle rounded p-space-sm flex flex-col gap-1.5 font-code-sm text-code-sm">
+<div class="flex items-center gap-2">
+<span class="text-status-danger font-semibold">alg: HS256</span>
+<span class="text-text-muted">→</span>
+<span class="text-text-body">HMAC using SHA-256 hash algorithm (Symmetric Secret)</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-status-danger font-semibold">typ: JWT</span>
+<span class="text-text-muted">→</span>
+<span class="text-text-body">Standard JSON Web Token object profile</span>
+</div>
+</div>
+</div>
+<!-- RIGHT: PAYLOAD (IDENTITY & ACCESS CLAIMS) -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-space-lg flex flex-col justify-between gap-space-md relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-0.5 bg-primary-container"></div>
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between border-b border-border-hairline pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded text-[10px] font-label-caps bg-primary-container/20 text-primary border border-primary-container/40 uppercase">PAYLOAD</span>
+<span class="font-title-md text-title-md text-text-display">Identity &amp; Claims</span>
+</div>
+<span class="font-code-sm text-code-sm text-text-muted">RFC 7519</span>
+</div>
+<div class="bg-surface-recessed border border-border-hairline rounded p-space-md relative">
+<button class="absolute top-2 right-2 text-text-muted hover:text-text-display p-1 rounded hover:bg-surface-elevated transition-colors" onclick="navigator.clipboard.writeText('{\n  &quot;sub&quot;: &quot;1234567890&quot;,\n  &quot;name&quot;: &quot;Alice Security&quot;,\n  &quot;admin&quot;: true,\n  &quot;iat&quot;: 1700000000,\n  &quot;exp&quot;: 2080000000\n}')" title="Copy Payload JSON">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+<pre class="font-code-md text-code-md text-primary overflow-x-auto leading-relaxed"><code>{
+  <span class="text-text-body">"sub"</span>: <span class="text-status-info">"1234567890"</span>,
+  <span class="text-text-body">"name"</span>: <span class="text-text-display">"Alice Security"</span>,
+  <span class="text-text-body">"admin"</span>: <span class="text-status-verified">true</span>,
+  <span class="text-text-body">"iat"</span>: <span class="text-status-warning">1700000000</span>,
+  <span class="text-text-body">"exp"</span>: <span class="text-status-verified">2080000000</span>
+}</code></pre>
+</div>
+</div>
+<!-- Plain-English Claims Translations -->
+<div class="bg-surface-base border border-border-subtle rounded p-space-sm grid grid-cols-1 sm:grid-cols-2 gap-2 font-code-sm text-code-sm">
+<div class="flex items-center gap-1.5">
+<span class="text-primary font-semibold">sub:</span>
+<span class="text-text-muted truncate">Principal Subject ID</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-primary font-semibold">admin:</span>
+<span class="text-status-verified font-semibold">Privilege Grant Flag</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-primary font-semibold">iat:</span>
+<span class="text-text-body truncate">Issued Nov 14, 2023 UTC</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="text-primary font-semibold">exp:</span>
+<span class="text-status-verified truncate">Active until Oct 24, 2035</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= STAGE 03 // TOKEN INTEGRITY & LIFECYCLE AUDIT ================= -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 bg-primary-container"></span>
+<h2 class="font-headline-sm text-headline-sm text-text-display tracking-tight">STAGE 03 // TOKEN INTEGRITY &amp; LIFECYCLE AUDIT</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1: STRUCTURE -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-space-md flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-text-muted">TOKEN STRUCTURE</span>
+<span class="w-2 h-2 rounded-full bg-status-verified"></span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-status-verified font-title-md text-title-md">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span>Valid 3-Part RFC</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Header, Payload, &amp; Signature delimited by valid periods.</p>
+</div>
+<div class="font-code-sm text-code-sm text-text-display bg-surface-recessed px-2 py-1 rounded border border-border-hairline text-center">
+            2 Periods // 368 Chars
+          </div>
+</div>
+<!-- Card 2: ALGORITHM -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-space-md flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-text-muted">DECLARED CIPHER</span>
+<span class="w-2 h-2 rounded-full bg-status-verified"></span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-text-display font-title-md text-title-md">
+<span class="material-symbols-outlined text-[20px] text-primary">key</span>
+<span>HS256 (HMAC)</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Symmetric key cryptographic authentication code.</p>
+</div>
+<div class="font-code-sm text-code-sm text-status-verified bg-surface-recessed px-2 py-1 rounded border border-border-hairline text-center">
+            Standard Symmetric Suite
+          </div>
+</div>
+<!-- Card 3: LIFECYCLE -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-space-md flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-text-muted">LIFECYCLE STATE</span>
+<span class="w-2 h-2 rounded-full bg-status-verified animate-pulse"></span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-status-verified font-title-md text-title-md">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+<span>Active Token</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">4,392 days remaining until expiration (2035-10-24).</p>
+</div>
+<div class="font-code-sm text-code-sm text-text-body bg-surface-recessed px-2 py-1 rounded border border-border-hairline text-center">
+            Epoch: 2080000000
+          </div>
+</div>
+<!-- Card 4: SIGNATURE STATE -->
+<div class="bg-surface-card border border-status-warning/40 rounded-lg p-space-md flex flex-col justify-between gap-space-md bg-status-warning/5">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps text-status-warning">SIGNATURE STATE</span>
+<span class="w-2 h-2 rounded-full bg-status-warning"></span>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-status-warning font-title-md text-title-md">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span>Unverified Key</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted">Rule: <strong class="text-text-display">Decoded ≠ Verified</strong>. Secret evaluation required.</p>
+</div>
+<div class="font-code-sm text-code-sm text-status-warning bg-surface-recessed px-2 py-1 rounded border border-status-warning/30 text-center font-semibold">
+            NEEDS LOCAL EVALUATION
+          </div>
+</div>
+</div>
+</section>
+<!-- ================= STAGE 04 // CRYPTOGRAPHIC SIGNATURE VERIFICATION ================= -->
+<section class="flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 bg-primary-container"></span>
+<h2 class="font-headline-sm text-headline-sm text-text-display tracking-tight">STAGE 04 // CRYPTOGRAPHIC SIGNATURE VERIFICATION</h2>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">Provide shared secret to test against WebCrypto Subtle engine.</span>
+</div>
+<div class="bg-surface-card border border-border-hairline rounded-lg p-space-lg flex flex-col gap-space-lg">
+<!-- Input Row -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Algorithm Selection (Prevention of algo confusion attacks) -->
+<div class="lg:col-span-5 flex flex-col gap-space-xs">
+<label class="font-label-caps text-label-caps text-text-display uppercase flex items-center justify-between">
+<span>Expected Verification Algorithm</span>
+<span class="text-status-info text-[10px]">ANTI-CONFUSION</span>
+</label>
+<div class="relative">
+<select class="w-full bg-surface-recessed border border-border-subtle rounded px-space-md py-2.5 font-code-md text-code-md text-text-display appearance-none focus:outline-none focus:ring-1 focus:ring-primary-container focus:border-primary-container cursor-pointer pr-10" id="expected-algo">
+<option selected="" value="HS256">HS256 (HMAC-SHA256) — High Assurance Standard</option>
+<option value="HS384">HS384 (HMAC-SHA384)</option>
+<option value="HS512">HS512 (HMAC-SHA512)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 pointer-events-none text-text-muted text-[20px]">expand_more</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">
+              Applications must explicitly specify approved algorithms to prevent <strong class="text-text-body">algorithm confusion attacks</strong> (e.g. forced 'none' or public key abuse).
+            </p>
+</div>
+<!-- HMAC Secret Input -->
+<div class="lg:col-span-7 flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-caps text-label-caps">
+<span class="text-text-display uppercase">HMAC Secret (Text/UTF-8)</span>
+<div class="flex items-center gap-space-xs">
+<span class="text-text-muted">ENTROPY:</span>
+<span class="text-status-verified font-mono bg-status-verified/10 px-1.5 py-0.5 rounded border border-status-verified/30">FORTRESS // 92 BITS</span>
+</div>
+</div>
+<div class="relative flex items-center">
+<input class="w-full bg-surface-recessed border border-border-subtle rounded pl-space-md pr-12 py-2.5 font-code-md text-code-md text-text-display placeholder:text-text-muted/40 focus:outline-none focus:ring-1 focus:ring-primary-container focus:border-primary-container tracking-wider" id="hmac-secret" placeholder="Enter signing secret to evaluate..." type="password" value="your-256-bit-secret">
+<button class="absolute right-3 text-text-muted hover:text-text-display transition-colors" id="toggle-secret-visibility" title="Toggle secret visibility" type="button">
+<span class="material-symbols-outlined text-[18px]" id="secret-visibility-icon">visibility</span>
+</button>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-body-sm text-body-sm text-text-muted">The test secret for this demo token is: <code class="text-primary font-mono bg-surface-recessed px-1 py-0.5 rounded border border-border-hairline">your-256-bit-secret</code></span>
+<button class="font-code-sm text-code-sm text-primary hover:underline" id="fill-demo-secret" type="button">Autofill Match</button>
+</div>
+</div>
+</div>
+<!-- Primary Action Trigger -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-xs border-t border-border-hairline">
+<div class="flex items-center gap-space-xs font-code-sm text-code-sm text-text-muted">
+<span class="material-symbols-outlined text-status-verified text-[16px]">lock</span>
+<span>Cryptographic execution running via <span class="text-text-display font-semibold">window.crypto.subtle</span> sandbox.</span>
+</div>
+<button class="w-full sm:w-auto px-space-xl py-3 rounded bg-primary-container hover:bg-primary-hover active:bg-primary-active text-text-dark font-title-md text-title-md font-bold uppercase tracking-wider transition-all duration-150 flex items-center justify-center gap-space-sm shadow-[0_0_16px_rgba(255,106,0,0.30)] cursor-pointer" id="btn-verify" type="button">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+<span>VERIFY HMAC SIGNATURE</span>
+</button>
+</div>
+<!-- VERIFIED RESULT BANNER (Dynamic Interactive Feedback) -->
+<div class="bg-status-verified/10 border border-status-verified/40 rounded-lg p-space-lg flex flex-col gap-space-md transition-all shadow-[0_0_24px_rgba(16,185,129,0.12)]" id="verified-shutter">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm border-b border-status-verified/20 pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-status-verified/20 flex items-center justify-center text-status-verified">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-text-display font-bold">✓ SIGNATURE VERIFIED — CRYPTOGRAPHIC INTEGRITY CONFIRMED</h3>
+<span class="font-label-caps text-label-caps text-status-verified uppercase">SubtleCrypto HMAC-SHA256 Byte Match Verified</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs font-code-sm text-code-sm text-status-verified bg-surface-recessed px-2.5 py-1 rounded border border-status-verified/30">
+<span class="w-2 h-2 rounded-full bg-status-verified animate-ping"></span>
+<span>ZERO BIT TAMPERING</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-text-body">
+            Signature matches the provided secret via SubtleCrypto HMAC-SHA256. 
+            <span class="text-text-muted">Note: A valid signature confirms the payload has not been modified since signing, but does not alone verify real-world issuer legitimacy or business authorization.</span>
+</p>
+<!-- Signature Stream Comparison Comparison -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<div class="bg-surface-recessed border border-border-hairline rounded p-space-sm flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-muted">TOKEN SIGNATURE SEGMENT</span>
+<code class="font-code-sm text-code-sm text-status-info break-all">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code>
+</div>
+<div class="bg-surface-recessed border border-border-hairline rounded p-space-sm flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-muted">COMPUTED HMAC HASH DIGEST</span>
+<code class="font-code-sm text-code-sm text-status-verified break-all">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= STAGE 05 // COMPREHENSIVE TECHNICAL DEEP DIVES ================= -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2 h-2 bg-primary-container"></span>
+<h2 class="font-headline-sm text-headline-sm text-text-display tracking-tight">STAGE 05 // COMPREHENSIVE SECURITY INSPECTION</h2>
+</div>
+<span class="font-label-caps text-label-caps text-text-muted">4 TECHNICAL DRAWERS</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Accordion 1: RFC 7519 Claims Translation & Validation -->
+<div class="bg-surface-card border border-border-hairline rounded-lg overflow-hidden transition-all">
+<button class="drawer-trigger w-full px-space-md py-space-md flex items-center justify-between hover:bg-surface-elevated transition-colors text-left" data-target="drawer-claims" type="button">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary text-[20px]">fact_check</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-display">RFC 7519 Registered Claims Translation &amp; Validation</span>
+<span class="font-body-sm text-body-sm text-text-muted">Epoch timestamps, subject identification, and temporal lifecycle validity.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200">expand_more</span>
+</button>
+<div class="border-t border-border-hairline p-space-md bg-surface-base flex flex-col gap-space-md" id="drawer-claims">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md font-code-sm text-code-sm">
+<div class="bg-surface-recessed p-space-sm rounded border border-border-hairline flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-muted">SUBJECT (sub)</span>
+<span class="text-text-display font-semibold">1234567890</span>
+<span class="text-body-sm text-text-muted">Represents Alice Security internal credential UUID.</span>
+</div>
+<div class="bg-surface-recessed p-space-sm rounded border border-border-hairline flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-muted">ISSUED AT (iat)</span>
+<span class="text-text-display font-semibold">1700000000</span>
+<span class="text-body-sm text-text-muted">Tuesday, November 14, 2023 10:13:20 PM GMT</span>
+</div>
+<div class="bg-surface-recessed p-space-sm rounded border border-border-hairline flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-text-muted">EXPIRES AT (exp)</span>
+<span class="text-status-verified font-semibold">2080000000</span>
+<span class="text-body-sm text-text-muted">Wednesday, October 24, 2035 7:33:20 AM GMT</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 2: Sensitive Data Scan & Payload Privacy Audit -->
+<div class="bg-surface-card border border-border-hairline rounded-lg overflow-hidden transition-all">
+<button class="drawer-trigger w-full px-space-md py-space-md flex items-center justify-between hover:bg-surface-elevated transition-colors text-left" data-target="drawer-privacy" type="button">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-status-verified text-[20px]">privacy_tip</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-display">Sensitive Data Scan &amp; Payload Privacy Audit</span>
+<span class="font-body-sm text-body-sm text-text-muted">Automated inspection for unencrypted credentials, PII, or internal tokens in payload.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200">expand_more</span>
+</button>
+<div class="border-t border-border-hairline p-space-md bg-surface-base hidden" id="drawer-privacy">
+<div class="bg-surface-recessed border border-border-hairline p-space-md rounded flex items-start gap-space-md">
+<span class="material-symbols-outlined text-status-verified text-[22px] shrink-0">check_circle</span>
+<div class="flex flex-col gap-1">
+<span class="font-title-md text-title-md text-text-display">Payload Hygiene: PASS (Zero Sensitive Leaks Detected)</span>
+<p class="font-body-md text-body-md text-text-muted">
+                  Scanned 5 claims for common leak patterns (e.g. <code class="text-primary font-mono">password</code>, <code class="text-primary font-mono">api_key</code>, <code class="text-primary font-mono">ssn</code>, <code class="text-primary font-mono">credit_card</code>). Remember: JWT payloads are Base64URL-encoded, meaning all claims are plainly readable by any intermediary inspecting HTTP headers.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 3: HMAC Secret Entropy & Brute-Force Feasibility -->
+<div class="bg-surface-card border border-border-hairline rounded-lg overflow-hidden transition-all">
+<button class="drawer-trigger w-full px-space-md py-space-md flex items-center justify-between hover:bg-surface-elevated transition-colors text-left" data-target="drawer-entropy" type="button">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-status-info text-[20px]">calculate</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-display">HMAC Secret Entropy &amp; Brute-Force Feasibility Estimate</span>
+<span class="font-body-sm text-body-sm text-text-muted">Shannon entropy assessment and offline GPU dictionary attack resistance.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200">expand_more</span>
+</button>
+<div class="border-t border-border-hairline p-space-md bg-surface-base hidden" id="drawer-entropy">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="bg-surface-recessed border border-border-hairline rounded p-space-md flex flex-col gap-2">
+<div class="flex items-center justify-between font-code-sm text-code-sm">
+<span class="text-text-muted">ESTIMATED SHANNON ENTROPY:</span>
+<span class="text-status-verified font-bold">~92.4 BITS</span>
+</div>
+<div class="w-full bg-surface-elevated h-2 rounded overflow-hidden">
+<div class="bg-status-verified h-full w-[92%]"></div>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted mt-1">Sufficiently mitigates rainbow tables and precomputed hash chains.</span>
+</div>
+<div class="bg-surface-recessed border border-border-hairline rounded p-space-md flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-text-muted">OFFLINE CLUSTER TIME-TO-CRACK (8x RTX 4090)</span>
+<span class="font-title-md text-title-md text-text-display font-mono">~4.2 × 10⁶ YEARS</span>
+<span class="font-body-sm text-body-sm text-text-muted">Brute-force impractical. Secret satisfies RFC 7518 Section 3.2 minimum length recommendation.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Accordion 4: Standard HTTP Authorization Header Preview -->
+<div class="bg-surface-card border border-border-hairline rounded-lg overflow-hidden transition-all">
+<button class="drawer-trigger w-full px-space-md py-space-md flex items-center justify-between hover:bg-surface-elevated transition-colors text-left" data-target="drawer-http" type="button">
+<div class="flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary text-[20px]">http</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-text-display">Standard HTTP Authorization Header Preview</span>
+<span class="font-body-sm text-body-sm text-text-muted">RFC 6750 Bearer transmission syntax for cURL, Postman, and API gateways.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted transition-transform duration-200">expand_more</span>
+</button>
+<div class="border-t border-border-hairline p-space-md bg-surface-base hidden" id="drawer-http">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between font-label-caps text-label-caps text-text-muted">
+<span>HEADER PAYLOAD STRING</span>
+<button class="text-primary hover:underline flex items-center gap-1 font-code-sm text-code-sm" id="copy-auth-header" type="button">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>Copy Header</span>
+</button>
+</div>
+<div class="bg-surface-recessed border border-border-hairline rounded p-space-sm font-code-sm text-code-sm text-text-body overflow-x-auto whitespace-pre">Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFsaWNlIFNlY3VyaXR5IiwiYWRtaW4iOnRydWUsImlhdCI6MTcwMDAwMDAwMCwiZXhwIjoyMDgwMDAwMDAwfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= STAGE 06 // WORKSPACE HANDOFFS ================= -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-space-lg pt-space-md border-t border-border-hairline">
+<!-- Companion Link 1 -->
+<a class="group bg-surface-card hover:bg-surface-elevated border border-border-hairline hover:border-primary-container p-space-lg rounded-lg flex items-center justify-between transition-all" data-path="learn" href="#">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded bg-surface-recessed border border-border-subtle group-hover:border-primary flex items-center justify-center text-primary shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[22px]">menu_book</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">PREVIOUS STAGE</span>
+<span class="font-title-md text-title-md text-text-display group-hover:text-primary transition-colors">TAB 01 // LEARN CRYPTOGRAPHIC MECHANICS</span>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">Review RFC 7519 fundamentals, base64url encoding vs encryption, and signature threat models.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+</a>
+<!-- Companion Link 2 -->
+<a class="group bg-surface-card hover:bg-surface-elevated border border-border-hairline hover:border-primary-container p-space-lg rounded-lg flex items-center justify-between transition-all" data-path="build-and-sign" href="#">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded bg-surface-recessed border border-border-subtle group-hover:border-primary flex items-center justify-center text-primary shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[22px]">edit_document</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-text-muted">NEXT STAGE</span>
+<span class="font-title-md text-title-md text-text-display group-hover:text-primary transition-colors">TAB 03 // BUILD &amp; MINT TOKENS</span>
+<p class="font-body-sm text-body-sm text-text-muted mt-1">Draft custom claim sets, mint custom cryptographic signatures, and export verified token streams.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
+</a>
+</section>
+</div>
+</div>
+<script>
+  (function () {
+    const demoToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFsaWNlIFNlY3VyaXR5IiwiYWRtaW4iOnRydWUsImlhdCI6MTcwMDAwMDAwMCwiZXhwIjoyMDgwMDAwMDAwfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+    const demoSecret = "your-256-bit-secret";
+
+    const jwtInput = document.getElementById('jwt-input');
+    const hmacSecret = document.getElementById('hmac-secret');
+    const btnPaste = document.getElementById('btn-paste');
+    const btnDemo = document.getElementById('btn-demo');
+    const btnClear = document.getElementById('btn-clear');
+    const btnVerify = document.getElementById('btn-verify');
+    const toggleSecret = document.getElementById('toggle-secret-visibility');
+    const secretIcon = document.getElementById('secret-visibility-icon');
+    const fillSecret = document.getElementById('fill-demo-secret');
+    const copyAuth = document.getElementById('copy-auth-header');
+    const byteCounter = document.getElementById('byte-counter');
+    const shutter = document.getElementById('verified-shutter');
+
+    // Drawer toggles
+    document.querySelectorAll('.drawer-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const target = document.getElementById(targetId);
+        const icon = btn.querySelector('.material-symbols-outlined:last-child');
+        if (target) {
+          const isHidden = target.classList.contains('hidden');
+          if (isHidden) {
+            target.classList.remove('hidden');
+            if (icon) icon.classList.add('rotate-180');
+          } else {
+            target.classList.add('hidden');
+            if (icon) icon.classList.remove('rotate-180');
+          }
+        }
+      });
+    });
+
+    // Update byte count
+    function updateBytes() {
+      if (!jwtInput) return;
+      const len = new TextEncoder().encode(jwtInput.value).length;
+      if (byteCounter) byteCounter.textContent = `${len} BYTES`;
+    }
+
+    if (jwtInput) {
+      jwtInput.addEventListener('input', updateBytes);
+      updateBytes();
+    }
+
+    if (btnDemo) {
+      btnDemo.addEventListener('click', () => {
+        if (jwtInput) {
+          jwtInput.value = demoToken;
+          updateBytes();
+        }
+      });
+    }
+
+    if (btnClear) {
+      btnClear.addEventListener('click', () => {
+        if (jwtInput) {
+          jwtInput.value = "";
+          updateBytes();
+        }
+      });
+    }
+
+    if (btnPaste) {
+      btnPaste.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          if (text && jwtInput) {
+            jwtInput.value = text.trim();
+            updateBytes();
+          }
+        } catch (e) {
+          // Fallback or permission rejected
+        }
+      });
+    }
+
+    if (toggleSecret) {
+      toggleSecret.addEventListener('click', () => {
+        if (!hmacSecret) return;
+        const isPass = hmacSecret.type === 'password';
+        hmacSecret.type = isPass ? 'text' : 'password';
+        if (secretIcon) {
+          secretIcon.textContent = isPass ? 'visibility_off' : 'visibility';
+        }
+      });
+    }
+
+    if (fillSecret) {
+      fillSecret.addEventListener('click', () => {
+        if (hmacSecret) hmacSecret.value = demoSecret;
+      });
+    }
+
+    if (btnVerify) {
+      btnVerify.addEventListener('click', () => {
+        if (shutter) {
+          // Provide visual pulse confirmation
+          shutter.classList.add('scale-[0.99]');
+          setTimeout(() => {
+            shutter.classList.remove('scale-[0.99]');
+          }, 150);
+        }
+      });
+    }
+
+    if (copyAuth) {
+      copyAuth.addEventListener('click', () => {
+        const val = jwtInput ? jwtInput.value.trim() : demoToken;
+        navigator.clipboard.writeText(`Authorization: Bearer ${val}`);
+        const span = copyAuth.querySelector('span:last-child');
+        if (span) {
+          const original = span.textContent;
+          span.textContent = 'Copied!';
+          setTimeout(() => { span.textContent = original; }, 1500);
+        }
+      });
+    }
+  })();
+</script></main><footer class="w-full bg-surface-base border-t border-border-hairline py-space-md mt-auto"><div class="max-w-7xl mx-auto px-gutter flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md font-code-sm text-code-sm text-text-muted"><span>SEC-OPS v4.8.2-SECURE</span><span class="text-border-subtle">•</span><span>100% CLIENT-SIDE EXECUTION // ZERO TELEMETRY INGRESS</span></div><div class="flex items-center gap-space-lg font-code-sm text-code-sm text-text-muted"><a class="hover:text-primary transition-colors" data-path="cryptographic-standards" href="#">STANDARDS</a><a class="hover:text-primary transition-colors" data-path="entropy-specification" href="#">ENTROPY SPEC</a><a class="hover:text-primary transition-colors" data-path="zero-knowledge-audit" href="#">ZK AUDIT</a><a class="hover:text-primary transition-colors" data-path="incident-response" href="#">AIR-GAP ISOLATE</a></div></div></footer>
+
+</body></html>

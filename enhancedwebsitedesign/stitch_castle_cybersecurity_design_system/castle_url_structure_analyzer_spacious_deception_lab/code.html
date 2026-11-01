@@ -1,0 +1,1074 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 3170px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>C.A.S.T.L.E. // Stage 03 - Interactive Deception Lab</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #090909;
+        color: #E5E5E5;
+      }
+      body {
+        overscroll-behavior: none;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-root": "#090909",
+            "surface-base": "#0c0c0c",
+            "surface-card": "#131313",
+            "surface-elevated": "#181818",
+            "surface-recessed": "#060606",
+            "surface-container": "#1f1f1f",
+            "surface-container-high": "#282828",
+            "border-hairline": "#1e1e1e",
+            "border-subtle": "#2a2a2a",
+            "primary": "#FF6A00",
+            "primary-hover": "#FF7D1A",
+            "primary-active": "#E55F00",
+            "primary-container": "#FF6A00",
+            "on-primary-container": "#000000",
+            "primary-glow": "rgba(255, 106, 0, 0.15)",
+            "secondary": "#4edea3",
+            "tertiary": "#89ceff",
+            "status-warning": "#F59E0B",
+            "status-danger": "#EF4444",
+            "status-verified": "#10B981",
+            "text-display": "#FFFFFF",
+            "text-body": "#E5E5E5",
+            "text-muted": "#888888"
+          },
+          fontFamily: {
+            "hero": ["Space Grotesk", "sans-serif"],
+            "headline-lg": ["Space Grotesk", "sans-serif"],
+            "headline-md": ["Space Grotesk", "sans-serif"],
+            "headline-sm": ["Space Grotesk", "sans-serif"],
+            "title-md": ["Space Grotesk", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "code-lg": ["JetBrains Mono", "monospace"],
+            "code-md": ["JetBrains Mono", "monospace"],
+            "code-sm": ["JetBrains Mono", "monospace"],
+            "label-caps": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface-root font-body-md text-text-body antialiased min-h-screen flex flex-col selection:bg-primary selection:text-black">
+<!-- SUITE UNIFIED HEADER BAR (Matches SCREEN_4 & SCREEN_8) -->
+<header class="w-full bg-surface-base border-b border-border-hairline sticky top-0 z-50">
+<!-- Top System Line -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between border-b border-border-hairline/60 text-code-sm font-label-caps">
+<div class="flex items-center gap-2 sm:gap-3 text-text-muted truncate">
+<span class="flex items-center gap-1.5 text-secondary font-semibold">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+          AIR-GAP MODE ACTIVE
+        </span>
+<span class="hidden sm:inline text-border-subtle">//</span>
+<span class="hidden md:inline">ZERO INGRESS TELEMETRY</span>
+<span class="hidden sm:inline text-border-subtle">//</span>
+<span class="truncate">100% CLIENT-SIDE WEBCRYPTO</span>
+</div>
+<div class="flex items-center gap-4 shrink-0">
+<span class="hidden lg:inline text-text-muted">C.A.S.T.L.E. SEC-OPS // UTILITIES // MODULE-05 // URL-ANALYZER</span>
+<div class="flex items-center gap-2">
+<button class="px-2.5 py-1 rounded bg-surface-recessed hover:bg-surface-elevated text-text-muted hover:text-text-display border border-border-hairline transition-all flex items-center gap-1.5 text-[11px]" id="header-reset-btn">
+<span class="material-symbols-outlined text-[13px]">restart_alt</span>
+<span class="hidden sm:inline">Reset Workspace</span>
+</button>
+<div class="w-7 h-7 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary font-bold text-xs">
+            0x4B
+          </div>
+</div>
+</div>
+</div>
+<!-- Single Unified Tab Row -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+<div class="flex items-center gap-1 sm:gap-2">
+<div class="flex items-center gap-2 mr-4 sm:mr-6"><span class="material-symbols-outlined text-primary text-[22px]">shield</span><span class="font-mono font-bold text-text-display text-base tracking-wider">CASTLE</span><span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-elevated text-text-muted border border-border-hairline font-medium">SEC-OPS v3.4</span></div>
+<nav aria-label="Main Navigation" class="flex items-center gap-1 sm:gap-2"><a class="px-3.5 sm:px-4 py-2 rounded font-code-md text-xs sm:text-sm text-text-body bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:text-text-display hover:bg-surface-elevated transition-all flex items-center gap-2 font-medium" href="#"><span class="material-symbols-outlined text-[16px] text-text-muted">menu_book</span><span class="">TAB 01: LEARN</span></a><a class="px-3.5 sm:px-4 py-2 rounded font-code-md text-xs sm:text-sm text-text-body bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:text-text-display hover:bg-surface-elevated transition-all flex items-center gap-2 font-medium" href="#"><span class="material-symbols-outlined text-[16px] text-text-muted">radar</span><span class="">TAB 02: ANALYZE</span></a><a aria-current="page" class="px-3.5 sm:px-4 py-2 rounded font-code-md text-xs sm:text-sm bg-primary text-black font-bold flex items-center gap-2 shadow-[0_0_14px_rgba(255,106,0,0.35)] border border-primary transition-all" href="#"><span class="material-symbols-outlined text-[16px] text-black font-bold">construction</span><span class="">TAB 03: BUILD</span></a></nav>
+</div>
+<div class="hidden md:flex items-center gap-3 font-label-caps text-xs text-text-muted">
+<span class="text-text-muted">CRYPTO-HASH:</span>
+<span class="text-primary font-mono">SHA-512/WASM</span>
+<span class="px-2 py-0.5 rounded bg-surface-elevated text-secondary border border-border-hairline">SEC-LEVEL: TIER-1</span>
+</div>
+</div>
+<!-- Sub-Telemetry Strip -->
+<div class="bg-surface-recessed border-t border-border-hairline/80 px-4 sm:px-6 lg:px-8 py-1.5">
+<div class="max-w-7xl mx-auto flex items-center justify-between text-code-sm font-label-caps text-text-muted text-[11px]">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-secondary font-semibold">CLIENT-SIDE DECEPTION SIMULATOR</span>
+<span>//</span>
+<span>RFC 3986 COMPLIANT SYNTAX</span>
+<span>//</span>
+<span>100% AIR-GAPPED</span>
+</div>
+<div class="hidden sm:flex items-center gap-3">
+<span>HOST ISOLATION: <span class="text-text-display">ENFORCED</span></span>
+<span>REPUTATION CACHE: <span class="text-secondary">OFFLINE</span></span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN SCROLLING CONTENT WRAPPER -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 flex flex-col gap-12 lg:gap-16">
+<!-- PAGE HERO HEADER & CONTEXT -->
+<section class="flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 font-label-caps text-xs text-primary font-semibold tracking-wider uppercase">
+<span class="material-symbols-outlined text-[16px]">science</span>
+<span>Stage 03 // Interactive Deception Lab</span>
+</div>
+<h1 class="font-headline-lg text-3xl sm:text-4xl lg:text-5xl font-bold text-text-display tracking-tight uppercase">
+          Stage 03 // Interactive Deception Lab
+        </h1>
+<p class="font-body-lg text-base sm:text-lg text-text-muted max-w-4xl leading-relaxed mt-1">
+          Explore how deceptive URL structures exploit human cognitive vulnerabilities. Manipulate fictional specimens, deconstruct constituent tokens against RFC 3986 standards, and train operational intuition to isolate true apex authority.
+        </p>
+</div>
+<!-- Air-Gap Guarantee Card -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-5 sm:p-6 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="w-11 h-11 rounded bg-secondary/10 border border-secondary/20 flex items-center justify-center shrink-0 text-secondary">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm font-semibold text-text-display text-sm uppercase tracking-wide">Safe Syntactic Sandbox Guarantee</span>
+<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-secondary/15 text-secondary border border-secondary/30">VERIFIED AIR-GAP</span>
+</div>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted mt-1 leading-relaxed max-w-4xl">
+              All transformations, token splittings, and Shannon entropy heuristics run strictly inside your browser's local sandbox memory. Zero socket packets, DNS lookups, or HTTP queries will be dispatched. Fictional hostnames utilize reserved <span class="text-primary font-mono">RFC 2606</span> domains (<span class="font-mono text-text-display">.test, .example</span>).
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0 font-label-caps text-xs text-text-muted self-end md:self-auto bg-surface-recessed px-3 py-1.5 rounded border border-border-hairline">
+<span class="material-symbols-outlined text-secondary text-[16px]">wifi_off</span>
+<span>NO EGRESS SOCKETS</span>
+</div>
+</div>
+</section>
+<!-- STAGE 1: INGRESS SPECIMEN & RFC 3986 COMPONENT BREAKDOWN -->
+<section class="flex flex-col gap-5">
+<div class="flex items-center justify-between border-b border-border-hairline pb-3">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-xs text-primary font-bold px-2 py-0.5 rounded bg-primary/10 border border-primary/20">STAGE 1</span>
+<h2 class="font-headline-sm text-xl font-bold text-text-display tracking-tight">Ingress Specimen &amp; Component Breakdown</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded bg-surface-card hover:bg-surface-elevated text-text-muted hover:text-text-display border border-border-hairline transition-all flex items-center gap-1.5 font-code-sm text-xs" id="copy-specimen-btn">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span id="copy-btn-label">Copy Specimen</span>
+</button>
+<button class="px-3 py-1.5 rounded bg-surface-card hover:bg-surface-elevated text-primary hover:text-primary-hover border border-border-hairline transition-all flex items-center gap-1.5 font-code-sm text-xs" id="reset-specimen-btn">
+<span class="material-symbols-outlined text-[14px]">restart_alt</span>
+<span>Reset Baseline</span>
+</button>
+</div>
+</div>
+<!-- Monospace Live URL Preview Display -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-5 sm:p-6 shadow-xl flex flex-col gap-4">
+<div class="flex items-center justify-between text-code-sm font-label-caps text-xs text-text-muted">
+<span class="flex items-center gap-1.5 text-text-display font-medium">
+<span class="material-symbols-outlined text-primary text-[16px]">terminal</span>
+            SYNTACTIC INGRESS STREAM (RFC 3986)
+          </span>
+<span class="text-secondary font-mono text-[11px]">PARSED CLIENT-SIDE ONLY</span>
+</div>
+<div class="bg-surface-recessed border border-border-hairline rounded p-4 sm:p-5 overflow-x-auto min-h-[76px] flex items-center">
+<div class="font-code-lg text-sm sm:text-base lg:text-lg tracking-wide whitespace-nowrap select-all transition-all" id="url-stream-display">
+          <span class="text-tertiary font-bold" title="Scheme (RFC 3986 §3.1)">https://</span><span class="text-status-warning font-medium" title="Subdomain Masquerading Prefix">secure-login.example-bank.</span><span class="text-primary font-bold bg-primary/10 border-b-2 border-primary px-1 py-0.5 rounded" title="True Apex Registrable Domain">cloud-auth-routing</span><span class="text-status-warning font-semibold" title="TLD Extension">.xyz</span><span class="text-text-muted" title="Path &amp; Query">/verify-credentials</span>
+        </div>
+</div>
+<!-- Component Matrix Chips -->
+<div class="flex flex-col gap-2 pt-1">
+<span class="font-label-caps text-[11px] text-text-muted uppercase tracking-wider">Deconstructed Constituent Tokens:</span>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+<!-- Scheme -->
+<div class="bg-surface-recessed p-3 rounded border border-border-hairline flex flex-col gap-1 transition-all hover:border-tertiary/40">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-tertiary uppercase font-semibold">Scheme</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<span class="font-code-sm text-xs text-text-display truncate" id="val-scheme">https://</span>
+</div>
+<!-- Userinfo / Trap -->
+<div class="bg-surface-recessed p-3 rounded border border-border-hairline flex flex-col gap-1 transition-all" id="card-userinfo">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-status-danger uppercase font-semibold">Userinfo (Trap)</span>
+<span class="w-1.5 h-1.5 rounded-full bg-border-subtle" id="dot-userinfo"></span>
+</div>
+<span class="font-code-sm text-xs text-text-muted truncate" id="val-userinfo">None</span>
+</div>
+<!-- Subdomain -->
+<div class="bg-surface-recessed p-3 rounded border border-border-hairline flex flex-col gap-1 transition-all hover:border-status-warning/40">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-status-warning uppercase font-semibold">Subdomain</span>
+<span class="w-1.5 h-1.5 rounded-full bg-status-warning"></span>
+</div>
+<span class="font-code-sm text-xs text-text-display truncate" id="val-subdomain">secure-login.example-bank</span>
+</div>
+<!-- Apex Domain -->
+<div class="bg-surface-recessed p-3 rounded border border-primary/40 bg-primary/5 flex flex-col gap-1 transition-all">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-primary uppercase font-bold">Apex Domain</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+</div>
+<span class="font-code-sm text-xs text-primary font-bold truncate" id="val-apex">cloud-auth-routing</span>
+</div>
+<!-- TLD -->
+<div class="bg-surface-recessed p-3 rounded border border-border-hairline flex flex-col gap-1 transition-all hover:border-status-warning/40">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-status-warning uppercase font-semibold">TLD Ext</span>
+<span class="w-1.5 h-1.5 rounded-full bg-status-warning"></span>
+</div>
+<span class="font-code-sm text-xs text-text-display truncate" id="val-tld">.xyz</span>
+</div>
+<!-- Path / Query -->
+<div class="bg-surface-recessed p-3 rounded border border-border-hairline flex flex-col gap-1 transition-all hover:border-white/30">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-[10px] text-text-muted uppercase font-semibold">Path / Query</span>
+<span class="w-1.5 h-1.5 rounded-full bg-text-muted"></span>
+</div>
+<span class="font-code-sm text-xs text-text-display truncate" id="val-path">/verify-credentials</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STAGE 2: TACTICAL DECEPTION MATRIX -->
+<section class="flex flex-col gap-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border-hairline pb-3">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-xs text-primary font-bold px-2 py-0.5 rounded bg-primary/10 border border-primary/20">STAGE 2</span>
+<h2 class="font-headline-sm text-xl font-bold text-text-display tracking-tight">Tactical Deception Matrix</h2>
+</div>
+<span class="font-label-caps text-xs text-text-muted">6 MODULATION VECTORS ACTIVE // CLICK TO MUTATE SPECIMEN</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+<!-- T-01: Lookalike Characters -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-5 flex flex-col justify-between gap-4 transition-all hover:border-border-subtle">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs font-bold text-primary px-1.5 py-0.5 bg-primary/10 rounded border border-primary/20">T-01</span>
+<h3 class="font-title-md text-base font-bold text-text-display">Lookalike Characters</h3>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[18px]">font_download</span>
+</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+              Substitutes visual glyphs via typosquatting (1 for l) or homoglyph internationalized domain punycode.
+            </p>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="tech-btn active-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="homoglyph" data-val="clean">
+<span>Standard Spelling</span>
+<span class="text-text-muted font-mono">example-bank</span>
+</button>
+<button class="tech-btn inactive-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="homoglyph" data-val="numeral">
+<span class="text-status-warning">Typosquat: '1' for 'l'</span>
+<span class="text-status-warning font-mono">examp1e-bank</span>
+</button>
+<button class="tech-btn inactive-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="homoglyph" data-val="punycode">
+<span class="text-status-danger">Unicode Cyrillic 'а'</span>
+<span class="text-status-danger font-mono">xn--exmple-bank</span>
+</button>
+</div>
+</div>
+<!-- T-02: Subdomain Masquerading -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-5 flex flex-col justify-between gap-4 transition-all hover:border-border-subtle">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs font-bold text-primary px-1.5 py-0.5 bg-primary/10 rounded border border-primary/20">T-02</span>
+<h3 class="font-title-md text-base font-bold text-text-display">Subdomain Masquerading</h3>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[18px]">account_tree</span>
+</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+              Prepends trusted brand names into nested subdomains left of the actual registrar apex authority.
+            </p>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="tech-btn inactive-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="subdomain" data-val="none">
+<span>No Prepend (Direct Apex)</span>
+<span class="text-text-muted font-mono">cloud-auth...</span>
+</button>
+<button class="tech-btn active-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="subdomain" data-val="trusted">
+<span class="text-status-warning">Prepend Bank Brand</span>
+<span class="text-status-warning font-mono">secure-login...</span>
+</button>
+<button class="tech-btn inactive-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="subdomain" data-val="deep">
+<span class="text-status-danger">Deep Multi-Tier Stack</span>
+<span class="text-status-danger font-mono">portal.sso...</span>
+</button>
+</div>
+</div>
+<!-- T-03: Authority Userinfo Trap (@) -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-5 flex flex-col justify-between gap-4 transition-all hover:border-border-subtle">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs font-bold text-primary px-1.5 py-0.5 bg-primary/10 rounded border border-primary/20">T-03</span>
+<h3 class="font-title-md text-base font-bold text-text-display">Authority Userinfo Trap (@)</h3>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[18px]">alternate_email</span>
+</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+              Exploits RFC 3986 where everything before '@' is treated as basic credentials and completely ignored in routing.
+            </p>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="tech-btn active-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="userinfo" data-val="none">
+<span>Standard Authority</span>
+<span class="text-text-muted font-mono">No '@' anchor</span>
+</button>
+<button class="tech-btn inactive-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="userinfo" data-val="injected">
+<span class="text-status-danger font-semibold">Inject '@' Anchor Trap</span>
+<span class="text-status-danger font-mono">https://bank.test@...</span>
+</button>
+</div>
+</div>
+<!-- T-04: Apex Registry & High-Abuse TLDs -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-5 flex flex-col justify-between gap-4 transition-all hover:border-border-subtle">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs font-bold text-primary px-1.5 py-0.5 bg-primary/10 rounded border border-primary/20">T-04</span>
+<h3 class="font-title-md text-base font-bold text-text-display">Apex Registry &amp; TLD</h3>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[18px]">domain</span>
+</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+              Pairs deceptive brand labels with inexpensive, high-abuse, or disposable generic top-level domains.
+            </p>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="tech-btn inactive-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="tld" data-val="test">
+<span>RFC 2606 Reserved</span>
+<span class="text-secondary font-mono">.test</span>
+</button>
+<button class="tech-btn active-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="tld" data-val="xyz">
+<span class="text-status-warning">High-Abuse Commercial TLD</span>
+<span class="text-status-warning font-mono">.xyz</span>
+</button>
+<button class="tech-btn inactive-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="tld" data-val="click">
+<span class="text-status-danger">Ephemeral Disposable TLD</span>
+<span class="text-status-danger font-mono">.click / .top</span>
+</button>
+</div>
+</div>
+<!-- T-05: Path & Query Camouflage -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-5 flex flex-col justify-between gap-4 transition-all hover:border-border-subtle">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs font-bold text-primary px-1.5 py-0.5 bg-primary/10 rounded border border-primary/20">T-05</span>
+<h3 class="font-title-md text-base font-bold text-text-display">Path &amp; Query Camouflage</h3>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[18px]">link</span>
+</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+              Packs familiar domain signatures deep into the resource query or folder path to mislead eye-tracking.
+            </p>
+</div>
+<div class="flex flex-col gap-2 pt-2">
+<button class="tech-btn active-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="path" data-val="minimal">
+<span>Standard Resource Path</span>
+<span class="text-text-muted font-mono">/verify-credentials</span>
+</button>
+<button class="tech-btn inactive-btn px-3 py-2 rounded text-left font-code-sm text-xs flex items-center justify-between border transition-all" data-tech="path" data-val="camouflaged">
+<span class="text-status-warning">Camouflaged Brand Path</span>
+<span class="text-status-warning font-mono">/portal.example-bank.test</span>
+</button>
+</div>
+</div>
+<!-- PRESET: Compound Attack Vector -->
+<div class="bg-surface-card border-2 border-primary/40 rounded-lg p-5 flex flex-col justify-between gap-4 bg-gradient-to-b from-primary/5 to-transparent relative overflow-hidden">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs font-bold text-black px-1.5 py-0.5 bg-primary rounded">PRESET</span>
+<h3 class="font-title-md text-base font-bold text-text-display">Compound Attack Vector</h3>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">layers</span>
+</div>
+<p class="font-body-sm text-xs text-text-muted leading-relaxed">
+              Instantly arms a multi-tiered vector stacking userinfo credentials, typosquatting, subdomain nesting, and an untrusted TLD.
+            </p>
+</div>
+<div class="pt-2">
+<button class="w-full py-2.5 px-4 rounded bg-primary hover:bg-primary-hover active:bg-primary-active text-black font-code-sm text-xs font-bold tracking-wider uppercase transition-all shadow-[0_0_16px_rgba(255,106,0,0.3)] flex items-center justify-center gap-2" id="arm-compound-btn">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Arm Full Compound Vector</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- STAGE 3: FORENSIC DIAGNOSTICS & COGNITIVE BLIND SPOT -->
+<section class="flex flex-col gap-5">
+<div class="flex items-center justify-between border-b border-border-hairline pb-3">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-xs text-primary font-bold px-2 py-0.5 rounded bg-primary/10 border border-primary/20">STAGE 3</span>
+<h2 class="font-headline-sm text-xl font-bold text-text-display tracking-tight">Forensic Diagnostics &amp; Cognitive Blind Spot</h2>
+</div>
+<span class="font-label-caps text-xs px-2.5 py-0.5 rounded bg-status-warning/15 text-status-warning font-semibold border border-status-warning/30" id="diagnostic-risk-badge">ELEVATED RISK</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Diagnostic Summary & Meter (7 cols) -->
+<div class="lg:col-span-7 bg-surface-card border border-border-hairline rounded-lg p-6 flex flex-col gap-6">
+<!-- Structural Risk Score -->
+<div class="bg-surface-recessed border border-border-hairline rounded-md p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-xs text-text-muted uppercase tracking-wider">STRUCTURAL RISK SCORE</span>
+<span class="font-mono text-base font-bold text-status-warning" id="risk-score-val">50 / 100</span>
+</div>
+<!-- Segmented Gauge Bar -->
+<div class="grid grid-cols-4 gap-1.5 h-2 w-full">
+<div class="h-full rounded-sm bg-status-warning" id="bar-seg-1"></div>
+<div class="h-full rounded-sm bg-status-warning" id="bar-seg-2"></div>
+<div class="h-full rounded-sm bg-status-warning" id="bar-seg-3"></div>
+<div class="h-full rounded-sm bg-surface-container-high" id="bar-seg-4"></div>
+</div>
+<div class="flex items-center justify-between text-code-sm text-xs text-text-muted">
+<span id="risk-summary-text">Subdomain masquerading or atypical registry anchor present.</span>
+<span class="font-mono text-[11px] text-text-muted">CALC: ENTROPY_v2.1</span>
+</div>
+</div>
+<!-- Target Component Altered -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-caps text-xs text-text-muted uppercase">Target Component Altered:</span>
+<div class="font-code-sm text-xs sm:text-sm bg-surface-recessed border border-border-hairline px-3 py-2 rounded text-primary font-medium" id="diff-target-component">Authority: Subdomain &amp; Apex Registry</div>
+</div>
+<!-- Cognitive Blind Spot -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 text-status-warning">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+<span class="font-label-caps text-xs uppercase font-bold tracking-wider">Cognitive Blind Spot</span>
+</div>
+<p class="font-body-sm text-xs sm:text-sm text-text-body bg-surface-recessed/80 border border-border-hairline p-3.5 rounded leading-relaxed" id="cognitive-reasoning">Human reading patterns scan Western text from left to right. By placing trusted institution brand names immediately after https://, users assume ownership before scanning reaches the true registrar apex near the end.</p>
+</div>
+</div>
+<!-- Tactical Operator Rule & External Lookup (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Tactical Operator Rule Card -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-6 flex flex-col gap-4">
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+<span class="font-label-caps text-xs uppercase font-bold tracking-wider">Tactical Operator Rule</span>
+</div>
+<div class="bg-surface-recessed border border-border-hairline p-4 rounded flex flex-col gap-3">
+<div class="flex flex-col gap-1">
+<span class="font-headline-sm text-sm font-bold text-text-display">Isolate the Apex:</span>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted leading-relaxed">
+                  Disregard prefixes. Trace backwards from the first single path slash <code class="text-primary font-mono font-bold">/</code> to isolate only the last two dot-separated labels.
+                </p>
+</div>
+<div class="pt-2 border-t border-border-hairline flex items-center justify-between font-mono text-xs">
+<span class="text-text-muted">True Destination:</span>
+<span class="text-primary font-bold" id="true-destination-label">cloud-auth-routing.xyz</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-code-sm text-[11px] text-text-muted px-1">
+<span>SYNTACTIC PARSER:</span>
+<span class="text-secondary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                PASS // RFC 2606 COMPLIANT
+              </span>
+</div>
+</div>
+<!-- Auxiliary External Lookups -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-5 flex flex-col gap-3">
+<span class="font-label-caps text-xs text-text-muted uppercase">Auxiliary Safety Feeds</span>
+<div class="flex flex-col gap-2">
+<a class="flex items-center justify-between p-2.5 rounded bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:bg-surface-elevated text-xs transition-colors" href="https://transparencyreport.google.com/safe-browsing/search" rel="noopener noreferrer" target="_blank">
+<span class="flex items-center gap-2 text-text-display">
+<span class="material-symbols-outlined text-[16px] text-tertiary">open_in_new</span>
+                  Google Safe Browsing Advisory
+                </span>
+<span class="font-mono text-[10px] text-text-muted uppercase">EXTERNAL FEED</span>
+</a>
+<a class="flex items-center justify-between p-2.5 rounded bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:bg-surface-elevated text-xs transition-colors" href="https://www.virustotal.com/gui/home/url" rel="noopener noreferrer" target="_blank">
+<span class="flex items-center gap-2 text-text-display">
+<span class="material-symbols-outlined text-[16px] text-primary">open_in_new</span>
+                  VirusTotal Multi-Engine Intelligence
+                </span>
+<span class="font-mono text-[10px] text-text-muted uppercase">EXTERNAL FEED</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STAGE 4: INTERACTIVE FORENSIC OPERATOR TRIALS -->
+<section class="flex flex-col gap-5">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-border-hairline pb-3">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="font-label-caps text-xs text-primary font-bold px-2 py-0.5 rounded bg-primary/10 border border-primary/20">STAGE 4</span>
+<h2 class="font-headline-sm text-xl font-bold text-text-display tracking-tight">Interactive Forensic Operator Trials</h2>
+</div>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted">
+            Put analytical reflexes to the test. Deconstruct weaponized specimens and pinpoint the architectural trap.
+          </p>
+</div>
+<!-- Tier Selector Tabs -->
+<div class="flex items-center bg-surface-recessed p-1 rounded border border-border-hairline shrink-0">
+<button class="trial-tier-btn active-tier px-3 py-1.5 rounded font-code-sm text-xs font-semibold transition-all shadow-[0_0_10px_rgba(255,106,0,0.3)]" id="challenge-tab-0">
+            Tier 01: Beginner
+          </button>
+<button class="trial-tier-btn inactive-tier px-3 py-1.5 rounded font-code-sm text-xs text-text-muted hover:text-text-display transition-all" id="challenge-tab-1">
+            Tier 02: Intermediate
+          </button>
+<button class="trial-tier-btn inactive-tier px-3 py-1.5 rounded font-code-sm text-xs text-text-muted hover:text-text-display transition-all" id="challenge-tab-2">
+            Tier 03: Advanced
+          </button>
+</div>
+</div>
+<!-- Challenge Card -->
+<div class="bg-surface-card border border-border-hairline rounded-lg p-6 sm:p-8 shadow-xl flex flex-col gap-6">
+<!-- Challenge Header & Scenario Details -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-border-hairline">
+<div class="flex items-center gap-3">
+<span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-surface-elevated text-primary border border-border-hairline" id="challenge-tier-chip">TIER 01 // SPOT THE CLUE</span>
+<h3 class="font-title-md text-base sm:text-lg font-bold text-text-display" id="challenge-title">Identify the Rogue Subdomain Prepend</h3>
+</div>
+<div class="flex items-center gap-2 font-label-caps text-xs text-text-muted">
+<span>CLASSIFICATION:</span>
+<span class="text-secondary font-mono">TRAINING SPECIMEN</span>
+</div>
+</div>
+<!-- Intercepted Inbound Specimen Box -->
+<div class="flex flex-col gap-2">
+<span class="font-label-caps text-xs text-text-muted uppercase tracking-wider">Intercepted Inbound Specimen:</span>
+<div class="p-4 bg-surface-recessed border border-border-hairline rounded flex items-center justify-between overflow-x-auto gap-4">
+<code class="font-code-lg text-sm sm:text-base text-primary tracking-wide whitespace-nowrap" id="challenge-specimen-url">https://secure-login.paypal.com.account-verification.xyz/auth?session=4981</code>
+<span class="font-mono text-[11px] px-2 py-0.5 rounded bg-status-danger/15 text-status-danger border border-status-danger/30 uppercase shrink-0 font-bold">
+              UNTRUSTED
+            </span>
+</div>
+</div>
+<!-- Question Prompt & Options Grid -->
+<div class="flex flex-col gap-4">
+<span class="font-body-lg text-sm sm:text-base text-text-display font-medium" id="challenge-prompt">Question: Where does network traffic actually route when an operator clicks this link?</span>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="challenge-options-grid"><button class="challenge-opt-btn p-4 rounded bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:bg-surface-elevated text-left font-body-md text-xs sm:text-sm text-text-display flex items-start gap-3 transition-all">
+            <span class="w-6 h-6 rounded bg-surface-container-high border border-border-hairline flex items-center justify-center font-mono text-xs font-bold text-text-muted shrink-0 mt-0.5">A</span>
+            <span class="leading-relaxed">A: paypal.com (The genuine PayPal payments infrastructure)</span>
+          </button><button class="challenge-opt-btn p-4 rounded bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:bg-surface-elevated text-left font-body-md text-xs sm:text-sm text-text-display flex items-start gap-3 transition-all">
+            <span class="w-6 h-6 rounded bg-surface-container-high border border-border-hairline flex items-center justify-center font-mono text-xs font-bold text-text-muted shrink-0 mt-0.5">B</span>
+            <span class="leading-relaxed">B: secure-login.paypal.com (Genuine PayPal secure login subdomain)</span>
+          </button><button class="challenge-opt-btn p-4 rounded bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:bg-surface-elevated text-left font-body-md text-xs sm:text-sm text-text-display flex items-start gap-3 transition-all">
+            <span class="w-6 h-6 rounded bg-surface-container-high border border-border-hairline flex items-center justify-center font-mono text-xs font-bold text-text-muted shrink-0 mt-0.5">C</span>
+            <span class="leading-relaxed">C: account-verification.xyz (An arbitrary external attacker registered domain)</span>
+          </button><button class="challenge-opt-btn p-4 rounded bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:bg-surface-elevated text-left font-body-md text-xs sm:text-sm text-text-display flex items-start gap-3 transition-all">
+            <span class="w-6 h-6 rounded bg-surface-container-high border border-border-hairline flex items-center justify-center font-mono text-xs font-bold text-text-muted shrink-0 mt-0.5">D</span>
+            <span class="leading-relaxed">D: auth?session=4981 (A local internal loopback route)</span>
+          </button></div>
+</div>
+<!-- Forensic Verdict Shutter -->
+<div class="hidden p-5 rounded-md flex flex-col gap-3 transition-all border" id="challenge-verdict-box">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[22px]" id="verdict-icon">verified</span>
+<span class="font-headline-sm text-sm font-bold uppercase tracking-wider" id="verdict-status">
+                CORRECT FORENSIC ASSESSMENT
+              </span>
+</div>
+<button class="px-4 py-1.5 bg-surface-elevated hover:bg-surface-container text-text-display border border-border-hairline rounded font-code-sm text-xs font-semibold flex items-center gap-2 transition-all self-start sm:self-auto shadow-sm" id="challenge-next-btn">
+<span>Next Challenge Tier</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<p class="font-body-md text-xs sm:text-sm text-text-body leading-relaxed" id="verdict-explanation">
+<!-- Explanation rendered dynamically -->
+</p>
+</div>
+</div>
+</section>
+<!-- STAGE 5: COMPANION SIBLING WORKSPACES -->
+<section class="flex flex-col gap-5 pt-4">
+<div class="flex items-center gap-2 border-b border-border-hairline pb-3">
+<span class="font-label-caps text-xs text-primary font-bold px-2 py-0.5 rounded bg-primary/10 border border-primary/20">STAGE 5</span>
+<h2 class="font-headline-sm text-xl font-bold text-text-display tracking-tight">Companion Sibling Workspaces</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Card 1: Guided Learn -->
+<a class="bg-surface-card border border-border-hairline rounded-lg p-6 hover:border-primary/50 transition-all flex flex-col justify-between gap-6 group" href="#">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-xs text-primary uppercase font-bold tracking-wider">TAB 01 WORKSPACE</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[20px]">arrow_forward</span>
+</div>
+<h3 class="font-headline-sm text-lg font-bold text-text-display group-hover:text-primary transition-colors">
+              Guided Learn Curriculum
+            </h3>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted leading-relaxed">
+              Study foundational URI architecture, ICANN root servers, DNS authority chains, and how the Public Suffix List (PSL) dictates security boundaries.
+            </p>
+</div>
+<div class="flex items-center gap-2 font-code-sm text-xs text-text-muted pt-2 border-t border-border-hairline">
+<span class="material-symbols-outlined text-[16px] text-primary">menu_book</span>
+<span>4 Theoretical Modules &amp; Visual Guides</span>
+</div>
+</a>
+<!-- Card 2: Heuristic Risk Audit Engine -->
+<a class="bg-surface-card border border-border-hairline rounded-lg p-6 hover:border-primary/50 transition-all flex flex-col justify-between gap-6 group" href="#">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-xs text-primary uppercase font-bold tracking-wider">TAB 02 WORKSPACE</span>
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[20px]">arrow_forward</span>
+</div>
+<h3 class="font-headline-sm text-lg font-bold text-text-display group-hover:text-primary transition-colors">
+              Heuristic Risk Audit Engine
+            </h3>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted leading-relaxed">
+              Paste any live untrusted link for instantaneous client-side syntactic parsing, entropy calculations, and real-time detection of high-risk flags.
+            </p>
+</div>
+<div class="flex items-center gap-2 font-code-sm text-xs text-text-muted pt-2 border-t border-border-hairline">
+<span class="material-symbols-outlined text-[16px] text-primary">radar</span>
+<span>Automated Heuristic Scorer &amp; PSL Validator</span>
+</div>
+</a>
+</div>
+</section>
+</main>
+<!-- STANDARDIZED HIGH-ASSURANCE TELEMETRY FOOTER (Matches SCREEN_4 & SCREEN_8) -->
+<footer class="w-full bg-surface-base border-t border-border-hairline py-6 text-code-sm font-label-caps text-text-muted">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[16px]">terminal</span>
+<span class="text-text-display font-semibold">C.A.S.T.L.E. SEC-OPS FRAMEWORK</span>
+<span>//</span>
+<span class="text-secondary">ZERO TELEMETRY EGRESS</span>
+</div>
+<div class="flex items-center gap-4 text-[11px]">
+<span>SPEC: <span class="text-text-display font-mono">RFC 3986 / RFC 2606</span></span>
+<span>ENGINE: <span class="text-primary font-mono">WASM SYNTAX V3.4</span></span>
+<span class="hidden sm:inline">BUFFER: <span class="text-secondary font-mono">VOLATILE RAM</span></span>
+</div>
+</div>
+</footer>
+<!-- TACTICAL STYLES HELPER -->
+<style>
+    .active-btn {
+      background-color: #282828 !important;
+      border-color: #FF6A00 !important;
+      color: #FFFFFF !important;
+    }
+    .inactive-btn {
+      background-color: #060606 !important;
+      border-color: #1e1e1e !important;
+      color: #888888 !important;
+    }
+    .inactive-btn:hover {
+      background-color: #181818 !important;
+      border-color: #2a2a2a !important;
+      color: #E5E5E5 !important;
+    }
+    .active-tier {
+      background-color: #FF6A00 !important;
+      color: #000000 !important;
+    }
+    .inactive-tier {
+      background-color: transparent !important;
+      color: #888888 !important;
+    }
+  </style>
+<!-- CLIENT-SIDE SIMULATOR & INTERACTIVE ENGINE -->
+<script>
+    (function initUrlLab() {
+      // LAB STATE
+      const state = {
+        homoglyph: 'clean',
+        subdomain: 'trusted',
+        userinfo: 'none',
+        tld: 'xyz',
+        path: 'minimal'
+      };
+
+      // BASELINE CONSTANTS
+      const baselines = {
+        scheme: 'https://',
+        brandClean: 'example-bank',
+        brandNumeral: 'examp1e-bank',
+        brandPunycode: 'xn--exmple-bank-31a',
+        trustedPrefix: 'secure-login.example-bank',
+        deepPrefix: 'portal.sso.example-bank.corp',
+        userinfoPrefix: 'example-bank.test@',
+        apexDomain: 'cloud-auth-routing',
+        pathMinimal: '/verify-credentials',
+        pathCamouflaged: '/portal.example-bank.test/login.php?client=auth'
+      };
+
+      // 3-TIER OPERATOR CHALLENGES
+      const challenges = [
+        {
+          tier: 'TIER 01 // SPOT THE CLUE',
+          title: 'Identify the Rogue Subdomain Prepend',
+          specimen: 'https://secure-login.paypal.com.account-verification.xyz/auth?session=4981',
+          prompt: 'Question: Where does network traffic actually route when an operator clicks this link?',
+          options: [
+            { text: 'A: paypal.com (The genuine PayPal payments infrastructure)', correct: false },
+            { text: 'B: secure-login.paypal.com (Genuine PayPal secure login subdomain)', correct: false },
+            { text: 'C: account-verification.xyz (An arbitrary external attacker registered domain)', correct: true },
+            { text: 'D: auth?session=4981 (A local internal loopback route)', correct: false }
+          ],
+          explanation: 'ACCURATE FORENSIC VERDICT: In RFC 3986 DNS authority resolution, the apex registrar is extracted by working backwards from the first single path slash (/). Everything to the left ("paypal.com") is simply an arbitrary nested subdomain label controlled by the attacker on "account-verification.xyz".'
+        },
+        {
+          tier: 'TIER 02 // MULTIPLE CLUES',
+          title: 'Compound Typosquatting & Unusual TLD',
+          specimen: 'https://support.m1crosoft-security.click/case?id=8831',
+          prompt: 'Question: Which two deceptive markers are working in tandem to fool an operator?',
+          options: [
+            { text: 'A: Missing HTTPS scheme and malformed query parameter', correct: false },
+            { text: 'B: Typosquatted brand (numeral "1" in "m1crosoft") combined with disposable ".click" TLD', correct: true },
+            { text: 'C: Valid Microsoft subdomain with an expired certificate anchor', correct: false },
+            { text: 'D: Homoglyph Cyrillic script inside the path parameter', correct: false }
+          ],
+          explanation: 'ACCURATE FORENSIC VERDICT: The attacker replaced the lowercase "i" with numeral "1" ("m1crosoft") and paired it with a cheap, disposable generic TLD (".click"). Cognitive whole-word pattern reading causes hurried operators to overlook single character anomalies.'
+        },
+        {
+          tier: 'TIER 03 // ADVANCED',
+          title: 'Authority Userinfo Trap (@ Symbol)',
+          specimen: 'https://internal-bank.test@tactical-perimeter.top/sso/dispatch',
+          prompt: 'Question: What role does "internal-bank.test" play according to RFC 3986 specifications?',
+          options: [
+            { text: 'A: It serves as the primary apex host that receives the HTTP request', correct: false },
+            { text: 'B: It specifies a backup DNS fallback mirror if the first host fails', correct: false },
+            { text: 'C: It is parsed as HTTP user credentials; traffic routes strictly to "tactical-perimeter.top"', correct: true },
+            { text: 'D: It forces mutual TLS end-to-end authorization between domains', correct: false }
+          ],
+          explanation: 'ACCURATE FORENSIC VERDICT: RFC 3986 section 3.2.1 establishes that anything preceding an "@" symbol within the authority segment is classified strictly as userinfo (credentials). Browsers discard this for DNS resolution, connecting exclusively to "tactical-perimeter.top".'
+        }
+      ];
+
+      let currentChallengeIndex = 0;
+
+      // UPDATE SIMULATOR VIEW
+      function updateSimulator() {
+        // Resolve Brand
+        let brand = baselines.brandClean;
+        if (state.homoglyph === 'numeral') brand = baselines.brandNumeral;
+        if (state.homoglyph === 'punycode') brand = baselines.brandPunycode;
+
+        // Resolve Subdomain
+        let sub = '';
+        if (state.subdomain === 'trusted') sub = `secure-login.${brand}.`;
+        if (state.subdomain === 'deep') sub = `portal.sso.${brand}.corp.`;
+
+        // Resolve Userinfo
+        let userinfo = '';
+        if (state.userinfo === 'injected') userinfo = baselines.userinfoPrefix;
+
+        // Resolve TLD
+        let tld = '.test';
+        if (state.tld === 'xyz') tld = '.xyz';
+        if (state.tld === 'click') tld = '.click';
+
+        // Resolve Apex
+        const apex = baselines.apexDomain;
+
+        // Resolve Path
+        let path = baselines.pathMinimal;
+        if (state.path === 'camouflaged') path = baselines.pathCamouflaged;
+
+        // Render Monospace Live Highlighted Stream
+        const urlStreamDisplay = document.getElementById('url-stream-display');
+        urlStreamDisplay.innerHTML = `
+          <span class="text-tertiary font-bold" title="Scheme (RFC 3986 §3.1)">${baselines.scheme}</span>${
+            userinfo ? `<span class="text-status-danger bg-status-danger/15 px-1 py-0.5 rounded font-bold" title="Userinfo Trap (@)">${userinfo}</span>` : ''
+          }${
+            sub ? `<span class="text-status-warning font-medium" title="Subdomain Masquerading Prefix">${sub}</span>` : ''
+          }<span class="text-primary font-bold bg-primary/10 border-b-2 border-primary px-1 py-0.5 rounded" title="True Apex Registrable Domain">${apex}</span><span class="text-status-warning font-semibold" title="TLD Extension">${tld}</span><span class="text-text-muted" title="Path & Query">${path}</span>
+        `;
+
+        // Update Matrix Chip Values
+        document.getElementById('val-scheme').innerText = baselines.scheme;
+        
+        const cardUserinfo = document.getElementById('card-userinfo');
+        const valUserinfo = document.getElementById('val-userinfo');
+        const dotUserinfo = document.getElementById('dot-userinfo');
+        
+        if (userinfo) {
+          cardUserinfo.className = 'bg-surface-recessed p-3 rounded border border-status-danger/40 bg-status-danger/5 flex flex-col gap-1 transition-all';
+          valUserinfo.className = 'font-code-sm text-xs text-status-danger font-bold truncate';
+          valUserinfo.innerText = userinfo;
+          dotUserinfo.className = 'w-1.5 h-1.5 rounded-full bg-status-danger animate-pulse';
+        } else {
+          cardUserinfo.className = 'bg-surface-recessed p-3 rounded border border-border-hairline flex flex-col gap-1 transition-all';
+          valUserinfo.className = 'font-code-sm text-xs text-text-muted truncate';
+          valUserinfo.innerText = 'None';
+          dotUserinfo.className = 'w-1.5 h-1.5 rounded-full bg-border-subtle';
+        }
+
+        document.getElementById('val-subdomain').innerText = sub ? sub.slice(0, -1) : 'None (Direct Apex)';
+        document.getElementById('val-apex').innerText = apex;
+        document.getElementById('val-tld').innerText = tld;
+        document.getElementById('val-path').innerText = path;
+
+        // Calculate Structural Risk Score
+        let riskScore = 12;
+        if (state.homoglyph !== 'clean') riskScore += 24;
+        if (state.subdomain === 'trusted') riskScore += 22;
+        if (state.subdomain === 'deep') riskScore += 28;
+        if (state.userinfo === 'injected') riskScore += 34;
+        if (state.tld === 'xyz') riskScore += 16;
+        if (state.tld === 'click') riskScore += 22;
+        if (state.path === 'camouflaged') riskScore += 14;
+        if (riskScore > 100) riskScore = 98;
+
+        const scoreVal = document.getElementById('risk-score-val');
+        scoreVal.innerText = `${riskScore} / 100`;
+
+        const badge = document.getElementById('diagnostic-risk-badge');
+        const seg1 = document.getElementById('bar-seg-1');
+        const seg2 = document.getElementById('bar-seg-2');
+        const seg3 = document.getElementById('bar-seg-3');
+        const seg4 = document.getElementById('bar-seg-4');
+        const summary = document.getElementById('risk-summary-text');
+
+        if (riskScore < 30) {
+          badge.innerText = 'MINIMAL RISK';
+          badge.className = 'font-label-caps text-xs px-2.5 py-0.5 rounded bg-secondary/15 text-secondary font-semibold border border-secondary/30';
+          scoreVal.className = 'font-mono text-base font-bold text-secondary';
+          seg1.className = 'h-full rounded-sm bg-secondary';
+          seg2.className = 'h-full rounded-sm bg-surface-container-high';
+          seg3.className = 'h-full rounded-sm bg-surface-container-high';
+          seg4.className = 'h-full rounded-sm bg-surface-container-high';
+          summary.innerText = 'Standard syntactic structure. Clean authority boundary.';
+        } else if (riskScore < 65) {
+          badge.innerText = 'ELEVATED RISK';
+          badge.className = 'font-label-caps text-xs px-2.5 py-0.5 rounded bg-status-warning/15 text-status-warning font-semibold border border-status-warning/30';
+          scoreVal.className = 'font-mono text-base font-bold text-status-warning';
+          seg1.className = 'h-full rounded-sm bg-status-warning';
+          seg2.className = 'h-full rounded-sm bg-status-warning';
+          seg3.className = 'h-full rounded-sm bg-status-warning';
+          seg4.className = 'h-full rounded-sm bg-surface-container-high';
+          summary.innerText = 'Subdomain masquerading or atypical registry anchor present.';
+        } else {
+          badge.innerText = 'CRITICAL WEAPONIZED VECTOR';
+          badge.className = 'font-label-caps text-xs px-2.5 py-0.5 rounded bg-status-danger/15 text-status-danger font-semibold border border-status-danger/30';
+          scoreVal.className = 'font-mono text-base font-bold text-status-danger';
+          seg1.className = 'h-full rounded-sm bg-status-danger';
+          seg2.className = 'h-full rounded-sm bg-status-danger';
+          seg3.className = 'h-full rounded-sm bg-status-danger';
+          seg4.className = 'h-full rounded-sm bg-status-danger';
+          summary.innerText = 'Compound deceptive payload: userinfo trap, homoglyphs & nested authority.';
+        }
+
+        // Diagnostics Reasoning Update
+        const cognitive = document.getElementById('cognitive-reasoning');
+        const targetComp = document.getElementById('diff-target-component');
+        const trueDest = document.getElementById('true-destination-label');
+
+        trueDest.innerText = `${apex}${tld}`;
+
+        if (state.userinfo === 'injected') {
+          targetComp.innerText = 'RFC 3986 Authority Userinfo Credential Trap (@)';
+          cognitive.innerText = 'Hurried readers see "example-bank.test@" and subconsciously believe they are visiting that host. Browsers strip everything preceding "@" as basic authentication credentials, instantly connecting to the attacker host instead.';
+        } else if (state.homoglyph === 'punycode' || state.homoglyph === 'numeral') {
+          targetComp.innerText = 'Lexical Hostname Typosquatting / IDN Homoglyph';
+          cognitive.innerText = 'Cognitive pattern matching reads whole words rather than individual letter glyphs. The substitution of a numeral "1" for an "l" or an indistinguishable Cyrillic Unicode character easily slips past visual verification.';
+        } else if (state.subdomain !== 'none') {
+          targetComp.innerText = 'Authority: Subdomain & Apex Registry';
+          cognitive.innerText = 'Human reading patterns scan Western text from left to right. By placing trusted institution brand names immediately after https://, users assume ownership before scanning reaches the true registrar apex near the end.';
+        } else {
+          targetComp.innerText = 'Direct Apex & Query Inspection';
+          cognitive.innerText = 'Direct registrable domain with minimal subdomain complexity. Verify the destination matches official corporate registrar records rather than disposable alternate extensions.';
+        }
+      }
+
+      // TECHNIQUE BUTTON CONTROLS
+      document.querySelectorAll('.tech-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tech = btn.getAttribute('data-tech');
+          const val = btn.getAttribute('data-val');
+
+          const parent = btn.parentElement;
+          parent.querySelectorAll('.tech-btn').forEach(b => {
+            b.classList.remove('active-btn');
+            b.classList.add('inactive-btn');
+          });
+
+          btn.classList.add('active-btn');
+          btn.classList.remove('inactive-btn');
+
+          state[tech] = val;
+          updateSimulator();
+        });
+      });
+
+      // SYNC ALL BUTTONS TO CURRENT STATE
+      function syncButtons() {
+        document.querySelectorAll('.tech-btn').forEach(btn => {
+          const tech = btn.getAttribute('data-tech');
+          const val = btn.getAttribute('data-val');
+          if (state[tech] === val) {
+            btn.classList.add('active-btn');
+            btn.classList.remove('inactive-btn');
+          } else {
+            btn.classList.remove('active-btn');
+            btn.classList.add('inactive-btn');
+          }
+        });
+      }
+
+      // COMPOUND PRESET ACTION
+      document.getElementById('arm-compound-btn').addEventListener('click', () => {
+        state.homoglyph = 'numeral';
+        state.subdomain = 'deep';
+        state.userinfo = 'injected';
+        state.tld = 'click';
+        state.path = 'camouflaged';
+
+        syncButtons();
+        updateSimulator();
+      });
+
+      // RESET ACTIONS
+      function resetToBaseline() {
+        state.homoglyph = 'clean';
+        state.subdomain = 'none';
+        state.userinfo = 'none';
+        state.tld = 'test';
+        state.path = 'minimal';
+
+        syncButtons();
+        updateSimulator();
+      }
+
+      document.getElementById('reset-specimen-btn').addEventListener('click', resetToBaseline);
+      document.getElementById('header-reset-btn').addEventListener('click', resetToBaseline);
+
+      // COPY BUFFER ACTION
+      const copyBtn = document.getElementById('copy-specimen-btn');
+      const copyLabel = document.getElementById('copy-btn-label');
+      copyBtn.addEventListener('click', () => {
+        const rawText = document.getElementById('url-stream-display').innerText.replace(/\s+/g, '');
+        navigator.clipboard.writeText(rawText).then(() => {
+          copyLabel.innerText = 'Copied to Buffer!';
+          setTimeout(() => { copyLabel.innerText = 'Copy Specimen'; }, 2000);
+        });
+      });
+
+      // CHALLENGE TRIALS ENGINE
+      function renderChallenge(index) {
+        const item = challenges[index];
+        document.getElementById('challenge-tier-chip').innerText = item.tier;
+        document.getElementById('challenge-title').innerText = item.title;
+        document.getElementById('challenge-specimen-url').innerText = item.specimen;
+        document.getElementById('challenge-prompt').innerText = item.prompt;
+
+        const verdictBox = document.getElementById('challenge-verdict-box');
+        verdictBox.classList.add('hidden');
+
+        const optionsGrid = document.getElementById('challenge-options-grid');
+        optionsGrid.innerHTML = '';
+
+        item.options.forEach((opt, optIdx) => {
+          const optBtn = document.createElement('button');
+          optBtn.className = 'challenge-opt-btn p-4 rounded bg-surface-recessed border border-border-hairline hover:border-border-subtle hover:bg-surface-elevated text-left font-body-md text-xs sm:text-sm text-text-display flex items-start gap-3 transition-all';
+          optBtn.innerHTML = `
+            <span class="w-6 h-6 rounded bg-surface-container-high border border-border-hairline flex items-center justify-center font-mono text-xs font-bold text-text-muted shrink-0 mt-0.5">${String.fromCharCode(65 + optIdx)}</span>
+            <span class="leading-relaxed">${opt.text}</span>
+          `;
+
+          optBtn.addEventListener('click', () => {
+            handleAnswer(opt.correct, item.explanation, optBtn);
+          });
+
+          optionsGrid.appendChild(optBtn);
+        });
+
+        // Tab sync
+        [0, 1, 2].forEach(i => {
+          const tab = document.getElementById(`challenge-tab-${i}`);
+          if (i === index) {
+            tab.className = 'trial-tier-btn active-tier px-3 py-1.5 rounded font-code-sm text-xs font-semibold transition-all shadow-[0_0_10px_rgba(255,106,0,0.3)]';
+          } else {
+            tab.className = 'trial-tier-btn inactive-tier px-3 py-1.5 rounded font-code-sm text-xs text-text-muted hover:text-text-display transition-all';
+          }
+        });
+      }
+
+      function handleAnswer(isCorrect, explanation, selectedBtn) {
+        document.querySelectorAll('.challenge-opt-btn').forEach(btn => {
+          btn.disabled = true;
+          btn.classList.add('opacity-50', 'pointer-events-none');
+        });
+
+        selectedBtn.classList.remove('opacity-50');
+        const verdictBox = document.getElementById('challenge-verdict-box');
+        const verdictIcon = document.getElementById('verdict-icon');
+        const verdictStatus = document.getElementById('verdict-status');
+        const verdictExplanation = document.getElementById('verdict-explanation');
+
+        verdictBox.classList.remove('hidden');
+
+        if (isCorrect) {
+          selectedBtn.classList.add('border-secondary', 'bg-secondary/10', 'text-secondary');
+          verdictBox.className = 'p-5 rounded-md flex flex-col gap-3 transition-all border border-secondary/40 bg-secondary/10 text-secondary';
+          verdictIcon.innerText = 'verified';
+          verdictStatus.innerText = 'ACCURATE FORENSIC ASSESSMENT // RFC 3986 VERIFIED';
+          verdictStatus.className = 'font-headline-sm text-sm font-bold uppercase tracking-wider text-secondary';
+        } else {
+          selectedBtn.classList.add('border-status-danger', 'bg-status-danger/10', 'text-status-danger');
+          verdictBox.className = 'p-5 rounded-md flex flex-col gap-3 transition-all border border-status-danger/40 bg-status-danger/10 text-status-danger';
+          verdictIcon.innerText = 'warning';
+          verdictStatus.innerText = 'TACTICAL DECEPTION TRIGGERED // COGNITIVE MISSTEP';
+          verdictStatus.className = 'font-headline-sm text-sm font-bold uppercase tracking-wider text-status-danger';
+        }
+
+        verdictExplanation.innerText = explanation;
+      }
+
+      document.getElementById('challenge-next-btn').addEventListener('click', () => {
+        currentChallengeIndex = (currentChallengeIndex + 1) % challenges.length;
+        renderChallenge(currentChallengeIndex);
+      });
+
+      document.getElementById('challenge-tab-0').addEventListener('click', () => {
+        currentChallengeIndex = 0;
+        renderChallenge(0);
+      });
+      document.getElementById('challenge-tab-1').addEventListener('click', () => {
+        currentChallengeIndex = 1;
+        renderChallenge(1);
+      });
+      document.getElementById('challenge-tab-2').addEventListener('click', () => {
+        currentChallengeIndex = 2;
+        renderChallenge(2);
+      });
+
+      // INITIAL RENDER
+      updateSimulator();
+      renderChallenge(0);
+    })();
+  </script>
+
+
+</body></html>

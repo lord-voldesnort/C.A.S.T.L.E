@@ -1,0 +1,806 @@
+<!DOCTYPE html><html class="dark" lang="en" style="width: 1280px; height: 3128px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CASTLE // SEC-OPS — Password Verification &amp; Security Audit</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Typography -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with custom theme config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "border-active": "#FF6A00",
+            "surface-dim": "#131313",
+            "outline-variant": "#5a4136",
+            "surface-card": "#111111",
+            "surface-elevated": "#161616",
+            "surface-recessed": "#080808",
+            "surface-root": "#000000",
+            "surface-base": "#0A0A0A",
+            "primary-container": "#FF6A00",
+            "primary-hover": "#FF7D1A",
+            "primary-active": "#E55F00",
+            "text-display": "#FFFFFF",
+            "text-body": "#E5E5E5",
+            "text-muted": "#888888",
+            "text-dark": "#050505",
+            "border-subtle": "#222222",
+            "border-hairline": "#1A1A1A",
+            "status-verified": "#10B981",
+            "status-warning": "#F59E0B",
+            "status-danger": "#EF4444",
+            "status-info": "#0EA5E9",
+            "secondary": "#4EDE81"
+          },
+          fontFamily: {
+            "headline-lg": ["Space Grotesk", "sans-serif"],
+            "headline-md": ["Space Grotesk", "sans-serif"],
+            "headline-sm": ["Space Grotesk", "sans-serif"],
+            "title-md": ["Space Grotesk", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "code-lg": ["JetBrains Mono", "monospace"],
+            "code-md": ["JetBrains Mono", "monospace"],
+            "code-sm": ["JetBrains Mono", "monospace"],
+            "label-caps": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+    details summary {
+      list-style: none;
+    }
+  </style>
+</head>
+<body class="bg-[#000000] font-body-md text-text-body min-h-screen selection:bg-primary-container selection:text-text-dark">
+<!-- ==================== 1. TOP HEADER & PRIMARY NAVIGATION ==================== -->
+<header class="w-full bg-[#000000] border-b border-border-hairline sticky top-0 z-50 backdrop-blur-md bg-[#000000]/95">
+<!-- Telemetry Strip -->
+<div class="w-full border-b border-border-hairline/80 py-1.5 px-4 lg:px-8 bg-surface-base">
+<div class="max-w-[1280px] mx-auto flex flex-wrap items-center justify-between text-[11px] font-code-sm text-text-muted gap-2">
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1.5 text-status-verified font-medium">
+<span class="w-2 h-2 rounded-full bg-status-verified shadow-[0_0_8px_rgba(16,185,129,0.9)] animate-pulse"></span>
+            AIR-GAP MODE ACTIVE
+          </span>
+<span class="text-border-subtle">//</span>
+<span class="hidden sm:inline">ZERO INGRESS TELEMETRY</span>
+<span class="text-border-subtle hidden sm:inline">//</span>
+<span class="truncate">CASTLE SEC-OPS // UTILITIES // MODULE-01 // PASSWORD-ENGINE</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="hidden md:inline"><span class="text-text-muted">CRYPTO-PRNG:</span> <span class="text-text-display font-medium">WebCrypto / CSPRNG</span></span>
+<span class="text-border-subtle hidden md:inline">|</span>
+<span><span class="text-text-muted">SEC-LEVEL:</span> <span class="text-secondary font-medium">TIER-1</span></span>
+<span class="text-border-subtle">|</span>
+<button class="text-text-muted hover:text-border-active transition-colors font-label-caps uppercase" id="headerResetBtn" type="button">RESET WORKSPACE</button>
+</div>
+</div>
+</div>
+<!-- Main Brand Header -->
+<div class="max-w-[1280px] mx-auto px-4 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<!-- Tactical shield logo mark -->
+<div class="w-10 h-10 rounded-lg bg-surface-card border border-border-subtle flex items-center justify-center text-border-active shadow-[0_0_14px_rgba(255,106,0,0.25)]">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v4.7c0 4.54-3.08 8.79-7 9.9-3.92-1.11-7-5.36-7-9.9V6.3l7-3.12zM11 7h2v6h-2zm0 8h2v2h-2z"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-lg tracking-wider text-text-display uppercase font-bold">CASTLE</span>
+<span class="px-2 py-0.5 rounded-sm bg-surface-card border border-border-hairline text-border-active font-label-caps text-[11px] font-semibold">SEC-OPS v3.4 // AUTH-01</span>
+</div>
+<span class="font-label-caps text-[11px] text-text-muted tracking-wide hidden sm:block">CRYPTOGRAPHIC ENGINE // LOCAL RUNTIME</span>
+</div>
+</div>
+<!-- Guarantee Badge -->
+<div class="flex items-center gap-3">
+<div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-card border border-border-subtle">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified_user</span>
+<span class="font-code-sm text-[12px] text-text-body">100% Client-Side WebCrypto // Zero Server Storage</span>
+</div>
+</div>
+</div>
+<!-- Primary Navigation Tabs -->
+<div class="border-t border-border-hairline bg-surface-base">
+<div class="max-w-[1280px] mx-auto px-4 lg:px-8 py-2.5 flex items-center gap-3">
+<!-- Inactive Tab -->
+<a class="px-5 py-2.5 rounded-lg bg-surface-card border border-border-subtle hover:border-border-active text-text-muted hover:text-text-display font-label-caps text-xs tracking-wider transition-all inline-flex items-center gap-2" href="#">
+<span class="w-2 h-2 rounded-full bg-border-subtle"></span>
+          PASSWORD GENERATOR
+        </a>
+<!-- Active Tab: Password Verification -->
+<button class="px-5 py-2.5 rounded-lg bg-primary-container border border-primary-hover text-text-dark font-label-caps text-xs font-bold tracking-wider shadow-[0_0_16px_rgba(255,106,0,0.4)] inline-flex items-center gap-2" type="button">
+<span class="w-2 h-2 rounded-full bg-text-dark animate-pulse"></span>
+          PASSWORD VERIFICATION
+        </button>
+</div>
+</div>
+</header>
+<!-- ==================== MAIN AUDIT WORKSPACE CANVAS ==================== -->
+<main class="max-w-[1280px] mx-auto px-4 lg:px-8 py-10 flex flex-col gap-12">
+<!-- ==================== 2. PAGE INTRODUCTION & PRIVACY ==================== -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-border-active font-label-caps text-xs font-semibold tracking-widest uppercase">
+<span class="material-symbols-outlined text-[15px]">security</span>
+<span>PASSWORD SECURITY</span>
+</div>
+<h1 class="font-headline-lg text-3xl sm:text-4xl lg:text-[44px] text-text-display font-bold tracking-tight">
+        Analyze Your Password
+      </h1>
+<p class="font-body-lg text-base sm:text-lg text-text-muted max-w-3xl leading-relaxed">
+        Understand how strong your password is, discover weaknesses, and learn what you can improve before using it to protect an account.
+      </p>
+<!-- Privacy Notice Banner -->
+<div class="mt-2 p-4 rounded-xl bg-surface-card border border-border-subtle flex items-start sm:items-center gap-3.5">
+<div class="p-2 rounded-lg bg-secondary/10 border border-secondary/30 text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">shield</span>
+</div>
+<p class="font-body-md text-xs sm:text-sm text-text-body leading-relaxed">
+<strong class="text-text-display">Your password stays on your device.</strong> Analysis runs 100% locally in your browser using client-side JavaScript, without transmitting the entered password to a server or external service.
+        </p>
+</div>
+</section>
+<!-- ==================== 3. PRIMARY SECTION — ENTER A PASSWORD ==================== -->
+<section class="p-6 sm:p-8 rounded-2xl bg-surface-card border border-border-subtle flex flex-col gap-6 shadow-2xl">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<label class="font-label-caps text-xs font-semibold text-text-display uppercase tracking-wider block" for="pwdInput">
+            Password to analyze
+          </label>
+<span class="font-body-sm text-xs text-text-muted">Type, paste, or test any credential to inspect defensive properties in real time.</span>
+</div>
+<!-- Quick Demo Presets -->
+<div class="flex items-center gap-2">
+<span class="text-text-muted font-label-caps text-[11px] uppercase hidden md:inline">TEST PRESETS:</span>
+<button class="px-2.5 py-1 rounded bg-surface-elevated border border-border-subtle hover:border-border-active text-text-body hover:text-text-display font-label-caps text-[11px] transition-colors" id="btnDemoComplex" type="button">
+            Complex Key
+          </button>
+<button class="px-2.5 py-1 rounded bg-surface-elevated border border-border-subtle hover:border-status-danger text-text-body hover:text-status-danger font-label-caps text-[11px] transition-colors" id="btnDemoWeak" type="button">
+            Weak Word
+          </button>
+</div>
+</div>
+<!-- Wide Interactive Input Box -->
+<div class="relative flex flex-col md:flex-row items-stretch gap-2 bg-surface-recessed border border-border-subtle focus-within:border-border-active rounded-xl p-2 transition-all shadow-[0_0_20px_rgba(255,106,0,0.08)] focus-within:shadow-[0_0_25px_rgba(255,106,0,0.22)]">
+<div class="relative flex-1 flex items-center min-w-0">
+<span class="pl-3.5 pr-2 material-symbols-outlined text-text-muted text-[22px] shrink-0">key</span>
+<input autocomplete="off" class="w-full bg-transparent px-2 py-3 text-text-display font-code-lg text-base sm:text-lg tracking-wide focus:outline-none placeholder:text-text-muted placeholder:font-body-md" id="pwdInput" placeholder="Type or paste any password to analyze..." spellcheck="false" type="password" value="CastleOrbit-2024!#">
+<!-- Show/Hide & Clear buttons -->
+<div class="flex items-center gap-1 pr-2 shrink-0">
+<button aria-label="Toggle password visibility" class="p-2 rounded-lg text-text-muted hover:text-text-display hover:bg-surface-elevated transition-colors" id="btnToggleVisibility" title="Show/Hide Password" type="button">
+<span class="material-symbols-outlined text-[20px]" id="iconToggleVisibility">visibility</span>
+</button>
+<button aria-label="Clear field" class="p-2 rounded-lg text-text-muted hover:text-status-danger hover:bg-surface-elevated transition-colors" id="btnClearInput" title="Clear Field" type="button">
+<span class="material-symbols-outlined text-[20px]">backspace</span>
+</button>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="px-6 py-3.5 rounded-lg bg-primary-container hover:bg-primary-hover active:bg-primary-active text-text-dark font-label-caps text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 shrink-0 transition-all shadow-[0_0_15px_rgba(255,106,0,0.35)]" id="btnAnalyze" type="button">
+<span>Analyze Password</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="flex flex-wrap items-center justify-between text-[11px] font-code-sm text-text-muted gap-2 pt-1 border-t border-border-hairline">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified"></span>
+<span>Instant heuristic evaluation on keystroke // Safe memory sandbox</span>
+</div>
+<div class="font-label-caps text-text-muted">
+          STATE: <span class="text-text-display font-semibold" id="inputStateBadge">18 CHARS LOADED</span>
+</div>
+</div>
+</section>
+<!-- ==================== 4. OVERALL PASSWORD STRENGTH SECTION ==================== -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-xl sm:text-2xl text-text-display font-semibold">Password Strength</h2>
+<span class="font-label-caps text-xs text-text-muted">OVERALL RATING</span>
+</div>
+<!-- Prominent Strength Card -->
+<div class="p-6 sm:p-8 rounded-2xl bg-surface-card border border-border-subtle flex flex-col gap-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="font-body-md text-sm text-text-muted uppercase font-label-caps">DEFENSE TIER:</span>
+<span class="px-3.5 py-1 rounded font-label-caps text-xs font-bold uppercase tracking-wider bg-primary-container text-text-dark" id="tierBadge">
+              Strong
+            </span>
+</div>
+<div class="font-code-sm text-xs text-text-muted flex items-center gap-2">
+<span>RESISTANCE SCORE:</span>
+<span class="text-text-display font-bold font-code-md text-sm" id="strengthScoreVal">82 / 100</span>
+</div>
+</div>
+<!-- Multi-segment Meter -->
+<div class="flex flex-col gap-2">
+<div class="grid grid-cols-5 gap-2 h-3.5 w-full">
+<div class="rounded-sm bg-primary-container transition-all shadow-[0_0_8px_rgba(255,106,0,0.5)]" id="bar1"></div>
+<div class="rounded-sm bg-primary-container transition-all shadow-[0_0_8px_rgba(255,106,0,0.5)]" id="bar2"></div>
+<div class="rounded-sm bg-primary-container transition-all shadow-[0_0_8px_rgba(255,106,0,0.5)]" id="bar3"></div>
+<div class="rounded-sm bg-primary-container transition-all shadow-[0_0_8px_rgba(255,106,0,0.5)]" id="bar4"></div>
+<div class="rounded-sm bg-surface-elevated transition-all" id="bar5"></div>
+</div>
+<div class="flex justify-between font-label-caps text-[10px] text-text-muted tracking-wider uppercase">
+<span>Very Weak</span>
+<span>Weak</span>
+<span>Fair</span>
+<span>Strong</span>
+<span>Very Strong</span>
+</div>
+</div>
+<!-- Technical explanation -->
+<div class="p-4 rounded-xl bg-surface-recessed border border-border-hairline">
+<p class="font-body-md text-xs sm:text-sm text-text-body leading-relaxed" id="strengthSummaryText">
+            High character variety and adequate length provide solid defense against dictionary attacks, but length remains the primary barrier against high-speed GPU cracking.
+          </p>
+</div>
+</div>
+</section>
+<!-- ==================== 5. PASSWORD CHARACTERISTICS SECTION ==================== -->
+<section class="flex flex-col gap-4">
+<div>
+<h2 class="font-headline-sm text-xl sm:text-2xl text-text-display font-semibold">Password Characteristics</h2>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted mt-1">Both overall character length and character variety work in tandem to expand the search keyspace.</p>
+</div>
+<!-- 6-card grid with monospace values -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+<!-- Total Length -->
+<div class="p-4 rounded-xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-3">
+<span class="font-label-caps text-[11px] text-text-muted uppercase">TOTAL LENGTH</span>
+<div class="flex flex-col">
+<span class="font-code-lg text-xl sm:text-2xl font-bold text-text-display" id="charLengthVal">18</span>
+<span class="font-code-sm text-[11px] text-secondary font-medium" id="charLengthBadge">OPTIMAL (≥16)</span>
+</div>
+</div>
+<!-- Uppercase Letters -->
+<div class="p-4 rounded-xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-3">
+<span class="font-label-caps text-[11px] text-text-muted uppercase">UPPERCASE</span>
+<div class="flex flex-col">
+<span class="font-code-lg text-xl sm:text-2xl font-bold text-text-display" id="charUpperVal">2</span>
+<span class="font-code-sm text-[11px] text-border-active">[A-Z] DETECTED</span>
+</div>
+</div>
+<!-- Lowercase Letters -->
+<div class="p-4 rounded-xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-3">
+<span class="font-label-caps text-[11px] text-text-muted uppercase">LOWERCASE</span>
+<div class="flex flex-col">
+<span class="font-code-lg text-xl sm:text-2xl font-bold text-text-display" id="charLowerVal">9</span>
+<span class="font-code-sm text-[11px] text-border-active">[a-z] DETECTED</span>
+</div>
+</div>
+<!-- Numbers / Digits -->
+<div class="p-4 rounded-xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-3">
+<span class="font-label-caps text-[11px] text-text-muted uppercase">NUMBERS</span>
+<div class="flex flex-col">
+<span class="font-code-lg text-xl sm:text-2xl font-bold text-text-display" id="charNumVal">4</span>
+<span class="font-code-sm text-[11px] text-border-active">[0-9] DETECTED</span>
+</div>
+</div>
+<!-- Special Symbols -->
+<div class="p-4 rounded-xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-3">
+<span class="font-label-caps text-[11px] text-text-muted uppercase">SYMBOLS</span>
+<div class="flex flex-col">
+<span class="font-code-lg text-xl sm:text-2xl font-bold text-text-display" id="charSymVal">3</span>
+<span class="font-code-sm text-[11px] text-secondary">[!@#$...] ACTIVE</span>
+</div>
+</div>
+<!-- Character Variety -->
+<div class="p-4 rounded-xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-3">
+<span class="font-label-caps text-[11px] text-text-muted uppercase">POOL VARIETY</span>
+<div class="flex flex-col">
+<span class="font-code-lg text-xl sm:text-2xl font-bold text-text-display" id="charVarietyVal">4 / 4</span>
+<span class="font-code-sm text-[11px] text-secondary font-medium">ALL POOLS ACTIVE</span>
+</div>
+</div>
+</div>
+<!-- Dedicated Shannon Entropy Card -->
+<div class="p-6 rounded-2xl bg-surface-card border border-border-subtle flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2 text-border-active font-label-caps text-xs uppercase font-semibold">
+<span class="material-symbols-outlined text-[17px]">functions</span>
+<span>MATHEMATICAL COMPLEXITY</span>
+</div>
+<div class="font-headline-sm text-xl sm:text-2xl text-text-display font-semibold flex items-center gap-2">
+            Estimated Shannon Entropy: <span class="font-code-lg text-border-active" id="entropyBitsVal">94.6 Bits</span>
+</div>
+<p class="font-body-md text-xs sm:text-sm text-text-muted max-w-2xl leading-relaxed">
+            Entropy measures unpredictable information density (<em>E = L × log<sub>2</sub> R</em>). Values above 80 bits comfortably exceed standard offline brute-force computation thresholds.
+          </p>
+</div>
+<div class="px-5 py-4 rounded-xl bg-surface-recessed border border-border-hairline shrink-0 flex flex-col gap-1">
+<span class="font-label-caps text-[11px] text-text-muted uppercase">THEORETICAL KEYSPACE</span>
+<span class="font-code-md text-sm sm:text-base text-text-display font-bold" id="keyspaceVal">~2.79 × 10<sup>28</sup></span>
+<span class="font-code-sm text-[10px] text-secondary">BASE-94 POOL SEARCH</span>
+</div>
+</div>
+</section>
+<!-- ==================== 6. POTENTIAL WEAKNESSES SECTION ==================== -->
+<section class="flex flex-col gap-4">
+<div>
+<h2 class="font-headline-sm text-xl sm:text-2xl text-text-display font-semibold">Potential Weaknesses &amp; Structural Findings</h2>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted mt-1">Detailed breakdown of common human habits and structural predictability that attackers prioritize.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="findingsContainer">
+<!-- Finding 1: Dictionary Root -->
+<div class="p-6 rounded-2xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-4">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded bg-status-danger/15 text-status-danger border border-status-danger/30 font-label-caps text-[11px] font-bold uppercase">
+                DICTIONARY PATTERN
+              </span>
+<span class="material-symbols-outlined text-status-danger text-[18px]">menu_book</span>
+</div>
+<h3 class="font-title-md text-base text-text-display font-semibold">Dictionary Words / Predictable Roots</h3>
+<div class="flex flex-col gap-2 text-xs leading-relaxed">
+<div>
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">What was detected:</span>
+<span class="text-text-body">Root word token <code>"Castle"</code> and <code>"Orbit"</code> found in wordlists.</span>
+</div>
+<div>
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">Why it matters:</span>
+<span class="text-text-muted">Targeted rule-based dictionary attacks test dictionary roots before testing true random combinations.</span>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-border-hairline text-xs">
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">What you can do:</span>
+<span class="text-border-active">Use random multi-word passphrases or generate raw random characters using a password manager.</span>
+</div>
+</div>
+<!-- Finding 2: Sequential or Keyboard Patterns -->
+<div class="p-6 rounded-2xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-4">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded bg-status-warning/15 text-status-warning border border-status-warning/30 font-label-caps text-[11px] font-bold uppercase">
+                CALENDAR SEQUENCE
+              </span>
+<span class="material-symbols-outlined text-status-warning text-[18px]">calendar_month</span>
+</div>
+<h3 class="font-title-md text-base text-text-display font-semibold">Sequential or Keyboard Patterns</h3>
+<div class="flex flex-col gap-2 text-xs leading-relaxed">
+<div>
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">What was detected:</span>
+<span class="text-text-body">Sequential four-digit calendar sequence <code>"2024"</code> detected.</span>
+</div>
+<div>
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">Why it matters:</span>
+<span class="text-text-muted">Years and linear keyboard steps (like 1234 or qwerty) are systematically iterated in mask expansions.</span>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-border-hairline text-xs">
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">What you can do:</span>
+<span class="text-border-active">Replace calendar years with non-sequential random digits or punctuation delimiters.</span>
+</div>
+</div>
+<!-- Finding 3: Repetition & Predictability -->
+<div class="p-6 rounded-2xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-4">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded bg-secondary/15 text-secondary border border-secondary/30 font-label-caps text-[11px] font-bold uppercase">
+                PASSED HEURISTIC
+              </span>
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+</div>
+<h3 class="font-title-md text-base text-text-display font-semibold">Character Repetition &amp; Predictability</h3>
+<div class="flex flex-col gap-2 text-xs leading-relaxed">
+<div>
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">What was detected:</span>
+<span class="text-text-body">No consecutive duplicate characters or repetitive runs (e.g., "aaa", "111").</span>
+</div>
+<div>
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">Why it matters:</span>
+<span class="text-text-muted">Repetitive symbols degrade effective entropy without adding meaningful guessing difficulty.</span>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-border-hairline text-xs">
+<span class="text-text-muted font-label-caps uppercase block text-[10px]">What you can do:</span>
+<span class="text-secondary font-medium">Maintain unique characters throughout the credential body.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 7. ESTIMATED RESISTANCE TO GUESSING ==================== -->
+<section class="flex flex-col gap-4">
+<div>
+<h2 class="font-headline-sm text-xl sm:text-2xl text-text-display font-semibold">Estimated Guessing Resistance</h2>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted mt-1">Cracking time estimations under standardized benchmark hardware configurations.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- Scenario 1: Offline High-Speed GPU Cluster -->
+<div class="p-6 rounded-2xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-5">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-xs text-text-muted uppercase">OFFLINE HIGH-SPEED ATTACK</span>
+<span class="material-symbols-outlined text-border-active text-[20px]">memory</span>
+</div>
+<span class="font-headline-md text-2xl sm:text-3xl text-text-display font-bold font-code-lg">
+              Trillions of Years
+            </span>
+<span class="font-code-sm text-xs text-secondary font-medium">ASSUMES RANDOM GUESSING ACROSS KEYSPACE</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-recessed border border-border-hairline text-xs text-text-muted leading-relaxed">
+<strong class="text-text-display font-medium">Model:</strong> Dedicated 100-GPU cluster calculating 10<sup>11</sup> hashes per second (e.g., standard MD5 / SHA-256 without memory-hard functions).
+          </div>
+</div>
+<!-- Scenario 2: Online Throttled Authentication -->
+<div class="p-6 rounded-2xl bg-surface-card border border-border-subtle flex flex-col justify-between gap-5">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-xs text-text-muted uppercase">ONLINE THROTTLED AUTHENTICATION</span>
+<span class="material-symbols-outlined text-status-info text-[20px]">cloud_sync</span>
+</div>
+<span class="font-headline-md text-2xl sm:text-3xl text-text-display font-bold font-code-lg">
+              Centuries <span class="text-sm font-normal text-text-muted font-body-md">(Account Locked)</span>
+</span>
+<span class="font-code-sm text-xs text-status-info font-medium">RATE-LIMITED / IP-CHALLENGED</span>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-recessed border border-border-hairline text-xs text-text-muted leading-relaxed">
+<strong class="text-text-display font-medium">Model:</strong> Web application endpoint throttled at 100 attempts/second with progressive exponential lockout after failed attempts.
+          </div>
+</div>
+</div>
+<!-- Realistic Caveat Callout -->
+<div class="p-4 sm:p-5 rounded-xl bg-surface-card border border-status-warning/40 flex items-start gap-3.5">
+<span class="material-symbols-outlined text-status-warning text-[22px] shrink-0 mt-0.5">warning</span>
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-xs text-status-warning font-bold uppercase tracking-wider">CRITICAL REAL-WORLD CAVEAT</span>
+<p class="font-body-md text-xs sm:text-sm text-text-body leading-relaxed">
+            Cracking calculations assume the attacker performs an exhaustive search across the entire theoretical character pool. If this password appears in a leaked credential database (such as RockYou or HaveIBeenPwned breaches), <strong>it can be cracked instantaneously regardless of its mathematical length or complexity score</strong>.
+          </p>
+</div>
+</div>
+</section>
+<!-- ==================== 8. PRACTICAL RECOMMENDATIONS SECTION ==================== -->
+<section class="flex flex-col gap-4">
+<div>
+<h2 class="font-headline-sm text-xl sm:text-2xl text-text-display font-semibold">How to Improve This Password</h2>
+<p class="font-body-sm text-xs sm:text-sm text-text-muted mt-1">High-impact defensive guidelines for maximum protection across systems.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Rec 1 -->
+<div class="p-5 rounded-xl bg-surface-card border border-border-subtle flex items-start gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-elevated border border-border-hairline text-border-active flex items-center justify-center font-code-md text-sm font-bold shrink-0">
+            01
+          </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-title-md text-sm sm:text-base text-text-display font-semibold">Extend Length Beyond 16 Characters</h3>
+<p class="font-body-md text-xs sm:text-sm text-text-muted leading-relaxed">
+              Every additional character exponentially multiplies the search keyspace. Increasing length has far greater impact against brute-force hardware than replacing letters with symbols (e.g. "@" for "a").
+            </p>
+</div>
+</div>
+<!-- Rec 2 -->
+<div class="p-5 rounded-xl bg-surface-card border border-border-subtle flex items-start gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-elevated border border-border-hairline text-border-active flex items-center justify-center font-code-md text-sm font-bold shrink-0">
+            02
+          </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-title-md text-sm sm:text-base text-text-display font-semibold">Use a Reputable Password Manager &amp; CSPRNG</h3>
+<p class="font-body-md text-xs sm:text-sm text-text-muted leading-relaxed">
+              Humans naturally form predictable patterns. Delegate credential generation to a cryptographically secure pseudo-random number generator (CSPRNG) inside an encrypted password vault.
+            </p>
+</div>
+</div>
+<!-- Rec 3 -->
+<div class="p-5 rounded-xl bg-surface-card border border-border-subtle flex items-start gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-elevated border border-border-hairline text-border-active flex items-center justify-center font-code-md text-sm font-bold shrink-0">
+            03
+          </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-title-md text-sm sm:text-base text-text-display font-semibold">Enforce Multi-Factor Authentication (MFA)</h3>
+<p class="font-body-md text-xs sm:text-sm text-text-muted leading-relaxed">
+              Even an unbreakable 64-character password will fail if entered into a sophisticated phishing portal or compromised device. Hardware security keys (FIDO2/WebAuthn) or TOTP authenticators provide independent defense.
+            </p>
+</div>
+</div>
+<!-- Rec 4 -->
+<div class="p-5 rounded-xl bg-surface-card border border-border-subtle flex items-start gap-4">
+<div class="w-8 h-8 rounded-lg bg-surface-elevated border border-border-hairline text-border-active flex items-center justify-center font-code-md text-sm font-bold shrink-0">
+            04
+          </div>
+<div class="flex flex-col gap-1">
+<h3 class="font-title-md text-sm sm:text-base text-text-display font-semibold">Never Reuse Passwords Across Accounts</h3>
+<p class="font-body-md text-xs sm:text-sm text-text-muted leading-relaxed">
+              When an obscure service suffers an internal data leak, automated credential-stuffing bots immediately spray the compromised email and password combinations across banking, email, and cloud providers.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== 9. BEGINNER-FRIENDLY EXPANDABLE EXPLANATION ==================== -->
+<section class="border-t border-border-hairline pt-8">
+<details class="group bg-surface-card border border-border-subtle rounded-2xl overflow-hidden transition-all duration-200">
+<summary class="p-6 cursor-pointer flex items-center justify-between select-none hover:bg-surface-elevated/50 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-border-active text-[22px]">help</span>
+<span class="font-headline-sm text-base sm:text-lg text-text-display font-semibold">How does password analysis work?</span>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[22px] group-open:rotate-180 transition-transform duration-200">expand_more</span>
+</summary>
+<div class="px-6 pb-6 pt-2 border-t border-border-hairline flex flex-col gap-5 text-xs sm:text-sm text-text-body">
+<div class="flex flex-col gap-1">
+<h4 class="font-semibold text-text-display">Why password length matters more than complex symbols</h4>
+<p class="text-text-muted leading-relaxed">
+              If an attacker knows you used an 8-character password with lowercase, uppercase, and numbers, the search space is 62<sup>8</sup> ≈ 2.18 × 10<sup>14</sup> combinations. But an all-lowercase 16-character passphrase has 26<sup>16</sup> ≈ 4.36 × 10<sup>22</sup> combinations—over <strong>200 million times harder</strong> to guess, despite using no numbers or symbols at all.
+            </p>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-semibold text-text-display">What entropy actually means in simple terms</h4>
+<p class="text-text-muted leading-relaxed">
+              Shannon entropy measures the amount of pure unpredictability contained in a secret string, expressed in "bits". If a password has 80 bits of entropy, it means an attacker must perform roughly 2<sup>80</sup> guesses on average to find it by chance. Modern consensus considers 80+ bits immune to brute-force guessing under known laws of computing.
+            </p>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-semibold text-text-display">Why common passwords are weak even with numbers and symbols attached</h4>
+<p class="text-text-muted leading-relaxed">
+              Attack tools don't try every character randomly from scratch. They use grammar rules: start with a common dictionary root (e.g. "Password"), capitalize the first letter ("Password"), append the current year ("2024"), and add an exclamation mark ("Password2024!"). These rule templates are tested in milliseconds.
+            </p>
+</div>
+<div class="flex flex-col gap-1">
+<h4 class="font-semibold text-text-display">Why strength scores are approximations rather than guarantees</h4>
+<p class="text-text-muted leading-relaxed">
+              Calculators evaluate mathematical properties and known heuristic lists. However, a score cannot account for keyloggers, screen recorders, social engineering, or the fact that a password might already sit in an unpublished breach archive.
+            </p>
+</div>
+</div>
+</details>
+</section>
+</main>
+<!-- ==================== FOOTER ==================== -->
+<footer class="w-full bg-[#000000] border-t border-border-hairline mt-16 py-8">
+<div class="max-w-[1280px] mx-auto px-4 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-code-sm text-text-muted">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-status-verified"></span>
+<span>CASTLE SEC-OPS // CLIENT-SIDE WEBCRYPTO RUNTIME // W3C COMPLIANT</span>
+</div>
+<div>ZERO PERSISTENCE • ZERO NETWORK DISPATCH • LOCAL SANDBOX</div>
+</div>
+</footer>
+<!-- ==================== 10. INTERACTIVE JAVASCRIPT ==================== -->
+<script>
+    (function initCastlePasswordAudit() {
+      const pwdInput = document.getElementById('pwdInput');
+      const btnToggleVisibility = document.getElementById('btnToggleVisibility');
+      const iconToggleVisibility = document.getElementById('iconToggleVisibility');
+      const btnClearInput = document.getElementById('btnClearInput');
+      const btnAnalyze = document.getElementById('btnAnalyze');
+      const btnDemoComplex = document.getElementById('btnDemoComplex');
+      const btnDemoWeak = document.getElementById('btnDemoWeak');
+      const headerResetBtn = document.getElementById('headerResetBtn');
+
+      // Metric elements
+      const inputStateBadge = document.getElementById('inputStateBadge');
+      const tierBadge = document.getElementById('tierBadge');
+      const strengthScoreVal = document.getElementById('strengthScoreVal');
+      const strengthSummaryText = document.getElementById('strengthSummaryText');
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+      const bar4 = document.getElementById('bar4');
+      const bar5 = document.getElementById('bar5');
+
+      const charLengthVal = document.getElementById('charLengthVal');
+      const charLengthBadge = document.getElementById('charLengthBadge');
+      const charUpperVal = document.getElementById('charUpperVal');
+      const charLowerVal = document.getElementById('charLowerVal');
+      const charNumVal = document.getElementById('charNumVal');
+      const charSymVal = document.getElementById('charSymVal');
+      const charVarietyVal = document.getElementById('charVarietyVal');
+      const entropyBitsVal = document.getElementById('entropyBitsVal');
+      const keyspaceVal = document.getElementById('keyspaceVal');
+
+      if (!pwdInput) return;
+
+      // 1. Show/Hide Toggle
+      btnToggleVisibility.addEventListener('click', () => {
+        if (pwdInput.type === 'password') {
+          pwdInput.type = 'text';
+          iconToggleVisibility.textContent = 'visibility_off';
+        } else {
+          pwdInput.type = 'password';
+          iconToggleVisibility.textContent = 'visibility';
+        }
+      });
+
+      // 2. Clear Input
+      function clearBuffer() {
+        pwdInput.value = '';
+        analyzePassword('');
+        pwdInput.focus();
+      }
+      btnClearInput.addEventListener('click', clearBuffer);
+      if (headerResetBtn) headerResetBtn.addEventListener('click', clearBuffer);
+
+      // 3. Demo Presets
+      btnDemoComplex.addEventListener('click', () => {
+        pwdInput.value = 'CastleOrbit-2024!#';
+        analyzePassword(pwdInput.value);
+      });
+
+      btnDemoWeak.addEventListener('click', () => {
+        pwdInput.value = 'password123';
+        analyzePassword(pwdInput.value);
+      });
+
+      // 4. Analyze action
+      btnAnalyze.addEventListener('click', () => {
+        analyzePassword(pwdInput.value);
+      });
+
+      pwdInput.addEventListener('input', (e) => {
+        analyzePassword(e.target.value);
+      });
+
+      // 5. Core Analysis Heuristic Logic
+      function analyzePassword(pwd) {
+        const len = pwd.length;
+
+        // Character count badge
+        inputStateBadge.textContent = len === 0 ? 'EMPTY BUFFER' : `${len} CHARS LOADED`;
+
+        // Counts
+        const uppers = (pwd.match(/[A-Z]/g) || []).length;
+        const lowers = (pwd.match(/[a-z]/g) || []).length;
+        const digits = (pwd.match(/[0-9]/g) || []).length;
+        const symbols = (pwd.match(/[^A-Za-z0-9]/g) || []).length;
+
+        charLengthVal.textContent = len;
+        charUpperVal.textContent = uppers;
+        charLowerVal.textContent = lowers;
+        charNumVal.textContent = digits;
+        charSymVal.textContent = symbols;
+
+        let poolSize = 0;
+        let activePools = 0;
+        if (uppers > 0) { poolSize += 26; activePools++; }
+        if (lowers > 0) { poolSize += 26; activePools++; }
+        if (digits > 0) { poolSize += 10; activePools++; }
+        if (symbols > 0) { poolSize += 33; activePools++; }
+
+        charVarietyVal.textContent = `${activePools} / 4`;
+
+        // Length badge state
+        if (len === 0) {
+          charLengthBadge.textContent = 'EMPTY';
+          charLengthBadge.className = 'font-code-sm text-[11px] text-text-muted';
+        } else if (len < 8) {
+          charLengthBadge.textContent = 'CRITICAL (<8)';
+          charLengthBadge.className = 'font-code-sm text-[11px] text-status-danger font-medium';
+        } else if (len < 12) {
+          charLengthBadge.textContent = 'WEAK (8-11)';
+          charLengthBadge.className = 'font-code-sm text-[11px] text-status-warning font-medium';
+        } else if (len < 16) {
+          charLengthBadge.textContent = 'ADEQUATE (12-15)';
+          charLengthBadge.className = 'font-code-sm text-[11px] text-border-active font-medium';
+        } else {
+          charLengthBadge.textContent = 'OPTIMAL (≥16)';
+          charLengthBadge.className = 'font-code-sm text-[11px] text-secondary font-medium';
+        }
+
+        // Shannon Entropy calculation: E = L * log2(poolSize)
+        let entropy = 0;
+        if (len > 0 && poolSize > 0) {
+          entropy = len * (Math.log(poolSize) / Math.LN2);
+        }
+        entropyBitsVal.textContent = len === 0 ? '0.0 Bits' : `${entropy.toFixed(1)} Bits`;
+
+        // Theoretical Keyspace
+        if (len === 0 || poolSize === 0) {
+          keyspaceVal.textContent = '0';
+        } else {
+          const power = Math.floor(len * Math.log10(poolSize));
+          const mantissa = Math.pow(10, (len * Math.log10(poolSize)) - power);
+          keyspaceVal.innerHTML = `~${mantissa.toFixed(2)} &times; 10<sup>${power}</sup>`;
+        }
+
+        // Tier and Score Computation
+        let score = 0;
+        if (len === 0) {
+          score = 0;
+        } else {
+          score += Math.min(len * 4, 50); // up to 50 for length
+          score += activePools * 10;     // up to 40 for variety
+          if (entropy > 70) score += 10;
+        }
+        score = Math.min(Math.max(score, 0), 100);
+        strengthScoreVal.textContent = `${score} / 100`;
+
+        // Tier classification
+        let tierLabel = 'Very Weak';
+        let tierColorBg = 'bg-status-danger text-text-display';
+        let filledBars = 1;
+        let barColor = 'bg-status-danger';
+
+        if (len === 0) {
+          tierLabel = 'No Input';
+          tierColorBg = 'bg-surface-elevated text-text-muted';
+          filledBars = 0;
+        } else if (score < 30 || len < 8) {
+          tierLabel = 'Very Weak';
+          tierColorBg = 'bg-status-danger text-text-display';
+          filledBars = 1;
+          barColor = 'bg-status-danger';
+        } else if (score < 55) {
+          tierLabel = 'Weak';
+          tierColorBg = 'bg-status-warning text-text-dark';
+          filledBars = 2;
+          barColor = 'bg-status-warning';
+        } else if (score < 75) {
+          tierLabel = 'Fair';
+          tierColorBg = 'bg-status-warning text-text-dark';
+          filledBars = 3;
+          barColor = 'bg-status-warning';
+        } else if (score < 90) {
+          tierLabel = 'Strong';
+          tierColorBg = 'bg-primary-container text-text-dark';
+          filledBars = 4;
+          barColor = 'bg-primary-container';
+        } else {
+          tierLabel = 'Very Strong';
+          tierColorBg = 'bg-secondary text-text-dark';
+          filledBars = 5;
+          barColor = 'bg-secondary';
+        }
+
+        tierBadge.textContent = tierLabel;
+        tierBadge.className = `px-3.5 py-1 rounded font-label-caps text-xs font-bold uppercase tracking-wider ${tierColorBg}`;
+
+        // Update multi-segment meter bars
+        const bars = [bar1, bar2, bar3, bar4, bar5];
+        bars.forEach((b, idx) => {
+          if (idx < filledBars) {
+            b.className = `rounded-sm ${barColor} transition-all shadow-[0_0_8px_rgba(255,106,0,0.5)]`;
+          } else {
+            b.className = `rounded-sm bg-surface-elevated transition-all`;
+          }
+        });
+
+        // Summary text explanation
+        if (len === 0) {
+          strengthSummaryText.textContent = 'Please enter or paste a password above to begin instantaneous client-side evaluation.';
+        } else if (filledBars <= 2) {
+          strengthSummaryText.textContent = 'Critical vulnerabilities detected. This password could be broken in seconds via modern offline wordlists or GPU cluster masks. Increase length and avoid dictionary roots.';
+        } else if (filledBars === 3) {
+          strengthSummaryText.textContent = 'Moderate security posture. Provides standard protection against low-effort bots, but remains susceptible to targeted GPU rule attacks. Extending beyond 16 characters is recommended.';
+        } else {
+          strengthSummaryText.textContent = 'High character variety and adequate length provide solid defense against dictionary attacks, but length remains the primary barrier against high-speed GPU cracking.';
+        }
+      }
+
+      // Initial analysis run with default value
+      analyzePassword(pwdInput.value);
+    })();
+  </script>
+</body></html>

@@ -1,0 +1,570 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Castle Toolbox - Cybersecurity Tools</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#251e15",
+                    "surface-bright": "#40382d",
+                    "on-secondary": "#313030",
+                    "surface-container-lowest": "#130d05",
+                    "outline": "#9f8e78",
+                    "secondary-container": "#4a4949",
+                    "on-secondary-fixed-variant": "#474646",
+                    "secondary": "#c8c6c5",
+                    "on-secondary-container": "#bab8b7",
+                    "background": "#191209",
+                    "success": "#22C55E",
+                    "danger": "#EF4444",
+                    "bg-main": "#090909",
+                    "tertiary-fixed-dim": "#4cd6ff",
+                    "on-tertiary-fixed-variant": "#004e60",
+                    "text-secondary": "#A3A3A3",
+                    "tertiary-container": "#00d0fe",
+                    "text-muted": "#6B7280",
+                    "primary": "#ffd597",
+                    "on-surface": "#eee0d0",
+                    "border": "#2B2B2B",
+                    "tertiary-fixed": "#b7eaff",
+                    "error-container": "#93000a",
+                    "primary-fixed-dim": "#ffba43",
+                    "on-primary-container": "#6a4700",
+                    "inverse-on-surface": "#372f25",
+                    "surface-container-highest": "#3c3429",
+                    "on-error": "#690005",
+                    "on-error-container": "#ffdad6",
+                    "tertiary": "#a1e5ff",
+                    "on-background": "#eee0d0",
+                    "surface-container-low": "#211a11",
+                    "on-surface-variant": "#d7c4ac",
+                    "on-tertiary-container": "#00556a",
+                    "on-primary-fixed-variant": "#614000",
+                    "on-tertiary-fixed": "#001f28",
+                    "info": "#3B82F6",
+                    "on-primary": "#432c00",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "text-primary": "#F5F5F5",
+                    "inverse-primary": "#805600",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "surface-elevated": "#1D1D1D",
+                    "surface-dim": "#191209",
+                    "on-primary-fixed": "#281800",
+                    "surface-tint": "#ffba43",
+                    "surface-container-high": "#30291e",
+                    "primary-container": "#ffb000",
+                    "on-tertiary": "#003543",
+                    "surface": "#151515",
+                    "outline-variant": "#524533",
+                    "error": "#ffb4ab",
+                    "surface-variant": "#3c3429",
+                    "inverse-surface": "#eee0d0",
+                    "secondary-fixed": "#e5e2e1",
+                    "primary-fixed": "#ffddaf",
+                    "warning": "#FACC15"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "xl": "32px",
+                    "margin-mobile": "16px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "md": "16px",
+                    "xxl": "64px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter", "sans-serif"],
+                    "hero": ["Space Grotesk", "sans-serif"],
+                    "headline-md": ["Space Grotesk", "sans-serif"],
+                    "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
+                    "headline-sm": ["Space Grotesk", "sans-serif"],
+                    "title-lg": ["Space Grotesk", "sans-serif"],
+                    "headline-lg": ["Space Grotesk", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "label-md": ["Inter", "sans-serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "code": ["JetBrains Mono", "monospace"],
+                    "hero-mobile": ["Space Grotesk", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "hero": ["72px", {"lineHeight": "1.1", "fontWeight": "700"}],
+                    "headline-md": ["42px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["40px", {"lineHeight": "1.15", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "title-lg": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["56px", {"lineHeight": "1.15", "fontWeight": "700"}],
+                    "body-md": ["15px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "code": ["13px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "hero-mobile": ["48px", {"lineHeight": "1.1", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Base Styles & Utilities */
+        body {
+            background-color: #090909; /* bg-main fallback */
+            color: #eee0d0;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Armor Plate Component (Cards) */
+        .armor-plate {
+            background-color: #151515; /* surface */
+            border: 1px solid rgba(43, 43, 43, 0.5); /* border reduced */
+            position: relative;
+            transition: all 0.2s ease-in-out;
+        }
+        .armor-plate::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 8px;
+            height: 8px;
+            border-top: 2px solid #ffd597; /* primary */
+            border-left: 2px solid #ffd597;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .armor-plate:hover::before, .armor-plate:focus-within::before {
+            opacity: 1;
+        }
+        .armor-plate:hover {
+            border-color: rgba(255, 213, 151, 0.2);
+        }
+        
+        /* Interactive Elements */
+        .btn-primary {
+            @apply bg-[#ffd597] text-[#432c00] font-label-md text-label-md px-md py-sm rounded transition-all;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 15px rgba(255, 213, 151, 0.3);
+        }
+        
+        /* Technical Background Grid */
+        .tech-grid {
+            background-image: 
+                linear-gradient(to right, rgba(43, 43, 43, 0.2) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(43, 43, 43, 0.2) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-surface bg-main antialiased relative min-h-screen flex flex-col">
+<!-- Global Background Shader -->
+<div class="fixed inset-0 z-[-1] pointer-events-none opacity-40">
+<div class="absolute inset-0 tech-grid"></div>
+</div>
+<!-- TopNavBar (JSON Component 1) -->
+<nav class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-border/50 shadow-sm flex items-center justify-between px-margin-desktop py-sm max-w-full">
+<div class="flex items-center gap-xl">
+<!-- Brand -->
+<a class="font-title-lg text-title-lg font-bold tracking-tighter text-primary uppercase" href="#">C.A.S.T.L.E.</a>
+<!-- Navigation Links (Desktop) -->
+<div class="hidden md:flex gap-md items-center">
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs rounded" href="#">Tools</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs rounded" href="#">Categories</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs rounded" href="#">Learn</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors px-sm py-xs rounded" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<!-- Actions -->
+<div class="flex gap-xs">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-sm rounded hover:bg-surface-container-highest/50">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-sm rounded hover:bg-surface-container-highest/50">
+<span class="material-symbols-outlined text-[20px]">code</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-sm rounded hover:bg-surface-container-highest/50">
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+</button>
+</div>
+<button class="hidden md:flex items-center gap-sm btn-primary">
+                Launch Castle
+            </button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-[80px] px-margin-mobile md:px-margin-desktop pb-xxl flex flex-col gap-xl w-full">
+<!-- Hero Section -->
+<section class="relative armor-plate p-lg rounded-lg overflow-hidden flex flex-col md:flex-row items-center gap-lg mx-auto w-full max-w-7xl">
+<div class="relative z-10 flex flex-col gap-sm md:w-3/5">
+<h1 class="font-headline-md text-headline-lg-mobile md:text-headline-md text-text-primary uppercase tracking-tight">
+                    Build Your Digital Fortress
+                </h1>
+<p class="font-body-md text-body-md text-text-secondary max-w-2xl">
+                    A modern collection of cybersecurity tools designed for tactical analysis, encrypted communication, and network defense operations.
+                </p>
+<div class="pt-sm">
+<button class="btn-primary flex items-center gap-sm w-fit bg-surface-container-highest text-primary border border-primary/30 hover:bg-primary hover:text-on-primary">
+<span class="material-symbols-outlined text-[18px]">travel_explore</span>
+                        Explore Modules
+                    </button>
+</div>
+</div>
+<!-- Hero 3D Animation Placeholder -->
+<div class="relative w-full h-40 md:h-56 md:w-2/5 rounded bg-transparent overflow-hidden flex items-center justify-center">
+<!-- STITCH_THREEJS_START:ANIMATION_12 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_12" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_12');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+container.appendChild(renderer.domElement);
+
+const group = new THREE.Group();
+
+// Central Keep
+const keepGeom = new THREE.BoxGeometry(2, 4, 2);
+const material = new THREE.MeshBasicMaterial({ 
+    color: 0xFFB000, 
+    wireframe: true,
+    transparent: true,
+    opacity: 0.6
+});
+const keep = new THREE.Mesh(keepGeom, material);
+group.add(keep);
+
+// Outer Walls (Square Perimeter)
+const wallGeom = new THREE.BoxGeometry(6, 1.5, 6);
+const walls = new THREE.Mesh(wallGeom, material);
+walls.position.y = -1;
+group.add(walls);
+
+// Corner Turrets
+const turretGeom = new THREE.BoxGeometry(1, 3, 1);
+const positions = [
+    [2.5, 0, 2.5],
+    [-2.5, 0, 2.5],
+    [2.5, 0, -2.5],
+    [-2.5, 0, -2.5]
+];
+
+positions.forEach(pos => {
+    const turret = new THREE.Mesh(turretGeom, material);
+    turret.position.set(...pos);
+    group.add(turret);
+});
+
+scene.add(group);
+
+camera.position.z = 10;
+camera.position.y = 2;
+camera.lookAt(0, 0, 0);
+
+function animate() {
+    requestAnimationFrame(animate);
+    group.rotation.y += 0.003;
+    group.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1;
+    
+    // Subtle glow pulse
+    const s = 0.4 + Math.sin(Date.now() * 0.002) * 0.2;
+    material.opacity = s;
+    
+    renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_12 -->
+</div>
+</section>
+<!-- Search & Filter Bar -->
+<section class="flex flex-col gap-md max-w-7xl mx-auto w-full">
+<div class="relative group w-full max-w-2xl">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-text-muted group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface border border-border/50 rounded text-text-primary py-sm pl-[48px] pr-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all font-code text-code placeholder-text-muted" placeholder="Search tools, decoders, scanners..." type="text">
+</div>
+<div class="flex flex-wrap gap-sm">
+<!-- Filters -->
+<button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface-container-highest text-primary border border-primary/30">All Tools</button>
+<button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Authentication</button>
+<button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Network</button>
+<button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Web Security</button>
+<button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Encryption</button>
+<button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">Utilities</button>
+<button class="font-label-md text-label-md px-md py-xs rounded-full bg-surface border border-border/50 text-text-secondary hover:text-on-surface hover:border-outline transition-colors">OSINT</button>
+</div>
+</section>
+<!-- Tool Grid -->
+<section class="w-full">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-md">
+<!-- Card 1 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">password</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Auth</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">Password Strength</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Evaluate password entropy.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">key</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Auth</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">Password Generator</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Create secure random passwords.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 3 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">bug_report</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Web</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-danger border border-danger/20">Advanced</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">SQL Injection Tester</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Test payload responses.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 4 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">lock</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Crypto</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-warning border border-warning/20">Intermediate</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">AES Encrypt/Decrypt</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Symmetric encryption tool.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 5 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">tag</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Crypto</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">Hash Generator</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Generate cryptographic hashes.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 6 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">verified</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Crypto</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">Hash Verifier</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Compare file checksums.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 7 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">code</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Web</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-warning border border-warning/20">Intermediate</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">JWT Decoder</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Inspect JSON Web Tokens.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 8 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">radar</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Network</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-warning border border-warning/20">Intermediate</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">Port Scanner</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Analyze open ports.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 9 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">dns</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Network</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">DNS Lookup</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Query DNS records.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 10 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">person_search</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">OSINT</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">WHOIS Lookup</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Find domain registration info.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 11 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">location_on</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">OSINT</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">IP Lookup</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Geolocation and AS data.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 12 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">http</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Web</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-warning border border-warning/20">Intermediate</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">HTTP Headers</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Analyze server responses.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 13 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">verified_user</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Web</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">SSL Checker</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Verify certificate chains.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Card 14 -->
+<div class="armor-plate p-sm rounded flex flex-col h-full group gap-xs">
+<div class="flex justify-between items-center mb-xs">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-text-muted group-hover:text-primary transition-colors text-[24px]">link</span>
+<span class="text-[10px] font-code text-primary/70 uppercase tracking-wider">Utils</span>
+</div>
+<span class="bg-surface-container px-xs py-[2px] rounded font-code text-[10px] text-success border border-success/20">Beginner</span>
+</div>
+<h3 class="font-headline-sm text-[16px] text-text-primary leading-tight">URL Encoder</h3>
+<p class="font-body-sm text-body-sm text-text-secondary line-clamp-1 flex-grow">Encode/Decode parameters.</p>
+<button class="w-full text-center mt-sm py-xs bg-surface-container-highest/30 hover:bg-primary/10 text-primary border border-border/50 hover:border-primary/50 font-label-md rounded flex items-center justify-center gap-xs uppercase tracking-wider transition-colors text-[11px]">
+                        Launch <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (JSON Component 2) -->
+<footer class="w-full mt-auto bg-surface-container-lowest border-t border-border/50 flex flex-col md:flex-row justify-between items-center px-margin-desktop py-lg gap-md">
+<div class="flex items-center gap-md">
+<span class="font-title-lg text-title-lg text-primary uppercase">C.A.S.T.L.E.</span>
+</div>
+<div class="flex flex-wrap justify-center gap-md font-code text-body-sm text-text-muted">
+<a class="hover:text-primary transition-colors cursor-pointer" href="#">GitHub</a>
+<a class="hover:text-primary transition-colors cursor-pointer" href="#">Documentation</a>
+<a class="hover:text-primary transition-colors cursor-pointer" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors cursor-pointer" href="#">License</a>
+<span>© 2024</span>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_145 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_145" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_145');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  // CASTLE — Precision Futuristic Cybersecurity Wireframe Fortress Brand Visual
+// Updated: 100% Vibrant Castle Orange (#FF6A00) palette with crisp opacity hierarchy
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_143') ||
+                    document.getElementById('threejs-container-ANIMATION_141') ||
+                    document.getElementById('threejs-container-ANIMATION_139') ||
+                    document.getElementById('castle-fortress-3d') ||
+                    document.body;
+  if (!container) return;
+
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+
+  const width = container.clientWidth || window.innerWidth || 1280;
+  const height = container.clientHeight || window.innerHeight || 800;
+
+  const scene = new THREE.Scene();
+
+  const aspect = width / height;
+  const camera = new THREE.PerspectiveCamera(26, aspect, 0.1, 1000);
+  camera.position.set(24, 17, 28);
+  camera.lookAt(0, 3.2, 0);
+
+  const renderer = new THREE.WebGLRenderer({
+    alpha: true,
+    antialias: true,
+    powerPreference: 'high-performance'
+  });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.2;
+  container.appendChild(renderer.domElement);
+
+  // -------------------------------------------------------------
+  // Materials Palette: Unified Vibrant Castle Orange (#FF6A00) Hierarchy
+  // -------------------------------------------------------------
+  // Tier 1: Primary Silhouette / Major Architectural Edges (Vivid Castle Orange #FF6A00)
+  const wireframePrimaryOrange = new THREE.LineBasicMaterial({
+    color: 0xff6a00,
+    transparent: true,
+    opacity: 0.98,
+    linewidth: 1
+  });
+
+  // Tier 2: Structural Depth / Secondary Edges (Subtly softer Castle Orange, lower opacity)
+  const wireframeSecondaryDim = new THREE.LineBasicMaterial({
+    color: 0xff6a00,
+    transparent: true,
+    opacity: 0.45,
+    linewidth: 1
+  });
+
+  // Tier 3: Tactical Focal Highlights & Apex Accents (Vivid Castle Orange #FF6A00 full brightness)
+  const wireframeFocalOrange = new THREE.LineBasicMaterial({
+    color: 0xff6a00,
+    transparent: true,
+    opacity: 1.0,
+    linewidth: 1
+  });
+
+  // Translucent dark graphite mesh fills for 3D depth occlusion (prevents visual wire spaghetti)
+  const surfaceDarkFill = new THREE.MeshBasicMaterial({
+    color: 0x08080a,
+    transparent: true,
+    opacity: 0.65,
+    depthWrite: true
+  });
+
+  const surfaceKeepFill = new THREE.MeshBasicMaterial({
+    color: 0x0c0c10,
+    transparent: true,
+    opacity: 0.72,
+    depthWrite: true
+  });
+
+  // Sentinel node points & beacons in vivid #FF6A00
+  const nodeOrangeMat = new THREE.MeshBasicMaterial({ color: 0xff6a00 });
+  const nodeOrangeDimMat = new THREE.MeshBasicMaterial({ color: 0xff6a00, transparent: true, opacity: 0.65 });
+
+  const fortressGroup = new THREE.Group();
+
+  // Helper: Creates cleanly outlined volume using EdgesGeometry (NO diagonal face triangulation)
+  function createCleanWireframeEntity(geom, fillMat, lineMat, thresholdAngle = 24) {
+    const group = new THREE.Group();
+    
+    // 1. Occlusion solid mesh to stop back-facing wire chaos
+    if (fillMat) {
+      const mesh = new THREE.Mesh(geom, fillMat);
+      group.add(mesh);
+    }
+
+    // 2. Pure boundary and structural crease edges only
+    const edgesGeom = new THREE.EdgesGeometry(geom, thresholdAngle);
+    const lineMesh = new THREE.LineSegments(edgesGeom, lineMat);
+    group.add(lineMesh);
+
+    return group;
+  }
+
+  // -------------------------------------------------------------
+  // 1. Simplified Octagonal Digital Foundation Platform
+  // -------------------------------------------------------------
+  const baseRampartGeom = new THREE.CylinderGeometry(8.6, 9.2, 0.7, 8);
+  const baseRampart = createCleanWireframeEntity(baseRampartGeom, surfaceDarkFill, wireframeSecondaryDim, 35);
+  baseRampart.position.y = 0.35;
+  fortressGroup.add(baseRampart);
+
+  const basePlinthGeom = new THREE.CylinderGeometry(7.6, 8.2, 0.5, 8);
+  const basePlinth = createCleanWireframeEntity(basePlinthGeom, surfaceDarkFill, wireframePrimaryOrange, 35);
+  basePlinth.position.y = 0.95;
+  fortressGroup.add(basePlinth);
+
+  // Single clean outer ground ring in crisp Castle Orange (#FF6A00)
+  const radarRingGeom = new THREE.RingGeometry(9.8, 9.85, 48);
+  const radarRing = new THREE.Mesh(radarRingGeom, new THREE.MeshBasicMaterial({ 
+    color: 0xff6a00, 
+    transparent: true, 
+    opacity: 0.35, 
+    side: THREE.DoubleSide 
+  }));
+  radarRing.rotation.x = Math.PI / 2;
+  radarRing.position.y = 0.05;
+  fortressGroup.add(radarRing);
+
+  // -------------------------------------------------------------
+  // 2. Simplified Defensive Curtain Walls
+  // -------------------------------------------------------------
+  const wallH = 2.4;
+  const wallSpan = 7.0;
+  const wallOffset = 3.6;
+  const wallThick = 0.75;
+
+  // Front Wall (Left & Right of gate) - pure box boundary edges in #FF6A00
+  const frontWallLGeom = new THREE.BoxGeometry(2.3, wallH, wallThick);
+  const frontWallL = createCleanWireframeEntity(frontWallLGeom, surfaceDarkFill, wireframePrimaryOrange);
+  frontWallL.position.set(-2.25, 1.2 + wallH / 2, wallOffset);
+  fortressGroup.add(frontWallL);
+
+  const frontWallRGeom = new THREE.BoxGeometry(2.3, wallH, wallThick);
+  const frontWallR = createCleanWireframeEntity(frontWallRGeom, surfaceDarkFill, wireframePrimaryOrange);
+  frontWallR.position.set(2.25, 1.2 + wallH / 2, wallOffset);
+  fortressGroup.add(frontWallR);
+
+  // Back Wall
+  const backWallGeom = new THREE.BoxGeometry(wallSpan, wallH, wallThick);
+  const backWall = createCleanWireframeEntity(backWallGeom, surfaceDarkFill, wireframePrimaryOrange);
+  backWall.position.set(0, 1.2 + wallH / 2, -wallOffset);
+  fortressGroup.add(backWall);
+
+  // Left Wall
+  const leftWallGeom = new THREE.BoxGeometry(wallThick, wallH, wallSpan);
+  const leftWall = createCleanWireframeEntity(leftWallGeom, surfaceDarkFill, wireframePrimaryOrange);
+  leftWall.position.set(-wallOffset, 1.2 + wallH / 2, 0);
+  fortressGroup.add(leftWall);
+
+  // Right Wall
+  const rightWallGeom = new THREE.BoxGeometry(wallThick, wallH, wallSpan);
+  const rightWall = createCleanWireframeEntity(rightWallGeom, surfaceDarkFill, wireframePrimaryOrange);
+  rightWall.position.set(wallOffset, 1.2 + wallH / 2, 0);
+  fortressGroup.add(rightWall);
+
+  // Courtyard floor plate
+  const floorGeom = new THREE.BoxGeometry(6.4, 0.1, 6.4);
+  const courtyardFloor = createCleanWireframeEntity(floorGeom, surfaceDarkFill, wireframeSecondaryDim);
+  courtyardFloor.position.set(0, 1.2, 0);
+  fortressGroup.add(courtyardFloor);
+
+  // -------------------------------------------------------------
+  // 3. Crisp, Reduced Battlements (Crenellations)
+  // -------------------------------------------------------------
+  function addCleanCrenellations(startX, startZ, endX, endZ, wallY, isZAxis) {
+    const crenW = 0.55;
+    const crenH = 0.5;
+    const crenD = 0.85;
+    const step = 1.15;
+
+    if (!isZAxis) {
+      const len = Math.abs(endX - startX);
+      const count = Math.floor(len / step);
+      for (let i = 0; i <= count; i++) {
+        const x = startX + i * step;
+        const cGeom = new THREE.BoxGeometry(crenW, crenH, crenD);
+        const cren = createCleanWireframeEntity(cGeom, surfaceDarkFill, wireframeSecondaryDim);
+        cren.position.set(x, wallY + crenH / 2, startZ);
+        fortressGroup.add(cren);
+      }
+    } else {
+      const len = Math.abs(endZ - startZ);
+      const count = Math.floor(len / step);
+      for (let i = 0; i <= count; i++) {
+        const z = startZ + i * step;
+        const cGeom = new THREE.BoxGeometry(crenD, crenH, crenW);
+        const cren = createCleanWireframeEntity(cGeom, surfaceDarkFill, wireframeSecondaryDim);
+        cren.position.set(startX, wallY + crenH / 2, z);
+        fortressGroup.add(cren);
+      }
+    }
+  }
+
+  const topY = 1.2 + wallH;
+  addCleanCrenellations(-3.2, wallOffset, -1.4, wallOffset, topY, false);
+  addCleanCrenellations(1.4, wallOffset, 3.2, wallOffset, topY, false);
+  addCleanCrenellations(-3.0, -wallOffset, 3.0, -wallOffset, topY, false);
+  addCleanCrenellations(-wallOffset, -3.0, -wallOffset, 3.0, topY, true);
+  addCleanCrenellations(wallOffset, -3.0, wallOffset, 3.0, topY, true);
+
+  // -------------------------------------------------------------
+  // 4. Four Clean Hexagonal Corner Bastion Towers
+  // -------------------------------------------------------------
+  const cornerPositions = [
+    [-3.8, 3.8],
+    [3.8, 3.8],
+    [-3.8, -3.8],
+    [3.8, -3.8]
+  ];
+
+  cornerPositions.forEach(([cx, cz]) => {
+    // Hexagonal tower shaft - 6 clean vertical edges in #FF6A00
+    const tShaftGeom = new THREE.CylinderGeometry(1.3, 1.55, 4.8, 6);
+    const tShaft = createCleanWireframeEntity(tShaftGeom, surfaceDarkFill, wireframePrimaryOrange, 30);
+    tShaft.position.set(cx, 1.2 + 2.4, cz);
+    fortressGroup.add(tShaft);
+
+    // Overhanging Hexagonal Crown Parapet - focal Castle Orange
+    const tCrownGeom = new THREE.CylinderGeometry(1.7, 1.35, 0.6, 6);
+    const tCrown = createCleanWireframeEntity(tCrownGeom, surfaceDarkFill, wireframeFocalOrange, 30);
+    tCrown.position.set(cx, 1.2 + 5.0, cz);
+    fortressGroup.add(tCrown);
+
+    // Angular Low-Poly Pyramidal Cap / Roof in #FF6A00
+    const roofGeom = new THREE.ConeGeometry(1.55, 1.8, 6);
+    const roof = createCleanWireframeEntity(roofGeom, surfaceDarkFill, wireframePrimaryOrange, 30);
+    roof.position.set(cx, 1.2 + 6.2, cz);
+    fortressGroup.add(roof);
+
+    // Minimal Apex Sentinel Beacon Node
+    const apexNode = new THREE.Mesh(new THREE.OctahedronGeometry(0.18, 0), nodeOrangeMat);
+    apexNode.position.set(cx, 1.2 + 7.3, cz);
+    fortressGroup.add(apexNode);
+  });
+
+  // -------------------------------------------------------------
+  // 5. Fortified Central Keep (Clear Architectural Hierarchy)
+  // -------------------------------------------------------------
+  // Lower keep mass - clean box edges in #FF6A00
+  const keepLowerGeom = new THREE.BoxGeometry(3.5, 5.8, 3.5);
+  const keepLower = createCleanWireframeEntity(keepLowerGeom, surfaceKeepFill, wireframePrimaryOrange);
+  keepLower.position.set(0, 1.2 + 2.9, -0.4);
+  fortressGroup.add(keepLower);
+
+  // Upper citadel overhang
+  const keepUpperGeom = new THREE.BoxGeometry(4.0, 2.0, 4.0);
+  const keepUpper = createCleanWireframeEntity(keepUpperGeom, surfaceKeepFill, wireframePrimaryOrange);
+  keepUpper.position.set(0, 1.2 + 6.6, -0.4);
+  fortressGroup.add(keepUpper);
+
+  // Keep Faceted Pyramid Roof (4-sided low-poly wireframe, crisp #FF6A00 edges)
+  const keepRoofGeom = new THREE.ConeGeometry(2.9, 3.0, 4);
+  const keepRoof = createCleanWireframeEntity(keepRoofGeom, surfaceDarkFill, wireframeFocalOrange, 30);
+  keepRoof.position.set(0, 1.2 + 9.1, -0.4);
+  keepRoof.rotation.y = Math.PI / 4;
+  fortressGroup.add(keepRoof);
+
+  // Apex Sentinel Beacon & Single Clean Halo in #FF6A00
+  const apexBeacon = new THREE.Mesh(new THREE.OctahedronGeometry(0.4, 0), nodeOrangeMat);
+  apexBeacon.position.set(0, 1.2 + 10.8, -0.4);
+  fortressGroup.add(apexBeacon);
+
+  const apexHaloGeom = new THREE.TorusGeometry(0.75, 0.03, 4, 16);
+  const apexHalo = new THREE.Mesh(apexHaloGeom, nodeOrangeDimMat);
+  apexHalo.rotation.x = Math.PI / 2;
+  apexHalo.position.set(0, 1.2 + 10.7, -0.4);
+  fortressGroup.add(apexHalo);
+
+  // Central Data Core Embrasure (Refined single inset line)
+  const keepCoreGeom = new THREE.BoxGeometry(0.7, 1.3, 0.15);
+  const keepCore = createCleanWireframeEntity(keepCoreGeom, surfaceDarkFill, wireframeFocalOrange);
+  keepCore.position.set(0, 1.2 + 4.8, 1.4);
+  fortressGroup.add(keepCore);
+
+  // -------------------------------------------------------------
+  // 6. Fortified Entrance Gatehouse & Simplified Portcullis
+  // -------------------------------------------------------------
+  const gateGeom = new THREE.BoxGeometry(2.2, 3.0, 1.5);
+  const gatehouse = createCleanWireframeEntity(gateGeom, surfaceDarkFill, wireframePrimaryOrange);
+  gatehouse.position.set(0, 1.2 + 1.5, wallOffset + 0.3);
+  fortressGroup.add(gatehouse);
+
+  // Recessed portal opening
+  const portalGeom = new THREE.BoxGeometry(1.0, 1.8, 1.1);
+  const portal = createCleanWireframeEntity(portalGeom, surfaceDarkFill, wireframeSecondaryDim);
+  portal.position.set(0, 1.2 + 0.9, wallOffset + 0.55);
+  fortressGroup.add(portal);
+
+  // Portcullis Security Grid - crisp Castle Orange (#FF6A00)
+  const portcullisGeom = new THREE.PlaneGeometry(0.8, 1.4, 2, 2);
+  const portcullis = new THREE.LineSegments(new THREE.WireframeGeometry(portcullisGeom), wireframeFocalOrange);
+  portcullis.position.set(0, 1.2 + 0.85, wallOffset + 0.4);
+  fortressGroup.add(portcullis);
+
+  // Entry bridge plinth
+  const bridgeGeom = new THREE.BoxGeometry(1.5, 0.3, 2.6);
+  const bridge = createCleanWireframeEntity(bridgeGeom, surfaceDarkFill, wireframePrimaryOrange);
+  bridge.position.set(0, 1.0, wallOffset + 2.0);
+  fortressGroup.add(bridge);
+
+  scene.add(fortressGroup);
+
+  // -------------------------------------------------------------
+  // 7. Controlled Tactical Lighting Tuned for Orange Silhouette Definition
+  // -------------------------------------------------------------
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.25);
+  scene.add(ambientLight);
+
+  const keyLight = new THREE.DirectionalLight(0xff6a00, 1.4);
+  keyLight.position.set(20, 24, 18);
+  scene.add(keyLight);
+
+  const rimLight = new THREE.DirectionalLight(0xff6a00, 1.8);
+  rimLight.position.set(-16, 12, -18);
+  scene.add(rimLight);
+
+  // -------------------------------------------------------------
+  // 8. Interactive Cursor Tracking & Ambient Sway
+  // -------------------------------------------------------------
+  let mouseX = 0, targetRotationY = 0;
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  window.addEventListener('mousemove', (e) => {
+    const relX = (e.clientX / window.innerWidth) - 0.5;
+    targetRotationY = relX * 0.4;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    targetRotationY = 0;
+  });
+
+  const clock = new THREE.Clock();
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    const elapsed = clock.getElapsedTime();
+
+    if (!isReducedMotion) {
+      fortressGroup.rotation.y += (targetRotationY + elapsed * 0.1 - fortressGroup.rotation.y) * 0.035;
+      fortressGroup.position.y = Math.sin(elapsed * 0.75) * 0.08;
+      apexHalo.rotation.z = elapsed * 0.35;
+    }
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth || 1280;
+    const h = container.clientHeight || window.innerHeight || 800;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+})();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_145 -->
+
+
+</body></html>
